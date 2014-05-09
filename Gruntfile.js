@@ -53,43 +53,19 @@ module.exports = function(grunt) {
     //     src: ['lib/**/*.js', 'test/**/*.js']
     //   }
     // },
-    // qunit: {
-    //   files: ['test/**/*.html']
-    // },
-    // watch: {
-    //   gruntfile: {
-    //     files: '<%= jshint.gruntfile.src %>',
-    //     tasks: ['jshint:gruntfile']
-    //   },
-    //   lib_test: {
-    //     files: '<%= jshint.lib_test.src %>',
-    //     tasks: ['jshint:lib_test', 'qunit']
-    //   }
-    // }
+
+    compass: {
+      css: {
+        options: {
+          sassDir: './css/scss',
+          cssDir: './css',
+          // outputStyle: 'compressed'
+        }
+      }
+    },
 
 
     watch: {
-      // css: {
-      //   files: ['./css/scss/**/*.scss'],
-      //   tasks: ['compass:css', 'manifest', 'exec:rsync']
-      // },
-      // js: {
-      //   files: ['./js/dev/**/*.js'],
-      //   tasks: ['concat:js', 'manifest', 'exec:rsync']
-      // },
-      // forManifest: {
-      //   files: [
-      //     './Gruntfile.js',
-      //     './*.php',
-      //     './js/welcome.js',
-      //     './html/*'
-      //   ],
-      //   tasks: ['manifest', 'exec:rsync']
-      // },
-      // php: {
-      //   files: ['./**/*.php'],
-      //   tasks: ['exec:rsync']
-      // }
 
 
       // 個人用ですみませんが、間借りさせてください
@@ -124,9 +100,9 @@ module.exports = function(grunt) {
   // These plugins provide necessary tasks.
   // grunt.loadNpmTasks('grunt-contrib-concat');
   // grunt.loadNpmTasks('grunt-contrib-uglify');
-  // grunt.loadNpmTasks('grunt-contrib-qunit');
   // grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-contrib-compass');
   grunt.loadNpmTasks('grunt-exec');
 
   // Default task.
