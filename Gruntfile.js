@@ -67,10 +67,15 @@ module.exports = function(grunt) {
 
     watch: {
 
+      css: {
+          files: ['./css/scss/**/*.scss'],
+          tasks: ['compass']
+      },
+
 
       // 個人用ですみませんが、間借りさせてください
       mune: {
-        files: ['./**/*.css', './**/*.js', './**/*.php'],
+        files: ['./**/*.scss', './**/*.js', './**/*.php'],
         tasks: ['exec:sleep2', 'exec:rsync']
       }
 
@@ -85,7 +90,8 @@ module.exports = function(grunt) {
     // すみません、宗定個人用ですが、ここに間借りさせてください.
     exec: {
       rsync: {
-        command: 'rsync -r -p -v ./ ../yoheim_net/app/sesami-book/'
+        // command: 'rsync -r -p -v ./ ../yoheim_net/app/sesami-book/'
+        command: 'rsync -r -p ./ ../yoheim_net/app/sesami-book/'
       },
       sleep2: {
         command: 'sleep 2'
