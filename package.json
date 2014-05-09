@@ -1,0 +1,20 @@
+{
+  "name": "hjc2014_sesami",
+  "version": "0.0.0",
+  "description": "hjc2014_sesami ==============",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SHUNDAN/hjc2014_sesami"
+  },
+  "author": "",
+  "license": "BSD",
+  "readmeFilename": "README.md",
+  "gitHead": "52627b65ef74a0b9d50e0c209c7c4043f994b272",
+  "bugs": {
+    "url": "https://github.com/SHUNDAN/hjc2014_sesami/issues"
+  }
+}
