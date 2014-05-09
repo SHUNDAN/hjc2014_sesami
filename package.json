@@ -16,5 +16,10 @@
   "gitHead": "52627b65ef74a0b9d50e0c209c7c4043f994b272",
   "bugs": {
     "url": "https://github.com/SHUNDAN/hjc2014_sesami/issues"
+  },
+  "dependencies": {
+    "grunt": "~0.4.4",
+    "grunt-contrib-compass": "~0.7.2",
+    "grunt-exec": "~0.4.5"
   }
 }
