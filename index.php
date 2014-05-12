@@ -8,7 +8,7 @@
 <body>
 
 <div id="page" class="page">
-    <?php  include "index.html" ?>
+    <?php  include "template.html" ?>
 </div>
 
 
