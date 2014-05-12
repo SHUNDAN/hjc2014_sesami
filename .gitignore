@@ -1,6 +1,7 @@
 node_modules
 npm-debug.log
 .DS-Store
+.DS_Store
 .sass-cache
 
 #release content
