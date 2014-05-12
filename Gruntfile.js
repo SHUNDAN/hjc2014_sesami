@@ -61,6 +61,7 @@ module.exports = function(grunt) {
       all: {
         src: [
           // 最小限のものなので、適宜修正をお願いします（宗）
+          './js/src/core/*.js',
           './js/src/views/pages/page_00/*.js',
           './js/src/views/pages/page_01/*.js'
         ],
