@@ -56,6 +56,8 @@ module.exports = function(grunt) {
 
 
     concat: {
+
+      // JS
       all: {
         src: [
           // 最小限のものなので、適宜修正をお願いします（宗）
@@ -76,6 +78,17 @@ module.exports = function(grunt) {
         src: ['./js/src/views/pages/notfound/*.js'],
         dest: './release/js/notfound.js'
       },
+      libs: {
+        src: ['./js/libs/*.js'],
+        dest: './release/js/libs/all-libs.js'
+      },
+
+      // HTML
+      html: {
+        src: ['./template/**/*.html'],
+        dest: './release/index.html'
+      }
+
     },
 
 
@@ -88,7 +101,7 @@ module.exports = function(grunt) {
       },
       img: {
         files: [
-          {expand: true, src: ['./img/**'], dest: 'release/img'}
+          {expand: true, cwd:'img/', src: ['**/*'], dest: 'release/img'}
         ]
       }
     },
@@ -98,17 +111,35 @@ module.exports = function(grunt) {
 
     watch: {
 
-      css: {
-          files: ['./css/scss/**/*.scss'],
+      compass: {
+          files: ['./css/**/*.scss'],
           tasks: ['compass']
       },
+      concat: {
+        files: [
+          './**/*.js',
+          './template/**/*.html'
+        ],
+        tasks: ['concat']
+      },
+      copy: {
+        files: [
+          './img/**/*.png',
+          './img/**/*.jpg',
+          './img/**/*.gif',
+          './img/**/*.svg',
+          './*.php',
+          './api/**/*.php'
+        ],
+        tasks: ['copy']
+      }
 
 
       // 個人用ですみませんが、間借りさせてください
-      mune: {
-        files: ['./**/*.scss', './**/*.js', './**/*.php'],
-        tasks: ['exec:sleep2', 'exec:rsync']
-      }
+      // mune: {
+      //   files: ['./**/*.scss', './**/*.js', './**/*.php'],
+      //   tasks: ['exec:sleep2', 'exec:rsync']
+      // }
 
     },
 
@@ -119,15 +150,15 @@ module.exports = function(grunt) {
 
 
     // すみません、宗定個人用ですが、ここに間借りさせてください.
-    exec: {
-      rsync: {
-        // command: 'rsync -r -p -v ./ ../yoheim_net/app/sesami-book/'
-        command: 'rsync -r -p ./ ../yoheim_net/app/sesami-book/'
-      },
-      sleep2: {
-        command: 'sleep 2'
-      }
-    }
+    // exec: {
+    //   rsync: {
+    //     // command: 'rsync -r -p -v ./ ../yoheim_net/app/sesami-book/'
+    //     command: 'rsync -r -p ./ ../yoheim_net/app/sesami-book/'
+    //   },
+    //   sleep2: {
+    //     command: 'sleep 2'
+    //   }
+    // }
 
 
 
