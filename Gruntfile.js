@@ -56,8 +56,6 @@ module.exports = function(grunt) {
 
 
     concat: {
-
-      // JS
       all: {
         src: [
           // 最小限のものなので、適宜修正をお願いします（宗）
@@ -78,24 +76,21 @@ module.exports = function(grunt) {
         src: ['./js/src/views/pages/notfound/*.js'],
         dest: './release/js/notfound.js'
       },
+    },
 
-      // PHP
-      php1: {
-        src: ['./index.php'],
-        dest: './release/index.php'
+
+
+    copy: {
+      php: {
+        files: [
+          {expand: true, src: ['./*.php'], dest: 'release/'}
+        ]
       },
-      php2: {
-        src: ['./create.php'],
-        dest: './release/create.php'
-      },
-      php3: {
-        src: ['./share.php'],
-        dest: './release/share.php'
-      },
-      php4: {
-        src: ['./notfound.php'],
-        dest: './release/notfound.php'
-      },
+      img: {
+        files: [
+          {expand: true, src: ['./img/**'], dest: 'release/img'}
+        ]
+      }
     },
 
 
@@ -142,12 +137,13 @@ module.exports = function(grunt) {
   // These plugins provide necessary tasks.
   // grunt.loadNpmTasks('grunt-contrib-uglify');
   // grunt.loadNpmTasks('grunt-contrib-jshint');
+  grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-compass');
   grunt.loadNpmTasks('grunt-exec');
 
   // Default task.
-  // grunt.registerTask('default', ['jshint', 'qunit', 'concat', 'uglify']);
+  grunt.registerTask('default', ['compass', 'concat', 'copy']);
 
 };
