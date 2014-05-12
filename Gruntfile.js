@@ -57,9 +57,8 @@ module.exports = function(grunt) {
     compass: {
       css: {
         options: {
-          sassDir: './css/scss',
-          cssDir: './css',
-          // outputStyle: 'compressed'
+          sassDir: './css/src',
+          cssDir: './release/css',
         }
       }
     },
