@@ -4,11 +4,6 @@ npm-debug.log
 .sass-cache
 
 #release content
-release/*.php
-release/*.js
-release/*.css
-release/*.png
-release/*.jpg
-release/*.jpeg
-release/*svg
+!release/.gitkeep
+release/*
 
