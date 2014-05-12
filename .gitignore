@@ -2,4 +2,13 @@ node_modules
 npm-debug.log
 .DS-Store
 .sass-cache
-release/*
+
+#release content
+release/*.php
+release/*.js
+release/*.css
+release/*.png
+release/*.jpg
+release/*.jpeg
+release/*svg
+
