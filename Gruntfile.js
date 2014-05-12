@@ -87,7 +87,7 @@ module.exports = function(grunt) {
       // HTML
       html: {
         src: ['./template/**/*.html'],
-        dest: './release/index.html'
+        dest: './release/template.html'
       }
 
     },

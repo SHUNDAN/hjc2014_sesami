@@ -4,11 +4,12 @@
     <meta charset="UTF-8">
     <title>セサミストリート絵本</title>
     <link rel="stylesheet" href="./css/all.css">
+    <meta name="viewport" content="width=640, minimal-ui">
 </head>
 <body>
 
 <div id="page" class="page">
-    <?php  include "index.html" ?>
+    <?php  include "template.html" ?>
 </div>
 
 
