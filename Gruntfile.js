@@ -11,16 +11,6 @@ module.exports = function(grunt) {
     //   '* Copyright (c) <%= grunt.template.today("yyyy") %> <%= pkg.author.name %>;' +
     //   ' Licensed <%= _.pluck(pkg.licenses, "type").join(", ") %> */\n',
     // // Task configuration.
-    // concat: {
-    //   options: {
-    //     banner: '<%= banner %>',
-    //     stripBanners: true
-    //   },
-    //   dist: {
-    //     src: ['lib/<%= pkg.name %>.js'],
-    //     dest: 'dist/<%= pkg.name %>.js'
-    //   }
-    // },
     // uglify: {
     //   options: {
     //     banner: '<%= banner %>'
@@ -64,6 +54,53 @@ module.exports = function(grunt) {
     },
 
 
+
+    concat: {
+
+      // JS
+      all: {
+        src: [
+          // 最小限のものなので、適宜修正をお願いします（宗）
+          './js/src/views/pages/page_00/*.js',
+          './js/src/views/pages/page_01/*.js'
+        ],
+        dest: './release/js/all.js'
+      },
+      share: {
+        src: ['./js/src/views/pages/share/*.js'],
+        dest: './release/js/share.js'
+      },
+      create: {
+        src: ['./js/src/views/pages/create/*.js'],
+        dest: './release/js/create.js'
+      },
+      notfound: {
+        src: ['./js/src/views/pages/notfound/*.js'],
+        dest: './release/js/notfound.js'
+      },
+
+      // PHP
+      php1: {
+        src: ['./index.php'],
+        dest: './release/index.php'
+      },
+      php2: {
+        src: ['./create.php'],
+        dest: './release/create.php'
+      },
+      php3: {
+        src: ['./share.php'],
+        dest: './release/share.php'
+      },
+      php4: {
+        src: ['./notfound.php'],
+        dest: './release/notfound.php'
+      },
+    },
+
+
+
+
     watch: {
 
       css: {
@@ -103,9 +140,9 @@ module.exports = function(grunt) {
   });
 
   // These plugins provide necessary tasks.
-  // grunt.loadNpmTasks('grunt-contrib-concat');
   // grunt.loadNpmTasks('grunt-contrib-uglify');
   // grunt.loadNpmTasks('grunt-contrib-jshint');
+  grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-compass');
   grunt.loadNpmTasks('grunt-exec');
