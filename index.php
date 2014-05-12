@@ -97,6 +97,44 @@
 })();
 
 
+// ページのサイズの調整
+(function () {
+    var adjustSize = function () {
+
+        var 
+            MAX_WIDTH = 1017, // book.pngのサイズ
+            MAX_HEIGHT = 720, // book.pngのサイズ
+            PAGE_SIZE_RAITO = MAX_WIDTH / MAX_HEIGHT,
+            min = Math.min,
+            floor = Math.floor,
+            wh = window.innerHeight,
+            ww = window.innerWidth,
+            wRaito = ww / wh,
+            ch = undefined,
+            cw = undefined;
+
+            if (wRaito > PAGE_SIZE_RAITO) {
+                ch = min(wh, MAX_HEIGHT);
+                cw = floor(ch * PAGE_SIZE_RAITO);
+            } else {
+                cw = min(ww, MAX_WIDTH);
+                ch = floor(cw / PAGE_SIZE_RAITO);
+            }
+
+            console.debug('[adjustSize]', ch, cw);
+
+            $('[data-page]').css({
+                'width': cw, 
+                'height': ch,
+                'background-size': cw + 'px ' + ch + 'px'
+            });
+
+    };
+    window.onresize = adjustSize;
+    adjustSize();
+})();
+
+
 
 
 

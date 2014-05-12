@@ -1,4 +1,33 @@
 //
 // Common.scssを作ってみましたが、肥大化しそうだったら、ファイル分割とかしましょー。（宗）
 //
+
+
+body {
+	background-color: #d8efe2;
+}
+
+
+// 各ページ
+.content {
+	position: relative;
+	// widthとheightは、jsで設定します.
+	// svgとかがいいかなー?
+	background: url("../img/book.png") no-repeat;
+}
+
+// 各ページのBookの湾曲とかを考慮した作業スペース
+.canvas {
+	// 以下の余白やらサイズやらは、book.pngの最新が来たら変わります.（ムネ）
+	position: absolute;
+	width: 88%;
+	height: 94.6%;
+	// background-color: rgba(255,0,0,.3); // debug用
+	margin: 1.2% 0 0 7.7%;
+}
+
+
+
+
+
 .hidden {display: none !important;}
