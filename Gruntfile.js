@@ -1,4 +1,6 @@
 /*global module:false*/
+var fs = require('fs');
+
 module.exports = function(grunt) {
 
   // Project configuration.
@@ -95,9 +97,9 @@ module.exports = function(grunt) {
 
 
     copy: {
-      php: {
+      html: {
         files: [
-          {expand: true, src: ['./*.php'], dest: 'release/'}
+          {expand: true, src: ['./*.html'], dest: 'release/'}
         ]
       },
       img: {
@@ -121,7 +123,7 @@ module.exports = function(grunt) {
           './**/*.js',
           './template/**/*.html'
         ],
-        tasks: ['concat']
+        tasks: ['concat', 'build-index-html']
       },
       copy: {
         files: [
@@ -132,7 +134,7 @@ module.exports = function(grunt) {
           './*.php',
           './api/**/*.php'
         ],
-        tasks: ['copy']
+        tasks: ['copy', 'build-index-html']
       }
 
 
@@ -176,6 +178,26 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-exec');
 
   // Default task.
-  grunt.registerTask('default', ['compass', 'concat', 'copy']);
+  grunt.registerTask('default', ['compass', 'concat', 'copy', 'build-index-html']);
+
+
+
+  // tasksディレクトリでの定義ってどうするんでしたっけ？(ムネ)
+  grunt.registerTask('build-index-html', 'description', function () {
+
+      var html = fs.readFileSync('./index.html', 'utf-8');
+      var template = fs.readFileSync('./release/template.html', 'utf-8');
+      html = html.replace('{{template}}', template);
+
+      fs.writeFileSync('./release/index.html', html, 'utf-8');
+  });
+
+
+
+
+
+
+
+
 
 };
