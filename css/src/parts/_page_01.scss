@@ -1,4 +1,4 @@
-// エルモが泣いているシーン
+// クッキーモンスターが泣いているシーン
 [data-page="1"] {
 
     .body {
@@ -42,19 +42,21 @@
     	@include rotateZ(12deg);
     }
     .drop4 {
-    	top: 10%;
-    	left: 40%;
+    	top: 20%;
+    	left: 9%;
     	width: 16%;
     }
     .drop5 {
-    	top: 10%;
-    	left: 23%;
-    	width: 16%;
+    	top: 31%;
+    	left: 9%;
+    	width: 11%;
+    	@include rotateZ(-33deg);
     }
     .drop6 {
-    	top: 15%;
-    	left: 10%;
-    	width: 16%;
+    	top: 32%;
+    	left: 0%;
+    	width: 11%;
+    	@include rotateZ(-45deg);
     }
 
 
