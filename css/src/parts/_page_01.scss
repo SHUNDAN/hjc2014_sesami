@@ -1,18 +1,68 @@
 // エルモが泣いているシーン
 [data-page="1"] {
-	.cm {
-		position: absolute;
-		bottom: 0;
-		left: 0;
-		max-width: 100%;
-		max-height: 100%;
-	}
+
+    .body {
+        position: absolute;
+        bottom: 6%;
+        left: 0;
+        width: 90%;
+    }
+    .box {
+    	position: absolute;
+    	top: 48%;
+    	right: 2%;
+    	width: 35%;
+    }
+    .arm {
+    	position: absolute;
+    	top: 55%;
+    	left: 43%;
+    	width: 46%;
+    }
+    .drop1, .drop2, .drop3, .drop4, .drop5, .drop6 {
+    	position: absolute;
+    	@include transform-origin(50% 50%);
+    }
+    .drop1 {
+    	top: 12%;
+    	right: 37%;
+    	width: 16%;
+    	@include rotateZ(-15deg);
+    }
+    .drop2 {
+    	top: 21%;
+    	right: 35%;
+    	width: 11%;
+    	@include rotateZ(12deg);
+    }
+    .drop3 {
+    	top: 19%;
+    	right: 27%;
+    	width: 11%;
+    	@include rotateZ(12deg);
+    }
+    .drop4 {
+    	top: 10%;
+    	left: 40%;
+    	width: 16%;
+    }
+    .drop5 {
+    	top: 10%;
+    	left: 23%;
+    	width: 16%;
+    }
+    .drop6 {
+    	top: 15%;
+    	left: 10%;
+    	width: 16%;
+    }
 
 
-	.dummyText {
-		font-size: 13px;
-		position: absolute;
-		top: 0;
-		right: 0;
-	}
+
+    .dummyText {
+        font-size: 13px;
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
 }
