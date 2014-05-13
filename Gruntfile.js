@@ -136,35 +136,7 @@ module.exports = function(grunt) {
         ],
         tasks: ['copy', 'build-index-html']
       }
-
-
-      // 個人用ですみませんが、間借りさせてください
-      // mune: {
-      //   files: ['./**/*.scss', './**/*.js', './**/*.php'],
-      //   tasks: ['exec:sleep2', 'exec:rsync']
-      // }
-
     },
-
-
-
-
-
-
-
-    // すみません、宗定個人用ですが、ここに間借りさせてください.
-    // exec: {
-    //   rsync: {
-    //     // command: 'rsync -r -p -v ./ ../yoheim_net/app/sesami-book/'
-    //     command: 'rsync -r -p ./ ../yoheim_net/app/sesami-book/'
-    //   },
-    //   sleep2: {
-    //     command: 'sleep 2'
-    //   }
-    // }
-
-
-
 
   });
 
@@ -175,7 +147,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-compass');
-  grunt.loadNpmTasks('grunt-exec');
 
   // Default task.
   grunt.registerTask('default', ['compass', 'concat', 'copy', 'build-index-html']);
