@@ -106,6 +106,11 @@ module.exports = function(grunt) {
         files: [
           {expand: true, cwd:'img/', src: ['**/*'], dest: 'release/img'}
         ]
+      },
+      apache: {
+        files: [
+          {expand: true, src: ['.htaccess'], dest: 'release/'}
+        ]
       }
     },
 
@@ -132,7 +137,8 @@ module.exports = function(grunt) {
           './img/**/*.gif',
           './img/**/*.svg',
           './*.php',
-          './api/**/*.php'
+          './api/**/*.php',
+          '.htaccess'
         ],
         tasks: ['copy', 'build-index-html']
       }
