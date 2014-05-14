@@ -136,7 +136,7 @@ module.exports = function(grunt) {
           './img/**/*.jpg',
           './img/**/*.gif',
           './img/**/*.svg',
-          './*.php',
+          './*.html',
           './api/**/*.php',
           '.htaccess'
         ],

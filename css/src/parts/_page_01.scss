@@ -1,10 +1,62 @@
 // クッキーモンスターが泣いているシーン
 
-@include keyframes (page01_arm_anim) {
-// @-webkit-keyframes page01_arm_anim {
+@include keyframes (page01_anim_arm) {
   0%   { @include rotateZ(0deg); }
-  75%  { @include rotateZ(-20deg); }
+  30%  { @include rotateZ(5deg); }
+  50%  { @include rotateZ(-15deg); }
+  65%  { @include rotateZ(-10deg); }
+  80%  { @include rotateZ(-12deg); }
   100% { @include rotateZ(0deg); }
+}
+
+
+@include keyframes (page01_anim_drop) {
+  0%   { opacity: 0; @include translate3d(-2%, -1%, 0);}
+  30%   { opacity: .8; }
+  50%   { opacity: 1; }
+  70%   { opacity: 1; }
+  80%   { opacity: 0; }
+  100%   { opacity: 0; @include translate3d(5%, -2%, 0);}
+}
+@include keyframes (page01_anim_drop2) {
+  0%   { opacity: 0; @include translate3d(-2%, 0, 0);}
+  30%   { opacity: .8; }
+  50%   { opacity: 1; }
+  70%   { opacity: 1; }
+  80%   { opacity: 0; }
+  100%   { opacity: 0; @include translate3d(3%, 2%, 0);}
+}
+@include keyframes (page01_anim_drop3) {
+  0%   { opacity: 0; @include translate3d(-5%, 0, 0);}
+  30%   { opacity: .8; }
+  50%   { opacity: 1; }
+  70%   { opacity: 1; }
+  80%   { opacity: 0; }
+  100%   { opacity: 0; @include translate3d(3%, 2%, 0);}
+}
+@include keyframes (page01_anim_drop4) {
+  0%   { opacity: 0; @include translate3d(2%, 1%, 0);}
+  30%   { opacity: .8; }
+  50%   { opacity: 1; }
+  70%   { opacity: 1; }
+  80%   { opacity: 0; }
+  100%   { opacity: 0; @include translate3d(-5%, -2%, 0);}
+}
+@include keyframes (page01_anim_drop5) {
+  0%   { opacity: 0; @include translate3d(2%, 0, 0);}
+  30%   { opacity: .8; }
+  50%   { opacity: 1; }
+  70%   { opacity: 1; }
+  80%   { opacity: 0; }
+  100%   { opacity: 0; @include translate3d(-3%, 2%, 0);}
+}
+@include keyframes (page01_anim_drop6) {
+  0%   { opacity: 0; @include translate3d(5%, 0, 0);}
+  30%   { opacity: .8; }
+  50%   { opacity: 1; }
+  70%   { opacity: 1; }
+  80%   { opacity: 0; }
+  100%   { opacity: 0; @include translate3d(-3%, 2%, 0);}
 }
 
 
@@ -37,7 +89,7 @@
 		height: 100%;
 		@include transform-origin(41.8% 68.2%);
 		// -webkit-animation: page01_arm_anim 1s infinite;
-        @include animation(page01_arm_anim 1s infinite);
+        @include animation(page01_anim_arm 1s infinite);
 		// debug
 		// &:after {
 		// 	position: absolute;
@@ -49,6 +101,19 @@
 		// 	background-color: red;
 		// }
 	}
+
+    .sholder {
+        position: absolute;
+        top: 59%;
+        left: 36%;
+        width: 11%;
+        height: 16%;
+        @include transform-origin(50% 50%);
+        @include rotateZ(-10deg);
+        background-color: #009fe8;
+        // @include background-image(radial-gradient(rgba(0,159,232,1) 0%, rgba(0,159,232,1) 90%, rgba(0,159,232,0) 100%));
+        border-radius: 200px;
+    }
 
     .drop1, .drop2, .drop3, .drop4, .drop5, .drop6 {
     	position: absolute;
@@ -70,7 +135,7 @@
     	top: 19%;
     	right: 27%;
     	width: 11%;
-    	@include rotateZ(12deg);
+    	@include rotateZ(6deg);
     }
     .drop4 {
     	top: 20%;
@@ -87,7 +152,34 @@
     	top: 32%;
     	left: 0%;
     	width: 11%;
-    	@include rotateZ(-45deg);
+    	@include rotateZ(-25deg);
+    }
+    .drop1Anim, .drop2Anim, .drop3Anim, .drop4Anim, .drop5Anim, .drop6Anim {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+    }
+
+    .drop1Anim {
+        @include animation(page01_anim_drop 1s infinite ease-in);        
+    }
+    .drop2Anim {
+        @include animation(page01_anim_drop2 1s infinite ease-in 300ms);        
+    }
+    .drop3Anim {
+        @include animation(page01_anim_drop3 1s infinite ease-in 400ms);        
+    }
+    .drop4Anim {
+        @include animation(page01_anim_drop4 1s infinite ease-in);        
+    }
+    .drop5Anim {
+        @include animation(page01_anim_drop5 1s infinite ease-in 300ms);        
+    }
+    .drop6Anim {
+        @include animation(page01_anim_drop6 1s infinite ease-in 400ms);        
     }
 
 
