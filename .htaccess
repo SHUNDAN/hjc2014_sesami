@@ -1,1 +1,2 @@
 DirectoryIndex index.html
+ErrorDocument 404 /app/sesami-book/notfound.html
