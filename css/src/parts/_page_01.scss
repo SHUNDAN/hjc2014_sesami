@@ -59,8 +59,17 @@
   100%   { opacity: 0; @include translate3d(-10%, 5%, 0);}
 }
 
+@include keyframes (page01_anim_boxRotate) {
+  0%   { @include rotateZ(0deg);}
+  100% { @include rotateZ(359deg);} // for webkit bag.
+}
+
 
 [data-page="1"] {
+
+    * {
+        // @include animation(none !important);
+    }
 
     .body {
         position: absolute;
@@ -73,6 +82,10 @@
     	top: 44%;
     	right: 9%;
     	width: 35%;
+
+        &.rotateAnim {
+            @include animation(page01_anim_boxRotate 500ms);
+        }
     }
     .arm {
     	position: absolute;
@@ -183,11 +196,23 @@
     }
 
 
-
-    .dummyText {
-        font-size: 13px;
+    //
+    // タップエリア
+    //================================
+    .boxTap {
         position: absolute;
-        top: 0;
-        right: 0;
+        top: 37%;
+        left: 56%;
+        width: 33%;
+        height: 50%;
+        background-color: rgba(0,0,255,.01); // Android対応.
+        z-index: 2;
     }
+
+
+
+
+
+
+
 }
