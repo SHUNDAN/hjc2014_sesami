@@ -113,7 +113,18 @@
 		// 	content: " ";
 		// 	background-color: red;
 		// }
+
+        &.stop {
+            @include animation(none);
+        }
 	}
+
+    .eye {
+        position: absolute;
+        top: 19%;
+        left: 26%;
+        width: 20%;
+    }
 
     .sholder {
         position: absolute;
@@ -205,10 +216,19 @@
         left: 56%;
         width: 33%;
         height: 50%;
-        background-color: rgba(0,0,255,.01); // Android対応.
+        background-color: rgba(0,0,255,.001); // Android対応.
         z-index: 2;
     }
 
+    .bodyTap {
+        position: absolute;
+        top: 19%;
+        left: 18%;
+        width: 48%;
+        height: 70%;
+        background-color: rgba(0,0,255,.001); // Android対応.
+        z-index: 2;
+    }
 
 
 
