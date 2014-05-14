@@ -12,51 +12,51 @@
 
 @include keyframes (page01_anim_drop) {
   0%   { opacity: 0; @include translate3d(-2%, -1%, 0);}
-  30%   { opacity: .8; }
+  10%   { opacity: 0; }
+  20%   { opacity: 1; }
   50%   { opacity: 1; }
-  70%   { opacity: 1; }
-  80%   { opacity: 0; }
-  100%   { opacity: 0; @include translate3d(5%, -2%, 0);}
+  60%   { opacity: 0; }
+  100%   { opacity: 0; @include translate3d(10%, -6%, 0);}
 }
 @include keyframes (page01_anim_drop2) {
-  0%   { opacity: 0; @include translate3d(-2%, 0, 0);}
-  30%   { opacity: .8; }
-  50%   { opacity: 1; }
+  0%   { opacity: 0; @include translate3d(-4%, 0, 0);}
+  20%   { opacity: 0; }
+  30%   { opacity: 1; }
   70%   { opacity: 1; }
   80%   { opacity: 0; }
-  100%   { opacity: 0; @include translate3d(3%, 2%, 0);}
+  100%   { opacity: 0; @include translate3d(3%, 5%, 0);}
 }
 @include keyframes (page01_anim_drop3) {
-  0%   { opacity: 0; @include translate3d(-5%, 0, 0);}
-  30%   { opacity: .8; }
+  0%   { opacity: 0; @include translate3d(-10%, -2%, 0);}
+  20%   { opacity: 0; }
+  30%   { opacity: 1; }
   50%   { opacity: 1; }
-  70%   { opacity: 1; }
-  80%   { opacity: 0; }
-  100%   { opacity: 0; @include translate3d(3%, 2%, 0);}
+  60%   { opacity: 0; }
+  100%   { opacity: 0; @include translate3d(10%, 5%, 0);}
 }
 @include keyframes (page01_anim_drop4) {
   0%   { opacity: 0; @include translate3d(2%, 1%, 0);}
-  30%   { opacity: .8; }
+  10%   { opacity: 0; }
+  20%   { opacity: 1; }
   50%   { opacity: 1; }
-  70%   { opacity: 1; }
-  80%   { opacity: 0; }
-  100%   { opacity: 0; @include translate3d(-5%, -2%, 0);}
+  60%   { opacity: 0; }
+  100%   { opacity: 0; @include translate3d(-10%, -6%, 0);}
 }
 @include keyframes (page01_anim_drop5) {
-  0%   { opacity: 0; @include translate3d(2%, 0, 0);}
-  30%   { opacity: .8; }
-  50%   { opacity: 1; }
+  0%   { opacity: 0; @include translate3d(4%, 0, 0);}
+  20%   { opacity: 0; }
+  30%   { opacity: 1; }
   70%   { opacity: 1; }
   80%   { opacity: 0; }
-  100%   { opacity: 0; @include translate3d(-3%, 2%, 0);}
+  100%   { opacity: 0; @include translate3d(-3%, 5%, 0);}
 }
 @include keyframes (page01_anim_drop6) {
-  0%   { opacity: 0; @include translate3d(5%, 0, 0);}
-  30%   { opacity: .8; }
+  0%   { opacity: 0; @include translate3d(10%, -2%, 0);}
+  20%   { opacity: 0; }
+  30%   { opacity: 1; }
   50%   { opacity: 1; }
-  70%   { opacity: 1; }
-  80%   { opacity: 0; }
-  100%   { opacity: 0; @include translate3d(-3%, 2%, 0);}
+  60%   { opacity: 0; }
+  100%   { opacity: 0; @include translate3d(-10%, 5%, 0);}
 }
 
 
@@ -164,22 +164,22 @@
     }
 
     .drop1Anim {
-        @include animation(page01_anim_drop 1s infinite ease-in);        
+        @include animation(page01_anim_drop 1s infinite ease-in-out);        
     }
     .drop2Anim {
-        @include animation(page01_anim_drop2 1s infinite ease-in 300ms);        
+        @include animation(page01_anim_drop2 1s infinite ease-in 200ms);
     }
     .drop3Anim {
-        @include animation(page01_anim_drop3 1s infinite ease-in 400ms);        
+        @include animation(page01_anim_drop3 1s infinite ease-in 700ms);        
     }
     .drop4Anim {
-        @include animation(page01_anim_drop4 1s infinite ease-in);        
+        @include animation(page01_anim_drop4 1s infinite ease-in-out 300ms);        
     }
     .drop5Anim {
-        @include animation(page01_anim_drop5 1s infinite ease-in 300ms);        
+        @include animation(page01_anim_drop5 1s infinite ease-in 500ms);
     }
     .drop6Anim {
-        @include animation(page01_anim_drop6 1s infinite ease-in 400ms);        
+        @include animation(page01_anim_drop6 1s infinite ease-in 1000ms);        
     }
 
 
