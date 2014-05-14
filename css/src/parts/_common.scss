@@ -7,6 +7,9 @@ body {
 	background-color: #d8efe2;
 }
 
+* {
+	-webkit-user-select: none;
+}
 
 // 各ページ
 .content {
