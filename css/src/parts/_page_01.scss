@@ -1,11 +1,11 @@
 // クッキーモンスターが泣いているシーン
 
-@-webkit-keyframes page01_arm_anim {
+@include keyframes (page01_arm_anim) {
+// @-webkit-keyframes page01_arm_anim {
   0%   { @include rotateZ(0deg); }
   75%  { @include rotateZ(-20deg); }
   100% { @include rotateZ(0deg); }
 }
-
 
 
 [data-page="1"] {
@@ -36,7 +36,8 @@
 		width: 100%;
 		height: 100%;
 		@include transform-origin(41.8% 68.2%);
-		-webkit-animation: page01_arm_anim 1s infinite;
+		// -webkit-animation: page01_arm_anim 1s infinite;
+        @include animation(page01_arm_anim 1s infinite);
 		// debug
 		// &:after {
 		// 	position: absolute;
