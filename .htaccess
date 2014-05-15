@@ -1,2 +1,7 @@
 DirectoryIndex index.html
 ErrorDocument 404 /app/sesami-book/notfound.html
+
+<Files ~ "\.(html)$">
+Header set Cache-Control no-cache
+Header set Pragma no-cache
+</Files>

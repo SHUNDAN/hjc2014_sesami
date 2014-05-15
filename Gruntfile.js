@@ -111,6 +111,11 @@ module.exports = function(grunt) {
         files: [
           {expand: true, src: ['.htaccess'], dest: 'release/'}
         ]
+      },
+      audio: {
+        files: [
+          {expand: true, cwd:'sound/', src: ['*.mp3', '*.ogg'], dest: 'release/sound'}
+        ]
       }
     },
 
