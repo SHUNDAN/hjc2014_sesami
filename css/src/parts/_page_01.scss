@@ -121,7 +121,7 @@
 
     .eye {
         position: absolute;
-        top: 20.5%;
+        top: 10.5%;
         left: 26.5%;
         width: 18.5%;
     }
@@ -131,7 +131,7 @@
         top: 59%;
         left: 36%;
         width: 11%;
-        height: 16%;
+        height: 19%;
         @include transform-origin(50% 50%);
         @include rotateZ(-10deg);
         background-color: #009fe8;
@@ -144,36 +144,36 @@
     	@include transform-origin(50% 50%);
     }
     .drop1 {
-    	top: 12%;
+    	top: 4%;
     	right: 37%;
     	width: 16%;
     	@include rotateZ(-15deg);
     }
     .drop2 {
-    	top: 21%;
+    	top: 13%;
     	right: 35%;
     	width: 11%;
     	@include rotateZ(12deg);
     }
     .drop3 {
-    	top: 19%;
+    	top: 11%;
     	right: 27%;
     	width: 11%;
     	@include rotateZ(6deg);
     }
     .drop4 {
-    	top: 20%;
+    	top: 12%;
     	left: 9%;
     	width: 16%;
     }
     .drop5 {
-    	top: 31%;
+    	top: 23%;
     	left: 9%;
     	width: 11%;
     	@include rotateZ(-33deg);
     }
     .drop6 {
-    	top: 32%;
+    	top: 24%;
     	left: 0%;
     	width: 11%;
     	@include rotateZ(-25deg);
@@ -213,8 +213,8 @@
     .boxTap {
         position: absolute;
         top: 37%;
-        left: 56%;
-        width: 33%;
+        left: 52%;
+        width: 40%;
         height: 50%;
         background-color: rgba(0,0,255,.001); // Android対応.
         z-index: 2;
@@ -224,7 +224,7 @@
         position: absolute;
         top: 19%;
         left: 18%;
-        width: 48%;
+        width: 34%;
         height: 70%;
         background-color: rgba(0,0,255,.001); // Android対応.
         z-index: 2;
