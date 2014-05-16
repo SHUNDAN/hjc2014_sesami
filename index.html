@@ -76,6 +76,10 @@
             $('[data-page]').addClass('hidden');
             $('[data-page="' + sesami.currentPage + '"]').removeClass('hidden');
             location.hash = "page=" + sesami.currentPage;
+
+            // 仮.
+            var bgmType = Math.abs(sesami.currentPage % 4) + 1;
+            sesami.bgmSound.play(bgmType);
         }
     });
 
@@ -91,6 +95,11 @@
             $('[data-page]').addClass('hidden');
             $('[data-page="' + sesami.currentPage + '"]').removeClass('hidden');
             location.hash = "page=" + sesami.currentPage;
+
+            // 仮.
+            var bgmType = Math.abs(sesami.currentPage % 4) + 1;
+            sesami.bgmSound.play(bgmType);
+
         }
     });
 

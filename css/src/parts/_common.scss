@@ -11,6 +11,12 @@ body {
 	-webkit-user-select: none;
 }
 
+audio {
+	position: absolute;
+	top: -9999px;
+	left: -9999px;
+}
+
 // 各ページ
 .content {
 	position: relative;

@@ -130,7 +130,7 @@ module.exports = function(grunt) {
       },
       concat: {
         files: [
-          './**/*.js',
+          './js/**/*.js',
           './template/**/*.html'
         ],
         tasks: ['concat', 'build-index-html']
