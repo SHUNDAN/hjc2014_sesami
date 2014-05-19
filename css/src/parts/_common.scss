@@ -11,6 +11,12 @@ body {
 	-webkit-user-select: none;
 }
 
+audio {
+	position: absolute;
+	top: -9999px;
+	left: -9999px;
+}
+
 // 各ページ
 .content {
 	position: relative;
@@ -27,6 +33,7 @@ body {
 	height: 94.6%;
 	// background-color: rgba(255,0,0,.3); // debug用
 	margin: 1.2% 0 0 7.7%;
+	overflow: hidden;
 }
 
 

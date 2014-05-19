@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>セサミストリート絵本</title>
     <link rel="stylesheet" href="./css/all.css">
-    <meta name="viewport" content="width=device-width, user-scalable=no, minimal-ui">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 </head>
 <body>
 
@@ -76,6 +76,10 @@
             $('[data-page]').addClass('hidden');
             $('[data-page="' + sesami.currentPage + '"]').removeClass('hidden');
             location.hash = "page=" + sesami.currentPage;
+
+            // 仮.
+            var bgmType = Math.abs(sesami.currentPage % 4) + 1;
+            sesami.bgmSound.play(bgmType);
         }
     });
 
@@ -91,6 +95,11 @@
             $('[data-page]').addClass('hidden');
             $('[data-page="' + sesami.currentPage + '"]').removeClass('hidden');
             location.hash = "page=" + sesami.currentPage;
+
+            // 仮.
+            var bgmType = Math.abs(sesami.currentPage % 4) + 1;
+            sesami.bgmSound.play(bgmType);
+
         }
     });
 
@@ -102,13 +111,15 @@
     var adjustSize = function () {
 
         var 
-            MAX_WIDTH = 1017, // book.pngのサイズ
-            MAX_HEIGHT = 720, // book.pngのサイズ
+            wh = window.innerHeight,
+            ww = window.innerWidth,
+            isLandScape = (wh <= ww),
+
+            MAX_WIDTH = (isLandScape ? 1280 : 800), // book.pngのサイズ
+            MAX_HEIGHT = (isLandScape ? 800 : 1280), // book.pngのサイズ
             PAGE_SIZE_RAITO = MAX_WIDTH / MAX_HEIGHT,
             min = Math.min,
             floor = Math.floor,
-            wh = window.innerHeight,
-            ww = window.innerWidth,
             wRaito = ww / wh,
             ch = undefined,
             cw = undefined;
@@ -128,6 +139,12 @@
                 'height': ch,
                 'background-size': cw + 'px ' + ch + 'px'
             });
+
+            if (isLandScape) {
+                $('body').removeClass('portrait');
+            } else {
+                $('body').addClass('portrait');
+            }
 
     };
     window.onresize = adjustSize;

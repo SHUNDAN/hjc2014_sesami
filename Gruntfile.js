@@ -111,6 +111,11 @@ module.exports = function(grunt) {
         files: [
           {expand: true, src: ['.htaccess'], dest: 'release/'}
         ]
+      },
+      audio: {
+        files: [
+          {expand: true, cwd:'sound/', src: ['*.mp3', '*.ogg'], dest: 'release/sound'}
+        ]
       }
     },
 
@@ -125,7 +130,7 @@ module.exports = function(grunt) {
       },
       concat: {
         files: [
-          './**/*.js',
+          './js/**/*.js',
           './template/**/*.html'
         ],
         tasks: ['concat', 'build-index-html']
