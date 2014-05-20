@@ -34,19 +34,26 @@ $key = sha1(uniqid(mt_rand(), true));
 
 
 // 画像の保存先.
-$imgPath = '../tmpbox/' . $key . '.png';
-echo $imgPath;
+$dir = substr($key, 0, 2);
+$fileName = substr($key, 2);
+$tmpDir = '../tmpbox/' . $dir;
+$imgPath = $tmpDir . '/' . $fileName . '.png';
+if (file_exists($dir) && is_dir($dir)) {
+    // Directoryあり
+} else {
+    mkdir($tmpDir);
+}
 
 
 
 // 画像の保存
+$base64 = str_replace("data:image/png;base64,", "", $base64);
 $img = base64_decode($base64);
-// $f = fopen($imgPath, "wb");
 file_put_contents($imgPath, $img);
 
 
-
-echo $imgPath;
+// 一意のキーを返却
+echo $key;
 
 
 
