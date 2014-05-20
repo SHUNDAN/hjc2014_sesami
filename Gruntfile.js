@@ -116,6 +116,11 @@ module.exports = function(grunt) {
         files: [
           {expand: true, cwd:'sound/', src: ['*.mp3', '*.ogg'], dest: 'release/sound'}
         ]
+      },
+      api: {
+        files: [
+          {expand: true, cwd:'api/', src: ['*.php'], dest: 'release/api'}
+        ]        
       }
     },
 
@@ -144,6 +149,7 @@ module.exports = function(grunt) {
           './*.html',
           './api/**/*.php',
           '.htaccess'
+
         ],
         tasks: ['copy', 'build-index-html']
       }
