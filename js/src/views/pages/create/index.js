@@ -64,13 +64,34 @@
 
         // 送ります.
         var xhr = new XMLHttpRequest();
-        xhr.open('POST', './api/create'); // TODO Apache設定にて、修飾子は出さない対応
+        xhr.open('POST', './api/create.php'); // TODO Apache設定にて、修飾子は出さない対応
         xhr.onload = function () {
             if (this.status === 200) {
                 var uniqueKey = this.responseText;
                 // TODO このキーを使って、ユニークなURLを作成します.
                 console.debug('key=', uniqueKey);
 
+                var url1 = './share?key=' + uniqueKey;
+                var url2 = 'http://yoheim.net/app/sesami-book/share?key=' + uniqueKey;
+                var a = document.createElement('a');
+                a.href = url1;
+                a.innerHTML = url2;
+
+                var $div = document.querySelector('#result');
+                $div.innerHTML = '<p>画面ができたよ！以下の画面をFacebookでシェアしよう！</p>';
+                $div.innerHTML += '<input type="button" value="Facebookでシェアする(未実装ボタン)"/><br>';
+                $div.appendChild(a);
+
+                var iframe = document.createElement('iframe');
+                iframe.src = url1;
+                iframe.width = 1000;
+                iframe.height = 1000;
+                iframe.style['-webkit-transform'] = 'scale(.5,.5)';
+                iframe.style['-webkit-transform-origin'] = '0% 0%';
+                $div.appendChild(iframe);
+
+
+                // TODO この後、Facebookでシェアする機能を表示する.
             }
         }
         xhr.send(formData);
