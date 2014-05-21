@@ -115,8 +115,11 @@
             ww = window.innerWidth,
             isLandScape = (wh <= ww),
 
-            MAX_WIDTH = (isLandScape ? 1280 : 800), // book.pngのサイズ
-            MAX_HEIGHT = (isLandScape ? 800 : 1280), // book.pngのサイズ
+            // 縦対応は後で.
+            // MAX_WIDTH = (isLandScape ? 1400 : 1000), // book.svgのサイズ
+            // MAX_HEIGHT = (isLandScape ? 1000 : 1400), // book.svgのサイズ
+            MAX_WIDTH = 1400, // book.svgのサイズ
+            MAX_HEIGHT = 1000, // book.svgのサイズ
             PAGE_SIZE_RAITO = MAX_WIDTH / MAX_HEIGHT,
             min = Math.min,
             floor = Math.floor,
@@ -137,14 +140,15 @@
             $('[data-page]').css({
                 'width': cw, 
                 'height': ch,
-                'background-size': cw + 'px ' + ch + 'px'
+                // 'background-size': cw + 'px ' + ch + 'px'
             });
 
-            if (isLandScape) {
-                $('body').removeClass('portrait');
-            } else {
-                $('body').addClass('portrait');
-            }
+            // 縦対応はあとで。
+            // if (isLandScape) {
+            //     $('body').removeClass('portrait');
+            // } else {
+            //     $('body').addClass('portrait');
+            // }
 
     };
     window.onresize = adjustSize;
