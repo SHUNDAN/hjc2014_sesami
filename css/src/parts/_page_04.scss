@@ -12,5 +12,11 @@
 
 // スタイルの指定
 [data-page="4"] {
-    // ここにスタイルを記入.
+    
+    .dummy {
+        position: absolute;
+        top: 8.8%;
+        left: 14.4%;
+        width: 69.5%;
+    }
 }
