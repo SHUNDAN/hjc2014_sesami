@@ -8,3 +8,7 @@
     top: $top;
     left: $left;
 }
+@mixin dimention ($width, $height:auto) {
+    width: $width;
+    height: $height;
+}
