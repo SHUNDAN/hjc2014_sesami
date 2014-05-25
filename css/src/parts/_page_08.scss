@@ -12,5 +12,25 @@
 
 // スタイルの指定
 [data-page="8"] {
-    // ここにスタイルを記入.
+
+    .elmo {
+        @include abs(19%, 6%);
+        width: 19.5%;
+    }
+    .bert {
+        @include abs(49.4%, 2.8%);
+        width: 18.7%;
+    }
+    .cookieMonster {
+        @include abs(7.2%, 19.3%);
+        width: 61.4%;
+    }
+    .bigBird {
+        @include abs(8%, 75.1%);
+        width: 20.6%;
+    }
+    .oscar {
+        @include abs(53.9%, 76.3%);
+        width: 20.4%;
+    }
 }
