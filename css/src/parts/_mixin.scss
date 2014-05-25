@@ -12,3 +12,28 @@
     width: $width;
     height: $height;
 }
+
+@mixin common-wrapper ($zIndex:1) {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: $zIndex;
+}
+
+
+// debug
+// transform-originを視覚化する.
+@mixin debug-transform-origin($x, $y) {
+    &:after {
+         position: absolute;
+         top: $y;
+         left: $x;
+         display: block;
+         width: 10px;
+         height: 10px;
+         content: " ";
+         background-color: red;        
+    }
+}
