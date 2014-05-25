@@ -38,7 +38,7 @@
         // Click時
         &.anim {
             @include transform-origin(41%, 15%);
-            @include animation(page00_logo_tap 3s);
+            @include animation(page00_logo_tap 2s);
         }
     }
     .logo {

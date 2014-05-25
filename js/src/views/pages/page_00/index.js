@@ -9,9 +9,10 @@
     $page.on('click', '.jsLogo', function () {
 
         $(this)
-            .addClass('anim noAction')
-            .wait(3000)
-            .removeClass('anim noAction');
+            .removeClass('anim')
+            .addClass('anim')
+            .wait(1800)
+            .removeClass('anim');
     });
 
 
