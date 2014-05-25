@@ -29,8 +29,10 @@
 
         var content = $('[data-page="' + (sesami.currentPage+1) + '"]');
         if (content.length === 0) {
-            alert('最終ページです');
-        } else {
+            // alert('最終ページです');
+            content = $('[data-page="0"]');
+            sesami.currentPage = -1;
+        } //else {
             sesami.currentPage++;
             $('[data-page]').addClass('hidden');
             $('[data-page="' + sesami.currentPage + '"]').removeClass('hidden');
@@ -39,7 +41,7 @@
             // 仮.
             var bgmType = Math.abs(sesami.currentPage % 4) + 1;
             sesami.bgmSound.play(bgmType);
-        }
+        //}
     });
 
 
@@ -50,8 +52,10 @@
 
         var content = $('[data-page="' + (sesami.currentPage-1) + '"]');
         if (content.length === 0) {
-            alert('最初のページです');
-        } else {
+            // alert('最初のページです');
+            content = $('[data-page="8"]'); // 決め打ち
+            sesami.currentPage = 9;
+        } //else {
             sesami.currentPage--;
             $('[data-page]').addClass('hidden');
             $('[data-page="' + sesami.currentPage + '"]').removeClass('hidden');
@@ -61,7 +65,7 @@
             var bgmType = Math.abs(sesami.currentPage % 4) + 1;
             sesami.bgmSound.play(bgmType);
 
-        }
+        //}
     });
 
 
