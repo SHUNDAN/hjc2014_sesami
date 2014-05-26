@@ -5,46 +5,6 @@ module.exports = function(grunt) {
 
   // Project configuration.
   grunt.initConfig({
-    // Metadata.
-    // pkg: grunt.file.readJSON('package.json'),
-    // banner: '/*! <%= pkg.title || pkg.name %> - v<%= pkg.version %> - ' +
-    //   '<%= grunt.template.today("yyyy-mm-dd") %>\n' +
-    //   '<%= pkg.homepage ? "* " + pkg.homepage + "\\n" : "" %>' +
-    //   '* Copyright (c) <%= grunt.template.today("yyyy") %> <%= pkg.author.name %>;' +
-    //   ' Licensed <%= _.pluck(pkg.licenses, "type").join(", ") %> */\n',
-    // // Task configuration.
-    // uglify: {
-    //   options: {
-    //     banner: '<%= banner %>'
-    //   },
-    //   dist: {
-    //     src: '<%= concat.dist.dest %>',
-    //     dest: 'dist/<%= pkg.name %>.min.js'
-    //   }
-    // },
-    // jshint: {
-    //   options: {
-    //     curly: true,
-    //     eqeqeq: true,
-    //     immed: true,
-    //     latedef: true,
-    //     newcap: true,
-    //     noarg: true,
-    //     sub: true,
-    //     undef: true,
-    //     unused: true,
-    //     boss: true,
-    //     eqnull: true,
-    //     browser: true,
-    //     globals: {}
-    //   },
-    //   gruntfile: {
-    //     src: 'Gruntfile.js'
-    //   },
-    //   lib_test: {
-    //     src: ['lib/**/*.js', 'test/**/*.js']
-    //   }
-    // },
 
     compass: {
       css: {
@@ -58,14 +18,20 @@ module.exports = function(grunt) {
 
 
     concat: {
-
       // JS
       all: {
         src: [
           // 最小限のものなので、適宜修正をお願いします（宗）
           './js/src/core/*.js',
           './js/src/views/pages/page_00/*.js',
-          './js/src/views/pages/page_01/*.js'
+          './js/src/views/pages/page_01/*.js',
+          './js/src/views/pages/page_02/*.js',
+          './js/src/views/pages/page_03/*.js',
+          './js/src/views/pages/page_04/*.js',
+          './js/src/views/pages/page_05/*.js',
+          './js/src/views/pages/page_06/*.js',
+          './js/src/views/pages/page_07/*.js',
+          './js/src/views/pages/page_08/*.js',
         ],
         dest: './release/js/all.js'
       },
@@ -116,6 +82,11 @@ module.exports = function(grunt) {
         files: [
           {expand: true, cwd:'sound/', src: ['*.mp3', '*.ogg'], dest: 'release/sound'}
         ]
+      },
+      api: {
+        files: [
+          {expand: true, cwd:'api/', src: ['*.php'], dest: 'release/api'}
+        ]        
       }
     },
 
@@ -144,6 +115,7 @@ module.exports = function(grunt) {
           './*.html',
           './api/**/*.php',
           '.htaccess'
+
         ],
         tasks: ['copy', 'build-index-html']
       }

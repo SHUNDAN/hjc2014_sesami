@@ -5,3 +5,7 @@ ErrorDocument 404 /app/sesami-book/notfound.html
 Header set Cache-Control no-cache
 Header set Pragma no-cache
 </Files>
+
+RewriteEngine on
+RewriteRule /app/sesami-book/create /app/sesami-book/create.html
+RewriteRule /app/sesami-book/api/(.*) /app/sesami-book/api/$1.php

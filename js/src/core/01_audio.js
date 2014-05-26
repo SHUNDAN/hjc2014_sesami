@@ -11,7 +11,7 @@
     var soundFilePath = './sound/effect.mp3';   // TODO firefoxの場合にはoggを読み込む.
 
 
-    // TODO スマホ対応とかどーしよー.
+    // TODO スマホ対応とか.
     // ロード
     var bgmAudio = document.createElement('audio');
     bgmAudio.src = bgmFilePath;
@@ -22,7 +22,15 @@
     bgmAudio.load();
 
 
-    // Public Method.
+    var effectAudio = document.createElement('audio');
+    effectAudio.src = soundFilePath;
+    effectAudio.addEventListener('canplay', function () {
+        console.debug('effectAudio canplay');
+        effectAudio.canplay = true;
+    });
+
+
+    // Public Method（BGM）
     //================================================
     var start,
         end,
@@ -39,7 +47,6 @@
         pause: function () {
             bgmAudio.pause();
             bgmAudio.removeEventListener('timeupdate', timeupdateListener);
-
             nowPlaying = false;
         },
         play: function (bgmType) {

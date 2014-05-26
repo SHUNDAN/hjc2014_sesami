@@ -1,0 +1,93 @@
+// アニメーションのKeyframes
+@include keyframes (page00_dummy) {
+    0%   { @include rotateZ(0deg); }
+    30%  { @include rotateZ(5deg); }
+    50%  { @include rotateZ(-15deg); }
+    65%  { @include rotateZ(-10deg); }
+    80%  { @include rotateZ(-12deg); }
+    100% { @include rotateZ(0deg); }
+}
+
+
+// ロゴ
+@include keyframes (page00_logo) {
+    0%   { @include rotateZ(0deg); }
+    40%  { @include rotateZ(0deg); }
+    41%  { @include rotateZ(2deg); }
+    42%  { @include rotateZ(-2deg); }
+    43%  { @include rotateZ(0deg); }
+    100% { @include rotateZ(0deg); }    
+}
+@include keyframes (page00_logo_tap) {
+    0%   { @include rotateZ(0deg); }
+    10%  { @include rotateZ(21deg); }
+    11%  { @include rotateZ(20deg); }
+    80%  { @include rotateZ(00deg); }
+    100% { @include rotateZ(0deg); }    
+}
+
+
+// スタイルの指定
+[data-page="0"] {
+
+    .logoArea {
+        @include common-wrapper;
+        // 通常時
+        @include transform-origin(49%, 15%);
+        @include animation(page00_logo 7s infinite);
+        // Click時
+        &.anim {
+            @include transform-origin(41%, 15%);
+            @include animation(page00_logo_tap 2s);
+        }
+    }
+    .logo {
+        position: absolute;
+        top: 2.9%;
+        left: 25%;
+        width: 45%;
+    }
+
+    // フォントが違うので仮です（ムネ）
+    .title {
+        position: absolute;
+        top: 22%;
+        left: 14%;
+        width: 70%;
+    }
+
+    .oscar {
+        position: absolute;
+        top: 54.3%;
+        left: 3.5%;
+        width: 21.1%;
+    }
+
+    .bert {
+        position: absolute;
+        top: 55.5%;
+        left: 20%;
+        width: 17%;
+    }
+
+    .cookieMonster {
+        position: absolute;
+        top: 54.3%;
+        left: 36.2%;
+        width: 21.7%;
+    }
+
+    .elmo {
+        position: absolute;
+        top: 58.8%;
+        left: 56%;
+        width: 21%;
+    }
+
+    .bigBird {
+        position: absolute;
+        top: 56%;
+        left: 73.4%;
+        width: 21%;
+    }
+}

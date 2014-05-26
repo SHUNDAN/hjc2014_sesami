@@ -1,0 +1,60 @@
+// アニメーションのKeyframes
+@include keyframes (page07_dummy) {
+    0%   { @include rotateZ(0deg); }
+    30%  { @include rotateZ(5deg); }
+    50%  { @include rotateZ(-15deg); }
+    65%  { @include rotateZ(-10deg); }
+    80%  { @include rotateZ(-12deg); }
+    100% { @include rotateZ(0deg); }
+}
+
+
+
+// スタイルの指定
+[data-page="7"] {
+
+    .bert {
+        @include abs(60%, 10.5%);
+        @include dimention(18%);
+    }
+    .bigBird {
+        @include abs(54%, 23.6%);
+        @include dimention(28.5%);
+    }
+    .cookieMonster {
+        @include abs(3.6%, -11.3%);
+        @include dimention(20%);
+    }
+    .cookie1 {
+        @include abs(5.8%, 36.6%);
+        @include dimention(23%);
+    }
+    .cookie2 {
+        @include abs(31%, 25.7%);
+        @include dimention(16%);
+    }
+    .cookie3 {
+        @include abs(20.7%, 20.8%);
+        @include dimention(16%);
+    }
+    .cookie4 {
+        @include abs(15.6%, 61.4%);
+        @include dimention(16%);
+    }
+    .cookie5 {
+        @include abs(30.8%, 50%);
+        @include dimention(16%);
+    }
+    .elmo {
+        @include abs(63.5%, 48.7%);
+        @include dimention(26.6%);
+    }
+    .oscar {
+        @include abs(56.5%, 68.8%);
+        @include dimention(22.3%);
+    }
+    .text {
+        @include abs(48.7%, 37.7%);
+        @include dimention(25%);
+    }
+}

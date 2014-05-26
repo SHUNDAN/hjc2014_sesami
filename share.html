@@ -1,13 +1,99 @@
 <!doctype html>
 <html lang="jp">
 <head>
-	<meta charset="UTF-8">
-	<title>オリジナル写真を作ろう</title>
-	<link rel="stylesheet" href="./css/share.css">
+    <meta charset="UTF-8">
+    <title>セサミ絵本</title>
+    <link rel="stylesheet" href="./css/create.css">
 </head>
 <body>
+※デザイン制作後、ちゃんとしたマークアップを行います。<br>
+<br>
+<h1>セサミの絵本へようこそ！</h1>
+
+「わらって!クッキーモンスター!」を読んで、こんな写真を作ったよ！<br>
+<div id="previewArea"></div>
+<br>
+<br>
+<br>
+
+「わらって!クッキーモンスター!」はこんな絵本です。<br>
+<a href="./">
+    <img src="./img/dummy/0.png" alt="画像" style="max-width:100%;"/>
+</a>
+<br>
+<br>
+<br>
+
+<a href="./">さっそくはじめる！</a>
 
 
-<script type="text/javascript" src="./js/share.js"></script>
+
+
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<!--<script type="text/javascript" src="./js/libs/all-libs.js"></script>-->
+<script>
+(function () {
+
+    var dataKey;
+    var querys = location.search.replace('?', '').split('&');
+    for (var i = 0; i < querys.length; i++) {
+        var query = querys[i].split('=');
+        var aKey = query[0];
+        var aValue = query[1];
+        if (aKey === 'key') {
+            dataKey = aValue;
+            break;
+        }
+    }
+
+    if (!dataKey) {
+        alert('データが見つかりません'); // TODO 404遷移対応
+        return;
+    }
+    console.debug('dataKey: ', dataKey);
+
+
+    // 画像を挿入する.
+    var img = document.createElement('img');
+    img.src = './tmpbox/' + dataKey.substring(0,2) + '/' + dataKey.substring(2);
+    img.width = 200; // 適当
+    document.querySelector('#previewArea').appendChild(img);
+
+})();
+</script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

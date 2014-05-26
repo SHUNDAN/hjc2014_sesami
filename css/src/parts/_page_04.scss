@@ -1,0 +1,22 @@
+// アニメーションのKeyframes
+@include keyframes (page04_dummy) {
+    0%   { @include rotateZ(0deg); }
+    30%  { @include rotateZ(5deg); }
+    50%  { @include rotateZ(-15deg); }
+    65%  { @include rotateZ(-10deg); }
+    80%  { @include rotateZ(-12deg); }
+    100% { @include rotateZ(0deg); }
+}
+
+
+
+// スタイルの指定
+[data-page="4"] {
+    
+    .dummy {
+        position: absolute;
+        top: 8.8%;
+        left: 14.4%;
+        width: 69.5%;
+    }
+}

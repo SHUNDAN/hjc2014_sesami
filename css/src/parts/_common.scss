@@ -20,19 +20,16 @@ audio {
 // 各ページ
 .content {
 	position: relative;
-	// widthとheightは、jsで設定します.
-	// svgとかがいいかなー?
-	background: url("../img/book.png") no-repeat;
+	background: url("../img/book.svg") no-repeat;
+	@include background-size(100% 100%);
 }
 
 // 各ページのBookの湾曲とかを考慮した作業スペース
 .canvas {
-	// 以下の余白やらサイズやらは、book.pngの最新が来たら変わります.（ムネ）
 	position: absolute;
-	width: 88%;
-	height: 94.6%;
-	// background-color: rgba(255,0,0,.3); // debug用
-	margin: 1.2% 0 0 7.7%;
+	width: 92.6%;
+	height: 89.3%;
+	margin: 2.7% 0 0 4.1%;
 	overflow: hidden;
 }
 
