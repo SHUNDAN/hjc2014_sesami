@@ -180,12 +180,48 @@
         &.pos15 {top: 40.4%; left: 78%;}
     }
 
+
+    // Oscar
+    //===============================
     .oscar {
         position: absolute;
         top: 54.3%;
         left: 3.5%;
         width: 21.1%;
     }
+    .osShadow {
+        @include abs(10%,10%);
+        width: 10%;
+    }
+    .osBody {
+        @include abs(10%,10%);
+        width: 10%;
+    }
+    .osFace {
+        @include abs(10%,10%);
+        width: 10%;
+    }
+    .osBox {
+        @include abs(10%,10%);
+        width: 10%;
+    }
+    .osLeftArm {
+        @include abs(10%,10%);
+        width: 10%;
+    }
+    .osRightArm {
+        @include abs(10%,10%);
+        width: 10%;
+    }
+    .osCover {
+        @include abs(10%,10%);
+        width: 10%;
+    }
+
+
+
+
+
 
     .bert {
         position: absolute;
