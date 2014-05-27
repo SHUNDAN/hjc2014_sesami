@@ -1,13 +1,6 @@
-// アニメーションのKeyframes
-@include keyframes (page00_dummy) {
-    0%   { @include rotateZ(0deg); }
-    30%  { @include rotateZ(5deg); }
-    50%  { @include rotateZ(-15deg); }
-    65%  { @include rotateZ(-10deg); }
-    80%  { @include rotateZ(-12deg); }
-    100% { @include rotateZ(0deg); }
-}
-
+//
+// page00のスタイル
+//
 
 // ロゴ
 @include keyframes (page00_logo) {
@@ -97,8 +90,11 @@
 }
 @include keyframes (page00_os_anim_cover) {
     0%   { @include rotateZ(0deg);}
-    10%  { @include rotateZ(0deg);}
-    15%  { @include rotateZ(15deg);}
+    15%  { @include rotateZ(0deg);}
+    20%  { @include rotateZ(15deg);}
+    21%  { @include rotateZ(10deg);}
+    22%  { @include rotateZ(20deg);}
+    23%  { @include rotateZ(15deg);}
 
     50%  { @include rotateZ(15deg); }
     51%  { @include rotateZ(8deg);}
@@ -114,8 +110,8 @@
 }
 @include keyframes (page00_os_anim_cover2) {
     0%   { @include translate(0%, 0%);}
-    10%  { @include translate(0%, 0%);}
-    15%  { @include translate(2%, 13%);}
+    15%  { @include translate(0%, 0%);}
+    20%  { @include translate(2%, 13%);}
     70%  { @include translate(2%, 13%);}
     75%  { @include translate(0%, 0%);}
     100% { @include translate(0%, 0%);}
@@ -374,7 +370,7 @@
         left: 7%;
         width: 14%;
         height: 37%;
-        background-color: rgba(0,0,0,.01);
+        background-color: rgba(255,255,255,.01);
     }
 
 
