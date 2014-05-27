@@ -15,21 +15,40 @@
 
 
 
-
-
-
-
-
-
-
-
-
-    .bert {
-        position: absolute;
-        top: 55.5%;
-        left: 20%;
+    // .bert {
+    //     position: absolute;
+    //     top: 55.5%;
+    //     left: 20%;
+    //     width: 17%;
+    //     opacity: .4;
+    // }
+    .bertBody {
+        @include abs(55.5%, 21.2%);
         width: 17%;
     }
+    .bertBody2 {
+        @include abs(53.4%, 21.2%);
+        width: 17%;
+    }
+    .bertShadow {
+        @include abs(88.1%, 22%);
+        width: 14%;
+    }
+    .tapBert {
+        @include abs(57.1%, 22%);
+        width: 15.8%;
+        height: 38%;
+        background-color: rgba(255,255,255,.01);
+    }
+
+
+
+
+
+
+
+
+
 
     .cookieMonster {
         position: absolute;

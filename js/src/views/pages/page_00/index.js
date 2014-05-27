@@ -51,6 +51,16 @@
 
 
 
+    // バート
+    $page.on(TOUCH_END, '.tapBert', function () {
+
+        $page
+            .find('.jsBert')
+            .toggleClass('hidden');
+    });
+
+
+
 
 
 
