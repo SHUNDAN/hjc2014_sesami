@@ -35,6 +35,93 @@
     100% { @include translateY(0px); }
 }
 
+// オスカー（通常）
+@include keyframes (page00_os_normal_armswing) {
+    0%   { @include rotateZ(0deg); }
+    50%  { @include rotateZ(0deg); }
+    51%  { @include rotateZ(-10deg); }
+    52%  { @include rotateZ(0deg); }
+    53%  { @include rotateZ(10deg); }
+    54%  { @include rotateZ(0deg); }
+    55%  { @include rotateZ(-10deg); }
+    56%  { @include rotateZ(0deg); }
+    100% { @include rotateZ(0deg); }
+}
+// オスカー（タップ時）
+@include keyframes (page00_os_anim_shadow) {
+    0%   { @include rotateZ(0deg); }
+    100% { @include rotateZ(0deg); }
+}
+@include keyframes (page00_os_anim_body) {
+    0%   { @include scale(1, 1); }
+    10%  { @include scale(1, 1); }
+    15%  { @include scale(0, 0); }
+    70%  { @include scale(0, 0); }
+    75%  { @include scale(1, 1); }
+    100% { @include scale(1, 1); }
+}
+@include keyframes (page00_os_anim_face) {
+    0%   { @include scale(1, 1); }
+    10%  { @include scale(1, 1); }
+    15%  { @include scale(0, 0); }
+    70%  { @include scale(0, 0); }
+    75%  { @include scale(1, 1); }
+    100% { @include scale(1, 1); }
+}
+@include keyframes (page00_os_anim_leftarm) {
+    0%   { @include scale(1, 1); }
+    5%   { @include scale(1, 1); }
+    10%  { @include scale(0, 0); }
+    80%  { @include scale(0, 0); }
+    85%  { @include scale(1, 1); }
+    100% { @include scale(1, 1); }
+}
+@include keyframes (page00_os_anim_box) {
+    0%   { @include rotateZ(0deg); }
+    50%  { @include rotateZ(0deg); }
+    51%  { @include rotateZ(-7deg);}
+    52%  { @include rotateZ(0deg); }
+    52%  { @include rotateZ(7deg);}
+    53%  { @include rotateZ(0deg); }
+    54%  { @include rotateZ(-7deg);}
+    55%  { @include rotateZ(0deg); }
+    100% { @include rotateZ(0deg); }
+}
+@include keyframes (page00_os_anim_rightarm) {
+    0%   { opacity: 1; }
+    9%   { opacity: 1; }
+    10%  { opacity: 0; }
+    90%  { opacity: 0; }
+    91%  { opacity: 1; }
+    100% { opacity: 1; }
+}
+@include keyframes (page00_os_anim_cover) {
+    0%   { @include rotateZ(0deg);}
+    10%  { @include rotateZ(0deg);}
+    15%  { @include rotateZ(15deg);}
+
+    50%  { @include rotateZ(15deg); }
+    51%  { @include rotateZ(8deg);}
+    52%  { @include rotateZ(15deg); }
+    52%  { @include rotateZ(22deg);}
+    53%  { @include rotateZ(15deg); }
+    54%  { @include rotateZ(8deg);}
+    55%  { @include rotateZ(15deg); }
+
+    70%  { @include rotateZ(15deg);}
+    75%  { @include rotateZ(0deg);}
+    100% { @include rotateZ(0deg);}
+}
+@include keyframes (page00_os_anim_cover2) {
+    0%   { @include translate(0%, 0%);}
+    10%  { @include translate(0%, 0%);}
+    15%  { @include translate(2%, 13%);}
+    70%  { @include translate(2%, 13%);}
+    75%  { @include translate(0%, 0%);}
+    100% { @include translate(0%, 0%);}
+}
+
+
 // スタイルの指定
 [data-page="0"] {
 
@@ -183,41 +270,112 @@
 
     // Oscar
     //===============================
-    .oscar {
-        position: absolute;
-        top: 54.3%;
-        left: 3.5%;
-        width: 21.1%;
-    }
+    // .oscar {
+    //     position: absolute;
+    //     top: 54.3%;
+    //     left: 3.5%;
+    //     width: 21.1%;
+    //     opacity: .4;
+    // }
     .osShadow {
-        @include abs(10%,10%);
-        width: 10%;
+        @include abs(88.4%, 7%);
+        width: 14%;
     }
     .osBody {
-        @include abs(10%,10%);
-        width: 10%;
+        @include abs(68.7%, 10.6%);
+        width: 7.1%;
+        @include transform(rotateZ(-5deg));
     }
     .osFace {
-        @include abs(10%,10%);
-        width: 10%;
-    }
-    .osBox {
-        @include abs(10%,10%);
-        width: 10%;
+        @include abs(59.9%, 7.7%);
+        width: 10.9%;
+        @include transform(rotateZ(-10deg));
     }
     .osLeftArm {
-        @include abs(10%,10%);
-        width: 10%;
+        @include abs(66.9%, 14.4%);
+        width: 6.4%;
+    }
+    .osBox {
+        @include abs(74%, 8.5%);
+        width: 11%;
     }
     .osRightArm {
-        @include abs(10%,10%);
-        width: 10%;
+        @include abs(71.1%, 8.5%);
+        width: 5.1%;
     }
     .osCover {
-        @include abs(10%,10%);
-        width: 10%;
+        @include abs(58%, 6.2%);
+        width: 11.6%;
+        @include transform(rotateZ(-15deg));
     }
+    // 通常
+    .osLeftArmAnim {
+        @include common-wrapper;
+        @include transform-origin(16.3%, 75.7%);
+        // @include debug-transform-origin(16.3%, 75.7%);
+        @include animation(page00_os_normal_armswing 8s ease-in-out infinite);
+    }
+    // タップ時
+    .oscarArea {
+        @include common-wrapper;
+        &.anim {
+            $animationDuration: 5s;
 
+            .osShadowAnim {
+                @include common-wrapper;
+                @include transform-origin(13.3%, 91.6%);
+                // @include debug-transform-origin(13.3%, 91.6%);
+                @include animation(page00_os_anim_shadow $animationDuration ease-in-out infinite);
+            }
+            .osBodyAnim {
+                @include common-wrapper;
+                @include transform-origin(13.3%, 87.6%);
+                // @include debug-transform-origin(13.3%, 87.6%);                
+                @include animation(page00_os_anim_body $animationDuration ease-in-out infinite);
+            }
+            .osFaceAnim {
+                @include common-wrapper;
+                @include transform-origin(13.3%, 87.6%);
+                // @include transform-origin(12.5%, 65.6%);
+                // @include debug-transform-origin(12.5%, 65.6%);
+                @include animation(page00_os_anim_face $animationDuration ease-in-out infinite);
+            }
+            .osLeftArmAnim {
+                @include animation(page00_os_anim_leftarm $animationDuration ease-in-out infinite);
+            }
+            .osBoxAnim {
+                @include common-wrapper;
+                @include transform-origin(13.5%, 88.6%);
+                // @include debug-transform-origin(13.5%, 88.6%);
+                @include animation(page00_os_anim_box $animationDuration ease-in-out infinite);
+            }
+            .osRightArmAnim {
+                @include common-wrapper;
+                @include animation(page00_os_anim_rightarm $animationDuration ease-in-out infinite);
+            }
+            .osCoverAnim {
+                @include common-wrapper;
+                @include transform-origin(12%, 61%);
+                // @include debug-transform-origin(12%, 61%);
+                @include animation(page00_os_anim_cover $animationDuration ease-in-out infinite);
+            }
+            .osCoverAnim2 {
+                @include common-wrapper;
+                // @include transform-origin(12%, 61%);
+                // // @include debug-transform-origin(12%, 61%);
+                @include animation(page00_os_anim_cover2 $animationDuration ease-in-out infinite);
+            }
+
+        }
+    }
+    .tapOscar {
+        position: absolute;
+        top: 58%;
+        left: 7%;
+        width: 14%;
+        height: 37%;
+        background-color: rgba(0,0,0,.01);
+    }
 
 
 

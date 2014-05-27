@@ -39,7 +39,15 @@
             .removeClass('noAction');
     });
 
+    // オスカー
+    $page.on(TOUCH_END, '.tapOscar', function () {
 
+        $page
+            .find('.jsOscarAnim')
+            .addClass('anim noAction')
+            .wait(5000)
+            .removeClass('anim noAction');
+    });
 
 
 
