@@ -1,0 +1,131 @@
+//
+// page00のスタイル - タイトル
+//
+
+@include keyframes (page00_word_pop) {
+    0%   { @include translateY(0px); }
+    50%  { @include translateY(0px); }
+    51%  { @include translateY(-10px); }
+    55%  { @include translateY(0px); }
+    100% { @include translateY(0px); }
+}
+
+[data-page="0"] {
+
+    // .title {
+    //     position: absolute;
+    //     top: 22%;
+    //     left: 14%;
+    //     width: 70%;
+    //     opacity: .5;
+    // }
+    .wordWrapper {
+        @include common-wrapper;
+        @include transform-origin(48.6%, 40%);
+        // @include debug-transform-origin(48.6%, 40%);
+        -webkit-transition: -webkit-transform 500ms ease-in-out;
+        -moz-transition: -moz-transform 500ms ease-in-out;
+        transition: transform 300ms ease-in-out;
+        &.scale {
+            // TODO 画像が粗くなってしまう..
+            @include transform(scale(1.7, 1.7) !important);
+        }
+    }
+    .word01 {
+        @include abs(24.6%, 28.8%);
+        width: 12.5%;
+        @include animation(page00_word_pop 15s infinite 0ms);
+    }
+    .word02 {
+        @include abs(24.6%, 36%);
+        width: 12.5%;
+        @include animation(page00_word_pop 15s infinite 50ms);
+    }
+    .word03 {
+        @include abs(24.6%, 43.3%);
+        width: 12.5%;
+        @include animation(page00_word_pop 15s infinite 100ms);
+    }
+    .word04 {
+        @include abs(24.6%, 50.6%);
+        width: 12.5%;
+        @include animation(page00_word_pop 15s infinite 150ms);
+    }
+    .word05 {
+        @include abs(24.6%, 58%);
+        width: 12.5%;
+        @include animation(page00_word_pop 15s infinite 200ms);
+    }
+    .word06 {
+        @include abs(38%, 11.4%);
+        width: 12.5%;
+        @include animation(page00_word_pop 15s infinite 250ms);
+    }
+    .word07 {
+        @include abs(38%, 18.6%);
+        width: 12.5%;
+        @include animation(page00_word_pop 15s infinite 300ms);
+    }
+    .word08 {
+        @include abs(38%, 26%);
+        width: 12.5%;
+        @include animation(page00_word_pop 15s infinite 350ms);
+    }
+    .word09 {
+        @include abs(38%, 33%);
+        width: 12.5%;
+        @include animation(page00_word_pop 15s infinite 400ms);
+    }
+    .word10 {
+        @include abs(38%, 40%);
+        width: 12.5%;
+        @include animation(page00_word_pop 15s infinite 450ms);
+    }
+    .word11 {
+        @include abs(38%, 47%);
+        width: 12.5%;
+        @include animation(page00_word_pop 15s infinite 500ms);
+    }
+    .word12 {
+        @include abs(38%, 54%);
+        width: 12.5%;
+        @include animation(page00_word_pop 15s infinite 550ms);
+    }
+    .word13 {
+        @include abs(38%, 61.4%);
+        width: 12.5%;
+        @include animation(page00_word_pop 15s infinite 600ms);
+    }
+    .word14 {
+        @include abs(38%, 68.3%);
+        width: 12.5%;
+        @include animation(page00_word_pop 15s infinite 650ms);
+    }
+    .word15 {
+        @include abs(37.4%, 75.5%);
+        width: 12.5%;
+        @include animation(page00_word_pop 15s infinite 700ms);
+    }
+    .tapWord {
+        position: absolute;
+        width: 8%;
+        height: 13%;
+        background-color: rgba(255,255,255,.01);
+        &.pos1  {top: 27%; left: 31%;}
+        &.pos2  {top: 27%; left: 38%;}
+        &.pos3  {top: 27%; left: 45%;}
+        &.pos4  {top: 27%; left: 53%;}
+        &.pos5  {top: 27%; left: 60%;}
+        &.pos6  {top: 40.4%; left: 13%;}
+        &.pos7  {top: 40.4%; left: 20%;}
+        &.pos8  {top: 40.4%; left: 27%;}
+        &.pos9  {top: 40.4%; left: 34%;}
+        &.pos10 {top: 40.4%; left: 42%;}
+        &.pos11 {top: 40.4%; left: 49%;}
+        &.pos12 {top: 40.4%; left: 56%;}
+        &.pos13 {top: 40.4%; left: 63%;}
+        &.pos14 {top: 40.4%; left: 71%;}
+        &.pos15 {top: 40.4%; left: 78%;}
+    }
+}
+
