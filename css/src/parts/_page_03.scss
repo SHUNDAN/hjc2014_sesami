@@ -1,16 +1,123 @@
 // アニメーションのKeyframes
-@include keyframes (page03_dummy) {
-    0%   { @include rotateZ(0deg); }
-    30%  { @include rotateZ(5deg); }
-    50%  { @include rotateZ(-15deg); }
-    65%  { @include rotateZ(-10deg); }
-    80%  { @include rotateZ(-12deg); }
-    100% { @include rotateZ(0deg); }
+@include keyframes (page03_ballon_delay01) {
+    0%   { opacity: 0; }
+    99%   { opacity: 0; }
+    100% { opacity: 1; }
 }
 
+@include keyframes (page03_CookieMonster) {
+    0%   { @include rotateZ(0deg); }
+    50%   { @include rotateZ(-30deg); }
+    100%   { @include rotateZ(0deg); }
+}
 
+@include keyframes (page03_bert_hair) {
+  0% {
+    @include rotateZ(0);
+  }
+  5% {
+    @include rotateZ(-2deg);
+  }
+  10% {
+    @include rotateZ(2deg);
+  }
+  15% {
+    @include rotateZ(-2deg);
+  }
+  20% {
+    @include rotateZ(2deg);
+  }
+  25% {
+    @include rotateZ(-2deg);
+  }
+  30% {
+    @include rotateZ(2deg);
+  }
+  35% {
+    @include rotateZ(-2deg);
+  }
+  40% {
+    @include rotateZ(2deg);
+  }
+  45% {
+    @include rotateZ(-2deg);
+  }
+  50% {
+    @include rotateZ(2deg);
+  }
+  55% {
+    @include rotateZ(0);
+  }
+  100% {
+    @include rotateZ(0);
+  }
+}
 
 // スタイルの指定
 [data-page="3"] {
     // ここにスタイルを記入.
+    .ballon-small{
+        @include animation(page03_ballon_delay01 .5s ease-in-out 1);
+        width: 3%;
+        &.pattern01{
+          @include abs(54.7%, 22.3%);
+        }
+        &.pattern02{
+          @include abs(62.6%, 40.9%);
+        }
+        &.pattern03{
+          @include abs(58.1%, 74.9%);
+        }
+    }
+    .ballon-middle{
+        @include animation(page03_ballon_delay01 1.5s ease-in-out 1);
+        width: 5.6%;
+        &.pattern01{
+          @include abs(46.8%, 24.6%);
+        }
+        &.pattern02{
+          @include abs(53.6%, 41.4%)
+        }
+        &.pattern03{
+          @include abs(50.9%, 70.1%)
+        }
+    }
+    .ballon{
+        @include animation(page03_ballon_delay01 3s ease-in-out 1);
+        width: 45.25%;
+        @include abs(4.7%, 27.3%);
+    }
+    .character{
+        @include animation(page03_ballon_delay01 3s ease-in-out 1);
+        width: 18.66%;
+        @include abs(10.2%, 33%);
+    }
+    .tapAreaBallonCharacter{
+        width: 18.66%;
+        height: 0;
+        padding-top: 110%;
+        @include abs(10.2%, 33%);
+    }
+    .CookieMonster{
+      width: 100%;
+      height: 100%;
+      &.animate{
+        @include animation(page03_CookieMonster .6s ease-in-out 3);
+      }
+    }
+
+    //bert
+    .bert-body{
+      width: 17.4%;
+      @include abs(64%, 9%);
+    }
+    .bert-hair{
+      width: 9.1%;
+      @include animation(page03_bert_hair 2.6s ease-in-out infinite);
+      @include abs(58%, 14.5%);
+    }
+    .bert-hand{
+      width: 4.9%;
+      @include abs(84%, 17.3%);
+    }
 }

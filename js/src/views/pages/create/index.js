@@ -1,4 +1,8 @@
 //
+//
+// 写真の合成機能を実装する
+// create
+
 // オリジナル写真作成 & Facebook共有ページ
 //
 
@@ -226,5 +230,6 @@ var Create = new sesami.create();
         xhr.send(formData);
 
     });
+
 
 })();
