@@ -6,6 +6,8 @@
     <link rel="stylesheet" href="./css/create.css">
 </head>
 <body>
+
+
 ※デザイン制作後、ちゃんとしたマークアップを行います。<br>
 <br>
 <h1>オリジナル写真作成 ＆ Facebook共有機能</h1>
@@ -14,10 +16,14 @@
 オリジナル写真作成に利用するファイルを選択してください。<br>
 （後続の写真アップの処理のため、"仮の"実装が入っています）<br>
 （PNGかJPEGを選択してください）<br>
-<input type="file" />
-<div id="previewArea">
-    <!--<img src="./img/dummy/kari.png" width="200"/>-->
-</div>
+
+<section class="jsPostArea">
+  <canvas width="400" height="400"></canvas>
+  <form>
+    <input type="file" accept="image/jpeg,image/png">
+  </form>
+</section>
+
 <br>
 <br>
 <br>
@@ -71,6 +77,7 @@
 <br>
 
 <script type="text/javascript" src="./js/libs/all-libs.js"></script>
+<script type="text/javascript" src="./js/all.js"></script>
 <script type="text/javascript" src="./js/create.js"></script>
 </body>
 </html>

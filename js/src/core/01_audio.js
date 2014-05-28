@@ -1,6 +1,8 @@
 // Audio
 (function () {
 
+    return false;
+
     // Namespace.
     //================================================
     var sesami = window.sesami;
