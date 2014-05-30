@@ -60,7 +60,7 @@
     });
 
 
-    // クッキーモンスター
+    // クッキーモンスター（通常）
     var cmAnim = function () {
         $page
             .find('.jsCmMouse')
@@ -75,6 +75,15 @@
             .wait(1000, cmAnim);
     };
     cmAnim();
+
+    // クッキーモンスター（タップ）
+    $page.on(TOUCH_END, '.tapCookieMonster', function () {
+        $page
+            .find('.jsCmArea')
+            .addClass('anim noAction')
+            .wait(5000)
+            .removeClass('anim noAction');
+    });
 
 
 

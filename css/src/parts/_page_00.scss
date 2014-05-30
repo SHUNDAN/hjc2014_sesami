@@ -6,6 +6,30 @@
 @import "./page_00_oscar";
 
 
+// クッキーモンスター（腕）
+@include keyframes (page00_cm_arm_anim) {
+    0%   { @include rotateZ(40deg); } // 初期位置を合わせている.
+    40%  { @include rotateZ(0deg); }
+    45%  { @include rotateZ(-10deg); }
+    50%  { @include rotateZ(0deg); }
+    55%  { @include rotateZ(10deg); }
+    60%  { @include rotateZ(0deg); }
+    65%  { @include rotateZ(-10deg); }
+    70%  { @include rotateZ(0deg); }
+    100% { @include rotateZ(0deg); }
+}
+// クッキーモンスター（クッキー）
+@include keyframes (page00_cm_cookie_anim) {
+    0%   { opacity: 0; @include transform(translate(0%,0%));}
+    40%  { opacity: 0; @include transform(translate(4%,4%));}
+    45%  { opacity: 1; @include transform(translate(-4%,-4%));}
+    50%  { opacity: 0; @include transform(translate(-4%,-4%));}
+    55%  { opacity: 0; @include transform(translate(0%,0%));}
+    60%  { opacity: 0; @include transform(translate(4%,4%));}
+    65%  { opacity: 1; @include transform(translate(-4%,-4%));}
+    70%  { opacity: 0; @include transform(translate(-4%,-4%));}
+    100% { opacity: 0; @include transform(translate(0%,0%));}
+}
 
 
 
@@ -90,10 +114,32 @@
         @include transform-origin(42%, 74.4%);
         // @include debug-transform-origin(42%, 74.4%);
         // @include animation(page00_os_anim_cover $animationDuration ease-in-out infinite);
-
     }
 
+    // タップ時アニメーション
+    .cmArea.anim {
+        $animationDuration: 5s;
+        .cmMouse1 {
+            display: block !important;
+        }
+        .cmMouse2 {
+            display: none !important;
+        }
+        .animCmArm1 {
+            @include animation(page00_cm_arm_anim $animationDuration ease-in-out infinite);
+        }
+        .cmCookie {
+            @include animation(page00_cm_cookie_anim $animationDuration ease-in-out infinite);
+        }
+    }
 
+    // タップエリア
+    .tapCookieMonster {
+        @include abs(55%, 37%);
+        width: 19%;
+        height: 40%;
+        background-color: rgba(255,255,255,.01);
+    }
 
 
 
