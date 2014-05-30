@@ -60,6 +60,23 @@
     });
 
 
+    // クッキーモンスター
+    var cmAnim = function () {
+        $page
+            .find('.jsCmMouse')
+            .wait(3000)
+            .toggleClass('hidden')
+            .wait(500)
+            .toggleClass('hidden')
+            .wait(2000)
+            .toggleClass('hidden')
+            .wait(500)
+            .toggleClass('hidden')
+            .wait(1000, cmAnim);
+    };
+    cmAnim();
+
+
 
 
 

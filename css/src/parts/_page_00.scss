@@ -9,7 +9,6 @@
 
 
 
-
 // スタイルの指定
 [data-page="0"] {
 
@@ -42,20 +41,75 @@
     }
 
 
+    // .cookieMonster {
+    //     position: absolute;
+    //     top: 54.3%;
+    //     left: 36.2%;
+    //     width: 21.7%;
+    //     opacity: .5;
+    // }
 
-
-
-
-
-
-
-
-    .cookieMonster {
-        position: absolute;
-        top: 54.3%;
-        left: 36.2%;
-        width: 21.7%;
+    .cmShadow {
+        @include abs(87%, 39.7%);
+        width: 14%;
     }
+    .cmArm2 {
+        @include abs(65%, 45.8%);
+        width: 11.5%;
+    }
+    .cmBin {
+        @include abs(68%, 47.6%);
+        width: 9.4%;
+    }
+    .cmBody {
+        @include abs(55.1%, 37.4%);
+        width: 17.2%;
+    }
+    .cmMouse1 {
+        @include abs(58.9%, 40%);
+        width: 8.5%;
+    }
+    .cmMouse2 {
+        @include abs(60%, 40.3%);
+        width: 8.1%;
+    }
+    .cmArm1 {
+        @include abs(64.8%, 41%);
+        width: 11%;
+    }
+    .cmCookie {
+        @include abs(56.4%, 39.7%);
+        width: 13%;
+        opacity: 0;
+    }
+
+    .animCmArm1 {
+        @include transform(rotateZ(40deg));
+
+        @include common-wrapper;
+        @include transform-origin(42%, 74.4%);
+        // @include debug-transform-origin(42%, 74.4%);
+        // @include animation(page00_os_anim_cover $animationDuration ease-in-out infinite);
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     .elmo {
         position: absolute;
