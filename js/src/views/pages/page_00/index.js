@@ -94,6 +94,12 @@
     });
 
 
+    // ビッグバード（タップ）
+    $page.on(TOUCH_END, '.tapBigBird', function () {
+        $page
+            .find('.jsBigBird')
+            .toggleClass('hidden');
+    });
 
 
 
