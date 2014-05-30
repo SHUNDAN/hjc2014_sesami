@@ -86,6 +86,25 @@
     });
 
 
+    // エルモ（タップ）
+    $page.on(TOUCH_END, '.tapElmo', function () {
+        $page
+            .find('.jsElBody')
+            .toggleClass('hidden');
+    });
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
