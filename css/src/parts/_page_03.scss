@@ -90,6 +90,16 @@
 [data-page="3"] {
     // ここにスタイルを記入.
 
+    &.noAnimate{
+      div,img{
+        -moz-animation: none !important;
+        -webkit-animation: none !important;
+        -o-animation: none !important;
+        -ms-animation: none !important;
+        animation: none !important;
+      }
+    }
+
     .ballonArea.start{
       width: 100%;
       height: 100%;

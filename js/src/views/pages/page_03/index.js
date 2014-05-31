@@ -7,6 +7,7 @@
     TOUCH_MOVE = sesami.event.TOUCH_MOVE,
     TOUCH_END = sesami.event.TOUCH_END;
 
+    var ANIMATION_EVENT = 'animation oAnimation webkitAnimation';
     var ANIMATION_END_EVENT = 'animationend oAnimationEnd animationend webkitAnimationEnd';
 
     var
@@ -59,8 +60,10 @@
       if(isEyeAnime) return false;
       isEyeAnime = true;
       $eye.addClass('kottiminna');
+      $page.addClass('noAnimate');
       var remove = function(){
         $eye.removeClass('kottiminna');
+        $page.removeClass('noAnimate');
         isEyeAnime = false;
       }
       setTimeout(remove,4000);
