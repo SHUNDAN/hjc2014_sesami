@@ -10,10 +10,12 @@
     var ANIMATION_END_EVENT = 'animationend oAnimationEnd animationend webkitAnimationEnd';
 
     var
-    $ballonCharacter = $('.jsBallonCharacter'),
+    $ballonArea = $('.jsBallonArea'),
+    $ballonCharacter = $ballonArea.find('.jsBallonCharacter'),
     $ballonTap = $('.jsBallonTap'),
-    $ballonCharacterCookieMonster = $ballonCharacter.find('.CookieMonster')
-    isBallonAnime = false;
+    $ballonCharacterCookieMonster = $ballonCharacter.find('.CookieMonster'),
+    isBallonAnime = false,
+    isFirst = true;
 
     $ballonCharacterCookieMonster.on(ANIMATION_END_EVENT, function(event) {
       $ballonCharacterCookieMonster.removeClass('animate');
@@ -29,8 +31,63 @@
 
     $ballonCharacter.one(ANIMATION_END_EVENT,function(){
       if(isBallonAnime) return false;
+      if(isFirst) $ballonArea.addClass('start');
+      isFirst = false;
       isBallonAnime = true;
       $ballonCharacterCookieMonster.addClass('animate');
     });
+
+    //
+    // var
+    // $bigbirdArea = $('.jsBigbirdArea'),
+    // $bigbirdHand = $bigbirdArea.find('.jsBigbirdHand')
+    // $bigbirdArea.on(TOUCH_START, function(event) {
+    //   event.preventDefault();
+    //   $bigbirdHand.addClass('animate');
+    //   $bigbirdHand.one(ANIMATION_END_EVENT, function(event) {
+    //     $bigbirdHand.removeClass('animate');
+    //   });
+    // });
+
+    var
+    $elmoArea = $('.jsElmoArea'),
+    $eye = $('.jsEye'),
+    isEyeAnime = false;
+
+    $elmoArea.on(TOUCH_START, function(event) {
+      event.preventDefault();
+      if(isEyeAnime) return false;
+      isEyeAnime = true;
+      $eye.addClass('kottiminna');
+      var remove = function(){
+        $eye.removeClass('kottiminna');
+        isEyeAnime = false;
+      }
+      setTimeout(remove,4000);
+    });
+
+    var
+    $oscarArea = $('.jsOscarArea'),
+    isOscarAnime = false;
+    $oscarArea.on(TOUCH_START, function(event) {
+      event.preventDefault();
+      if(isOscarAnime) return false;
+      isOscarAnime = true;
+      $oscarArea.find('.jsOscar1').hide().end()
+                .find('.jsOscar2').show();
+      setTimeout(oscarSecoundFunc,1000);
+    });
+
+    var oscarSecoundFunc = function(){
+      $oscarArea.find('.jsOscar2').addClass('secound');
+      $oscarArea.find('.jsOscar2').one(TOUCH_START, function(event) {
+        $(this).removeClass('secound');
+        setTimeout(function(){
+          $oscarArea.find('.jsOscar1').show().end()
+                    .find('.jsOscar2').hide();
+          isOscarAnime = false;
+        },1000);
+      });
+    }
 
 })();

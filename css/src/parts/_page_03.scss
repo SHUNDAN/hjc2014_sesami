@@ -53,50 +53,91 @@
   }
 }
 
+@include keyframes (page03_fuwafuwa) {
+    0%   { @include translate(0,0); }
+    25%   { @include translate(7px,-3px); }
+    50%   { @include translate(-2px,-2px); }
+    75%   { @include translate(-7px,-3px); }
+    100%   { @include translate(0,0); }
+}
+
+@include keyframes (page03_bert) {
+    0%   { @include rotateZ(0deg); }
+    30%   { @include rotateZ(10deg); }
+    100%   { @include rotateZ(0deg);}
+}
+
+@include keyframes (page03_elmo) {
+    0%   { @include rotateZ(0deg); }
+    30%   { @include rotateZ(-10deg); }
+    100%   { @include rotateZ(0deg);}
+}
+
+@include keyframes (page03_bigbird_tail) {
+    0%   { @include rotateZ(0deg); }
+    30%   { @include rotateZ(-5deg); }
+    60%   { @include rotateZ(5deg); }
+    100%   { @include rotateZ(0deg); }
+}
+
+@include keyframes (page03_bigbird_hand) {
+    0%   { @include rotateZ(0deg); }
+    30%   { @include rotateZ(30deg); }
+    100%   { @include rotateZ(0deg); }
+}
+
 // スタイルの指定
 [data-page="3"] {
     // ここにスタイルを記入.
+
+    .ballonArea.start{
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      @include animation(page03_fuwafuwa 2s ease-in-out infinite);
+    }
+
     .ballon-small{
-        @include animation(page03_ballon_delay01 .5s ease-in-out 1);
+        @include animation(page03_ballon_delay01 .2s ease-in-out 1);
         width: 3%;
         &.pattern01{
-          @include abs(54.7%, 22.3%);
+          @include abs(57%, 22.3%);
         }
         &.pattern02{
-          @include abs(62.6%, 40.9%);
+          @include abs(63.4%, 40.7%);
         }
         &.pattern03{
-          @include abs(58.1%, 74.9%);
+          @include abs(60.9%, 75%);
         }
     }
     .ballon-middle{
-        @include animation(page03_ballon_delay01 1.5s ease-in-out 1);
+        @include animation(page03_ballon_delay01 0.6s ease-in-out 1);
         width: 5.6%;
         &.pattern01{
-          @include abs(46.8%, 24.6%);
+          @include abs(49%, 24.6%);
         }
         &.pattern02{
-          @include abs(53.6%, 41.4%)
+          @include abs(54.6%, 41.4%)
         }
         &.pattern03{
-          @include abs(50.9%, 70.1%)
+          @include abs(52.9%, 70.1%)
         }
     }
     .ballon{
-        @include animation(page03_ballon_delay01 3s ease-in-out 1);
+        @include animation(page03_ballon_delay01 1s ease-in-out 1);
         width: 45.25%;
-        @include abs(4.7%, 27.3%);
+        @include abs(4.7%, 26%);
     }
     .character{
-        @include animation(page03_ballon_delay01 3s ease-in-out 1);
-        width: 18.66%;
-        @include abs(10.2%, 33%);
+        @include animation(page03_ballon_delay01 1s ease-in-out 1);
+        width: 20.66%;
+        @include abs(11.4%, 30%);
     }
     .tapAreaBallonCharacter{
-        width: 18.66%;
+        width: 20.66%;
         height: 0;
         padding-top: 110%;
-        @include abs(10.2%, 33%);
+        @include abs(11.4%, 30%);
     }
     .CookieMonster{
       width: 100%;
@@ -105,19 +146,167 @@
         @include animation(page03_CookieMonster .6s ease-in-out 3);
       }
     }
+    .CookieMonsterEye{
+        width: 8%;
+        @include abs(26%, 59%);
+        &.kottiminna{
+          display: none;
+        }
+    }
+    .CookieMonsterEye2{
+        width: 4%;
+        display: none;
+        &.left.kottiminna{
+          display: block;
+          @include abs(27%, 57%);
+        }
+        &.right.kottiminna{
+          display: block;
+          @include abs(30%, 67%);
+        }
+
+    }
 
     //bert
     .bert-body{
-      width: 17.4%;
-      @include abs(64%, 9%);
+      width: 18%;
+      @include abs(63%, 6%);
+    }
+    .bert-eye{
+      width: 1.6%;
+      -webkit-transition: all .5s ease-in-out;
+      -moz-transition: all .5s ease-in-out;
+      transition: all .5s ease-in-out;
+      &.left{
+        @include abs(70.5%, 13.9%);
+      }
+      &.right{
+        @include abs(70.5%, 17.9%);
+      }
+      &.left.kottiminna{
+        @include abs(71.5%, 13.9%);
+      }
+      &.right.kottiminna{
+        @include abs(71.5%, 17.9%);
+      }
     }
     .bert-hair{
       width: 9.1%;
       @include animation(page03_bert_hair 2.6s ease-in-out infinite);
-      @include abs(58%, 14.5%);
+      @include abs(57%, 12.2%);
     }
     .bert-hand{
-      width: 4.9%;
-      @include abs(84%, 17.3%);
+      width: 9.2%;
+      @include abs(83%, 14%);
+      @include transform-origin(100%, 0);
+      @include animation(page03_bert 1.5s ease-out infinite);
     }
+
+
+    .bigbird-body{
+      width: 19.2%;
+      @include abs(56.8%, 51.5%);
+    }
+    .bigbird-eye{
+      width: 1.5%;
+      -webkit-transition: all .5s ease-in-out;
+      -moz-transition: all .5s ease-in-out;
+      transition: all .5s ease-in-out;
+      &.left{
+        @include abs(69.5%, 55.1%);
+      }
+      &.right{
+        width: 1.6%;
+        @include abs(70%, 58.5%);
+      }
+      &.left.kottiminna{
+        width: 1.6%;
+        @include abs(69.3%, 55.8%);
+      }
+      &.right.kottiminna{
+        @include abs(71%, 59.5%);
+      }
+    }
+    .bigbird-tail{
+      width: 12.2%;
+      @include abs(89%, 59.9%);
+      @include animation(page03_bigbird_tail .3s ease-in-out infinite);
+    }
+    .bigbird-hand{
+      width: 12%;
+      @include abs(80%, 49%);
+      @include transform-origin(100%, 80%);
+      &.animate{
+        @include animation(page03_bigbird_hand .4s ease-in-out 1);
+      }
+    }
+
+    .elmo-body{
+      width: 20.2%;
+      @include abs(64%, 26.2%);
+    }
+    .elmo-eye{
+      width: 2.6%;
+      -webkit-transition: all .5s ease-in-out;
+      -moz-transition: all .5s ease-in-out;
+      transition: all .5s ease-in-out;
+      &.left{
+        @include abs(67.2%, 32.1%);
+      }
+      &.right{
+        @include abs(64.7%, 36%);
+      }
+      &.left.kottiminna{
+        @include abs(68.7%, 31.5%);
+      }
+      &.right.kottiminna{
+        @include abs(65.9%, 36%);
+      }
+    }
+    .elmo-hand{
+      width: 9.5%;
+      @include abs(89%, 36.3%);
+      @include animation(page03_elmo 2s ease-out infinite);
+      @include transform-origin(0, 0);
+    }
+
+    .oscar-head{
+      width: 17.5%;
+      @include abs(68.5%, 72.5%);
+    }
+    .oscar-eye{
+      width: 1.4%;
+      -webkit-transition: all .5s ease-in-out;
+      -moz-transition: all .5s ease-in-out;
+      transition: all .5s ease-in-out;
+      &.left{
+        @include abs(79.1%, 78.6%);
+      }
+      &.right{
+        @include abs(79.1%, 82.6%);
+      }
+      &.left.kottiminna{
+        @include abs(79.3%, 78.3%);
+      }
+      &.right.kottiminna{
+        @include abs(79.3%, 82.8%);
+      }
+    }
+    .oscar-dustbox{
+      width: 16.2%;
+      @include abs(83%, 72.7%);
+    }
+    .oscar-dustbox2{
+      display: none;
+      width: 17%;
+      @include abs(76.5%, 72.2%);
+      -webkit-transition: all .5s ease-in-out;
+      -moz-transition: all .5s ease-in-out;
+      transition: all .5s ease-in-out;
+      @include transform-origin(100%, 100%);
+      &.secound{
+        @include rotateZ(90deg);
+      }
+    }
+
 }
