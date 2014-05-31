@@ -60,6 +60,57 @@
     });
 
 
+    // クッキーモンスター（通常）
+    var cmAnim = function () {
+        $page
+            .find('.jsCmMouse')
+            .wait(3000)
+            .toggleClass('hidden')
+            .wait(500)
+            .toggleClass('hidden')
+            .wait(2000)
+            .toggleClass('hidden')
+            .wait(500)
+            .toggleClass('hidden')
+            .wait(1000, cmAnim);
+    };
+    cmAnim();
+
+    // クッキーモンスター（タップ）
+    $page.on(TOUCH_END, '.tapCookieMonster', function () {
+        $page
+            .find('.jsCmArea')
+            .addClass('anim noAction')
+            .wait(5000)
+            .removeClass('anim noAction');
+    });
+
+
+    // エルモ（タップ）
+    $page.on(TOUCH_END, '.tapElmo', function () {
+        $page
+            .find('.jsElBody')
+            .toggleClass('hidden');
+    });
+
+
+    // ビッグバード（タップ）
+    $page.on(TOUCH_END, '.tapBigBird', function () {
+        $page
+            .find('.jsBigBird')
+            .toggleClass('hidden');
+    });
+
+
+
+
+
+
+
+
+
+
+
 
 
 
