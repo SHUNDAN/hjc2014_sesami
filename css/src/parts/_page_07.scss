@@ -13,6 +13,21 @@
 // スタイルの指定
 [data-page="7"] {
 
+
+    //
+    // クッキーモンスター
+    //
+    .cookieMonster {
+        @include abs(3.6%, -11.3%);
+        @include dimention(20%);
+    }
+
+
+
+
+
+
+
     .bert {
         @include abs(60%, 10.5%);
         @include dimention(18%);
@@ -20,10 +35,6 @@
     .bigBird {
         @include abs(54%, 23.6%);
         @include dimention(28.5%);
-    }
-    .cookieMonster {
-        @include abs(3.6%, -11.3%);
-        @include dimention(20%);
     }
     .cookie1 {
         @include abs(5.8%, 36.6%);

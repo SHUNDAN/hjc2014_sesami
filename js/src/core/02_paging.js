@@ -3,6 +3,34 @@
 //
 ;(function () {
 
+
+    // Private Functions.
+    //-------------------------------------
+    var showPageAt = function (nextPageNo, currentPageNo) {
+
+        $('[data-page]').addClass('hidden');
+        $('[data-page="' + nextPageNo + '"]').removeClass('hidden');
+        location.hash = "page=" + nextPageNo;
+
+        // 仮.
+        // var bgmType = Math.abs(nextPageNo % 4) + 1;
+        // sesami.bgmSound.play(bgmType);
+
+        // Init, Dealloc.
+        var pageObject = sesami['page0' + currentPageNo];
+        pageObject &&  pageObject.dealloc && pageObject.dealloc();
+        var pageObject = sesami['page0' + nextPageNo];
+        pageObject && pageObject.init && pageObject.init();
+
+    };
+
+
+
+
+
+
+
+
     // 現在ページの設定を行います。
     sesami.currentPage = 0;
 
@@ -27,21 +55,16 @@
     // 次ページへ
     $('#nextPageBtn').on('click', function () {
 
+        var currentPage = sesami.currentPage;
+
         var content = $('[data-page="' + (sesami.currentPage+1) + '"]');
         if (content.length === 0) {
-            // alert('最終ページです');
             content = $('[data-page="0"]');
             sesami.currentPage = -1;
-        } //else {
-            sesami.currentPage++;
-            $('[data-page]').addClass('hidden');
-            $('[data-page="' + sesami.currentPage + '"]').removeClass('hidden');
-            location.hash = "page=" + sesami.currentPage;
+        }
+        sesami.currentPage++;
 
-            // 仮.
-            var bgmType = Math.abs(sesami.currentPage % 4) + 1;
-            sesami.bgmSound.play(bgmType);
-        //}
+        showPageAt(sesami.currentPage, currentPage);
     });
 
 
@@ -50,22 +73,16 @@
     // 前ページへ
     $('#prevPageBtn').on('click', function () {
 
+        var currentPage = sesami.currentPage;
+
         var content = $('[data-page="' + (sesami.currentPage-1) + '"]');
         if (content.length === 0) {
-            // alert('最初のページです');
             content = $('[data-page="8"]'); // 決め打ち
             sesami.currentPage = 9;
-        } //else {
-            sesami.currentPage--;
-            $('[data-page]').addClass('hidden');
-            $('[data-page="' + sesami.currentPage + '"]').removeClass('hidden');
-            location.hash = "page=" + sesami.currentPage;
+        }
+        sesami.currentPage--;
 
-            // 仮.
-            var bgmType = Math.abs(sesami.currentPage % 4) + 1;
-            sesami.bgmSound.play(bgmType);
-
-        //}
+        showPageAt(sesami.currentPage, currentPage);
     });
 
 
@@ -77,9 +94,12 @@
 
 
     // 初期ページの制御
-    var currentPage = sesami.currentPage;
-    $('[data-page]').addClass('hidden');
-    $('[data-page="' + currentPage + '"]').removeClass('hidden');
+    $(function () {
+        showPageAt(sesami.currentPage);
+    });
+
+
+
 
 
 
