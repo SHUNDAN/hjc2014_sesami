@@ -94,10 +94,11 @@
 
 
     // 初期ページの制御
-    $(function () {
+    // onloadにするかは微妙.
+    window.addEventListener('load', function () {
+        console.debug('onload paging fired');
         showPageAt(sesami.currentPage);
     });
-
 
 
 

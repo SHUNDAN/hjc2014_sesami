@@ -14,58 +14,160 @@
 [data-page="7"] {
 
 
-    //
-    // クッキーモンスター
-    //
     .cookieMonster {
         @include abs(3.6%, -11.3%);
         @include dimention(20%);
+        @include transform(translateX(-40%)); // 初期位置
     }
-
-
-
-
-
-
-
     .bert {
         @include abs(60%, 10.5%);
         @include dimention(18%);
+        @include transform(translateY(80%)); // 初期位置
     }
     .bigBird {
         @include abs(54%, 23.6%);
         @include dimention(28.5%);
-    }
-    .cookie1 {
-        @include abs(5.8%, 36.6%);
-        @include dimention(23%);
-    }
-    .cookie2 {
-        @include abs(31%, 25.7%);
-        @include dimention(16%);
-    }
-    .cookie3 {
-        @include abs(20.7%, 20.8%);
-        @include dimention(16%);
-    }
-    .cookie4 {
-        @include abs(15.6%, 61.4%);
-        @include dimention(16%);
-    }
-    .cookie5 {
-        @include abs(30.8%, 50%);
-        @include dimention(16%);
+        @include transform(translateY(80%)); // 初期位置
     }
     .elmo {
         @include abs(63.5%, 48.7%);
         @include dimention(26.6%);
+        @include transform(translateY(80%)); // 初期位置
     }
     .oscar {
         @include abs(56.5%, 68.8%);
         @include dimention(22.3%);
+        @include transform(translateY(80%)); // 初期位置
+    }
+    .cookie1 {
+        @include abs(5.8%, 36.6%);
+        @include dimention(23%);
+        @include transform(scale(.8, .8));
+        @include transform-origin(50%, 50%);
+        opacity: 0;
+    }
+    .cookie2 {
+        @include abs(31%, 25.7%);
+        @include dimention(16%);
+        @include transform(scale(.8, .8));
+        @include transform-origin(50%, 50%);
+        opacity: 0;
+    }
+    .cookie3 {
+        @include abs(20.7%, 20.8%);
+        @include dimention(16%);
+        @include transform(scale(.8, .8));
+        @include transform-origin(50%, 50%);
+        opacity: 0;
+    }
+    .cookie4 {
+        @include abs(15.6%, 61.4%);
+        @include dimention(16%);
+        @include transform(scale(.8, .8));
+        @include transform-origin(50%, 50%);
+        opacity: 0;
+    }
+    .cookie5 {
+        @include abs(30.8%, 50%);
+        @include dimention(16%);
+        @include transform(scale(.8, .8));
+        @include transform-origin(50%, 50%);
+        opacity: 0;
     }
     .text {
         @include abs(48.7%, 37.7%);
         @include dimention(25%);
+        opacity: 0;
     }
+
+
+
+
+    // ページ表示時
+    &.startAnim {
+
+        // バート
+        .bert {
+            @include transition(all .25s ease-out 1s);
+            @include transform(translateY(0%));
+        }
+        // オスカー
+        .oscar {
+            @include transition(all .25s ease-out 1.5s);
+            @include transform(translateY(0%));            
+        }
+        // ビッグバード
+        .bigBird {
+            @include transition(all .25s ease-out 1.8s);
+            @include transform(translateY(0%));            
+        }
+        // エルモ
+        .elmo {
+            @include transition(all .25s ease-out 2.0s);
+            @include transform(translateY(0%));            
+        }
+        // テキスト
+        .text {
+            @include transition(opacity .25s ease-out 2.5s);
+            opacity: 1;
+        }
+        // クッキー達
+        .cookie1 {
+            @include transition(all .25s ease-out 2.5s);
+            @include transform(scale(1, 1));
+            opacity: 1;
+        }
+        .cookie2 {
+            @include transition(all .25s ease-out 3.0s);
+            @include transform(scale(1, 1));
+            opacity: 1;
+        }
+        .cookie3 {
+            @include transition(all .25s ease-out 3.2s);
+            @include transform(scale(1, 1));
+            opacity: 1;
+        }
+        .cookie4 {
+            @include transition(all .25s ease-out 3.4s);
+            @include transform(scale(1, 1));
+            opacity: 1;
+        }
+        .cookie5 {
+            @include transition(all .25s ease-out 3.6s);
+            @include transform(scale(1, 1));
+            opacity: 1;
+        }
+        // クッキーモンスター
+        .cookieMonster {
+            @include transition(all 1s ease-out 4.5s);
+            @include transform(translateX(0%));
+        }
+
+    }
+
+
+    .tapArea {
+        @include abs(0, 0);
+        width: 100%;
+        height: 100%;
+        background-color: rgba(255,255,255,.01);
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
