@@ -1,5 +1,7 @@
 // page07
-(function () {
+sesami.page07 = {};
+sesami.page07.init = function () {
+    console.debug('page07 init is called.');
 
     // defines.
     var 
@@ -7,7 +9,6 @@
         TOUCH_START = sesami.event.TOUCH_START,
         TOUCH_MOVE = sesami.event.TOUCH_MOVE,
         TOUCH_END = sesami.event.TOUCH_END;
-
 
 
     // Private Functions.
@@ -64,6 +65,7 @@
             var img = new Image();
             img.src = './img/page07/cookie.svg';
             img.pos = pos;
+            img.className = 'jsDummy';
             img.style.width = size + '%';
             img.style.top = (pos.y - size/2) + '%';
             img.style.left = (pos.x - size/2) + '%';
@@ -77,45 +79,22 @@
 
 
 
+    // load
+    //----------------------------
+    setTimeout(function () {
+        $page.addClass('startAnim');
+    }, 100);
+
+};
 
 
+sesami.page07.dealloc = function () {
+    // ページを離れる場合に呼び出されます.
+    // イベントのアンバインドやタイマーの削除を、ここで行ってください.
+    console.debug('page07 dealloc is called.');
 
+    var $page = $('[data-page="7"]');
+    $page.removeClass('startAnim');
+    $page.find('.jsDummy').remove();
+};
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    // 2014.06.01 ムネ
-    // すみません、共通処理として以下を追加させてください.
-    // ページ表示時、離脱時に呼び出すインターフェースを追加します.
-    // ページの切り替わり時に共通部分から呼び出しますので、必要な処理がありましたら、記述をお願いします.
-    //
-    sesami.page07 = {};
-    sesami.page07.init = function () {
-        console.debug('page07 init is called.');
-
-        // $page = $('[data-page="7"]');
-
-        setTimeout(function () {
-            $page.addClass('startAnim');
-        }, 500);
-    };
-    sesami.page07.dealloc = function () {
-        // ページを離れる場合に呼び出されます.
-        // イベントのアンバインドやタイマーの削除を、ここで行ってください.
-        console.debug('page07 dealloc is called.');
-
-        $page.removeClass('startAnim');
-    };
-
-})();
