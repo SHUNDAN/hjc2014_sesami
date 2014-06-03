@@ -26,12 +26,13 @@ var userAgent = navigator.userAgent.toLowerCase();
 console.debug('[userAgent]', userAgent);
 sesami.isIphone = userAgent.indexOf('iphone') + 1;
 sesami.isIphone7_1 = sesami.isIphone && userAgent.indexOf('os 7_1') !== -1;
+sesami.isIpad = userAgent.indexOf('ipad') + 1;
 sesami.isAndroid = userAgent.indexOf('android') + 1;
 
 
 
 // iPhoneとAndroidではスクロールを禁止する.
-if (sesami.isIphone || sesami.isAndroid) {
+if (sesami.isIphone || sesami.isAndroid || sesami.isIpad) {
     document.body.addEventListener('touchmove', function (e) {
         e.preventDefault();
     })
