@@ -18,7 +18,7 @@ sesami.page07.init = function () {
         var pageWidth = $page.width();
         var pageHeight = $page.height();
 
-        if (eventObject.type === 'mouseup') {
+        if (eventObject.type === 'mousedown') {
             var offsetX = eventObject.offsetX;
             var offsetY = eventObject.offsetY;
             return [{
@@ -55,6 +55,7 @@ sesami.page07.init = function () {
 
 
     // クッキーをいっぱい貼付ける
+    // TODO アンバインドもする.
     $page.find('.tapArea')[0].addEventListener(TOUCH_START, function (e) {
         var posArray = getPoses(e);
         var sizeArray = getSizes(posArray.length);
