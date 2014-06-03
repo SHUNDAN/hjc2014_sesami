@@ -16,7 +16,15 @@ var goPage = function (pageNo) {
     $('[data-page]').addClass('hidden');
     $('[data-page="' + pageNo + '"]').removeClass('hidden');
 };
-
+var image2base64 = function (img) {
+    var canvas = document.createElement('canvas');
+    canvas.width = img.width;
+    canvas.height = img.height;
+    var context = canvas.getContext('2d');
+    context.drawImage(img, 0, 0, img.width, img.height);
+    var base64 = canvas.toDataURL();
+    return base64;
+}
 
 
 
@@ -51,16 +59,16 @@ $('.jsFileSelect').on('change', function (e) {
 
   //not image
   if(!(file.type == 'image/jpeg' || file.type == 'image/png')){
-    console.log('画像じゃないよ');
+    alert('画像をアップロードしてください.');
     return false;
   }
 
   var fileReader = new FileReader();
 
-  fileReader.onloadend = function(e){
-      tmp.uploadFileUrl = e.target.result;
-      goPage(3);
+  fileReader.onloadend = function(e) {
 
+      // 画像をグローバル変数にキャッシュしておく.
+      tmp.uploadFileUrl = e.target.result;
 
       // 画像をページにプレビュー表示する
       var image = new Image();
@@ -84,7 +92,8 @@ $('.jsFileSelect').on('change', function (e) {
           $('.jsUploadPhoto').empty().append(this);
       }
 
-
+      // ページ遷移
+      goPage(3);
   };
   fileReader.readAsDataURL(file);
 
@@ -100,6 +109,8 @@ $('.jsFrameSelect img').on('click', function () {
     frame.className = 'frame';
     $figure.find('.frame').remove();
     $figure.append(frame);
+
+    // TODO フレームが未選択にならないように、する.
 });
 
 
@@ -142,6 +153,7 @@ $('.jsUpload').on('click', function () {
 
 
         // 制作した画像を取得します（仮です）
+        // 本当は、合成した画像を取得します
         var $frameImage;
         var $userImage;
         var $images = $('.jsUploadPhoto img');
@@ -159,87 +171,36 @@ $('.jsUpload').on('click', function () {
 
 
 
+        // 下記データは、画像に書き込んだ状態で、画像をアップロードしてください.
+        // // 子供の名前を取得します（仮です）
+        // var childName = 'かほ';
+        // // 現在日付を取得します（仮です）
+        // var now = new Date();
+        // var dateString = now.getFullYear() + '/' + (now.getMonth() + 1) + '/' + now.getDate();
 
-        // 子供の名前を取得します（仮です）
-        var childName = 'かほ';
 
-        // 現在日付を取得します（仮です）
-        var now = new Date();
-        var dateString = now.getFullYear() + '/' + (now.getMonth() + 1) + '/' + now.getDate();
 
-        // debug
-        console.debug('[yesbtn]', img, childName, dateString);
-
-        // base64で送信.（仮です）
-        var canvas = document.createElement('canvas');
-        canvas.width = img.width;
-        canvas.height = img.height;
-        var context = canvas.getContext('2d');
-        context.drawImage(img, 0, 0, img.width, img.height);
-        var base64 = canvas.toDataURL();
+        // 送信するためにbase64に変換する.
+        var base64 = image2base64(img);
         console.debug('base64', base64);
 
         // 送信内容を作成します
         // サーバー側で以下のキーを使いますので、ここは変えない.
         var formData = new FormData();
-        formData.append('childName', childName);
-        formData.append('date', dateString);
         formData.append('base64', base64);  // 最終的にはPNGデータでアップしてください.
 
 
         // 送ります.
         var xhr = new XMLHttpRequest();
-        xhr.open('POST', './api/create.php'); // TODO Apache設定にて、修飾子は出さない対応
+        xhr.open('POST', './api/create.php');
         xhr.onload = function () {
             if (this.status === 200) {
+
+                // 結果は別ページで表示する.
+                // FacebookボタンのJsからの生成ができずPHPの力を使いたいため.
                 var uniqueKey = this.responseText;
-
-
-                // FacebookシェアボタンをJSから動的には生成できないので、
-                // PHPでの出力を行う.
                 var url = './create2.php?key=' + uniqueKey;
                 location.href = url;
-
-
-
-                // var url1 = './share?key=' + uniqueKey;
-                // var url2 = 'http://yoheim.net/app/sesami-book/share?key=' + uniqueKey;
-
-
-                // // 仮。本当は合成画像を表示してください。
-                // $('.jsUploadPhoto3').append($frameImage).append($userImage);
-
-                // $('.jsFacebookShare').attr('href', url2);
-
-
-                // goPage(6);
-
-
-
-                // // TODO このキーを使って、ユニークなURLを作成します.
-                // console.debug('key=', uniqueKey);
-
-                // var url1 = './share?key=' + uniqueKey;
-                // var url2 = 'http://yoheim.net/app/sesami-book/share?key=' + uniqueKey;
-                // var a = document.createElement('a');
-                // a.href = url1;
-                // a.innerHTML = url2;
-
-                // var $div = document.querySelector('#result');
-                // $div.innerHTML = '<p>画面ができたよ！以下の画面をFacebookでシェアしよう！</p>';
-                // $div.innerHTML += '<input type="button" value="Facebookでシェアする(未実装ボタン)"/><br>';
-                // $div.appendChild(a);
-
-                // var iframe = document.createElement('iframe');
-                // iframe.src = url1;
-                // iframe.width = 1000;
-                // iframe.height = 1000;
-                // iframe.style['-webkit-transform'] = 'scale(.5,.5)';
-                // iframe.style['-webkit-transform-origin'] = '0% 0%';
-                // $div.appendChild(iframe);
-
-
-                // TODO この後、Facebookでシェアする機能を表示する.
             }
         }
         xhr.send(formData);
