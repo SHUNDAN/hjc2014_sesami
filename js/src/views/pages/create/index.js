@@ -184,11 +184,6 @@ $('.jsUpload').on('click', function () {
         var base64 = image2base64(img);
         console.debug('base64', base64);
 
-        // 送信内容を作成します
-        // サーバー側で以下のキーを使いますので、ここは変えない.
-        // var formData = new FormData();
-        // formData.append('base64', base64);  // 最終的にはPNGデータでアップしてください.
-
 
         // 送ります.
         $.ajax({
@@ -207,20 +202,6 @@ $('.jsUpload').on('click', function () {
                 alert('ごめんなさい><。エラーが発生しました。\n時間を置いてから再度お試しください.');
             }
         });
-        // var xhr = new XMLHttpRequest();
-        // xhr.open('POST', './api/create.php');
-        // xhr.onload = function () {
-        //     if (this.status === 200) {
-
-        //         // 結果は別ページで表示する.
-        //         // FacebookボタンのJsからの生成ができずPHPの力を使いたいため.
-        //         var uniqueKey = this.responseText;
-        //         var url = './create2.php?key=' + uniqueKey;
-        //         location.href = url;
-        //     }
-        // }
-        // xhr.send(formData);
-
 
 });
 
