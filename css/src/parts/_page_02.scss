@@ -1,11 +1,19 @@
 // アニメーションのKeyframes
-@include keyframes (page02_dummy) {
-    0%   { @include rotateZ(0deg); }
-    30%  { @include rotateZ(5deg); }
-    50%  { @include rotateZ(-15deg); }
-    65%  { @include rotateZ(-10deg); }
-    80%  { @include rotateZ(-12deg); }
-    100% { @include rotateZ(0deg); }
+@include keyframes (page02_CookieMonster_hand) {
+  0%   { @include rotateZ(0deg); }
+  30%  { @include rotateZ(5deg); }
+  50%  { @include rotateZ(-15deg); }
+  65%  { @include rotateZ(-10deg); }
+  80%  { @include rotateZ(-12deg); }
+  100% { @include rotateZ(0deg); }
+}
+@include keyframes (page02_CookieMonster_hand_move) {
+  0%   { @include rotateZ(0deg); }
+  30%  { @include rotateZ(5deg); }
+  50%  { @include rotateZ(-15deg); }
+  65%  { @include rotateZ(-10deg); }
+  80%  { @include rotateZ(-12deg); }
+  100% { @include rotateZ(0deg); }
 }
 
 
@@ -13,4 +21,122 @@
 // スタイルの指定
 [data-page="2"] {
     // ここにスタイルを記入.
+
+    // Cookie Monster
+    // ------------------------------------------------------
+    // ベースポジション
+    .cookie-monster {
+      position: relative;
+      width: 25%;
+      height: 70%;
+      top: 15%;
+      left: 10%;
+    }
+    // 身体
+    .cookie-monster__body{
+      width: 100%;
+      @include abs(0, 0);
+    }
+    // 目
+    .cookie-monster__eye{
+      width: 20%;
+      @include abs(4%, 44%);
+    }
+    // おくち
+    .cookie-monster__mouse{
+      width: 44%;
+      @include abs(14.5%, 36%);
+    }
+    // 手＋クッキー
+    .cookie-monster__hand{
+      width: 90%;
+      @include abs(28%, 43%);
+      @include animation(page02_CookieMonster_hand 1s infinite);
+      @include transform-origin( 0, 100% );
+    }
+    // 手＋クッキーの動線
+    .cookie-monster__move{
+      width: 23%;
+      @include abs(20%, 92%);
+      @include animation(page02_CookieMonster_hand_move 1s infinite);
+      @include transform-origin( 0, 100% );
+    }
+    // クッキーのかけら
+    .cookie-monster__tips-1{
+      width: 10%;
+      @include abs(56%, 95%);
+    }
+    .cookie-monster__tips-2{
+      width: 12%;
+      @include abs(53%, 103%);
+    }
+    // 涙　左
+    .cookie-monster__tear-l-1{
+      width: 20%;
+      @include abs(2%, 10%);
+    }
+    .cookie-monster__tear-l-2{
+      width: 13%;
+      @include abs(8%, 8%);
+    }
+    .cookie-monster__tear-l-3{
+      width: 13%;
+      @include abs(8%, -4%);
+    }
+    // 涙　右
+    .cookie-monster__tear-r-1{
+      width: 20%;
+      @include abs(2%, 76%);
+    }
+    .cookie-monster__tear-r-2{
+      width: 13%;
+      @include abs(8%, 86%);
+    }
+    .cookie-monster__tear-r-3{
+      width: 13%;
+      @include abs(7%, 98%);
+    }
+
+
+    // 水たまり＋クッキー
+    // ------------------------------------------------------
+    // ベースポジション
+    .pool {
+      position: relative;
+      width: 40%;
+      height: 36%;
+      bottom: 18%;
+      left: 33%;
+    }
+    // みずたまり
+    .pool__water{
+      width: 100%;
+      @include abs(0, 0);
+    }
+    // クッキー共通
+    .pool__cookie {
+      width: 100%;
+    }
+    // 動線共通
+    .pool__cookie-move--1 {
+      width: 30%;
+      @include abs(-6%, -15%);
+    }
+    .pool__cookie-move--2 {
+      width: 60%;
+      @include abs(76%, 47%);
+    }
+    // クッキーの位置
+    .pool__cookie--1{
+      width: 20%;
+      @include abs(30%, 33%);
+    }
+    .pool__cookie--2{
+      width: 20%;
+      @include abs(18%, 55%);
+    }
+    .pool__cookie--3{
+      width: 20%;
+      @include abs(55%, 55%);
+    }
 }
