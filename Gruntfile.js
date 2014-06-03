@@ -73,6 +73,11 @@ module.exports = function(grunt) {
           {expand: true, src: ['./*.html'], dest: 'release/'}
         ]
       },
+      php: {
+        files: [
+          {expand: true, src: ['./*.php'], dest: 'release/'}
+        ]
+      },
       img: {
         files: [
           {expand: true, cwd:'img/', src: ['**/*'], dest: 'release/img'}
@@ -118,6 +123,7 @@ module.exports = function(grunt) {
           './img/**/*.gif',
           './img/**/*.svg',
           './*.html',
+          './*.php',
           './api/**/*.php',
           '.htaccess'
 

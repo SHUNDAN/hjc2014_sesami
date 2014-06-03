@@ -7,10 +7,25 @@
     <link href='http://fonts.googleapis.com/css?family=Montserrat:700' rel='stylesheet' type='text/css'>
 </head>
 <body>
+
+
+<!--Facebook Shareボタン用-->
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/ja_JP/sdk.js#xfbml=1&appId=234055280083084&version=v2.0";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+
+
 <div id="container">
 
     <!--表紙-->
-    <div class="page hidden" data-page="1">
+    <div class="page" data-page="1">
         <h1>自分だけのオリジナル写真を作って<br>Facebookで共有しよう!!</h1>
         <div class="description">
             このページでは、お気に入りの写真とすばらしい絵本のフレームを組み合わせて自分だけのオリジナル写真を作ることができます。
@@ -70,14 +85,28 @@
                 お子様の名前を写真に入力することができます。<br>makiのように英数字で入力すると綺麗になるよ!<br>（任意入力です）
             </div>
             <input type="text" class="inputName" placeholder="例：Yohei"/>
-            <input type="button" class="button jsNextPage" value="これで決まり!"/>
+            <input type="button" class="button jsGotoConfirmPage" value="これで決まり!"/>
         </div>
     </div>
 
     <!--確認画面-->
-    <div class="page" data-page="5">
+    <div class="page hidden" data-page="5">
         <h1>できたよ!これで大丈夫？</h1>
+        <figure class="uploadPhoto2 jsUploadPhoto2"><!--アップロードされたファイルがここに挿入されます--></figure>
+        <div style="font-size:10px; text-align:right;">※本当は日付とか名前も入ります。</div>
+        <div class="btn2Col">
+            <input type="button" class="button jsRest" value="やり直す"/>
+            <input type="button" class="button jsUpload red" value="OK"/>
+        </div>
+    </div>
 
+    <!--完了ページ-->
+    <div class="page hidden" data-page="6">
+        <h1>写真ができたよ!!</h1>
+        <figure class="uploadPhoto3 jsUploadPhoto3"><!--アップロードされたファイルがここに挿入されます--></figure>
+        <a href="http://www.facebook.com/share.php?u=共有したいＵＲＬ" class="jsFacebookShare" onclick="window.open(this.href, 'FBwindow', 'width=650, height=450, menubar=no, toolbar=no, scrollbars=yes'); return false;">シェア</a>
+        <!-- <div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-type="button"></div> -->
+        <a href="#" class="downloadLink jsDownload">ダウンロードする</a>
     </div>
 
 </div>
@@ -85,21 +114,16 @@
 
 
 
+
+
+
+
+
+
+
+
+
 <!--
-  ・写真をアップする
-  ・フレームを選ぶ
-  ・名前を入力する
--->
-
-
-
-
-
-
-
-
-
-
 
 <br>
 <br>
@@ -180,6 +204,8 @@
 <br>
 <br>
 <br>
+-->
+
 
 <script type="text/javascript" src="./js/libs/all-libs.js"></script>
 <script type="text/javascript" src="./js/create.js"></script>
