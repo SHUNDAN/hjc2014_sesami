@@ -21,7 +21,6 @@ module.exports = function(grunt) {
       // JS
       all: {
         src: [
-          // 最小限のものなので、適宜修正をお願いします（宗）
           './js/src/core/*.js',
           './js/src/views/pages/page_00/*.js',
           './js/src/views/pages/page_01/*.js',
@@ -36,11 +35,17 @@ module.exports = function(grunt) {
         dest: './release/js/all.js'
       },
       share: {
-        src: ['./js/src/views/pages/share/*.js'],
+        src: [
+          './js/src/core/00_common.js',
+          './js/src/views/pages/share/*.js'
+        ],
         dest: './release/js/share.js'
       },
       create: {
-        src: ['./js/src/views/pages/create/*.js'],
+        src: [
+          './js/src/core/00_common.js',
+          './js/src/views/pages/create/*.js'
+        ],
         dest: './release/js/create.js'
       },
       notfound: {

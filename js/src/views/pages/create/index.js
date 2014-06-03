@@ -6,6 +6,119 @@
 // オリジナル写真作成 & Facebook共有ページ
 //
 
+
+// Private Functions
+//-------------------------------------------
+var getCurrentPageNo = function (element) {
+  return $(element).parents('[data-page]').data('page');
+}
+var goPage = function (pageNo) {
+    $('[data-page]').addClass('hidden');
+    $('[data-page="' + pageNo + '"]').removeClass('hidden');
+};
+
+
+
+
+
+
+
+// ボタンアクションの定義
+//-------------------------------------------
+$('.jsNextPage').on('click', function () {
+    var currentPage = getCurrentPageNo(this);
+    goPage(currentPage + 1);
+    $(window).scrollTop(0);
+});
+$('.jsPrevPage').on('click', function () {
+    var currentPage = getCurrentPageNo(this);
+    goPage(currentPage - 1);
+    $(window).scrollTop(0);
+});
+
+
+// 仮です（ファイルアップロードするところ）
+var tmp = {};
+$('.jsFileSelect').on('change', function (e) {
+
+  var file;
+  //Drop || file
+  if(e.originalEvent.dataTransfer){
+    file = e.originalEvent.dataTransfer.files[0];
+  }else{
+    file = $(this)[0].files[0];
+  }
+
+  //not image
+  if(!(file.type == 'image/jpeg' || file.type == 'image/png')){
+    console.log('画像じゃないよ');
+    return false;
+  }
+
+  var fileReader = new FileReader();
+
+  fileReader.onloadend = function(e){
+      tmp.uploadFileUrl = e.target.result;
+      goPage(3);
+
+
+      // 画像をページにプレビュー表示する
+      var image = new Image();
+      image.src = tmp.uploadFileUrl;
+      image.onload = function () {
+
+          // 写真の中央表示の調整
+          var w = this.width;
+          var h = this.height;
+          if (w < h) { // 縦長
+              this.width = 300;
+              var h = (h / w) * 300 - 300;
+              this.style.marginTop = h/2 * -1 + 'px';
+          } else { // 横長
+              this.height = 300;
+              var w = (w / h) * 300 - 300;
+              this.style.marginLeft = w/2 * -1 + 'px';
+          }
+
+          // DOMにアペンド
+          $('.jsUploadPhoto').empty().append(this);
+      }
+
+
+  };
+  fileReader.readAsDataURL(file);
+
+});
+
+
+
+// フレーム選択
+$('.jsFrameSelect img').on('click', function () {
+
+    var $figure = $('.jsUploadPhoto');
+    var frame = $(this)[0].cloneNode(true);
+    frame.className = 'frame';
+    $figure.find('.frame').remove();
+    $figure.append(frame);
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 sesami.create = sesami.create || {};
 
 sesami.create = function(){
