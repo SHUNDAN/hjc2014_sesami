@@ -21,31 +21,107 @@ sesami.page04.init = function () {
     // 砂糖（タップ）
     $page.on(TOUCH_END, '.tapSuger', function () {
         console.debug('[tapSuger]');
-        $(this).addClass('anim');
+        $(this).addClass('hidden');
         $('.sugerArea').addClass('anim');
     });
 
     // たまご（タップ）
     $page.on(TOUCH_END, '.tapEgg', function () {
         console.debug('[tapEgg]');
-        $(this).addClass('anim');
+        $(this).addClass('hidden');
         $('.eggArea').addClass('anim');
     });
 
     // 小麦粉（タップ）
     $page.on(TOUCH_END, '.tapFlour', function () {
         console.debug('[tapFlour]');
-        $(this).addClass('anim');
+        $(this).addClass('hidden');
         $('.flourArea').addClass('anim');
     });
 
     // チョコ（タップ）
     $page.on(TOUCH_END, '.tapChoco', function () {
         console.debug('[tapChoco]');
-        $(this).addClass('anim');
+        $(this).addClass('hidden');
         $('.chocoArea').addClass('anim');
     });
 
+    // ボール（タップ）
+    var DIFF = 135;
+    var count = 0;
+    $page.on(TOUCH_END, '.tapBowl', function () {
+        count++;
+        $page
+            .find('.materialArea')
+            .css({
+                'transform' : 'rotateZ(' + (DIFF * count) + 'deg)',
+                '-webkit-transform' : 'rotateZ(' + (DIFF * count) + 'deg)',
+                '-moz-transform' : 'rotateZ(' + (DIFF * count) + 'deg)',
+                '-ms-transform' : 'rotateZ(' + (DIFF * count) + 'deg)',
+            });
+    });
+    var orgnPos;
+    var times = 0;
+    var calcDistance = function (p1, p2) {
+        if (!p1 || !p2) {
+            return 0;
+        }
+        return Math.sqrt(Math.pow(p1.x - p2.x, 2) + Math.pow(p1.y - p2.y, 2));
+    }
+    $page.on(TOUCH_START, '.tapBowl', function (e) {
+        if (e.type === 'touchstart') {
+            var touch = e.originalEvent.touches[0];
+            orgnPos = {
+                x: touch.pageX,
+                y: touch.pageY
+            }
+        
+        } else {
+            orgnPos = {
+                x: e.pageX,
+                y: e.pageY
+            }
+        }
+    }).on(TOUCH_MOVE, '.tapBowl', function (e) {
+        if (!orgnPos && e.type === 'mousemove') {
+            orgnPos = {
+                x: e.pageX,
+                y: e.pageY
+            };
+            return;
+        }
+        if (++times % 10 !== 0) {
+            return;
+        }
+        if (e.type === 'touchmove') {
+            var touch = e.originalEvent.touches[0];
+            var curPos = {
+                x: touch.pageX,
+                y: touch.pageY
+            };
+        } else {
+            var curPos = {
+                x: e.pageX,
+                y: e.pageY
+            };
+        }
+
+        var distance = calcDistance(orgnPos, curPos);
+        console.debug(distance, e);
+        if (distance > 30) {
+            orgnPos = curPos;
+            count++;
+            $page
+                .find('.materialArea')
+                .css({
+                    'transform' : 'rotateZ(' + (DIFF * count) + 'deg)',
+                    '-webkit-transform' : 'rotateZ(' + (DIFF * count) + 'deg)',
+                    '-moz-transform' : 'rotateZ(' + (DIFF * count) + 'deg)',
+                    '-ms-transform' : 'rotateZ(' + (DIFF * count) + 'deg)',
+                });                
+        }
+
+    });
 
 
 
