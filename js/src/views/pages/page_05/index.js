@@ -31,12 +31,16 @@ sesami.page05.init = function () {
 
 
     // 型抜き
+    var radian = 0;
     var addRandomStyle = function (element) {
 
+        radian += 1.2;
         // var signX = (Math.random() < .4 ? 1 : -1);
         // var signY = (Math.random() < .4 ? 1 : -1);
-        var deltaX = Math.random() * 150 - 100;
-        var deltaY = Math.random() * 200 - 150;
+        // var deltaX = Math.random() * 150 - 100;
+        // var deltaY = Math.random() * 200 - 150;
+        var deltaX = Math.random() * Math.cos(radian) * 100;
+        var deltaY = Math.random() * Math.sin(radian) * 100;
         var scale  = Math.max(10, Math.random() * 4 * 10);
         var transform = 'translate('+deltaX+'%, '+deltaY+'%)';
 
