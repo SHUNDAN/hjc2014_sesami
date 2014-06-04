@@ -8,8 +8,8 @@ sesami.page05.init = function () {
         $page = $('[data-page="5"]'),
         TOUCH_START = sesami.event.TOUCH_START,
         TOUCH_MOVE = sesami.event.TOUCH_MOVE,
-        TOUCH_END = sesami.event.TOUCH_END
-        ;
+        TOUCH_END = sesami.event.TOUCH_END,
+        CookieManager = sesami.CookieManager;
 
 
     var selectType = 1;
@@ -61,6 +61,8 @@ sesami.page05.init = function () {
             setTimeout(function () {
                 addRandomStyle(self);
             }, 1);
+
+            CookieManager.addCookieCount(selectType);
 
             selectType++;
             if (selectType > 3) {
