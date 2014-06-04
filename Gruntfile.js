@@ -153,6 +153,7 @@ module.exports = function(grunt) {
       var html = fs.readFileSync('./index.html', 'utf-8');
       var template = fs.readFileSync('./release/template.html', 'utf-8');
       html = html.replace('{{template}}', template);
+      html = html.replace(/{{version}}/g, new Date().getTime());
 
       fs.writeFileSync('./release/index.html', html, 'utf-8');
   });

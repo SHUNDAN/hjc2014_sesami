@@ -29,7 +29,7 @@ sesami.page07.init = function () {
         } else { // touch event.
 
             var posArray = [];
-            var touches = eventObject.touches;
+            var touches = eventObject.originalEvent.touches;
             for (var i = 0; i < touches.length; i++) {
                 var touch = touches[i];
                 console.debug('touch', touch);
@@ -53,10 +53,10 @@ sesami.page07.init = function () {
     }
 
 
-
     // クッキーをいっぱい貼付ける
     // TODO アンバインドもする.
-    $page.find('.tapArea')[0].addEventListener(TOUCH_START, function (e) {
+    $page.find('.tapArea').on(TOUCH_START, function (e) {
+        console.debug('[cookie]');
         var posArray = getPoses(e);
         var sizeArray = getSizes(posArray.length);
         for (var i = 0; i < posArray.length; i++) {
@@ -76,7 +76,7 @@ sesami.page07.init = function () {
                 $(this).insertBefore('[data-page="7"] .tapArea');
             }
         }
-    }, false);
+    });
 
 
 
