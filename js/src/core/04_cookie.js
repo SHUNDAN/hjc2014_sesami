@@ -13,7 +13,7 @@
             this['numOfCookie' + type]++;
         },
 
-        getCookieRaito: function (type) {
+        getRaito: function (type) {
             var num = this['numOfCookie' + type];
             var sum = this.numOfCookie1 + this.numOfCookie2 + this.numOfCookie3;
             return num / sum;
