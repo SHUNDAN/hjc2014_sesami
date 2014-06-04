@@ -16,6 +16,7 @@ sesami.page05.init = function () {
 
     // 型選択
     var changeKata = function (targetType) {
+
         $page
             .find('.kataArea')
             .removeClass('select');
@@ -24,7 +25,10 @@ sesami.page05.init = function () {
             .find('.kataArea.type' + selectType)
             .addClass('select');        
     }
+
+    var userSelect = false;
     $page.on(TOUCH_END, '.tapAreaKata', function () {
+        userSelect = true;
         selectType = $(this).data('type');
         changeKata(selectType);
     });
@@ -68,11 +72,13 @@ sesami.page05.init = function () {
 
             CookieManager.addCookieCount(selectType);
 
-            selectType++;
-            if (selectType > 3) {
-                selectType = 1;
+            if (userSelect === false) {
+                selectType++;
+                if (selectType > 3) {
+                    selectType = 1;
+                }
+                changeKata(selectType);                
             }
-            changeKata(selectType);
         };
 
 
