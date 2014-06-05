@@ -45,6 +45,22 @@
         pageObject &&  pageObject.dealloc && pageObject.dealloc();
         var pageObject = sesami['page0' + nextPageNo];
         pageObject && pageObject.init && pageObject.init();
+
+
+        // さらに次をプリロード
+        var nextNext = nextPageNo + 1;
+        if (nextNext > MAX_PAGE) {
+            nextNext = 0;
+        }
+        preloadPage(nextNext);
+
+    };
+    var preloadPage = function (pageNo) {
+        setTimeout(function () {
+            console.debug('[preloadPage]', pageNo);
+            var snipet = $('#template_page_' + get2DigitPageNo(pageNo)).html();
+            $(snipet);
+        }, 1000);
     };
 
 
@@ -80,6 +96,7 @@
 
         showPageAt(nextPage, sesami.currentPage);
         sesami.currentPage = nextPage;
+
     });
 
 
