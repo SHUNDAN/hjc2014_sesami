@@ -33,7 +33,7 @@
 
             console.debug('[adjustSize]', ch, cw);
 
-            $('[data-page]').css({
+            $('#page').css({
                 'width': cw, 
                 'height': ch,
                 // 'background-size': cw + 'px ' + ch + 'px'

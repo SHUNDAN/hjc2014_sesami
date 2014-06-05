@@ -3,31 +3,49 @@
 //
 ;(function () {
 
+    var 
+        MIN_PAGE = 0,
+        MAX_PAGE = $('.pageTemplate').length - 1, // 0ページから始めるので -1 する
+        $pageContainer = $('#page');
+
 
     // Private Functions.
     //-------------------------------------
+    var get2DigitPageNo = function (pageNo) {
+        if (pageNo >= 10) {
+            return pageNo;
+        } else {
+            return '0' + pageNo;
+        }
+    };
     var showPageAt = function (nextPageNo, currentPageNo) {
 
-        $('[data-page]').addClass('hidden');
-        $('[data-page="' + nextPageNo + '"]').removeClass('hidden');
+        // 現在のページ
+        var $currentPage = $('#container').find('[data-page="' + currentPageNo + '"]');
+
+        // 次のページ
+        var snipet = $('#template_page_' + get2DigitPageNo(nextPageNo)).html();
+        var $nextPage = $(snipet).removeClass('hidden');
+
+        // 現在のページは閉じる
+        $currentPage.remove();
+
+        // 次のページを表示する
+        $pageContainer.append($nextPage);
+
+        // ハッシュを変えておいて・・・
         location.hash = "page=" + nextPageNo;
 
         // 仮.
         // var bgmType = Math.abs(nextPageNo % 4) + 1;
         // sesami.bgmSound.play(bgmType);
 
-        // Init, Dealloc.
+        // 初期化と廃棄.
         var pageObject = sesami['page0' + currentPageNo];
         pageObject &&  pageObject.dealloc && pageObject.dealloc();
         var pageObject = sesami['page0' + nextPageNo];
         pageObject && pageObject.init && pageObject.init();
-
     };
-
-
-
-
-
 
 
 
@@ -55,16 +73,13 @@
     // 次ページへ
     $('#nextPageBtn').on('click', function () {
 
-        var currentPage = sesami.currentPage;
-
-        var content = $('[data-page="' + (sesami.currentPage+1) + '"]');
-        if (content.length === 0) {
-            content = $('[data-page="0"]');
-            sesami.currentPage = -1;
+        var nextPage = sesami.currentPage + 1;
+        if (nextPage > MAX_PAGE) {
+            nextPage = 0;
         }
-        sesami.currentPage++;
 
-        showPageAt(sesami.currentPage, currentPage);
+        showPageAt(nextPage, sesami.currentPage);
+        sesami.currentPage = nextPage;
     });
 
 
@@ -73,16 +88,13 @@
     // 前ページへ
     $('#prevPageBtn').on('click', function () {
 
-        var currentPage = sesami.currentPage;
-
-        var content = $('[data-page="' + (sesami.currentPage-1) + '"]');
-        if (content.length === 0) {
-            content = $('[data-page="8"]'); // 決め打ち
-            sesami.currentPage = 9;
+        var prevPage = sesami.currentPage - 1;
+        if (prevPage < MIN_PAGE) {
+            prevPage = MAX_PAGE;
         }
-        sesami.currentPage--;
 
-        showPageAt(sesami.currentPage, currentPage);
+        showPageAt(prevPage, sesami.currentPage);
+        sesami.currentPage = prevPage;
     });
 
 

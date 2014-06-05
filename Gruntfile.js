@@ -150,12 +150,32 @@ module.exports = function(grunt) {
   // tasksディレクトリでの定義ってどうするんでしたっけ？(ムネ)
   grunt.registerTask('build-index-html', 'description', function () {
 
+      // 書き込み対象を取得
       var html = fs.readFileSync('./index.html', 'utf-8');
-      var template = fs.readFileSync('./release/template.html', 'utf-8');
-      html = html.replace('{{template}}', template);
+
+
+      // テンプレートの生成
+      // 1つずつ違うscriptタグでテンプレートを作る.
+      // そうしないと画像の読み込みを制御しきれない・・・
+      var snipet = '';
+      var baseDir = './template/pages/';
+      var files = fs.readdirSync(baseDir);
+      files.forEach(function (file) {
+          if (fs.lstatSync(baseDir + file).isDirectory()) {
+              var content = fs.readFileSync(baseDir + file + '/index.html', 'utf-8');
+              snipet += '<script type="text/template" id="template_'+file+'" class="pageTemplate">' + content + '</script>';
+          }
+      });
+      html = html.replace('{{template}}', snipet);
+
+
+      // バージョンの指定
       html = html.replace(/{{version}}/g, new Date().getTime());
 
+
+      // 書き込み
       fs.writeFileSync('./release/index.html', html, 'utf-8');
+
   });
 
 
