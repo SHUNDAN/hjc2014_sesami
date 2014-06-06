@@ -54,7 +54,8 @@ sesami.page05.init = function () {
                 '-moz-transform': transform,
                 '-ms-transform': transform,
                 'transform': transform,
-                'width': scale + '%'
+                'width': scale + '%',
+                'height': 'auto'
             });
     };
     $page.on(TOUCH_END, '.tapAreaBase', function () {

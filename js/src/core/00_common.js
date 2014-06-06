@@ -4,6 +4,12 @@
 // なんかファイル名をいい感じにしたい
 (function () {
 
+// ie対応
+if (!console.debug) {
+    console.debug = console.log;
+}
+
+
 
 // namespace.
 var sesami = window.sesami = window.sesami || {};

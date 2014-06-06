@@ -71,6 +71,7 @@ sesami.page07.init = function () {
             img.pos = pos;
             img.className = 'jsDummy';
             img.style.width = size + '%';
+            img.style.height = 'auto';
             img.style.top = (pos.y - size/2) + '%';
             img.style.left = (pos.x - size/2) + '%';
             img.style.position = 'absolute';

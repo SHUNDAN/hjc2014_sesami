@@ -11,11 +11,13 @@
 
 
     <!--ページ-->
-    <div id="page" class="page"></div>
+    <div id="page" class="page">
+        <img class="book" src="./img/book.svg?_={{version}}"/>
+    </div>
 
     <!--テンプレート-->
     {{template}}
-    
+
 
     <!--とりあえずの実装です-->
     <div id="nextPageBtn" style="width:10%; height:10%; background-color:blue; position:absolute; bottom:10px; right:10px; color:white;">
@@ -30,7 +32,7 @@
 <script>
     window.appVersion = {{version}};
 </script>
-<script type="text/javascript" src="./js/libs/all-libs.js"></script>
+<script type="text/javascript" src="./js/libs/all-libs.js?_={{version}}"></script>
 <script type="text/javascript" src="./js/all.js?_={{version}}"></script>
 
 <script>

@@ -35,15 +35,24 @@ audio {
 	left: -9999px;
 }
 
-
+.page {
+	position: relative;
+}
+.book {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
 
 // 各ページ
 .content {
-	position: relative;
+	position: absolute;
+	top: 0;
+	left: 0;
 	width: 100%;
 	height: 100%;
-	background: url("../img/book.svg") no-repeat;
-	@include background-size(100% 100%);
 }
 
 // 各ページのBookの湾曲とかを考慮した作業スペース
