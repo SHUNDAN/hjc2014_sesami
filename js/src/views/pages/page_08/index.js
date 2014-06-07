@@ -8,8 +8,12 @@ sesami.page08.init = function () {
         TOUCH_START = sesami.event.TOUCH_START,
         TOUCH_MOVE = sesami.event.TOUCH_MOVE,
         TOUCH_END = sesami.event.TOUCH_END,
+        ANIMATION_END_EVENT = 'animationend oAnimationEnd animationend webkitAnimationEnd',
+        TRANSITION_EVENT = 'transition oTransition webkitTransition';
+        TRANSITION_END_EVENT = 'oTransitionEnd mozTransitionEnd webkitTransitionEnd transitionend',
         CookieManager = sesami.CookieManager,
-        floor = Math.floor;
+        floor = Math.floor,
+        isTouch = ('ontouchstart' in window);
 
 
     // Cookieのランダム配置
@@ -36,6 +40,69 @@ sesami.page08.init = function () {
         $cookie.attr('src', './img/cookie/cookie2-'+type+'.png');
     }
 
+    var
+    $bigBirdArea = $('.jsBigBirdArea'),
+    $bigBirdMouth = $bigBirdArea.find('.bigBird-mouth_2');
+
+    setInterval(function(){
+        $bigBirdMouth.toggleClass('hidden');
+    },1000);
+
+    var
+    $oscar = $('.jsOscar'),
+    $oscarArea = $('.jsOscarArea'),
+    oscarProperty = {
+        start: [0,0],
+        page: [0,0],
+        move: [0,0],
+        anime: false
+    };
+
+    $page.hover(function() {
+        $oscar.on(TOUCH_START, function(event) {
+            event.preventDefault();
+            $(this).addClass('shake');
+            var offset = $('.jsOscarArea').offset();
+            oscarProperty.start = [offset.top,offset.left];
+            oscarProperty.page = (isTouch)? [event.originalEvent.touches[0].pageY,event.originalEvent.touches[0].pageX] : [event.pageY,event.pageX];
+        });
+
+        $oscar.on(TOUCH_MOVE, function(event) {
+            event.preventDefault();
+            oscarProperty.move = (isTouch)? [event.originalEvent.touches[0].pageY - oscarProperty.page[0],event.originalEvent.touches[0].pageX - oscarProperty.page[1]] : [event.pageY - oscarProperty.page[0],event.pageX - oscarProperty.page[1]];
+
+            console.debug('start');
+            console.log(oscarProperty.start[0]);
+
+            console.debug('move');
+            console.log(oscarProperty.move[0]);
+
+            console.debug('result');
+            console.log(oscarProperty.start[0] + oscarProperty.move[0]);
+
+            if(!isTouch) return false;
+            $oscarArea
+                .css({
+                    'top': oscarProperty.start[0] + oscarProperty.move[0],
+                    'left': oscarProperty.start[1] + oscarProperty.move[1]
+                });
+        });
+
+        $oscar.on(TOUCH_END, function(event) {
+            event.preventDefault();
+            $(this)
+                .removeClass('shake');
+
+            $oscarArea
+                .removeAttr('style')
+                .toggleClass('type2');
+
+            $oscar.toggleClass('hidden');
+
+        });
+    }, function() {
+        $oscar.off();
+    });
 
 };
 
