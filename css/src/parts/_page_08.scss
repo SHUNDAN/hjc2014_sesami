@@ -40,6 +40,13 @@
     90%   { @include translate(14px, 0px); @include rotate(8deg); opacity: 1;}
 }
 
+@include keyframes (page08_rotateY) {
+    0%   { @include rotateY(0deg);}
+    100%   { @include rotateY(180deg);}
+    100%   { @include rotateY(0deg);}
+}
+
+
 // スタイルの指定
 [data-page="8"] {
 
@@ -116,7 +123,8 @@
             // width: 16.3%;
             // @include abs(68.7%, 77.6%);
         }
-        &.shake{
+        &:active,
+        &.active{
             @include animation(page08_shake 100ms ease-in-out infinite running);
         }
         &.hidden{

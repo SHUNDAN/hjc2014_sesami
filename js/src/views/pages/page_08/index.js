@@ -55,32 +55,37 @@ sesami.page08.init = function () {
         start: [0,0],
         page: [0,0],
         move: [0,0],
-        anime: false
+        anime: 0
     };
 
     $page.hover(function() {
         $oscar.on(TOUCH_START, function(event) {
             event.preventDefault();
-            $(this).addClass('shake');
+            if(oscarProperty.anime != 0) return false;
+            oscarProperty.anime++;
+            $(this).addClass('active');
             var offset = $('.jsOscarArea').offset();
             oscarProperty.start = [offset.top,offset.left];
-            oscarProperty.page = (isTouch)? [event.originalEvent.touches[0].pageY,event.originalEvent.touches[0].pageX] : [event.pageY,event.pageX];
+            oscarProperty.page =
+            (isTouch)?
+            [event.originalEvent.touches[0].pageY,
+            event.originalEvent.touches[0].pageX] :
+            [event.pageY,
+            event.pageX];
+
         });
 
         $oscar.on(TOUCH_MOVE, function(event) {
             event.preventDefault();
-            oscarProperty.move = (isTouch)? [event.originalEvent.touches[0].pageY - oscarProperty.page[0],event.originalEvent.touches[0].pageX - oscarProperty.page[1]] : [event.pageY - oscarProperty.page[0],event.pageX - oscarProperty.page[1]];
+            if(oscarProperty.anime < 1) return false;
+            oscarProperty.anime++;
+            oscarProperty.move =
+            (isTouch)?
+            [event.originalEvent.touches[0].pageY - oscarProperty.page[0],
+            event.originalEvent.touches[0].pageX - oscarProperty.page[1]]:
+            [event.pageY - oscarProperty.page[0],
+            event.pageX - oscarProperty.page[1]];
 
-            console.debug('start');
-            console.log(oscarProperty.start[0]);
-
-            console.debug('move');
-            console.log(oscarProperty.move[0]);
-
-            console.debug('result');
-            console.log(oscarProperty.start[0] + oscarProperty.move[0]);
-
-            if(!isTouch) return false;
             $oscarArea
                 .css({
                     'top': oscarProperty.start[0] + oscarProperty.move[0],
@@ -90,9 +95,8 @@ sesami.page08.init = function () {
 
         $oscar.on(TOUCH_END, function(event) {
             event.preventDefault();
-            $(this)
-                .removeClass('shake');
-
+            oscarProperty.anime = 0;
+            $(this).removeClass('active');
             $oscarArea
                 .removeAttr('style')
                 .toggleClass('type2');
