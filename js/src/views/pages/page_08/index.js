@@ -59,6 +59,7 @@ sesami.page08.init = function () {
     };
 
     $page.hover(function() {
+        $oscar.off();
         $oscar.on(TOUCH_START, function(event) {
             event.preventDefault();
             if(oscarProperty.anime != 0) return false;
@@ -72,7 +73,6 @@ sesami.page08.init = function () {
             event.originalEvent.touches[0].pageX] :
             [event.pageY,
             event.pageX];
-
         });
 
         $oscar.on(TOUCH_MOVE, function(event) {
@@ -85,7 +85,6 @@ sesami.page08.init = function () {
             event.originalEvent.touches[0].pageX - oscarProperty.page[1]]:
             [event.pageY - oscarProperty.page[0],
             event.pageX - oscarProperty.page[1]];
-
             $oscarArea
                 .css({
                     'top': oscarProperty.start[0] + oscarProperty.move[0],
@@ -106,6 +105,7 @@ sesami.page08.init = function () {
         });
     }, function() {
         $oscar.off();
+        oscarProperty.anime = 0;
     });
 
 };
