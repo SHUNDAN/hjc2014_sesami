@@ -13,8 +13,131 @@
 // スタイルの指定
 [data-page="5"] {
     
-    .dummy {
-        @include abs(0%, 0%);
-        width: 100%;
+    // .dummy {
+    //     @include abs(0%, 0%);
+    //     width: 100%;
+    //     opacity: .5;
+    // }
+
+    // 型抜き
+    .kata1 {
+        @include abs(3%, 10%);
+        width: 19%;
     }
+    .kata1Select {
+        @include abs(3%, 10%);
+        width: 19%;
+    }
+    .kata1Text {
+        @include abs(28.5%, 12.8%);
+        width: 14%;
+    }
+    .kata2 {
+        @include abs(34%, 10%);
+        width: 19%;
+    }
+    .kata2Select {
+        @include abs(34%, 10%);
+        width: 19%;
+    }
+    .kata2Text {
+        @include abs(57.5%, 14.1%);
+        width: 10.4%;
+    }
+    .kata3 {
+        @include abs(66%, 10%);
+        width: 19%;
+    }
+    .kata3Select {
+        @include abs(66%, 10%);
+        width: 19%;
+    }
+    .kata3Text {
+        @include abs(91.3%, 14.2%);
+        width: 9.9%;
+    }
+
+    .kataArea {
+        .kata1Select, .kata2Select, .kata3Select {
+            display: none;
+        }
+        &.select {
+            .kata1Select, .kata2Select, .kata3Select {
+                display: block;
+            }
+            .kata1, .kata2, .kata3 {
+                display: none;
+            }
+        }
+    }
+
+
+
+
+
+
+
+
+    
+    // クッキー生地
+    .base {
+        @include abs(19%, 40%);
+        width: 44%;
+    }
+
+
+
+    // 型抜きしたクッキー
+    .cookieArea {
+        @include abs(0, 0);
+        width: 100%;
+        height: 100%;
+    }
+    .cookie {
+        @include abs(44%, 57%);
+        width: 10%;
+        @include transition(all .5s ease-in-out);
+    }
+
+
+
+
+
+
+    // タップエリア
+    .tapAreaKata {
+        width: 19%;
+        height: 30%;
+        background-color: rgba(255,255,255,.001);
+        &.type1 {@include abs(3%,  10%);}
+        &.type2 {@include abs(35%, 10%);}
+        &.type3 {@include abs(67%, 10%);}
+    }
+    .tapAreaBase {
+        @include abs(20%, 41%);
+        width: 43%;
+        height: 62%;
+        background-color: rgba(255,255,255,.001);
+    }
+
+
+
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

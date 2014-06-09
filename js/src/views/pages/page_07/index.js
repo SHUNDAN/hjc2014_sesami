@@ -8,7 +8,9 @@ sesami.page07.init = function () {
         $page = $('[data-page="7"]'),
         TOUCH_START = sesami.event.TOUCH_START,
         TOUCH_MOVE = sesami.event.TOUCH_MOVE,
-        TOUCH_END = sesami.event.TOUCH_END;
+        TOUCH_END = sesami.event.TOUCH_END,
+        CookieManager = sesami.CookieManager,
+        floor = Math.floor;
 
 
     // Private Functions.
@@ -55,6 +57,7 @@ sesami.page07.init = function () {
 
     // クッキーをいっぱい貼付ける
     // TODO アンバインドもする.
+    var type = 1;
     $page.find('.tapArea').on(TOUCH_START, function (e) {
         console.debug('[cookie]');
         var posArray = getPoses(e);
@@ -64,16 +67,22 @@ sesami.page07.init = function () {
             var size = sizeArray[i];
 
             var img = new Image();
-            img.src = './img/page07/cookie.svg';
+            img.src = './img/cookie/cookie2-'+type+'.png';
             img.pos = pos;
             img.className = 'jsDummy';
             img.style.width = size + '%';
+            img.style.height = 'auto';
             img.style.top = (pos.y - size/2) + '%';
             img.style.left = (pos.x - size/2) + '%';
             img.style.position = 'absolute';
 
             img.onload = function () {
                 $(this).insertBefore('[data-page="7"] .tapArea');
+            }
+
+            type++;
+            if (type === 4) {
+                type = 1;
             }
         }
     });
@@ -85,6 +94,43 @@ sesami.page07.init = function () {
     setTimeout(function () {
         $page.addClass('startAnim');
     }, 100);
+
+
+
+
+    // クッキーを差し替える（型抜きした割合で分配する）
+    // Cookieのランダム配置
+    var $cookies = $page.find('.cookie');
+    var MAX_NUM = $cookies.length;
+    var nums = [];
+    nums[0] = floor(MAX_NUM * CookieManager.getRaito(1));
+    nums[1] = floor(MAX_NUM * CookieManager.getRaito(2));
+    nums[2] = MAX_NUM - nums[0] - nums[1];
+
+    var idx = 0;
+    for (var i = 0; i < MAX_NUM; i++) {
+        var $cookie = $cookies.eq(i);
+        var type;
+        while (true) {
+            if (nums[idx]) {
+                type = idx + 1;
+                nums[idx]--;
+                break;
+            }
+            idx++;
+            idx = idx % 3;
+        }
+        $cookie.attr('src', './img/cookie/cookie2-'+type+'.png');
+    }
+
+
+
+
+
+
+
+
+
 
 };
 

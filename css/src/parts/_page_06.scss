@@ -1,10 +1,31 @@
 // アニメーションのKeyframes
-@include keyframes (page06_dummy) {
+@include keyframes (page06_box_anim) {
     0%   { @include rotateZ(0deg); }
-    30%  { @include rotateZ(5deg); }
-    50%  { @include rotateZ(-15deg); }
-    65%  { @include rotateZ(-10deg); }
-    80%  { @include rotateZ(-12deg); }
+
+    1%  { @include rotateZ(0deg); }
+    2%  { @include rotateZ(-5deg); }
+    3%  { @include rotateZ(0deg); }
+    4%  { @include rotateZ(5deg); }
+    5%  { @include rotateZ(0deg); }
+
+    31%  { @include rotateZ(0deg); }
+    32%  { @include rotateZ(-5deg); }
+    33%  { @include rotateZ(0deg); }
+    34%  { @include rotateZ(5deg); }
+    35%  { @include rotateZ(0deg); }
+
+    51%  { @include rotateZ(0deg); }
+    52%  { @include rotateZ(-5deg); }
+    53%  { @include rotateZ(0deg); }
+    54%  { @include rotateZ(5deg); }
+    55%  { @include rotateZ(0deg); }
+
+    71%  { @include rotateZ(0deg); }
+    72%  { @include rotateZ(-5deg); }
+    73%  { @include rotateZ(0deg); }
+    74%  { @include rotateZ(5deg); }
+    75%  { @include rotateZ(0deg); }
+
     100% { @include rotateZ(0deg); }
 }
 
@@ -13,9 +34,156 @@
 // スタイルの指定
 [data-page="6"] {
 
-    .dummy {
-        @include abs(0%, 0%);
+    // .dummy {
+    //     @include abs(0%, 0%);
+    //     width: 100%;
+    //     opacity: .5;
+    // }
+
+    .box {
+        @include abs(-3%, 6%);
+        width: 91%;
+    }
+    .plate {
+        @include abs(47%, 18%);
+        width: 50%;
+    }
+    .cookie {
+        &.pos1 {@include abs(54%, 29%); width: 6.5%;}
+        &.pos2 {@include abs(54%, 39.6%); width: 6.5%;}
+        &.pos3 {@include abs(54%, 50%); width: 6.5%;}
+        &.pos4 {@include abs(64%, 26.4%); width: 7%;}
+        &.pos5 {@include abs(64%, 39%); width: 7%;}
+        &.pos6 {@include abs(64%, 51%); width: 7%;}
+        &.pos7 {@include abs(73.6%, 23.6%); width: 8%;}
+        &.pos8 {@include abs(73.6%, 38%); width: 8%;}
+        &.pos9 {@include abs(73.6%, 53%); width: 8%;}
+    }
+    .num10 {
+        @include abs(29%, 17%);
+        width: 50%;
+    }
+    .num9 {
+        @include abs(29%, 17%);
+        width: 50%;
+    }
+    .num8 {
+        @include abs(29%, 17%);
+        width: 50%;
+    }
+    .num7 {
+        @include abs(29%, 17%);
+        width: 50%;
+    }
+    .num6 {
+        @include abs(29%, 17%);
+        width: 50%;
+    }
+    .num5 {
+        @include abs(29%, 17%);
+        width: 50%;
+    }
+    .num4 {
+        @include abs(29%, 17%);
+        width: 50%;
+    }
+    .num3 {
+        @include abs(29%, 17%);
+        width: 50%;
+    }
+    .num2 {
+        @include abs(29%, 17%);
+        width: 50%;
+    }
+    .num1 {
+        @include abs(29%, 17%);
+        width: 50%;
+    }
+    .chara1 {
+        @include abs(27%, 30%);
+        width: 20%;
+    }
+    .chara2 {
+        @include abs(27%, 30%);
+        width: 25%;
+    }
+    .chara3 {
+        @include abs(27%, 28%);
+        width: 28%;
+    }
+
+    
+    // プレートエリア
+    .plateArea {
+        @include abs(0, 0);
         width: 100%;
+        height: 100%;
+    }
+    &.anim {
+        .plateArea {
+            @include transition(all 1.5s ease-out 1.5s);
+            opacity: 0;
+            @include translate3d(-2%, -5%, -200px, 300px);
+        }
+    }
+
+
+    // レンジアニメーション
+    .box {
+        &.anim {
+            @include transform-origin(50%, 50%);
+            @include animation(page06_box_anim 1s ease-in-out infinite);
+        }
+    }
+
+
+    // タップエリア
+    .tapAreaCount {
+        @include abs(19%, 17%);
+        width: 52%;
+        height: 62%;
+        background-color: rgba(255,255,255,.001);
+    }
+    .tapAreaButton {
+        @include abs(23%, 70%);
+        width: 19%;
+        height: 16%;
+        background-color: rgba(255,255,255,.001);
     }
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
