@@ -49,5 +49,25 @@ if (sesami.isIphone7_1) {
     $('#container').addClass('iphone7_1');
 }
 
+// Androidの場合には、ヘッダスキップ
+if (sesami.isAndroid) {
+    $('#container').addClass('android');
+    window.scrollTo = 1;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 })();

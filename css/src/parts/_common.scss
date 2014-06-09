@@ -22,6 +22,9 @@ body > #container {
 		height: 140%;
 		padding-top: 11%;
 	}
+	&.android {
+		height: 110%; // header skip用の高さ
+	}
 }
 
 * {
