@@ -1,19 +1,106 @@
 // アニメーションのKeyframes
+// 目
+// ------------------------------------------------------
+@include keyframes (page02_CookieMonster_eye) {
+  0%   { @include scale(1,1); }
+  50%  { @include scale(1.1,1.1); }
+  100% { @include scale(1,1); }
+}
+// おくち
+// ------------------------------------------------------
+@include keyframes (page02_CookieMonster_mouse) {
+  0%   { @include scale(1,1); }
+  50%  { @include scale(1.1,1.1); }
+  100% { @include scale(1,1); }
+}
+// 手＋クッキー
+// ------------------------------------------------------
 @include keyframes (page02_CookieMonster_hand) {
   0%   { @include rotateZ(0deg); }
-  30%  { @include rotateZ(5deg); }
-  50%  { @include rotateZ(-15deg); }
-  65%  { @include rotateZ(-10deg); }
-  80%  { @include rotateZ(-12deg); }
+  50%  { @include rotateZ(-20deg); }
   100% { @include rotateZ(0deg); }
 }
+// 手＋クッキーの動線
+// ------------------------------------------------------
 @include keyframes (page02_CookieMonster_hand_move) {
   0%   { @include rotateZ(0deg); }
-  30%  { @include rotateZ(5deg); }
-  50%  { @include rotateZ(-15deg); }
-  65%  { @include rotateZ(-10deg); }
-  80%  { @include rotateZ(-12deg); }
+  50%  { @include rotateZ(-20deg); }
   100% { @include rotateZ(0deg); }
+}
+// 涙　左
+// ------------------------------------------------------
+@include keyframes (page02_CookieMonster_tear_l_1) {
+  0%   { opacity: 0; @include translate3d(2%, 1%, 0);}
+  10%  { opacity: 0; }
+  20%  { opacity: 1; }
+  50%  { opacity: 1; }
+  60%  { opacity: 0; }
+  100% { opacity: 0; @include translate3d(-60%, -66%, 0);}
+}
+@include keyframes (page02_CookieMonster_tear_l_2) {
+  0%   { opacity: 0; @include translate3d(4%, 0, 0);}
+  20%  { opacity: 0; }
+  30%  { opacity: 1; }
+  70%  { opacity: 1; }
+  80%  { opacity: 0; }
+  100% { opacity: 0; @include translate3d(-63%, 65%, 0);}
+}
+@include keyframes (page02_CookieMonster_tear_l_3) {
+  0%   { opacity: 0; @include translate3d(10%, -2%, 0);}
+  20%  { opacity: 0; }
+  30%  { opacity: 1; }
+  50%  { opacity: 1; }
+  60%  { opacity: 0; }
+  100% { opacity: 0; @include translate3d(-60%, 65%, 0); }
+}
+// 涙　右
+// ------------------------------------------------------
+@include keyframes (page02_CookieMonster_tear_r_1) {
+  0%   { opacity: 0; @include translate3d(-2%, -1%, 0);}
+  10%  { opacity: 0; }
+  20%  { opacity: 1; }
+  50%  { opacity: 1; }
+  60%  { opacity: 0; }
+  100% { opacity: 0; @include translate3d(60%, -66%, 0);}
+}
+@include keyframes (page02_CookieMonster_tear_r_2) {
+  0%   { opacity: 0; @include translate3d(-4%, 0, 0);}
+  20%  { opacity: 0; }
+  30%  { opacity: 1; }
+  50%  { opacity: 1; }
+  60%  { opacity: 0; }
+  100% { opacity: 0; @include translate3d(63%, 65%, 0);}
+}
+@include keyframes (page02_CookieMonster_tear_r_3) {
+  0%   { opacity: 0; @include translate3d(-10%, -2%, 0);}
+  10%  { opacity: 0; }
+  20%  { opacity: 1; }
+  50%  { opacity: 1; }
+  60%  { opacity: 0; }
+  100% { opacity: 0; @include translate3d(60%, 65%, 0);}
+}
+// クッキーのかけら
+// ------------------------------------------------------
+@include keyframes (page02_CookieMonster_tips_1) {
+  0%   { opacity: 0;}
+  20%  { opacity: 1; }
+  50%  { opacity: 1; }
+  60%  { opacity: 0; }
+  100% { opacity: 0; @include translate3d(0, 56%, 0);}
+}
+@include keyframes (page02_CookieMonster_tips_2) {
+  0%   { opacity: 0;}
+  20%  { opacity: 0; }
+  50%  { opacity: 1; }
+  60%  { opacity: 1; }
+  100% { opacity: 0; @include translate3d(0, 53%, 0);}
+}
+// 池の中のクッキー
+// ------------------------------------------------------
+@include keyframes (page02_pool__cookie) {
+  0%   { @include rotateZ(0deg); }
+  50%  { @include rotateZ(5deg); }
+  100%  { @include rotateZ(0deg); }
 }
 
 
@@ -41,11 +128,13 @@
     .cookie-monster__eye{
       width: 20%;
       @include abs(4%, 44%);
+      @include animation(page02_CookieMonster_mouse 0.2s infinite);
     }
     // おくち
     .cookie-monster__mouse{
       width: 44%;
       @include abs(14.5%, 36%);
+      @include animation(page02_CookieMonster_mouse 0.2s infinite);
     }
     // 手＋クッキー
     .cookie-monster__hand{
@@ -57,7 +146,7 @@
     // 手＋クッキーの動線
     .cookie-monster__move{
       width: 23%;
-      @include abs(20%, 92%);
+      @include abs(20%, 120%);
       @include animation(page02_CookieMonster_hand_move 1s infinite);
       @include transform-origin( 0, 100% );
     }
@@ -65,36 +154,44 @@
     .cookie-monster__tips-1{
       width: 10%;
       @include abs(56%, 95%);
+      @include animation(page02_CookieMonster_tips_1 1s infinite);
     }
     .cookie-monster__tips-2{
       width: 12%;
       @include abs(53%, 103%);
+      @include animation(page02_CookieMonster_tips_2 1s infinite);
     }
     // 涙　左
     .cookie-monster__tear-l-1{
       width: 20%;
       @include abs(2%, 10%);
+      @include animation(page02_CookieMonster_tear_l_1 1s infinite ease-in-out);
     }
     .cookie-monster__tear-l-2{
       width: 13%;
       @include abs(8%, 8%);
+      @include animation(page02_CookieMonster_tear_l_2 1s infinite ease-in 200ms);
     }
     .cookie-monster__tear-l-3{
       width: 13%;
       @include abs(8%, -4%);
+      @include animation(page02_CookieMonster_tear_l_3 1s infinite ease-in 700ms);
     }
     // 涙　右
     .cookie-monster__tear-r-1{
       width: 20%;
       @include abs(2%, 76%);
+      @include animation(page02_CookieMonster_tear_r_1 1s infinite ease-in-out 300ms); 
     }
     .cookie-monster__tear-r-2{
       width: 13%;
       @include abs(8%, 86%);
+      @include animation(page02_CookieMonster_tear_r_2 1s infinite ease-in 500ms);
     }
     .cookie-monster__tear-r-3{
       width: 13%;
       @include abs(7%, 98%);
+      @include animation(page02_CookieMonster_tear_r_3 1s infinite ease-in 1000ms);  
     }
 
 
@@ -130,13 +227,22 @@
     .pool__cookie--1{
       width: 20%;
       @include abs(30%, 33%);
+      @include animation(page02_pool__cookie 2s infinite ease-in);
     }
     .pool__cookie--2{
       width: 20%;
       @include abs(18%, 55%);
+      @include animation(page02_pool__cookie 2s infinite ease-in 300ms);
     }
     .pool__cookie--3{
       width: 20%;
       @include abs(55%, 55%);
+      @include animation(page02_pool__cookie 2s infinite ease-in 500ms);
+    }
+    // クッキータップした時に出てくる注意文
+    .pool__caution{
+      width: 80%;
+      @include abs(-30%, 25%);
+      // @include animation(page02_pool__cookie 2s infinite ease-in 500ms);
     }
 }
