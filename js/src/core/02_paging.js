@@ -18,13 +18,19 @@
             return '0' + pageNo;
         }
     };
+    var getPageSnipet = function (pageNo) {
+        var snipet = $('#template_page_' + get2DigitPageNo(pageNo)).html();
+        // 画像のキャッシュバスタを付ける
+        snipet = snipet.replace(/src="(.*?).svg"/g, 'src="$1.svg?_=' + window.appVersion + '"');
+        return snipet;
+    };
     var showPageAt = function (nextPageNo, currentPageNo) {
 
         // 現在のページ
         var $currentPage = $('#container').find('[data-page="' + currentPageNo + '"]');
 
         // 次のページ
-        var snipet = $('#template_page_' + get2DigitPageNo(nextPageNo)).html();
+        var snipet = getPageSnipet(nextPageNo);
         var $nextPage = $(snipet).removeClass('hidden');
 
         // 現在のページは閉じる
