@@ -3,7 +3,7 @@
 //
 ;(function () {
 
-    var 
+    var
         MIN_PAGE = 0,
         MAX_PAGE = $('.pageTemplate').length - 1, // 0ページから始めるので -1 する
         $pageContainer = $('#page');
