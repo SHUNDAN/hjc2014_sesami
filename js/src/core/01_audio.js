@@ -155,7 +155,23 @@
     };
 
 
-    var effectPlayer = sesami.effectPlayer = new jukebox.Player(json);
+    var effectPlayer;
+    if (sesami.isIphone || sesami.isIpad || sesami.isAndroid) {
+        // あとでロード
+    } else {
+        effectPlayer = new jukebox.Player(json);        
+    }
+
+    sesami.effectPlayer = {
+        play: function (num) {
+            if (effectPlayer) {
+                effectPlayer.play(num);
+            } else {
+                effectPlayer = new jukebox.Player(json);
+                effectPlayer.play(num);
+            }
+        }
+    }
     
 
 
