@@ -93,7 +93,7 @@
 
 
     // 次ページへ
-    $('#nextPageBtn').on('click', function () {
+    $('#nextPageBtn').on(sesami.event.TOUCH_END, function () {
 
         var nextPage = sesami.currentPage + 1;
         if (nextPage > MAX_PAGE) {
@@ -109,7 +109,7 @@
 
 
     // 前ページへ
-    $('#prevPageBtn').on('click', function () {
+    $('#prevPageBtn').on(sesami.event.TOUCH_END, function () {
 
         var prevPage = sesami.currentPage - 1;
         if (prevPage < MIN_PAGE) {

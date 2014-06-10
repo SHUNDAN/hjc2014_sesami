@@ -14,8 +14,8 @@
             // 縦対応は後で.
             // MAX_WIDTH = (isLandScape ? 1400 : 1000), // book.svgのサイズ
             // MAX_HEIGHT = (isLandScape ? 1000 : 1400), // book.svgのサイズ
-            MAX_WIDTH = 1400, // book.svgのサイズ
-            MAX_HEIGHT = 1000, // book.svgのサイズ
+            MAX_WIDTH = 1400 * 5, // book.svgの縮尺
+            MAX_HEIGHT = 1000 * 5, // book.svgの縮尺
             PAGE_SIZE_RAITO = MAX_WIDTH / MAX_HEIGHT,
             min = Math.min,
             floor = Math.floor,
