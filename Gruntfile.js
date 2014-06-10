@@ -162,7 +162,7 @@ module.exports = function(grunt) {
   // grunt imagemin
 
   // PNGフォールバック作成（時間がかかるし、事前にシェルの設定が必要）
-  // grunt create-png-from-svg
+  // grunt create-png-from-svg:./release/img/page07
 
 
   //
