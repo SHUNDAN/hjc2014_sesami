@@ -23,7 +23,7 @@
         // 画像のキャッシュバスタを付ける
         snipet = snipet.replace(/src="(.*?).svg"/g, 'src="$1.svg?_=' + window.appVersion + '"');
         // SVGが再生できない端末は、PNGへフォールバックを行う
-        if (sesami.isAndroid2X) {
+        if (sesami.isAndroid2X || sesami.isIEold) {
             snipet = snipet.replace(/.svg/g, '.png');
         }
         return snipet;
@@ -141,7 +141,7 @@
 
 
     // SVGからPNGへのフォールバック
-    if (sesami.isAndroid2X) {
+    if (sesami.isAndroid2X || sesami.isIEold) {
         var src = $('.book').attr('src').replace('.svg', '.png');
         $('.book').attr('src', src);
         var src = $('#nextPageBtn').attr('src').replace('.svg', '.png');

@@ -35,6 +35,9 @@ sesami.isIphone7_1 = sesami.isIphone && userAgent.indexOf('os 7_1') !== -1;
 sesami.isIpad = userAgent.indexOf('ipad') + 1;
 sesami.isAndroid = userAgent.indexOf('android') + 1;
 sesami.isAndroid2X = userAgent.indexOf('android 2.') + 1;
+sesami.isIE7 = userAgent.indexOf('msie 7.0') + 1;
+sesami.isIE8 = userAgent.indexOf('msie 8.0') + 1;
+sesami.isIEold = sesami.isIE7 || sesami.isIE8;
 
 
 
