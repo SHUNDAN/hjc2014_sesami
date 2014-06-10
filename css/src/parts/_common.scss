@@ -95,6 +95,14 @@ audio {
 	text-align: center;
 	font-size: 13px;
 }
+// 横向き表示だとかぶるので、消しておきたい
+.iPhone, .iPad, .android {
+	&.landscape {
+		.credit {
+			display: none;
+		}
+	}
+}
 
 
 

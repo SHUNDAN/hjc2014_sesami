@@ -130,9 +130,9 @@
 		// 	background-color: red;
 		// }
 
-        .portrait & {
-          z-index: 2;
-        }
+        // .portrait & {
+        //   z-index: 2;
+        // }
 
         &.stop {
             @include animation(none);
@@ -144,12 +144,12 @@
         top: 5.5%;
         left: 19.5%;
         width: 23.5%;
-        .portrait & {
-          top: 39.5%;
-          left: 5.5%;
-          width: 30.5%;
-          z-index: 2;          
-        }
+        // .portrait & {
+        //   top: 39.5%;
+        //   left: 5.5%;
+        //   width: 30.5%;
+        //   z-index: 2;          
+        // }
     }
 
     .sholder {
@@ -164,13 +164,13 @@
         // @include background-image(radial-gradient(rgba(0,159,232,1) 0%, rgba(0,159,232,1) 90%, rgba(0,159,232,0) 100%));
         border-radius: 200px;
 
-        .portrait & {
-          top: 65%;
-          left: 21%;
-          width: 22%;
-          height: 17%;
-          z-index: 2;
-        }
+        // .portrait & {
+        //   top: 65%;
+        //   left: 21%;
+        //   width: 22%;
+        //   height: 17%;
+        //   z-index: 2;
+        // }
     }
 
     .drop1, .drop2, .drop3, .drop4, .drop5, .drop6 {
@@ -182,63 +182,63 @@
     	right: 37%;
     	width: 16%;
     	@include rotateZ(-15deg);
-      .portrait & {
-        top: 34%;
-        right: 37%;
-        width: 23%;
-      }
+      // .portrait & {
+      //   top: 34%;
+      //   right: 37%;
+      //   width: 23%;
+      // }
     }
     .drop2 {
     	top: 13%;
     	right: 35%;
     	width: 11%;
     	@include rotateZ(12deg);
-      .portrait & {
-        top: 41%;
-        right: 35%;
-        width: 14%;
-      }
+      // .portrait & {
+      //   top: 41%;
+      //   right: 35%;
+      //   width: 14%;
+      // }
     }
     .drop3 {
     	top: 11%;
     	right: 27%;
     	width: 11%;
     	@include rotateZ(6deg);
-      .portrait & {
-        top: 39%;
-        right: 27%;
-        width: 11%;
-      }
+      // .portrait & {
+      //   top: 39%;
+      //   right: 27%;
+      //   width: 11%;
+      // }
     }
     .drop4 {
     	top: 12%;
     	left: 9%;
     	width: 16%;
-      .portrait & {
-        top: 36%;
-        left: -1%;
-        width: 16%;
-      }
+      // .portrait & {
+      //   top: 36%;
+      //   left: -1%;
+      //   width: 16%;
+      // }
     }
     .drop5 {
     	top: 23%;
     	left: 9%;
     	width: 11%;
     	@include rotateZ(-33deg);
-      .portrait & {
-        top: 43%;
-        left: -1%;
-        width: 11%;
-      }
+      // .portrait & {
+      //   top: 43%;
+      //   left: -1%;
+      //   width: 11%;
+      // }
     }
     .drop6 {
     	top: 24%;
     	left: 0%;
     	width: 11%;
     	@include rotateZ(-25deg);
-      .portrait & {
-        display: none;
-      }
+      // .portrait & {
+      //   display: none;
+      // }
     }
     .drop1Anim, .drop2Anim, .drop3Anim, .drop4Anim, .drop5Anim, .drop6Anim {
         position: absolute;

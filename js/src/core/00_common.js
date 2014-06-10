@@ -60,7 +60,16 @@ if (sesami.isAndroid) {
 }
 
 
-
+// デバイス情報をクラスで表現する
+if (sesami.isIphone) {
+    $(document.body).addClass('iPhone');
+}
+if (sesami.isIpad) {
+    $(document.body).addClass('iPad');
+}
+if (sesami.isAndroid) {
+    $(document.body).addClass('android');
+}
 
 
 

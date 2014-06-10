@@ -39,12 +39,14 @@
                 // 'background-size': cw + 'px ' + ch + 'px'
             });
 
-            // 縦対応はあとで。
-            // if (isLandScape) {
-            //     $('body').removeClass('portrait');
-            // } else {
-            //     $('body').addClass('portrait');
-            // }
+            // 縦判定
+            if (isLandScape) {
+                $('body').removeClass('portrait');
+                $('body').addClass('landscape');
+            } else {
+                $('body').addClass('portrait');
+                $('body').removeClass('landscape');
+            }
 
     };
     window.onresize = adjustSize;
