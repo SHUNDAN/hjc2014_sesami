@@ -1,6 +1,8 @@
 /*global module:false*/
 var 
   fs = require('fs'),
+  exec = require('child_process').exec,
+  util = require('util'),
   SVGO = require('./node_modules/svgo');
 
 module.exports = function(grunt) {
@@ -147,6 +149,11 @@ module.exports = function(grunt) {
   // Default task.
   grunt.registerTask('default', ['compass', 'concat', 'copy', 'build-index-html']);
 
+  // SVG最適化
+  // grunt optim-svg
+
+  // PNGフォールバック作成（時間がかかるし、事前にシェルの設定が必要です）
+  // grunt create-png-from-svg
 
 
   //
@@ -237,12 +244,117 @@ module.exports = function(grunt) {
                   done();
               }
           });
-
-
       };
 
       optim('./release/img', './');
   });
+
+
+
+  //
+  // Gruntタスク：SVGからPNGを生成するタスク
+  // IE8やAndroid用のPNGへのフォールバックを行うために使う画像を生成します
+  // ** 対象ディレクトリは、「release/img」以下を対象とします. 
+  // ** 事前に、ImageMagic（http://www.imagemagick.org/script/binary-releases.php#macosx）をインストールする必要があります.
+  //
+  grunt.registerTask('create-png-from-svg', 'description for create-png-from-svg', function () {
+
+      if (arguments.length === 0) {
+          console.error('引数に対象ディレクトリを指定してください');
+          return false;
+      }
+
+      var
+          baseDir = arguments[0],
+          done = this.async(),
+          execCount = 0,
+          userRecursive = (arguments[1] === true),
+          recursive = true,
+          queue = [];
+
+
+      var createPNGFromSVG = function (dirOrFile, baseDir) {
+
+          var filePath = baseDir + dirOrFile;
+          // console.log('[createPNGFromSVG]', filePath);
+          execCount++;
+
+          // ディレクトリの場合には、回帰処理
+          if (fs.lstatSync(baseDir + dirOrFile).isDirectory() && recursive) {
+
+              if (!userRecursive) {
+                  recursive = false;  // 1回だけに限定.
+              }
+
+              // console.log('[this is dir]', filePath);
+              var dirsOrFiles = fs.readdirSync(filePath);
+              dirsOrFiles.forEach(function (f) {
+                queue.push([f, filePath + '/'])
+              });
+              execCount--;
+              if (execCount === 0) {
+                  if (queue.length > 0) {
+                      var target = queue.shift();
+                      createPNGFromSVG(target[0], target[1]);
+                  } else {
+                      done();                    
+                  }
+              }
+              return;
+          }
+
+          // 拡張子チェック
+          if (filePath.toLowerCase().lastIndexOf('.svg') !== filePath.length - 4) {
+              execCount--;
+              if (queue.length > 0) {
+                  var target = queue.shift();
+                  createPNGFromSVG(target[0], target[1]);
+              } else {
+                  done();                    
+              }
+              return;
+          }
+
+          // 最適化の処理
+          // qlmanage -t -s 1000 -o ./ ./sample.svg
+          // convert -background none btn_page.svg btn_page.png
+          // var command = util.format('qlmanage -t -s 1000 -o %s %s', baseDir, filePath);
+          var pngPath = filePath.replace('.svg', '.png');
+          var command = util.format('convert -background none %s %s', filePath, pngPath);
+          console.log(command);
+          exec(command, function (err, stdout, stderr) {
+
+              console.log('[result]', err, stdout, stderr);
+
+              execCount--;
+              if (execCount === 0) {
+                  if (queue.length > 0) {
+                      var target = queue.shift();
+                      createPNGFromSVG(target[0], target[1]);
+                  } else {
+                      done();                    
+                  }
+              }
+          });
+
+      };
+
+      createPNGFromSVG(baseDir, './');
+
+
+
+
+
+
+
+
+
+  });
+
+
+
+
+
 
 
 

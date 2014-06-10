@@ -22,6 +22,10 @@
         var snipet = $('#template_page_' + get2DigitPageNo(pageNo)).html();
         // 画像のキャッシュバスタを付ける
         snipet = snipet.replace(/src="(.*?).svg"/g, 'src="$1.svg?_=' + window.appVersion + '"');
+        // SVGが再生できない端末は、PNGへフォールバックを行う
+        if (sesami.isAndroid2X) {
+            snipet = snipet.replace(/.svg/g, '.png');
+        }
         return snipet;
     };
     var showPageAt = function (nextPageNo, currentPageNo) {
