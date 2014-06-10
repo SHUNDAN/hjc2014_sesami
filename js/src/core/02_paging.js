@@ -131,13 +131,23 @@
 
 
 
-
     // 初期ページの制御
     // onloadにするかは微妙.
     window.addEventListener('load', function () {
         console.debug('onload paging fired');
         showPageAt(sesami.currentPage);
+
     });
+
+
+    // SVGからPNGへのフォールバック
+    if (sesami.isAndroid2X) {
+        var src = $('.book').attr('src').replace('.svg', '.png');
+        $('.book').attr('src', src);
+        var src = $('#nextPageBtn').attr('src').replace('.svg', '.png');
+        $('#nextPageBtn').attr('src', src);
+    }
+
 
 
 
