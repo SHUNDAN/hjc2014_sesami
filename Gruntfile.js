@@ -94,13 +94,18 @@ module.exports = function(grunt) {
       },
       audio: {
         files: [
-          {expand: true, cwd:'sound/', src: ['*.mp3', '*.ogg'], dest: 'release/sound'}
+          {expand: true, cwd:'sound/', src: ['*.mp3', '*.ogg', '*.ac3', '*.m4a', 'effect/*.mp3'], dest: 'release/sound'}
         ]
       },
       api: {
         files: [
           {expand: true, cwd:'api/', src: ['*.php'], dest: 'release/api'}
         ]        
+      },
+      js: {
+        files: [
+          {expand: true, cwd:'js/libs/zynga-jukebox', src: ['*.js', 'swf/*.as'], dest: 'release/js/libs/zynga-jukebox'}
+        ]
       }
     },
 

@@ -5,6 +5,7 @@ sesami.page00.init = function () {
 
     var
         $page = $('[data-page="0"]'),
+        effectPlayer = sesami.effectPlayer,
         TOUCH_START = sesami.event.TOUCH_START,
         TOUCH_MOVE = sesami.event.TOUCH_MOVE,
         TOUCH_END = sesami.event.TOUCH_END
@@ -21,6 +22,8 @@ sesami.page00.init = function () {
             .addClass('anim')
             .wait(2000)
             .removeClass('anim');
+
+        effectPlayer.play(8);
     });
 
 
@@ -39,6 +42,8 @@ sesami.page00.init = function () {
             .addClass('noAction')
             .wait(800)
             .removeClass('noAction');
+
+        effectPlayer.play(22);
     });
 
     // オスカー
@@ -49,6 +54,10 @@ sesami.page00.init = function () {
             .addClass('anim noAction')
             .wait(5000)
             .removeClass('anim noAction');
+
+        setTimeout(function () {
+            effectPlayer.play(23);
+        }, 1000);
     });
 
 
@@ -59,6 +68,8 @@ sesami.page00.init = function () {
         $page
             .find('.jsBert')
             .toggleClass('hidden');
+
+        effectPlayer.play(19);
     });
 
 
@@ -75,6 +86,7 @@ sesami.page00.init = function () {
             .wait(500)
             .toggleClass('hidden')
             .wait(1000, cmAnim);
+
     };
     cmAnim();
 
@@ -85,6 +97,13 @@ sesami.page00.init = function () {
             .addClass('anim noAction')
             .wait(5000)
             .removeClass('anim noAction');
+
+        setTimeout(function () {
+            effectPlayer.play(9);
+            setTimeout(function () {
+                effectPlayer.play(9);
+            }, 1000);
+        }, 2000);
     });
 
 
@@ -93,6 +112,8 @@ sesami.page00.init = function () {
         $page
             .find('.jsElBody')
             .toggleClass('hidden');
+
+        effectPlayer.play(15);
     });
 
 
@@ -101,6 +122,8 @@ sesami.page00.init = function () {
         $page
             .find('.jsBigBird')
             .toggleClass('hidden');
+
+        effectPlayer.play(10);
     });
 
 
