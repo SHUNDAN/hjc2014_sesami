@@ -104,6 +104,17 @@ module.exports = function(grunt) {
       }
     },
 
+    imagemin: {
+        release: {
+            files: [{
+                expand: true,
+                cwd: './release/img',
+                src: '**/*.{png,svg}',
+                dest: './release/img'
+            }]
+        }
+    },
+
 
 
 
@@ -138,21 +149,19 @@ module.exports = function(grunt) {
 
   });
 
-  // These plugins provide necessary tasks.
-  // grunt.loadNpmTasks('grunt-contrib-uglify');
-  // grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-compass');
+  grunt.loadNpmTasks('grunt-contrib-imagemin');
 
   // Default task.
   grunt.registerTask('default', ['compass', 'concat', 'copy', 'build-index-html']);
 
-  // SVG最適化
-  // grunt optim-svg
+  // 画像最適化
+  // grunt imagemin
 
-  // PNGフォールバック作成（時間がかかるし、事前にシェルの設定が必要です）
+  // PNGフォールバック作成（時間がかかるし、事前にシェルの設定が必要）
   // grunt create-png-from-svg
 
 
@@ -195,59 +204,59 @@ module.exports = function(grunt) {
   // Gruntタスク：SVGの圧縮
   // ** 対象ディレクトリは、「release/img」以下を対象とします. 
   //
-  grunt.registerTask('optim-svg', 'description for optim-svg', function () {
+  // grunt.registerTask('optim-svg', 'description for optim-svg', function () {
 
-      var 
-          done = this.async(),
-          execCount = 0,
-          svgo = new SVGO();
+  //     var 
+  //         done = this.async(),
+  //         execCount = 0,
+  //         svgo = new SVGO();
 
-      var optim = function (dirOrFile, baseDir) {
-          var filePath = baseDir + dirOrFile;
-          console.log('[optim]', filePath);
-          execCount++;
+  //     var optim = function (dirOrFile, baseDir) {
+  //         var filePath = baseDir + dirOrFile;
+  //         console.log('[optim]', filePath);
+  //         execCount++;
 
-          // ディレクトリの場合には、回帰処理
-          console.log('[dir test]', filePath);
-          if (fs.lstatSync(baseDir + dirOrFile).isDirectory()) {
-              var dirsOrFiles = fs.readdirSync(filePath);
-              dirsOrFiles.forEach(function (f) {
-                optim(f, filePath + '/');
-              });
-              execCount--;
-              if (execCount === 0) {
-                done();
-              }
-              return;
-          }
+  //         // ディレクトリの場合には、回帰処理
+  //         console.log('[dir test]', filePath);
+  //         if (fs.lstatSync(baseDir + dirOrFile).isDirectory()) {
+  //             var dirsOrFiles = fs.readdirSync(filePath);
+  //             dirsOrFiles.forEach(function (f) {
+  //               optim(f, filePath + '/');
+  //             });
+  //             execCount--;
+  //             if (execCount === 0) {
+  //               done();
+  //             }
+  //             return;
+  //         }
 
-          // 拡張子チェック
-          if (filePath.toLowerCase().lastIndexOf('.svg') !== filePath.length - 4) {
-              execCount--;
-              if (execCount === 0) {
-                done();
-              }
-              return;
-          }
+  //         // 拡張子チェック
+  //         if (filePath.toLowerCase().lastIndexOf('.svg') !== filePath.length - 4) {
+  //             execCount--;
+  //             if (execCount === 0) {
+  //               done();
+  //             }
+  //             return;
+  //         }
 
-          // 最適化の処理
-          // svgo filepath
-          var data = fs.readFileSync(filePath, 'utf-8');
-          svgo.optimize(data, function (result) {
-              console.log('result!!', filePath);
+  //         // 最適化の処理
+  //         // svgo filepath
+  //         var data = fs.readFileSync(filePath, 'utf-8');
+  //         svgo.optimize(data, function (result) {
+  //             console.log('result!!', filePath);
 
-              var svg = result.data;
-              fs.writeFileSync(filePath, svg, 'utf-8');
+  //             var svg = result.data;
+  //             fs.writeFileSync(filePath, svg, 'utf-8');
 
-              execCount--;
-              if (execCount === 0) {
-                  done();
-              }
-          });
-      };
+  //             execCount--;
+  //             if (execCount === 0) {
+  //                 done();
+  //             }
+  //         });
+  //     };
 
-      optim('./release/img', './');
-  });
+  //     optim('./release/img', './');
+  // });
 
 
 
