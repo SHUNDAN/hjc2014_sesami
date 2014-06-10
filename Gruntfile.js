@@ -104,7 +104,7 @@ module.exports = function(grunt) {
       },
       js: {
         files: [
-          {expand: true, cwd:'js/libs/zynga-jukebox', src: ['*.js', 'swf/*.as'], dest: 'release/js/libs/zynga-jukebox'}
+          {expand: true, cwd:'js/libs/zynga-jukebox', src: ['*.js', 'swf/*.as', 'swf/*.swf'], dest: 'release/js/libs/zynga-jukebox'}
         ]
       }
     },

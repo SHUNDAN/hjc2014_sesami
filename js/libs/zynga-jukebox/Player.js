@@ -95,7 +95,7 @@ jukebox.Player.prototype = {
 		resources: [],
 		autoplay: false,
 		spritemap: {},
-		flashMediaElement: './swf/FlashMediaElement.swf',
+		flashMediaElement: './js/libs/zynga-jukebox/swf/FlashMediaElement.swf',
 		timeout: 1000
 	},
 
