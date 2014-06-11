@@ -330,9 +330,7 @@ module.exports = function(grunt) {
           }
 
           // 最適化の処理
-          // qlmanage -t -s 1000 -o ./ ./sample.svg
           // convert -background none btn_page.svg btn_page.png
-          // var command = util.format('qlmanage -t -s 1000 -o %s %s', baseDir, filePath);
           var pngPath = filePath.replace('.svg', '.png');
           var command = util.format('convert -background none %s %s', filePath, pngPath);
           console.log(command);
