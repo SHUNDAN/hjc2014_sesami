@@ -11,7 +11,7 @@
 
 @include keyframes (page08_bigBird_hand) {
     0%   { @include rotateZ(0deg); }
-    50%   { @include rotateZ(30deg); }
+    60%   { @include rotateZ(30deg); }
     100%   { @include rotateZ(0deg); }
 }
 
@@ -23,7 +23,7 @@
 
 @include keyframes (page08_elmo_hand) {
     0%   { @include rotateZ(0deg); }
-    50%   { @include rotateZ(-30deg); }
+    40%   { @include rotateZ(-30deg); }
     100%   { @include rotateZ(0deg); }
 }
 
@@ -100,7 +100,7 @@
         @include abs(38%, 34.5%);
         width: 26.5%;
         @include transform-origin( 0, 100% );
-        @include animation(page08_CookieMonster_hand 1s ease-in-out infinite);
+        @include animation(page08_CookieMonster_hand 1.2s ease-in-out infinite);
     }
 
     .cookiemonster-eye {
@@ -126,10 +126,11 @@
       width: 8.8%;
       @include abs(62.5%, 10.5%);
       @include transform-origin(0, 100%);
-      @include animation(page08_bert_hand 1s ease-in infinite);
+      @include animation(page08_bert_hand 0.9s ease-in infinite);
     }
     .bert-hair{
       width:6%;
+      height: 6%; //なんかいるっぽい
       @include abs(50.8%, 5%);
     }
 
@@ -155,7 +156,7 @@
       width: 7%;
       @include abs(32%, 16%);
       @include transform-origin(0, 100%);
-      @include animation(page08_elmo_hand 1s ease-in infinite);
+      @include animation(page08_elmo_hand 1.3s ease-in infinite);
     }
 
     //bigBird

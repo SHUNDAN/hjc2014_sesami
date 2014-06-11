@@ -53,11 +53,11 @@ sesami.page03.init = function() {
     // });
 
     var
-    $elmoArea = $('.jsElmoArea'),
+    $eyeArea = $('.jsElmoArea,.jsBigbirdArea,.jsBertArea'),
     $eye = $('.jsEye'),
     isEyeAnime = false;
 
-    $elmoArea.on(TOUCH_START, function(event) {
+    $eyeArea.on(TOUCH_START, function(event) {
       event.preventDefault();
       if(isEyeAnime) return false;
       isEyeAnime = true;
@@ -68,7 +68,7 @@ sesami.page03.init = function() {
         $page.removeClass('noAnimate');
         isEyeAnime = false;
       }
-      setTimeout(remove,4000);
+      setTimeout(remove,2000);
     });
 
     var
