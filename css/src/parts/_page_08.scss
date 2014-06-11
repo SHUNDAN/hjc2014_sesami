@@ -46,28 +46,107 @@
     100%   { @include rotateY(0deg);}
 }
 
+@include keyframes (page08_rotateZ) {
+    0%   { @include rotateZ(0deg); }
+    10%   { @include rotateZ(-4deg); }
+    20%   { @include rotateZ(4deg); }
+    30%   { @include rotateZ(-4deg); }
+    40%   { @include rotateZ(4deg); }
+    50%   { @include rotateZ(-4deg); }
+    60%   { @include rotateZ(4deg); }
+    70%   { @include rotateZ(-4deg); }
+    80%   { @include rotateZ(4deg); }
+    90%   { @include rotateZ(-4deg); }
+    100%   { @include rotateZ(0deg); }
+}
+
+@include keyframes (page08_skew) {
+    0%   { @include skew(0deg,0deg); }
+    10%   { @include skew(4deg,-4deg); }
+    20%   { @include skew(-4deg,4deg); }
+    30%   { @include skew(4deg,-4deg); }
+    40%   { @include skew(-4deg,4deg); }
+    50%   { @include skew(4deg,-4deg); }
+    60%   { @include skew(-4deg,4deg); }
+    70%   { @include skew(4deg,-4deg); }
+    80%   { @include skew(-4deg,4deg); }
+    90%   { @include skew(4deg,-4deg); }
+    100%   { @include skew(0deg,0deg); }
+}
+
+@include keyframes (page08_eye_left) {
+    50%  { top: 20%;left: 33.5%; }
+}
+
+@include keyframes (page08_eye_right) {
+    50%  { top: 15%;left: 39.7%; }
+}
+
+@include keyframes (page08_CookieMonster_hand) {
+  0%   { @include rotateZ(0deg); }
+  50%  { @include rotateZ(-20deg);width: 23.6%; }
+  100% { @include rotateZ(0deg); }
+}
 
 // スタイルの指定
 [data-page="8"] {
 
-    .cookieMonster {
-        @include abs(9.2%, 20%);
-        width: 58.5%;
+    .cookiemonster-body {
+        @include abs(9.8%, 24%);
+        width: 51%;
     }
+
+    .cookiemonster-hand {
+        @include abs(38%, 34.5%);
+        width: 26.5%;
+        @include transform-origin( 0, 100% );
+        @include animation(page08_CookieMonster_hand 1s ease-in-out infinite);
+    }
+
+    .cookiemonster-eye {
+        width: 4%;
+        &.left{
+            @include abs(21%, 34.5%);
+            @include animation(page08_eye_left 1s ease-in infinite);
+        }
+        &.right{
+            @include abs(15%, 38.7%);
+            @include animation(page08_eye_right 1s ease-in infinite);
+        }
+    }
+
+
 
     //bert
     .bert-body{
-      width: 12.6%;
-      @include abs(51%, 5%);
+      width: 12.7%;
+      @include abs(55%, 4.2%);
     }
     .bert-hand{
       width: 8.8%;
-      @include abs(62.5%, 11%);
+      @include abs(62.5%, 10.5%);
       @include transform-origin(0, 100%);
       @include animation(page08_bert_hand 1s ease-in infinite);
     }
+    .bert-hair{
+      width:6%;
+      @include abs(50.8%, 5%);
+    }
+
+    .bertArea{
+        &:hover .bert-hair path,
+        &:active .bert-hair path{
+            fill: #cc0000;
+        }
+    }
 
     //elmo
+
+    .elmoArea.anime{
+        position: static;
+        @include animation(page08_skew 5s ease-in-out 1);
+    }
+
     .elmo-body{
       width: 13%;
       @include abs(20.5%, 7.5%);
@@ -80,6 +159,10 @@
     }
 
     //bigBird
+    .bigBirdArea.anime{
+        position: static;
+        @include animation(page08_rotateZ 1s ease-in-out 1);
+    }
     .bigBird-body{
       width: 16.3%;
       @include abs(10%, 78%);

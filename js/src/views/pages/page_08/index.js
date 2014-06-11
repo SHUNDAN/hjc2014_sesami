@@ -42,11 +42,63 @@ sesami.page08.init = function () {
 
     var
     $bigBirdArea = $('.jsBigBirdArea'),
-    $bigBirdMouth = $bigBirdArea.find('.bigBird-mouth_2');
+    $bigBirdMouth = $bigBirdArea.find('.bigBird-mouth_2'),
+    isBigBirdAnime = false;
 
     setInterval(function(){
+        if(isBigBirdAnime) return false;
         $bigBirdMouth.toggleClass('hidden');
     },1000);
+
+    $bigBirdArea.on(TOUCH_START, function(event) {
+        event.preventDefault();
+        if(isBigBirdAnime) return false;
+        isBigBirdAnime = true;
+        $(this)
+            .addClass('anime')
+            .one(ANIMATION_END_EVENT, function(event) {
+                isBigBirdAnime = false;
+                $bigBirdArea.removeClass('anime');
+            });
+    });
+
+    var
+    $bertArea = $('.jsBertArea'),
+    $bertHair = $bertArea.find('.bert-hair'),
+    bertHairClass = $bertHair.attr('class'),
+    bertHairUrl = $bertHair.attr('src'),
+    isBertAnime = false;
+
+    $.get(bertHairUrl, function(data) {
+        var $svg = jQuery(data).find('svg');
+        if(typeof bertHairClass !== 'undefined') {
+            $svg = $svg.attr('class', bertHairClass);
+        }
+        $svg = $svg.removeAttr('xmlns:a');
+        $bertHair.replaceWith($svg);
+    });
+
+    $bertArea.on(TOUCH_START, function(event) {
+        event.preventDefault();
+        var color = '#' + ("00000"+Math.floor(Math.random() * 0x1000000).toString(16)).substr(-6);
+        $bertArea.find('.bert-hair').find('path').css('fill', color);
+    });
+
+    var
+    $elmoArea = $('.jsElmoArea'),
+    isElmoAnime = false;
+
+    $elmoArea.on(TOUCH_START, function(event) {
+        event.preventDefault();
+        if(isElmoAnime) return false;
+        isElmoAnime = true;
+        $(this)
+            .addClass('anime')
+            .one(ANIMATION_END_EVENT, function(event) {
+                isElmoAnime = false;
+                $elmoArea.removeClass('anime');
+            });
+    });
 
     var
     $oscar = $('.jsOscar'),
