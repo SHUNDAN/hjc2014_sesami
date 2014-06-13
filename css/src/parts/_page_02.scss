@@ -1,4 +1,9 @@
 // アニメーションのKeyframes
+
+// ------------------------------------------------------
+// クッキーモンスター
+// @see .cookie-monster
+// ------------------------------------------------------
 // 目
 // ------------------------------------------------------
 @include keyframes (page02_CookieMonster_eye) {
@@ -79,6 +84,11 @@
   60%  { opacity: 0; }
   100% { opacity: 0; @include translate3d(60%, 65%, 0);}
 }
+
+// ------------------------------------------------------
+// 池+クッキー
+// @see .pool
+// ------------------------------------------------------
 // クッキーのかけら
 // ------------------------------------------------------
 @include keyframes (page02_CookieMonster_tips_1) {
@@ -103,6 +113,51 @@
   100%  { @include rotateZ(0deg); }
 }
 
+// ------------------------------------------------------
+// 吹き出し
+// @see .fukidashi
+// ------------------------------------------------------
+@include keyframes (page02_Fukidashi__delay_1) {
+  0%   { opacity: 0;}
+  99%   { opacity: 0;}
+  100%  { opacity: 1; }
+}
+@include keyframes (page02_Fukidashi__scale) {
+  0%   { @include scale(1); }
+  25%  { @include scale(1,1.1); }
+  50% { @include scale(1); }
+  75%  { @include scale(1.1,1); }
+  100% { @include scale(1); }
+}
+
+// ------------------------------------------------------
+// オスカー
+// @see .oscar
+// ------------------------------------------------------
+// バケツの震え
+@include keyframes (page02_oscar__baletsu_rotate_1) {
+  0%   { @include rotateZ(0deg); }
+  25%  { @include rotateZ(-5deg); }
+  50%  { @include rotateZ(-0deg); }
+  75%  { @include rotateZ(5deg); }
+  100% { @include rotateZ(0deg); }
+}
+// フタが吹っ飛ぶ動き
+@include keyframes (page02_oscar__futa_jump) {
+    0%   { @include translate(0%, 0%);}
+    20%  { @include translate(0%, -400%);}
+    80%  { @include translate(0%, -400%);}
+    100% { @include translate(0%, -200%%);}
+}
+// 吹っ飛びに付ける回転
+// @include keyframes (page02_oscar__futa_jump_rotate) {
+//   0%   { @include rotateZ(0deg); }
+//   25%  { @include rotateZ(-5deg); }
+//   50%  { @include rotateZ(5deg); }
+//   75%  { @include rotateZ(-5deg); }
+//   100% { @include rotateZ(5deg); }
+// }
+
 
 
 // スタイルの指定
@@ -113,7 +168,7 @@
     // ------------------------------------------------------
     // ベースポジション
     .cookie-monster {
-      position: relative;
+      position: absolute;
       width: 25%;
       height: 70%;
       top: 15%;
@@ -199,7 +254,7 @@
     // ------------------------------------------------------
     // ベースポジション
     .pool {
-      position: relative;
+      position: absolute;
       width: 40%;
       height: 36%;
       bottom: 18%;
@@ -244,5 +299,128 @@
       width: 80%;
       @include abs(-30%, 25%);
       // @include animation(page02_pool__cookie 2s infinite ease-in 500ms);
+    }
+
+
+    // ビッグバード
+    // ------------------------------------------------------
+    // ベースポジション
+    .bigbird {
+      position: absolute;
+      width: 8%;
+      height: 30%;
+      top: 20%;
+      left: 53%;
+    }
+    // 身体
+    .bigbird__body{
+      width: 100%;
+      @include abs(0, 0);
+    }
+
+
+    // エルモ
+    // ------------------------------------------------------
+    // ベースポジション
+    .elmo {
+      position: absolute;
+      width: 8%;
+      height: 30%;
+      top: 26%;
+      left: 61%;
+    }
+    // 身体
+    .elmo__body{
+      width: 100%;
+      @include abs(0, 0);
+    }
+
+
+    // バート
+    // ------------------------------------------------------
+    // ベースポジション
+    .bert {
+      position: absolute;
+      width: 8%;
+      height: 30%;
+      top: 24%;
+      left: 68%;
+    }
+    // 身体
+    .bert__body{
+      width: 100%;
+      @include abs(0, 0);
+    }
+
+
+    // オスカー
+    // ------------------------------------------------------
+    // ベースポジション
+    .oscar {
+      position: absolute;
+      width: 8%;
+      height: 30%;
+      top: 18%;
+      left: 76%;
+    }
+    // 身体
+    .oscar__body{
+      width: 100%;
+      @include abs(0, 0);
+    }
+    // バケツ
+    .oscar__baketsu{
+      width: 84%;
+      @include abs(40%, 18%);
+      // @include animation(page02_oscar__baletsu_rotate_1 .5s infinite);
+    }
+    // フタ
+    .oscar__futa{
+      width: 84%;
+      @include abs(32%, 19%);
+      @include animation(page02_oscar__futa_jump 1s 1);
+      // @include animation(page02_oscar__baletsu_rotate_1 .5s infinite);
+    }
+
+
+    // 吹き出し
+    // ------------------------------------------------------
+    // ベースポジション
+    .fukidashi {
+      position: absolute;
+      width: 10%;
+      height: 10%;
+      top: 10%;
+      left: 63%;
+    }
+    // まるいの１
+    .fukidashi__circle--1{
+      width: 127%;
+      position: absolute;
+      top: 101%;
+      left: -13%;
+      @include animation(page02_Fukidashi__delay_1 1s ease-in-out 1);
+    }
+    // まるいの２
+    .fukidashi__circle--2{
+      width: 100%;
+      position: absolute;
+      top: 84%;
+      left: 0;
+      @include animation(page02_Fukidashi__delay_1 1.5s ease-in-out 1);
+    }
+    // バルーン
+    .fukidashi__balloon{
+      width: 100%;
+      @include abs(0, 0);
+      @include animation(page02_Fukidashi__delay_1 2.5s ease-in-out 1,page02_Fukidashi__scale 2s infinite ease-in-out);
+    }
+    // ビックリマーク
+    .fukidashi__em{
+      width: 12%;
+      position: absolute;
+      top: 29%;
+      left: 42%;
+      @include animation(page02_Fukidashi__delay_1 5s ease-in-out 1);
     }
 }
