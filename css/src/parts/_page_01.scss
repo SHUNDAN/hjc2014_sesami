@@ -76,23 +76,12 @@
         bottom: -57%;
         left: 0;
         width: 90%;
-        .portrait & {
-          bottom: 6%;
-          left: -40%;
-          width: 150%;
-          z-index: 2;
-        }
     }
     .box {
     	position: absolute;
     	top: 44%;
     	right: 9%;
     	width: 35%;
-        .portrait & {
-          top: 58%;
-          right: 2%;
-          width: 44%;
-        }
 
         &.rotateAnim {
             @include animation(page01_anim_boxRotate 500ms);
@@ -103,11 +92,6 @@
     	top: 55%;
     	left: 38%;
     	width: 43%;
-      .portrait & {
-        top: 66%;
-        left: 25%;
-        width: 63%;
-      }
     }
 
 	.armAnim {
