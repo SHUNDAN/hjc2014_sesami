@@ -149,6 +149,19 @@
     80%  { @include translate(0%, -400%);}
     100% { @include translate(0%, -200%%);}
 }
+// オスカーの手が出現
+@include keyframes (page02_oscar__delay_1) {
+  0%   { opacity: 0;}
+  99%   { opacity: 0;}
+  100%  { opacity: 1; }
+}
+// オスカーの顔が出現
+@include keyframes (page02_oscar__face) {
+  0%   { opacity: 0; @include translate(0%, 40%);}
+  40%  { opacity: 0; @include translate(0%, 40%);}
+  50%  { opacity: 1; }
+  100% { opacity: 1;}
+}
 // 吹っ飛びに付ける回転
 // @include keyframes (page02_oscar__futa_jump_rotate) {
 //   0%   { @include rotateZ(0deg); }
@@ -183,38 +196,38 @@
     .cookie-monster__eye{
       width: 20%;
       @include abs(4%, 44%);
-      @include animation(page02_CookieMonster_mouse 0.2s infinite);
+      @include animation(page02_CookieMonster_mouse 0.2s infinite 1.5s);
     }
     // おくち
     .cookie-monster__mouse{
       width: 44%;
       @include abs(14.5%, 36%);
-      @include animation(page02_CookieMonster_mouse 0.2s infinite);
+      @include animation(page02_CookieMonster_mouse 0.2s infinite 1.5s);
     }
     // 手＋クッキー
     .cookie-monster__hand{
       width: 90%;
       @include abs(28%, 43%);
-      @include animation(page02_CookieMonster_hand 1s infinite);
+      @include animation(page02_CookieMonster_hand .5s 3);
       @include transform-origin( 0, 100% );
     }
     // 手＋クッキーの動線
-    .cookie-monster__move{
-      width: 23%;
-      @include abs(20%, 120%);
-      @include animation(page02_CookieMonster_hand_move 1s infinite);
-      @include transform-origin( 0, 100% );
-    }
+    // .cookie-monster__move{
+    //   width: 23%;
+    //   @include abs(20%, 120%);
+    //   @include animation(page02_CookieMonster_hand_move 1s infinite);
+    //   @include transform-origin( 0, 100% );
+    // }
     // クッキーのかけら
     .cookie-monster__tips-1{
       width: 10%;
       @include abs(56%, 95%);
-      @include animation(page02_CookieMonster_tips_1 1s infinite);
+      @include animation(page02_CookieMonster_tips_1 .5s 3);
     }
     .cookie-monster__tips-2{
       width: 12%;
       @include abs(53%, 103%);
-      @include animation(page02_CookieMonster_tips_2 1s infinite);
+      @include animation(page02_CookieMonster_tips_2 .5s 3);
     }
     // 涙　左
     .cookie-monster__tear-l-1{
@@ -363,10 +376,22 @@
       top: 18%;
       left: 76%;
     }
+    // 顔
+    .oscar__face{
+      width: 90%;
+      @include abs(6%, 12%);
+      @include animation(page02_oscar__face 0.5s 1 ease-in);
+    }
     // 身体
     .oscar__body{
       width: 100%;
       @include abs(0, 0);
+    }
+    // 右手
+    .oscar__hand--r{
+      width: 50%;
+      @include abs(18%, 72%);
+      @include animation(page02_oscar__delay_1 0.2s ease-in-out 1);
     }
     // バケツ
     .oscar__baketsu{
@@ -374,12 +399,21 @@
       @include abs(40%, 18%);
       // @include animation(page02_oscar__baletsu_rotate_1 .5s infinite);
     }
+    // 左手
+    .oscar__hand--l{
+      width: 40%;
+      @include abs(36%, 9%);
+      @include animation(page02_oscar__delay_1 0.2s ease-in-out 1);
+    }
     // フタ
     .oscar__futa{
       width: 84%;
       @include abs(32%, 19%);
-      @include animation(page02_oscar__futa_jump 1s 1);
+      @include animation(page02_oscar__futa_jump 1s 5s);
       // @include animation(page02_oscar__baletsu_rotate_1 .5s infinite);
+      &.oscar__futa--stop {
+        @include abs(1%, 19%);
+      }
     }
 
 
@@ -399,7 +433,7 @@
       position: absolute;
       top: 101%;
       left: -13%;
-      @include animation(page02_Fukidashi__delay_1 1s ease-in-out 1);
+      @include animation(page02_Fukidashi__delay_1 .5s ease-in-out 1);
     }
     // まるいの２
     .fukidashi__circle--2{
@@ -407,13 +441,13 @@
       position: absolute;
       top: 84%;
       left: 0;
-      @include animation(page02_Fukidashi__delay_1 1.5s ease-in-out 1);
+      @include animation(page02_Fukidashi__delay_1 1s ease-in-out 1);
     }
     // バルーン
     .fukidashi__balloon{
       width: 100%;
       @include abs(0, 0);
-      @include animation(page02_Fukidashi__delay_1 2.5s ease-in-out 1,page02_Fukidashi__scale 2s infinite ease-in-out);
+      @include animation(page02_Fukidashi__delay_1 1.5s ease-in-out 1,page02_Fukidashi__scale 2s infinite ease-in-out);
     }
     // ビックリマーク
     .fukidashi__em{
@@ -421,6 +455,6 @@
       position: absolute;
       top: 29%;
       left: 42%;
-      @include animation(page02_Fukidashi__delay_1 5s ease-in-out 1);
+      @include animation(page02_Fukidashi__delay_1 2s ease-in-out 1);
     }
 }
