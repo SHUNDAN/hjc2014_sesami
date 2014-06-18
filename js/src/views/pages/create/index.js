@@ -157,16 +157,19 @@ $('.jsFileSelect').on('change', function (e) {
           // @see http://www.html5.jp/canvas/ref/method/drawImage.html
           context.drawImage(image, marginL, marginT, srcW, srcH, 0, 0, resizedW, resizedH);
           var imageBase64 = canvas.toDataURL('image/png');
-          console.debug('imageBase64', imageBase64);
+
+          tmp.userImageBase64 = imageBase64;
 
 
           // 書き出し
           var resizedImage = new Image();
           resizedImage.src = imageBase64;
+          resizedImage.className = 'userImage';
           resizedImage.onload = function () {
               $('.jsUploadPhoto').empty().append(this);
 
               // ついでにデフォルトフレームもアペンド
+              tmp.selectedFrameNo = 1;
               var frame = new Image();
               frame.src = './img/create/frame1.png';
               frame.className = 'frame';
@@ -235,22 +238,115 @@ $('.jsFrameSelect img').on('click', function () {
 $('.jsGotoConfirmPage').on('click', function () {
 
     // 選択されたフレームとユーザー画像を取得する.
-    var $frameImage;
-    var $userImage;
+    var frameImage;
+    var userImage;
     var $images = $('.jsUploadPhoto img');
     $.each($images, function (index) {
         var $img = $($images[index]);
         if ($img.hasClass('frame')) {
             var img = $img[0].cloneNode();
-            $frameImage = $(img);
+            frameImage = img;
         } else {          
             var img = $img[0].cloneNode();
-            $userImage = $(img);
+            userImage = img;
         }
     });
 
+
+    // 合成処理 ********* ここから ***********
+    var
+        canvas = document.createElement('canvas'),
+        context = canvas.getContext('2d'),
+        frameW = frameImage.width,
+        frameH = frameImage.height,
+        userImageW = userImage.width,
+        userImageH = userImage.height;
+
+    canvas.width = frameW;
+    canvas.height = frameH;
+
+    // とりあえず真っ白を最背面に置く。
+    // context.fillStyle = 'rgba(255,255,255,1)';
+    // context.fillRect(0, 0, frameW, frameH);
+
+    // ユーザー画像の描画
+    context.drawImage(userImage,0, 0, userImageW, userImageH, 64, 64, userImageW, userImageH);
+
+    // フレーム画像の描画（透過のところは処理しない感じ）
+    var newDatas = [];
+    var pixels = context.getImageData(0, 0, frameW, frameH);
+    var datas = pixels.data;
+    var frameDatas = (function () {
+        var
+            aCanvas = document.createElement('canvas'),
+            aContext = aCanvas.getContext('2d');
+
+        aCanvas.width = frameW;
+        aCanvas.height = frameH;
+
+        context.drawImage(frameImage, 0, 0, frameW, frameH, 0, 0, frameW, frameH);
+
+        return context.getImageData(0, 0, frameW, frameH).data;
+    })();
+
+    var count = 0;
+    for (var i = 0, len = datas.length; i < len; i++) {
+
+
+    // for (var h = 1; h < frameH; h++) {
+    //     for (var w = 1; w < frameW; w++) {
+        var
+            // i = h * w - 1,
+            frameAlpha = (frameDatas[i + 3] < 1 ? (frameDatas[i+3]/255) : 1), // 50以下のみを透過と扱う。なぜか至ところが透過しているため・・・
+            orgnAlpha = 1;//(datas[i + 3] < 1 ?  datas[i+3]/ 255 : 1), // 50以下のみを透過と扱う。なぜか至ところが透過しているため・・・
+            floor = Math.floor;
+
+        datas[i]     = floor(frameDatas[i]     * frameAlpha + datas[i]     * (1 - frameAlpha) * orgnAlpha);
+        datas[i + 1] = floor(frameDatas[i + 1] * frameAlpha + datas[i + 1] * (1 - frameAlpha) * orgnAlpha);
+        datas[i + 2] = floor(frameDatas[i + 2] * frameAlpha + datas[i + 2] * (1 - frameAlpha) * orgnAlpha);
+        datas[i + 3] = 255;
+        
+        
+        if (datas[i + 3] < 1 && datas[i + 3] > 0 && count < 100) {
+          count++;
+          var h = floor(i / frameW);
+          var w = i % frameW;
+          console.debug('alpha', datas[i + 3], h, w);
+        }
+    }
+
+
+    // for (var i = 0, len = datas.length; i < len; i += 4) {
+    //     var 
+    //         frameAlpha = frameDatas[i + 3],
+    //         orgnAlpha = datas[i + 3];
+
+    //     newDatas.push(frameDatas[i]     * frameAlpha + datas[i]     * (1 - frameAlpha) * orgnAlpha);
+    //     newDatas.push(frameDatas[i + 1] * frameAlpha + datas[i + 1] * (1 - frameAlpha) * orgnAlpha);
+    //     newDatas.push(frameDatas[i + 2] * frameAlpha + datas[i + 2] * (1 - frameAlpha) * orgnAlpha);
+    //     newDatas.push(1);
+
+
+
+    //     // newDatas[i]     = frameDatas[i]     * frameAlpha + datas[i]     * (1 - frameAlpha) * orgnAlpha;
+    //     // newDatas[i + 1] = frameDatas[i + 1] * frameAlpha + datas[i + 1] * (1 - frameAlpha) * orgnAlpha;
+    //     // newDatas[i + 2] = frameDatas[i + 2] * frameAlpha + datas[i + 2] * (1 - frameAlpha) * orgnAlpha;
+    //     // newDatas[i + 3] = 1;
+    // }
+    // console.debug('[newDatas]', datas);
+    context.putImageData(pixels, 0, 0);
+    tmp.finalBase64 = canvas.toDataURL('image/png');
+
+
     // 表示
-    $('.jsUploadPhoto2').append($frameImage).append($userImage);
+    var finalImage = new Image();
+    finalImage.src = tmp.finalBase64;
+    finalImage.onload = function () {
+        $('.jsUploadPhoto2').empty().append(finalImage);
+    };
+
+
+    //$('.jsUploadPhoto2').append(frameImage).append(userImage);
 
 
     // 次のページへ
@@ -307,7 +403,7 @@ $('.jsUpload').on('click', function () {
             method: 'post',
             dataType: 'text',
             data: {
-                base64: base64
+                base64: tmp.finalBase64
             },
             success: function (text) {
                 var uniqueKey = text;

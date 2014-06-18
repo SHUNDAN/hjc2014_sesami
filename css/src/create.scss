@@ -235,10 +235,17 @@ h1 {
     overflow: hidden;
     margin: 0 auto 5%;
 
-    img {
-        position: absolute;
+    // img {
+    //     position: absolute;
+    // }
+    .userImage {
+        width: 100%;
+        height: auto;
     }
     .frame {
+        position: absolute;
+        top: 0;
+        left: 0;
         z-index: 2;
         width: 300px;
     }
@@ -307,12 +314,14 @@ h1 {
     margin: 0 auto 5%;
 
     img {
-        position: absolute;
+        // position: absolute;
+        width: 100%;
+        height: auto;
     }
-    .frame {
-        z-index: 2;
-        width: 300px;
-    }
+    // .frame {
+    //     z-index: 2;
+    //     width: 300px;
+    // }
 }
 
 
