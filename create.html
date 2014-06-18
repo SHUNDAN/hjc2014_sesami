@@ -5,6 +5,7 @@
     <title>写真作成 | セサミBook</title>
     <link rel="stylesheet" href="./css/create.css">
     <link href='http://fonts.googleapis.com/css?family=Montserrat:700' rel='stylesheet' type='text/css'>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 </head>
 <body>
 
@@ -28,8 +29,8 @@
     <div class="page" data-page="1">
         <h1>自分だけのオリジナル写真を作って<br>Facebookで共有しよう!!</h1>
         <div class="description">
-            このページでは、お気に入りの写真とすばらしい絵本のフレームを組み合わせて自分だけのオリジナル写真を作ることができます。
-            世界に1つだけの写真を作って絵本とともにみんなにシェアしよう！
+            このページでは、お気に入りの写真と絵本のフレームを組み合わせて、自分だけのオリジナル写真を作ることができます。
+            世界に1つだけの写真を作って、絵本の楽しい体験をみんなにシェアしよう！
         </div>
         <input type="button" value="さっそく作る" class="button jsNextPage"/>
     </div>
@@ -38,62 +39,42 @@
     <div class="page hidden" data-page="2">
         <div class="navigator">
             <div class="inner">
-                <div class="step1 selected">写真をアップする</div>
-                <div class="step2">フレームを選ぶ</div>
-                <div class="step3">名前を入力する</div>
+                <div class="step1 selected">①写真を選ぶ</div>
+                <div class="step2">②フレームを選ぶ</div>
             </div>
         </div>
         <h1>お気に入りの写真を選ぼう</h1>
-        <input type="file" value="" class="fileUpButton jsFileSelect"/>
+        <input type="file" value="" class="fileUpButton jsFileSelect" accept="image/*"/>
     </div>
 
     <!--フレームを選ぶ-->
     <div class="page hidden" data-page="3">
         <div class="navigator">
             <div class="inner">
-                <div class="step1">写真をアップする</div>
-                <div class="step2 selected">フレームを選ぶ</div>
-                <div class="step3">名前を入力する</div>
+                <div class="step1">①写真を選ぶ</div>
+                <div class="step2 selected">②フレームを選ぶ</div>
             </div>
         </div>
         <h1>フレームを選ぼう</h1>
         <div class="frameArea">
             <figure class="uploadPhoto jsUploadPhoto"><!--アップロードされたファイルがここに挿入されます--></figure>
-            <div class="description taCenter">好みのフレームを選んで、OKボタンを押してね！</div>
+            <div class="description taCenter">どのフレームにする？</div>
             <div class="frameSelector jsFrameSelect">
                 <img src="./img/create/frame1.png"/>
                 <img src="./img/create/frame2.png"/>
                 <img src="./img/create/frame3.png"/>
             </div>
         </div>
-        <div class="btn2Col">
+        <div class="btn2Col clearfix">
             <input type="button" class="button jsPrevPage" value="写真を選び直す"/>
-            <input type="button" class="button jsNextPage red" value="OK"/>
-        </div>
-    </div>
-
-    <!--名前を入力する-->
-    <div class="page hidden" data-page="4">
-        <div class="navigator">
-            <div class="inner">
-                <div class="step1">写真をアップする</div>
-                <div class="step2">フレームを選ぶ</div>
-                <div class="step3 selected">名前を入力する</div>
-            </div>
-            <h1>お子様の名前を入力して記念にしよう!!</h1>
-            <div class="description taCenter">
-                お子様の名前を写真に入力することができます。<br>makiのように英数字で入力すると綺麗になるよ!<br>（任意入力です）
-            </div>
-            <input type="text" class="inputName" placeholder="例：Yohei"/>
-            <input type="button" class="button jsGotoConfirmPage" value="これで決まり!"/>
+            <input type="button" class="button jsGotoConfirmPage red" value="OK"/>
         </div>
     </div>
 
     <!--確認画面-->
-    <div class="page hidden" data-page="5">
+    <div class="page hidden" data-page="4">
         <h1>できたよ!これで大丈夫？</h1>
         <figure class="uploadPhoto2 jsUploadPhoto2"><!--アップロードされたファイルがここに挿入されます--></figure>
-        <div style="font-size:10px; text-align:right;">※本当は日付とか名前も入ります。</div>
         <div class="btn2Col">
             <input type="button" class="button jsRest" value="やり直す"/>
             <input type="button" class="button jsUpload red" value="OK"/>
@@ -101,11 +82,10 @@
     </div>
 
     <!--完了ページ-->
-    <div class="page hidden" data-page="6">
+    <div class="page hidden" data-page="5">
         <h1>写真ができたよ!!</h1>
         <figure class="uploadPhoto3 jsUploadPhoto3"><!--アップロードされたファイルがここに挿入されます--></figure>
         <a href="http://www.facebook.com/share.php?u=共有したいＵＲＬ" class="jsFacebookShare" onclick="window.open(this.href, 'FBwindow', 'width=650, height=450, menubar=no, toolbar=no, scrollbars=yes'); return false;">シェア</a>
-        <!-- <div class="fb-share-button" data-href="https://developers.facebook.com/docs/plugins/" data-type="button"></div> -->
         <a href="#" class="downloadLink jsDownload">ダウンロードする</a>
     </div>
 

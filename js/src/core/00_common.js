@@ -42,10 +42,12 @@ sesami.isIEold = sesami.isIE7 || sesami.isIE8;
 
 
 // iPhoneとAndroidではスクロールを禁止する.
-if (sesami.isIphone || sesami.isAndroid || sesami.isIpad) {
-    document.body.addEventListener('touchmove', function (e) {
-        e.preventDefault();
-    })
+if (window.enableBodyScroll) {
+    if (sesami.isIphone || sesami.isAndroid || sesami.isIpad) {
+        document.body.addEventListener('touchmove', function (e) {
+            e.preventDefault();
+        })
+    }    
 }
 
 // iOS7.1用にminimal-uiを付けているので、iOS7.1の場合はそれのバグ回避のため、高さを140%くらいにする。
@@ -62,13 +64,13 @@ if (sesami.isAndroid) {
 
 // デバイス情報をクラスで表現する
 if (sesami.isIphone) {
-    $(document.body).addClass('iPhone');
+    $(document.body).addClass('iPhone sp');
 }
 if (sesami.isIpad) {
     $(document.body).addClass('iPad');
 }
 if (sesami.isAndroid) {
-    $(document.body).addClass('android');
+    $(document.body).addClass('android sp');
 }
 
 

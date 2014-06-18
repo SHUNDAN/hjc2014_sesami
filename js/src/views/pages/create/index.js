@@ -7,6 +7,20 @@
 //
 
 
+// 共通変数
+//--------------------------------------------
+var
+  tmp = {}  // 各種情報を入れておく
+  ;
+
+
+
+
+
+
+
+
+
 // Private Functions
 //-------------------------------------------
 var getCurrentPageNo = function (element) {
@@ -33,11 +47,20 @@ var image2base64 = function (img) {
 
 // ボタンアクションの定義
 //-------------------------------------------
+
+//
+// 次ページ
+//
 $('.jsNextPage').on('click', function () {
     var currentPage = getCurrentPageNo(this);
     goPage(currentPage + 1);
     $(window).scrollTop(0);
 });
+
+
+//
+// 前ページ
+//
 $('.jsPrevPage').on('click', function () {
     var currentPage = getCurrentPageNo(this);
     goPage(currentPage - 1);
@@ -45,58 +68,153 @@ $('.jsPrevPage').on('click', function () {
 });
 
 
-// 仮です（ファイルアップロードするところ）
-var tmp = {};
+//
+// ファイルアップロード
+//
 $('.jsFileSelect').on('change', function (e) {
 
-  var file;
-  //Drop || file
-  if(e.originalEvent.dataTransfer){
-    file = e.originalEvent.dataTransfer.files[0];
-  }else{
-    file = $(this)[0].files[0];
-  }
+    // アップロードされたファイル
+    var file = $(this)[0].files[0];
 
-  //not image
-  if(!(file.type == 'image/jpeg' || file.type == 'image/png')){
-    alert('画像をアップロードしてください.');
-    return false;
-  }
+    // ファイル形式チェック
+    if(file.type !== 'image/jpeg' && file.type !== 'image/png') {
+        alert('画像をアップロードしてください.');
+        return false;
+    }
 
-  var fileReader = new FileReader();
 
-  fileReader.onloadend = function(e) {
+    // ファイル読み込み
+    var fileReader = new FileReader();
+    fileReader.onloadend = function(e) {
 
-      // 画像をグローバル変数にキャッシュしておく.
-      tmp.uploadFileUrl = e.target.result;
+        // 画像をグローバル変数にキャッシュ.
+        tmp.uploadFileUrl = e.target.result;
 
-      // 画像をページにプレビュー表示する
-      var image = new Image();
-      image.src = tmp.uploadFileUrl;
-      image.onload = function () {
+        // 画像として表示.
+        var image = new Image();
+        image.src = tmp.uploadFileUrl;
+        image.onload = function () {
 
-          // 写真の中央表示の調整
-          var w = this.width;
-          var h = this.height;
-          if (w < h) { // 縦長
-              this.width = 300;
-              var h = (h / w) * 300 - 300;
-              this.style.marginTop = h/2 * -1 + 'px';
-          } else { // 横長
-              this.height = 300;
-              var w = (w / h) * 300 - 300;
-              this.style.marginLeft = w/2 * -1 + 'px';
+          // **** frame ***
+          // w: 1000
+          // h: 1133
+
+          // **** photo ***
+          // x: 65
+          // y: 65
+          // w: 881
+          // h: 811
+
+          // リサイズ情報
+          var
+              posX = 65,
+              posY = 65,
+              resizedW = 881,
+              resizedH = 811,
+              resizedRaito = resizedH / resizedW;
+
+
+          // 写真情報
+          var 
+              orgnW = this.width,
+              orgnH = this.height,
+              orgnRaito = orgnH / orgnW;
+
+
+          // 横長の場合は、縦を縮小して、横を左右中央表示にする
+          var scale, scaledWidth, scaledHeight ,marginL, marginT;
+          if (orgnRaito < resizedRaito) {
+              srcH = orgnH;
+              srcW = orgnW * (orgnRaito / resizedRaito);
+              console.debug((srcH / srcW), (resizedH / resizedW));
+              marginL = (orgnW - srcW) / 2;
+              marginT = 0;
+
+          // 縦長の場合は、横を縮小して、縦を上下中央表示にする
+          } else {
+              srcH = orgnH * (resizedRaito / orgnRaito);
+              srcW = orgnW;
+              marginL = 0;
+              marginT = (orgnH - srcH) / 2;
+              // scale = resizedW / orgnW;
+              // scaledWidth = resizedW;
+              // scaledHeight = orgnH * scale;
+              // marginL = 0;
+              // marginT = (scaledHeight - resizedH) / 2 * -1;
           }
 
-          // DOMにアペンド
-          $('.jsUploadPhoto').empty().append(this);
-      }
 
-      // ページ遷移
-      goPage(3);
-  };
-  fileReader.readAsDataURL(file);
+          // 画像の縮小と形指定を行う.
+          var
+              canvas  = document.createElement('canvas'),
+              context = canvas.getContext('2d');
 
+          canvas.width = resizedW;
+          canvas.height = resizedH;
+
+          // TODO iOSなどのサンプリング対策
+          // context.drawImage(image, sx, sy, sw, sh, dx, dy, dw, dh)
+          // @see http://www.html5.jp/canvas/ref/method/drawImage.html
+          context.drawImage(image, marginL, marginT, srcW, srcH, 0, 0, resizedW, resizedH);
+          var imageBase64 = canvas.toDataURL('image/png');
+          console.debug('imageBase64', imageBase64);
+
+
+          // 書き出し
+          var resizedImage = new Image();
+          resizedImage.src = imageBase64;
+          resizedImage.onload = function () {
+              $('.jsUploadPhoto').empty().append(this);
+
+              // ついでにデフォルトフレームもアペンド
+              var frame = new Image();
+              frame.src = './img/create/frame1.png';
+              frame.className = 'frame';
+              $('.jsUploadPhoto').append(frame);
+          };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            // 写真の中央表示の調整
+            // var w = this.width;
+            // var h = this.height;
+            // if (w < h) { // 縦長
+            //     this.width = 300;
+            //     var h = (h / w) * 300 - 300;
+            //     this.style.marginTop = h/2 * -1 + 'px';
+            // } else { // 横長
+            //     this.height = 300;
+            //     var w = (w / h) * 300 - 300;
+            //     this.style.marginLeft = w/2 * -1 + 'px';
+            // }
+
+            // // DOMにアペンド
+            // $('.jsUploadPhoto').empty().append(this);
+
+            // // ついでにデフォルトフレームもアペンド
+            // var frame = new Image();
+            // frame.src = './img/create/frame1.png';
+            // frame.className = 'frame';
+            // $('.jsUploadPhoto').append(frame);
+        }
+
+        // ページ遷移
+        goPage(3);
+    };
+    fileReader.readAsDataURL(file);
 });
 
 
@@ -109,8 +227,6 @@ $('.jsFrameSelect img').on('click', function () {
     frame.className = 'frame';
     $figure.find('.frame').remove();
     $figure.append(frame);
-
-    // TODO フレームが未選択にならないように、する.
 });
 
 
@@ -138,7 +254,7 @@ $('.jsGotoConfirmPage').on('click', function () {
 
 
     // 次のページへ
-    goPage(5);
+    goPage(4);
 
 });
 
@@ -351,7 +467,7 @@ sesami.create.prototype = {
   }
 };
 
-var Create = new sesami.create();
+// var Create = new sesami.create();
 
 (function () {
 
