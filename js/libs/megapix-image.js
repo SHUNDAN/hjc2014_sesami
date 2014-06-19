@@ -211,7 +211,7 @@
     var imgWidth = this.srcImage.naturalWidth, imgHeight = this.srcImage.naturalHeight,
         width = options.width, height = options.height,
         maxWidth = options.maxWidth, maxHeight = options.maxHeight,
-        doSquash = !this.blob || this.blob.type === 'image/jpeg';
+        doSquash = !this.blob || this.blob.type === 'image/png';
     if (width && !height) {
       height = (imgHeight * width / imgWidth) << 0;
     } else if (height && !width) {

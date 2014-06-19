@@ -97,15 +97,15 @@ $('.jsFileSelect').on('change', function (e) {
 
 
 
-          // 1.5MB以上は、MegaPixcel対応
-          var S1_5MB = 1.5 * 1024 * 1024;
+          // 1MB以上は、MegaPixcel対応
+          var S1MB = 1 * 1024 * 1024;
           var fileSize = file.size;
-          console.debug('size: ', fileSize, S1_5MB);
-          if (fileSize > S1_5MB) {
+          console.debug('size: ', fileSize, S1MB);
+          if (fileSize > S1MB) {
               console.debug('use MegaPixImage');
-              var scale = S1_5MB / fileSize;
-              var w = image.width * scale;
-              var h = image.height * scale;
+              var scale = S1MB / fileSize;
+              var w = Math.floor(image.width * scale);
+              var h = Math.floor(image.height * scale);
               var canvas = document.createElement('canvas');
               var mgImg = new MegaPixImage(image);
               var newImg = new Image();
