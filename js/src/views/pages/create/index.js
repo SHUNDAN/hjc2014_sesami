@@ -15,7 +15,22 @@ var
 
 
 
-
+// 進捗バー
+//-------------------------------------------
+var $progress = $('.jsProgress');
+var Progress = {
+    show: function () {
+        $progress.removeClass('hidden');
+        this.updateProgress(0);
+    },
+    hide: function () {
+        $progress.addClass('hidden');
+    },
+    updateProgress: function (raito) {
+        $progress.find('.inner').css('width', raito + '%');
+        $progress.find('.raito').html(Math.floor(raito) + '%');
+    },
+};
 
 
 
@@ -208,127 +223,6 @@ $('.jsFileSelect').on('change', function (e) {
                   tmp.frameImage = frame;
               };              
           }
-
-
-          // // **** frame ***
-          // // w: 1000
-          // // h: 1133
-
-          // // **** photo ***
-          // // x: 65
-          // // y: 65
-          // // w: 881
-          // // h: 811
-
-          // // リサイズ情報
-          // var
-          //     posX = 65,
-          //     posY = 65,
-          //     resizedW = 881,
-          //     resizedH = 811,
-          //     resizedRaito = resizedH / resizedW;
-
-
-          // // 写真情報
-          // var 
-          //     orgnW = this.width,
-          //     orgnH = this.height,
-          //     orgnRaito = orgnH / orgnW;
-
-
-          // // 横長の場合は、縦を縮小して、横を左右中央表示にする
-          // var scale, scaledWidth, scaledHeight ,marginL, marginT;
-          // if (orgnRaito < resizedRaito) {
-          //     srcH = orgnH;
-          //     srcW = orgnW * (orgnRaito / resizedRaito);
-          //     console.debug((srcH / srcW), (resizedH / resizedW));
-          //     marginL = (orgnW - srcW) / 2;
-          //     marginT = 0;
-
-          // // 縦長の場合は、横を縮小して、縦を上下中央表示にする
-          // } else {
-          //     srcH = orgnH * (resizedRaito / orgnRaito);
-          //     srcW = orgnW;
-          //     marginL = 0;
-          //     marginT = (orgnH - srcH) / 2;
-          //     // scale = resizedW / orgnW;
-          //     // scaledWidth = resizedW;
-          //     // scaledHeight = orgnH * scale;
-          //     // marginL = 0;
-          //     // marginT = (scaledHeight - resizedH) / 2 * -1;
-          // }
-
-
-          // // 画像の縮小と形指定を行う.
-          // var
-          //     canvas  = document.createElement('canvas'),
-          //     context = canvas.getContext('2d');
-
-          // canvas.width = resizedW;
-          // canvas.height = resizedH;
-
-          // // TODO iOSなどのサンプリング対策
-          // // context.drawImage(image, sx, sy, sw, sh, dx, dy, dw, dh)
-          // // @see http://www.html5.jp/canvas/ref/method/drawImage.html
-          // context.drawImage(image, marginL, marginT, srcW, srcH, 0, 0, resizedW, resizedH);
-          // var imageBase64 = canvas.toDataURL('image/png');
-
-          // tmp.userImageBase64 = imageBase64;
-
-
-          // // 書き出し
-          // var resizedImage = new Image();
-          // resizedImage.src = imageBase64;
-          // resizedImage.className = 'userImage';
-          // resizedImage.onload = function () {
-          //     tmp.userImage = this;
-          //     $('.jsUploadPhoto').empty().append(this);
-
-          //     // ついでにデフォルトフレームもアペンド
-          //     tmp.selectedFrameNo = 1;
-          //     var frame = new Image();
-          //     frame.src = './img/create/frame1.png';
-          //     frame.className = 'frame';
-          //     $('.jsUploadPhoto').append(frame);
-          //     tmp.frameImage = frame;
-          // };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            // 写真の中央表示の調整
-            // var w = this.width;
-            // var h = this.height;
-            // if (w < h) { // 縦長
-            //     this.width = 300;
-            //     var h = (h / w) * 300 - 300;
-            //     this.style.marginTop = h/2 * -1 + 'px';
-            // } else { // 横長
-            //     this.height = 300;
-            //     var w = (w / h) * 300 - 300;
-            //     this.style.marginLeft = w/2 * -1 + 'px';
-            // }
-
-            // // DOMにアペンド
-            // $('.jsUploadPhoto').empty().append(this);
-
-            // // ついでにデフォルトフレームもアペンド
-            // var frame = new Image();
-            // frame.src = './img/create/frame1.png';
-            // frame.className = 'frame';
-            // $('.jsUploadPhoto').append(frame);
         }
 
         // 文言の調整
@@ -377,6 +271,9 @@ $('.jsFrameSelect img').on('click', function () {
 // 確認画面へ
 $('.jsGotoConfirmPage').on('click', function () {
 
+    Progress.show();
+
+
     // 選択されたフレームとユーザー画像を取得する.
     var frameImage;
     var userImage;
@@ -391,41 +288,6 @@ $('.jsGotoConfirmPage').on('click', function () {
             userImage = img;
         }
     });
-
-
-
-    // ユーザー画像の回転処理
-    var rotate = tmp.userImageRotate % 360;
-    if (rotate !== 0) {
-
-        var 
-            userImage = tmp.userImage,
-            w = userImage.naturalWidth  || userImage.width,
-            h = userImage.naturalHeight || userImage.height;
-
-        var mgImg = new MegaPixImage(userImage);
-        var newImg = new Image();
-        newImg.onload = function () {
-            console.debug('image created by megaPix was loaded.');
-            tmp.userImage = newImg;
-            createImage();
-        }
-
-        var orientation;
-        if (rotate === 90) {
-            orientation = 6;
-        } else if (rotate === 180) {
-            orientation = 3;
-        } else {
-            orientation = 8;
-        }
-        mgImg.render(newImg, { width: w, height: h , orientation: orientation});
-        console.debug('megaPixImage finish');
-
-    } else {
-        createImage();
-    }
-
 
 
 
@@ -472,61 +334,102 @@ $('.jsGotoConfirmPage').on('click', function () {
             return context.getImageData(0, 0, frameW, frameH).data;
         })();
 
-        for (var i = 0, len = datas.length; i < len; i++) {
+
+        var i = 0, len = datas.length;
+        var func = function () {
+            for (; i < len; i++) {
+
+                var
+                    frameAlpha = (frameDatas[i + 3] < 1 ? (frameDatas[i+3]/255) : 1), // 50以下のみを透過と扱う。なぜか至ところが透過しているため・・・
+                    orgnAlpha = 1;//(datas[i + 3] < 1 ?  datas[i+3]/ 255 : 1), // 50以下のみを透過と扱う。なぜか至ところが透過しているため・・・
+                    floor = Math.floor;
+
+                datas[i]     = floor(frameDatas[i]     * frameAlpha + datas[i]     * (1 - frameAlpha) * orgnAlpha);
+                datas[i + 1] = floor(frameDatas[i + 1] * frameAlpha + datas[i + 1] * (1 - frameAlpha) * orgnAlpha);
+                datas[i + 2] = floor(frameDatas[i + 2] * frameAlpha + datas[i + 2] * (1 - frameAlpha) * orgnAlpha);
+                datas[i + 3] = 255;
+
+                if (i % 5000 === 0 && i > 0) {
+                    var raito = (i / len) * 100;
+                    Progress.updateProgress(raito);
+                    // console.debug('raito', raito);
+                    i++;
+                    break;
+                }
+            }
+            if (i >= len) {
+                Progress.updateProgress(100);
+
+                context.putImageData(pixels, 0, 0);
+                tmp.finalBase64 = canvas.toDataURL('image/png');
 
 
-        // for (var h = 1; h < frameH; h++) {
-        //     for (var w = 1; w < frameW; w++) {
-            var
-                // i = h * w - 1,
-                frameAlpha = (frameDatas[i + 3] < 1 ? (frameDatas[i+3]/255) : 1), // 50以下のみを透過と扱う。なぜか至ところが透過しているため・・・
-                orgnAlpha = 1;//(datas[i + 3] < 1 ?  datas[i+3]/ 255 : 1), // 50以下のみを透過と扱う。なぜか至ところが透過しているため・・・
-                floor = Math.floor;
+                // 表示
+                var finalImage = new Image();
+                finalImage.src = tmp.finalBase64;
+                finalImage.onload = function () {
+                    $('.jsUploadPhoto2').empty().append(finalImage);
+                };
 
-            datas[i]     = floor(frameDatas[i]     * frameAlpha + datas[i]     * (1 - frameAlpha) * orgnAlpha);
-            datas[i + 1] = floor(frameDatas[i + 1] * frameAlpha + datas[i + 1] * (1 - frameAlpha) * orgnAlpha);
-            datas[i + 2] = floor(frameDatas[i + 2] * frameAlpha + datas[i + 2] * (1 - frameAlpha) * orgnAlpha);
-            datas[i + 3] = 255;
+                // 次のページへ
+                goPage(4);
 
+                setTimeout(function () {
+                    Progress.hide();
+                }, 500);                
+            
+            } else {
+              // UIの更新タイミングを取る
+              setTimeout(func, 1);
+            }
+        };
+        func();
+    };
+
+
+
+
+
+
+
+    // ユーザー画像の回転処理
+    var rotate = tmp.userImageRotate % 360;
+    if (rotate !== 0) {
+
+        var 
+            userImage = tmp.userImage,
+            w = userImage.naturalWidth  || userImage.width,
+            h = userImage.naturalHeight || userImage.height;
+
+        var mgImg = new MegaPixImage(userImage);
+        var newImg = new Image();
+        newImg.onload = function () {
+            console.debug('image created by megaPix was loaded.');
+            tmp.userImage = newImg;
+            createImage();
         }
 
+        var orientation;
+        if (rotate === 90) {
+            orientation = 6;
+        } else if (rotate === 180) {
+            orientation = 3;
+        } else {
+            orientation = 8;
+        }
+        mgImg.render(newImg, { width: w, height: h , orientation: orientation});
+        console.debug('megaPixImage finish');
 
-        // for (var i = 0, len = datas.length; i < len; i += 4) {
-        //     var 
-        //         frameAlpha = frameDatas[i + 3],
-        //         orgnAlpha = datas[i + 3];
-
-        //     newDatas.push(frameDatas[i]     * frameAlpha + datas[i]     * (1 - frameAlpha) * orgnAlpha);
-        //     newDatas.push(frameDatas[i + 1] * frameAlpha + datas[i + 1] * (1 - frameAlpha) * orgnAlpha);
-        //     newDatas.push(frameDatas[i + 2] * frameAlpha + datas[i + 2] * (1 - frameAlpha) * orgnAlpha);
-        //     newDatas.push(1);
-
-
-
-        //     // newDatas[i]     = frameDatas[i]     * frameAlpha + datas[i]     * (1 - frameAlpha) * orgnAlpha;
-        //     // newDatas[i + 1] = frameDatas[i + 1] * frameAlpha + datas[i + 1] * (1 - frameAlpha) * orgnAlpha;
-        //     // newDatas[i + 2] = frameDatas[i + 2] * frameAlpha + datas[i + 2] * (1 - frameAlpha) * orgnAlpha;
-        //     // newDatas[i + 3] = 1;
-        // }
-        // console.debug('[newDatas]', datas);
-        context.putImageData(pixels, 0, 0);
-        tmp.finalBase64 = canvas.toDataURL('image/png');
+    } else {
+        createImage();
+    }
 
 
-        // 表示
-        var finalImage = new Image();
-        finalImage.src = tmp.finalBase64;
-        finalImage.onload = function () {
-            $('.jsUploadPhoto2').empty().append(finalImage);
-        };
 
 
-        //$('.jsUploadPhoto2').append(frameImage).append(userImage);
 
 
-        // 次のページへ
-        goPage(4);
-    };
+
 
 
 });
@@ -539,6 +442,8 @@ $('.jsRest').on('click', function () {
 
 // アップロード
 $('.jsUpload').on('click', function () {
+
+        Progress.show();
 
 
         // 制作した画像を取得します（仮です）
@@ -576,6 +481,16 @@ $('.jsUpload').on('click', function () {
 
         // 送ります.
         $.ajax({
+            xhr: function () {
+                 var xhr = new window.XMLHttpRequest();
+                 xhr.upload.addEventListener("progress", function(evt) {
+                   if (evt.lengthComputable) {
+                     var raito = evt.loaded / evt.total * 100;
+                     Progress.updateProgress(raito);
+                   }
+                 }, false);
+                 return xhr;
+            },
             url: './api/create.php',
             method: 'post',
             dataType: 'text',
@@ -583,6 +498,7 @@ $('.jsUpload').on('click', function () {
                 base64: tmp.finalBase64
             },
             success: function (text) {
+                Progress.updateProgress(100);
                 var uniqueKey = text;
                 var url = './create2.php?key=' + uniqueKey;
                 location.href = url;

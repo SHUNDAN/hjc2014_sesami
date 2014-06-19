@@ -21,7 +21,7 @@
 <head>
     <meta charset="UTF-8">
     <title>写真作成 | セサミBook</title>
-    <link rel="stylesheet" href="./css/create.css">
+    <link rel="stylesheet" href="./css/create.css?_=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
     <meta property="og:title" content="笑って!クッキーモンスターを読んでオリジナル写真を作ったよ!" />

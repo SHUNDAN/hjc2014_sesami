@@ -8,6 +8,10 @@
         MAX_PAGE = $('.pageTemplate').length - 1, // 0ページから始めるので -1 する
         $pageContainer = $('#page');
 
+    if (sesami.isIEold) {
+        MAX_PAGE -= 1; // createへの導線を外す.
+    }
+
 
     // Private Functions.
     //-------------------------------------

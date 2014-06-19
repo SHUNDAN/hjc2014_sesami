@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>写真作成 | セサミBook</title>
-    <link rel="stylesheet" href="./css/create.css?_=3">
+    <link rel="stylesheet" href="./css/create.css?_=5">
     <!-- <link href='http://fonts.googleapis.com/css?family=Montserrat:700' rel='stylesheet' type='text/css'> -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 </head>
@@ -61,9 +61,9 @@
             <div class="description taCenter" style="font-size:small; margin-bottom: 10px;">※写真を<span id="actionName">クリック</span>すると回転できます.</div>
             <h2>どのフレームにする？</h2>
             <div class="frameSelector jsFrameSelect">
-                <img src="./img/create/frame1.png?_=3"/>
-                <img src="./img/create/frame2.png?_=3"/>
-                <img src="./img/create/frame3.png?_=3"/>
+                <img src="./img/create/frame1.png?_=5"/>
+                <img src="./img/create/frame2.png?_=5"/>
+                <img src="./img/create/frame3.png?_=5"/>
             </div>
         </div>
         <div class="btn2Col clearfix">
@@ -93,104 +93,19 @@
 </div>
 
 
+<div class="progressArea hidden jsProgress">
+    <div class="progressBar">
+        <div class="inner" style="width:0%;"></div>
+    </div>
+    <div class="raito">0%</div>
+</div>
 
 
 
 
-
-
-
-
-
-
-
-<!--
-
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-
-
-
-
-
-
-※デザイン制作後、ちゃんとしたマークアップを行います。<br>
-<br>
-<h1>オリジナル写真作成 ＆ Facebook共有機能</h1>
-
-<h2>STEP1：写真をアップする</h2>
-オリジナル写真作成に利用するファイルを選択してください。<br>
-（後続の写真アップの処理のため、"仮の"実装が入っています）<br>
-（PNGかJPEGを選択してください）<br>
-
-<section class="jsPostArea">
-    <canvas width="400" height="400"></canvas>
-    <form>
-        <input type="file" accept="image/jpeg,image/png">
-    </form>
-</section>
-
-<br>
-<br>
-<br>
-<h2>STEP2：（自動で以下の処理を行います）</h2>
-（リサイズとか、縮小とか）<br>
-<br>
-<br>
-<h2>STEP2：フレームの合成</h2>
-利用するフレーム画像を選択してください。<br>
-<ul>
-    <li>なんらかの画像1</li>
-    <li>なんらかの画像2</li>
-    <li>なんらかの画像3</li>
-</ul>
-<br>
-<br>
-<h2>STEP3：お子様の名前を入力して下さい</h2>
-お子様の名前を入力して、写真に書き込みます。<br>
-<span style="font-size:small">（この過程で、現在日付も画像に書き込みます）</span><br>
-<input type="text" style="width:300px;"/>
-<br>
-<br>
-<br>
-
-<h2>STEP4：できました！</h2>
-この画像で共有しますか？<br>
-（以下の"はい"ボタンは、サーバー実装などあるため、動きだけ実装しています）<br>
-<input id="yesBtn" type="button" value="はい">
-<input type="button" value="作り直す">
-<div id="result"></div>
-<br>
-<br>
-<br>
-
-<h2>共有後に：写真をダウンロードできます</h2>
-なんらかの仕組みで写真をダウンロード。
-
-
-
-
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
--->
-
-
-<script type="text/javascript" src="./js/libs/all-libs.js?_=3"></script>
-<script type="text/javascript" src="./js/libs/megapix-image.js?_=3"></script>
-<script type="text/javascript" src="./js/create.js?_=3"></script>
+<script type="text/javascript" src="./js/libs/all-libs.js?_=5"></script>
+<script type="text/javascript" src="./js/libs/megapix-image.js?_=5"></script>
+<script type="text/javascript" src="./js/create.js?_=5"></script>
 
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

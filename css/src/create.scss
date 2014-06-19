@@ -50,6 +50,11 @@ h2 {
     content: " ";
     clear: both;
 }
+.bold {font-weight: bold;}
+.taCenter {text-align: center;}
+.pb20 {padding-bottom: 20px;}
+.mt5  {margin-top: 5px;}
+.mt40 {margin-top: 40px;}
 
 
 // ページ
@@ -378,6 +383,64 @@ h2 {
 }
 
 
+// 進捗ゲージ
+.progressArea {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(48,41,49,.85);
+    padding-top: 20%;
+    @include box-sizing(border-box);
+    .raito {
+        color: #ccc;
+        font-size: 100%;
+        text-align: center;
+    }
+}
+.progressBar {
+    height: 20px;
+    width: 80%;
+    margin: 0 auto 20px;
+    background-color: #211a22;
+    border-radius: 20px;
+    .inner {
+        height: 100%;
+        @include background-image(linear-gradient(left, #df6b92, #7db0cf));
+        border-radius: 20px;
+        // @include transition(width 100ms ease-in-out);
+    }
+}
+
+
+
+
+
+
+//
+// 以下、share.php
+//
+.shareImage {
+    display: block;
+    max-width: 50%;
+    height: auto;
+    margin: 15px auto;
+}
+.bookCover {
+    display: block;
+    max-width: 80%;
+    height: auto;
+    margin: 0 auto 0 auto;
+}
+.linkToBook {
+    display: block;
+    text-align: center;
+    font-weight: bold;
+    font-size: 150%;
+    margin-bottom: 20px;
+}
 
 
 
