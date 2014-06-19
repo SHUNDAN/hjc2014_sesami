@@ -42,7 +42,7 @@ sesami.isIEold = sesami.isIE7 || sesami.isIE8;
 
 
 // iPhoneとAndroidではスクロールを禁止する.
-if (window.enableBodyScroll) {
+if (window.disableBodyScroll) {
     if (sesami.isIphone || sesami.isAndroid || sesami.isIpad) {
         document.body.addEventListener('touchmove', function (e) {
             e.preventDefault();

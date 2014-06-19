@@ -22,6 +22,7 @@
     <meta charset="UTF-8">
     <title>写真作成 | セサミBook</title>
     <link rel="stylesheet" href="./css/create.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
     <meta property="og:title" content="笑って!クッキーモンスターを読んでオリジナル写真を作ったよ!" />
     <meta property="og:type" content="article" />
@@ -53,6 +54,15 @@
 
 
 
-    
+    <script type="text/javascript" src="./js/libs/all-libs.js?_=1"></script>
+    <script type="text/javascript" src="./js/create.js?_=1"></script>
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+      ga('create', 'UA-51582016-1', 'yoheim.net');
+      ga('send', 'pageview');
+    </script>
 </body>
 </html>

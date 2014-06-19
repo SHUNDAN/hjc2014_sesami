@@ -20,9 +20,9 @@
     <title>笑って!クッキーモンスター! | HTML5 Japan Cup 2014</title>
     <link rel="stylesheet" href="./css/create.css">
 
-    <meta property="og:title" content="笑って!クッキーモンスターを読んでオリジナル写真を作ったよ!" />
+    <meta property="og:title" content="「笑って!クッキーモンスター!」を読んでオリジナル写真を作ったよ!" />
     <meta property="og:type" content="article" />
-    <meta property="og:description" content="触って楽しい『笑って!クッキーモンスター』絵本を読めるよ!さらにオリジナル写真も作れるよ!" />
+    <meta property="og:description" content="触って楽しい『笑って!クッキーモンスター!』絵本を読めるよ!さらにオリジナル写真も作れるよ!" />
     <meta property="og:url" content="<?php echo $shareUrl ?>" />
     <meta property="og:image" content="<?php echo $imgPath?>" />
     <meta property="og:site_name" content="笑って!クッキーモンスター! | HTML5 Japan Cup 2014" />

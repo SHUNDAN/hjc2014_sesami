@@ -95,88 +95,203 @@ $('.jsFileSelect').on('change', function (e) {
         image.src = tmp.uploadFileUrl;
         image.onload = function () {
 
-          // **** frame ***
-          // w: 1000
-          // h: 1133
-
-          // **** photo ***
-          // x: 65
-          // y: 65
-          // w: 881
-          // h: 811
-
-          // リサイズ情報
-          var
-              posX = 65,
-              posY = 65,
-              resizedW = 881,
-              resizedH = 811,
-              resizedRaito = resizedH / resizedW;
 
 
-          // 写真情報
-          var 
-              orgnW = this.width,
-              orgnH = this.height,
-              orgnRaito = orgnH / orgnW;
-
-
-          // 横長の場合は、縦を縮小して、横を左右中央表示にする
-          var scale, scaledWidth, scaledHeight ,marginL, marginT;
-          if (orgnRaito < resizedRaito) {
-              srcH = orgnH;
-              srcW = orgnW * (orgnRaito / resizedRaito);
-              console.debug((srcH / srcW), (resizedH / resizedW));
-              marginL = (orgnW - srcW) / 2;
-              marginT = 0;
-
-          // 縦長の場合は、横を縮小して、縦を上下中央表示にする
+          // 1.5MB以上は、MegaPixcel対応
+          var S1_5MB = 1.5 * 1024 * 1024;
+          var fileSize = file.size;
+          console.debug('size: ', fileSize, S1_5MB);
+          if (fileSize > S1_5MB) {
+              console.debug('use MegaPixImage');
+              var scale = S1_5MB / fileSize;
+              var w = image.width * scale;
+              var h = image.height * scale;
+              var canvas = document.createElement('canvas');
+              var mgImg = new MegaPixImage(image);
+              var newImg = new Image();
+              newImg.onload = function () {
+                  console.debug('image created by megaPix was loaded.');
+                  goNext(newImg);
+              }
+              mgImg.render(newImg, { width: w, height: h });
+              console.debug('megaPixImage finish', newImg);
+          
           } else {
-              srcH = orgnH * (resizedRaito / orgnRaito);
-              srcW = orgnW;
-              marginL = 0;
-              marginT = (orgnH - srcH) / 2;
-              // scale = resizedW / orgnW;
-              // scaledWidth = resizedW;
-              // scaledHeight = orgnH * scale;
-              // marginL = 0;
-              // marginT = (scaledHeight - resizedH) / 2 * -1;
+              console.debug('use NaturalImage');
+              goNext(image);
           }
 
 
-          // 画像の縮小と形指定を行う.
-          var
-              canvas  = document.createElement('canvas'),
-              context = canvas.getContext('2d');
 
-          canvas.width = resizedW;
-          canvas.height = resizedH;
+          function goNext(image) {
 
-          // TODO iOSなどのサンプリング対策
-          // context.drawImage(image, sx, sy, sw, sh, dx, dy, dw, dh)
-          // @see http://www.html5.jp/canvas/ref/method/drawImage.html
-          context.drawImage(image, marginL, marginT, srcW, srcH, 0, 0, resizedW, resizedH);
-          var imageBase64 = canvas.toDataURL('image/png');
+              // **** frame ***
+              // w: 1000
+              // h: 1133
 
-          tmp.userImageBase64 = imageBase64;
+              // **** photo ***
+              // x: 65
+              // y: 65
+              // w: 881
+              // h: 811
+
+              // リサイズ情報
+              var
+                  posX = 65,
+                  posY = 65,
+                  resizedW = 881,
+                  resizedH = 811,
+                  resizedRaito = resizedH / resizedW;
 
 
-          // 書き出し
-          var resizedImage = new Image();
-          resizedImage.src = imageBase64;
-          resizedImage.className = 'userImage';
-          resizedImage.onload = function () {
-              tmp.userImage = this;
-              $('.jsUploadPhoto').empty().append(this);
+              // 写真情報
+              var 
+                  orgnW = image.width,
+                  orgnH = image.height,
+                  orgnRaito = orgnH / orgnW;
 
-              // ついでにデフォルトフレームもアペンド
-              tmp.selectedFrameNo = 1;
-              var frame = new Image();
-              frame.src = './img/create/frame1.png';
-              frame.className = 'frame';
-              $('.jsUploadPhoto').append(frame);
-              tmp.frameImage = frame;
-          };
+
+              // 横長の場合は、縦を縮小して、横を左右中央表示にする
+              var scale, scaledWidth, scaledHeight ,marginL, marginT;
+              if (orgnRaito < resizedRaito) {
+                  srcH = orgnH;
+                  srcW = orgnW * (orgnRaito / resizedRaito);
+                  console.debug((srcH / srcW), (resizedH / resizedW));
+                  marginL = (orgnW - srcW) / 2;
+                  marginT = 0;
+
+              // 縦長の場合は、横を縮小して、縦を上下中央表示にする
+              } else {
+                  srcH = orgnH * (resizedRaito / orgnRaito);
+                  srcW = orgnW;
+                  marginL = 0;
+                  marginT = (orgnH - srcH) / 2;
+                  // scale = resizedW / orgnW;
+                  // scaledWidth = resizedW;
+                  // scaledHeight = orgnH * scale;
+                  // marginL = 0;
+                  // marginT = (scaledHeight - resizedH) / 2 * -1;
+              }
+
+
+              // 画像の縮小と形指定を行う.
+              var
+                  canvas  = document.createElement('canvas'),
+                  context = canvas.getContext('2d');
+
+              canvas.width = resizedW;
+              canvas.height = resizedH;
+
+              // TODO iOSなどのサンプリング対策
+              // context.drawImage(image, sx, sy, sw, sh, dx, dy, dw, dh)
+              // @see http://www.html5.jp/canvas/ref/method/drawImage.html
+              context.drawImage(image, marginL, marginT, srcW, srcH, 0, 0, resizedW, resizedH);
+              var imageBase64 = canvas.toDataURL('image/png');
+
+              tmp.userImageBase64 = imageBase64;
+
+
+              // 書き出し
+              var resizedImage = new Image();
+              resizedImage.src = imageBase64;
+              resizedImage.className = 'userImage';
+              resizedImage.onload = function () {
+                  tmp.userImage = this;
+                  $('.jsUploadPhoto').empty().append(this);
+
+                  // ついでにデフォルトフレームもアペンド
+                  tmp.selectedFrameNo = 1;
+                  var frame = new Image();
+                  frame.src = './img/create/frame1.png';
+                  frame.className = 'frame';
+                  $('.jsUploadPhoto').append(frame);
+                  tmp.frameImage = frame;
+              };              
+          }
+
+
+          // // **** frame ***
+          // // w: 1000
+          // // h: 1133
+
+          // // **** photo ***
+          // // x: 65
+          // // y: 65
+          // // w: 881
+          // // h: 811
+
+          // // リサイズ情報
+          // var
+          //     posX = 65,
+          //     posY = 65,
+          //     resizedW = 881,
+          //     resizedH = 811,
+          //     resizedRaito = resizedH / resizedW;
+
+
+          // // 写真情報
+          // var 
+          //     orgnW = this.width,
+          //     orgnH = this.height,
+          //     orgnRaito = orgnH / orgnW;
+
+
+          // // 横長の場合は、縦を縮小して、横を左右中央表示にする
+          // var scale, scaledWidth, scaledHeight ,marginL, marginT;
+          // if (orgnRaito < resizedRaito) {
+          //     srcH = orgnH;
+          //     srcW = orgnW * (orgnRaito / resizedRaito);
+          //     console.debug((srcH / srcW), (resizedH / resizedW));
+          //     marginL = (orgnW - srcW) / 2;
+          //     marginT = 0;
+
+          // // 縦長の場合は、横を縮小して、縦を上下中央表示にする
+          // } else {
+          //     srcH = orgnH * (resizedRaito / orgnRaito);
+          //     srcW = orgnW;
+          //     marginL = 0;
+          //     marginT = (orgnH - srcH) / 2;
+          //     // scale = resizedW / orgnW;
+          //     // scaledWidth = resizedW;
+          //     // scaledHeight = orgnH * scale;
+          //     // marginL = 0;
+          //     // marginT = (scaledHeight - resizedH) / 2 * -1;
+          // }
+
+
+          // // 画像の縮小と形指定を行う.
+          // var
+          //     canvas  = document.createElement('canvas'),
+          //     context = canvas.getContext('2d');
+
+          // canvas.width = resizedW;
+          // canvas.height = resizedH;
+
+          // // TODO iOSなどのサンプリング対策
+          // // context.drawImage(image, sx, sy, sw, sh, dx, dy, dw, dh)
+          // // @see http://www.html5.jp/canvas/ref/method/drawImage.html
+          // context.drawImage(image, marginL, marginT, srcW, srcH, 0, 0, resizedW, resizedH);
+          // var imageBase64 = canvas.toDataURL('image/png');
+
+          // tmp.userImageBase64 = imageBase64;
+
+
+          // // 書き出し
+          // var resizedImage = new Image();
+          // resizedImage.src = imageBase64;
+          // resizedImage.className = 'userImage';
+          // resizedImage.onload = function () {
+          //     tmp.userImage = this;
+          //     $('.jsUploadPhoto').empty().append(this);
+
+          //     // ついでにデフォルトフレームもアペンド
+          //     tmp.selectedFrameNo = 1;
+          //     var frame = new Image();
+          //     frame.src = './img/create/frame1.png';
+          //     frame.className = 'frame';
+          //     $('.jsUploadPhoto').append(frame);
+          //     tmp.frameImage = frame;
+          // };
 
 
 
