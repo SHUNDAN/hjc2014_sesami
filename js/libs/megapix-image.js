@@ -113,6 +113,7 @@
    * Orientation value is from EXIF tag
    */
   function transformCoordinate(canvas, ctx, width, height, orientation) {
+    console.debug('[orientation]', orientation);
     switch (orientation) {
       case 5:
       case 6:

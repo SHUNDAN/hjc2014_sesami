@@ -114,7 +114,7 @@ $('.jsFileSelect').on('change', function (e) {
                   goNext(newImg);
               }
               mgImg.render(newImg, { width: w, height: h });
-              console.debug('megaPixImage finish', newImg);
+              console.debug('megaPixImage finish');
           
           } else {
               console.debug('use NaturalImage');
@@ -140,7 +140,7 @@ $('.jsFileSelect').on('change', function (e) {
                   posX = 65,
                   posY = 65,
                   resizedW = 881,
-                  resizedH = 811,
+                  resizedH = 881,
                   resizedRaito = resizedH / resizedW;
 
 
@@ -331,10 +331,31 @@ $('.jsFileSelect').on('change', function (e) {
             // $('.jsUploadPhoto').append(frame);
         }
 
+        // 文言の調整
+        if (sesami.isIphone || sesami.isIpad || sesami.isAndroid) {
+            $('#actionName').html('タップ');
+        }
+
+
         // ページ遷移
         goPage(3);
     };
     fileReader.readAsDataURL(file);
+});
+
+
+// タップで回転
+tmp.userImageRotate = 0;
+$('.jsUploadPhoto').on('click', '.frame', function () {
+    console.debug('[jsUploadPhoto]');
+
+    tmp.userImageRotate += 90;
+    $('.jsUploadPhoto .userImage').css({
+        '-webkit-transform': 'rotateZ(' + tmp.userImageRotate + 'deg)',
+        '-moz-transform': 'rotateZ(' + tmp.userImageRotate + 'deg)',
+        '-ms-transform': 'rotateZ(' + tmp.userImageRotate + 'deg)',
+        'transform': 'rotateZ(' + tmp.userImageRotate + 'deg)',
+    });
 });
 
 
@@ -372,106 +393,141 @@ $('.jsGotoConfirmPage').on('click', function () {
     });
 
 
-    // 合成処理 ********* ここから ***********
-    var
-        canvas = document.createElement('canvas'),
-        context = canvas.getContext('2d'),
-        frameImage = tmp.frameImage,
-        frameW = frameImage.naturalWidth  || frameImage.width,
-        frameH = frameImage.naturalHeight || frameImage.height,
-        userImage = tmp.userImage,
-        userImageW = userImage.naturalWidth  || userImage.width,
-        userImageH = userImage.naturalHeight || userImage.height;
 
-    canvas.width = frameW;
-    canvas.height = frameH;
+    // ユーザー画像の回転処理
+    var rotate = tmp.userImageRotate % 360;
+    if (rotate !== 0) {
 
-    // とりあえず真っ白を最背面に置く。
-    // context.fillStyle = 'rgba(255,255,255,1)';
-    // context.fillRect(0, 0, frameW, frameH);
+        var 
+            userImage = tmp.userImage,
+            w = userImage.naturalWidth  || userImage.width,
+            h = userImage.naturalHeight || userImage.height;
 
-    // ユーザー画像の描画
-    context.drawImage(tmp.userImage,0, 0, userImageW, userImageH, 64, 64, userImageW, userImageH);
-
-    // フレーム画像の描画（透過のところは処理しない感じ）
-    var newDatas = [];
-    var pixels = context.getImageData(0, 0, frameW, frameH);
-    var datas = pixels.data;
-    var frameDatas = (function () {
-        var
-            aCanvas = document.createElement('canvas'),
-            aContext = aCanvas.getContext('2d');
-
-        aCanvas.width = frameW;
-        aCanvas.height = frameH;
-
-        context.drawImage(tmp.frameImage, 0, 0, frameW, frameH, 0, 0, frameW, frameH);
-
-        return context.getImageData(0, 0, frameW, frameH).data;
-    })();
-
-    var count = 0;
-    for (var i = 0, len = datas.length; i < len; i++) {
-
-
-    // for (var h = 1; h < frameH; h++) {
-    //     for (var w = 1; w < frameW; w++) {
-        var
-            // i = h * w - 1,
-            frameAlpha = (frameDatas[i + 3] < 1 ? (frameDatas[i+3]/255) : 1), // 50以下のみを透過と扱う。なぜか至ところが透過しているため・・・
-            orgnAlpha = 1;//(datas[i + 3] < 1 ?  datas[i+3]/ 255 : 1), // 50以下のみを透過と扱う。なぜか至ところが透過しているため・・・
-            floor = Math.floor;
-
-        datas[i]     = floor(frameDatas[i]     * frameAlpha + datas[i]     * (1 - frameAlpha) * orgnAlpha);
-        datas[i + 1] = floor(frameDatas[i + 1] * frameAlpha + datas[i + 1] * (1 - frameAlpha) * orgnAlpha);
-        datas[i + 2] = floor(frameDatas[i + 2] * frameAlpha + datas[i + 2] * (1 - frameAlpha) * orgnAlpha);
-        datas[i + 3] = 255;
-        
-        
-        if (datas[i + 3] < 1 && datas[i + 3] > 0 && count < 100) {
-          count++;
-          var h = floor(i / frameW);
-          var w = i % frameW;
-          console.debug('alpha', datas[i + 3], h, w);
+        var mgImg = new MegaPixImage(userImage);
+        var newImg = new Image();
+        newImg.onload = function () {
+            console.debug('image created by megaPix was loaded.');
+            tmp.userImage = newImg;
+            createImage();
         }
+
+        var orientation;
+        if (rotate === 90) {
+            orientation = 6;
+        } else if (rotate === 180) {
+            orientation = 3;
+        } else {
+            orientation = 8;
+        }
+        mgImg.render(newImg, { width: w, height: h , orientation: orientation});
+        console.debug('megaPixImage finish');
+
+    } else {
+        createImage();
     }
 
 
-    // for (var i = 0, len = datas.length; i < len; i += 4) {
-    //     var 
-    //         frameAlpha = frameDatas[i + 3],
-    //         orgnAlpha = datas[i + 3];
-
-    //     newDatas.push(frameDatas[i]     * frameAlpha + datas[i]     * (1 - frameAlpha) * orgnAlpha);
-    //     newDatas.push(frameDatas[i + 1] * frameAlpha + datas[i + 1] * (1 - frameAlpha) * orgnAlpha);
-    //     newDatas.push(frameDatas[i + 2] * frameAlpha + datas[i + 2] * (1 - frameAlpha) * orgnAlpha);
-    //     newDatas.push(1);
 
 
 
-    //     // newDatas[i]     = frameDatas[i]     * frameAlpha + datas[i]     * (1 - frameAlpha) * orgnAlpha;
-    //     // newDatas[i + 1] = frameDatas[i + 1] * frameAlpha + datas[i + 1] * (1 - frameAlpha) * orgnAlpha;
-    //     // newDatas[i + 2] = frameDatas[i + 2] * frameAlpha + datas[i + 2] * (1 - frameAlpha) * orgnAlpha;
-    //     // newDatas[i + 3] = 1;
-    // }
-    // console.debug('[newDatas]', datas);
-    context.putImageData(pixels, 0, 0);
-    tmp.finalBase64 = canvas.toDataURL('image/png');
 
 
-    // 表示
-    var finalImage = new Image();
-    finalImage.src = tmp.finalBase64;
-    finalImage.onload = function () {
-        $('.jsUploadPhoto2').empty().append(finalImage);
+
+    // 合成処理 ********* ここから ***********
+    var createImage = function () {
+        var
+            canvas = document.createElement('canvas'),
+            context = canvas.getContext('2d'),
+            frameImage = tmp.frameImage,
+            frameW = frameImage.naturalWidth  || frameImage.width,
+            frameH = frameImage.naturalHeight || frameImage.height,
+            userImage = tmp.userImage,
+            userImageW = userImage.naturalWidth  || userImage.width,
+            userImageH = userImage.naturalHeight || userImage.height;
+
+        canvas.width = frameW;
+        canvas.height = frameH;
+
+        // とりあえず真っ白を最背面に置く。
+        // context.fillStyle = 'rgba(255,255,255,1)';
+        // context.fillRect(0, 0, frameW, frameH);
+
+        // ユーザー画像の描画
+        context.drawImage(tmp.userImage,0, 0, userImageW, userImageH, 64, 64, userImageW, userImageH);
+
+        // フレーム画像の描画（透過のところは処理しない感じ）
+        var newDatas = [];
+        var pixels = context.getImageData(0, 0, frameW, frameH);
+        var datas = pixels.data;
+        var frameDatas = (function () {
+            var
+                aCanvas = document.createElement('canvas'),
+                aContext = aCanvas.getContext('2d');
+
+            aCanvas.width = frameW;
+            aCanvas.height = frameH;
+
+            context.drawImage(tmp.frameImage, 0, 0, frameW, frameH, 0, 0, frameW, frameH);
+
+            return context.getImageData(0, 0, frameW, frameH).data;
+        })();
+
+        for (var i = 0, len = datas.length; i < len; i++) {
+
+
+        // for (var h = 1; h < frameH; h++) {
+        //     for (var w = 1; w < frameW; w++) {
+            var
+                // i = h * w - 1,
+                frameAlpha = (frameDatas[i + 3] < 1 ? (frameDatas[i+3]/255) : 1), // 50以下のみを透過と扱う。なぜか至ところが透過しているため・・・
+                orgnAlpha = 1;//(datas[i + 3] < 1 ?  datas[i+3]/ 255 : 1), // 50以下のみを透過と扱う。なぜか至ところが透過しているため・・・
+                floor = Math.floor;
+
+            datas[i]     = floor(frameDatas[i]     * frameAlpha + datas[i]     * (1 - frameAlpha) * orgnAlpha);
+            datas[i + 1] = floor(frameDatas[i + 1] * frameAlpha + datas[i + 1] * (1 - frameAlpha) * orgnAlpha);
+            datas[i + 2] = floor(frameDatas[i + 2] * frameAlpha + datas[i + 2] * (1 - frameAlpha) * orgnAlpha);
+            datas[i + 3] = 255;
+
+        }
+
+
+        // for (var i = 0, len = datas.length; i < len; i += 4) {
+        //     var 
+        //         frameAlpha = frameDatas[i + 3],
+        //         orgnAlpha = datas[i + 3];
+
+        //     newDatas.push(frameDatas[i]     * frameAlpha + datas[i]     * (1 - frameAlpha) * orgnAlpha);
+        //     newDatas.push(frameDatas[i + 1] * frameAlpha + datas[i + 1] * (1 - frameAlpha) * orgnAlpha);
+        //     newDatas.push(frameDatas[i + 2] * frameAlpha + datas[i + 2] * (1 - frameAlpha) * orgnAlpha);
+        //     newDatas.push(1);
+
+
+
+        //     // newDatas[i]     = frameDatas[i]     * frameAlpha + datas[i]     * (1 - frameAlpha) * orgnAlpha;
+        //     // newDatas[i + 1] = frameDatas[i + 1] * frameAlpha + datas[i + 1] * (1 - frameAlpha) * orgnAlpha;
+        //     // newDatas[i + 2] = frameDatas[i + 2] * frameAlpha + datas[i + 2] * (1 - frameAlpha) * orgnAlpha;
+        //     // newDatas[i + 3] = 1;
+        // }
+        // console.debug('[newDatas]', datas);
+        context.putImageData(pixels, 0, 0);
+        tmp.finalBase64 = canvas.toDataURL('image/png');
+
+
+        // 表示
+        var finalImage = new Image();
+        finalImage.src = tmp.finalBase64;
+        finalImage.onload = function () {
+            $('.jsUploadPhoto2').empty().append(finalImage);
+        };
+
+
+        //$('.jsUploadPhoto2').append(frameImage).append(userImage);
+
+
+        // 次のページへ
+        goPage(4);
     };
 
-
-    //$('.jsUploadPhoto2').append(frameImage).append(userImage);
-
-
-    // 次のページへ
-    goPage(4);
 
 });
 

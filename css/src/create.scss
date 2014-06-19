@@ -4,6 +4,7 @@
 @charset "utf-8";
 @import "compass";
 @import "compass/reset";
+@import "parts/keyframes";
 @import "parts/common";
 
 
@@ -22,6 +23,19 @@ h1 {
     @include text-shadow(1px 1px 1px white);
     letter-spacing: -0.06em;
 }
+
+h2 {
+    font-size: 120%;
+    text-align: center;
+    line-height: 1.4;
+    font-weight: bold;
+    color: #333;
+    padding: 2% 0 0;
+    // @include text-shadow(1px 1px 1px white);
+    letter-spacing: -0.06em;
+}
+
+
 .sp {
     h1 {
        padding-top: 0;
@@ -241,6 +255,8 @@ h1 {
     .userImage {
         width: 100%;
         height: auto;
+        @include transform-origin(50%, 50%);
+        @include transition(all, .4s ease-in-out);
     }
     .frame {
         position: absolute;
@@ -264,7 +280,7 @@ h1 {
 }
 .frameSelector {
     width: 80%;
-    margin: 5% auto 0;
+    margin: 0 auto 0;
     
     img {
         display: block;
