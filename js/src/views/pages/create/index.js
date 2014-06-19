@@ -166,6 +166,7 @@ $('.jsFileSelect').on('change', function (e) {
           resizedImage.src = imageBase64;
           resizedImage.className = 'userImage';
           resizedImage.onload = function () {
+              tmp.userImage = this;
               $('.jsUploadPhoto').empty().append(this);
 
               // ついでにデフォルトフレームもアペンド
@@ -174,6 +175,7 @@ $('.jsFileSelect').on('change', function (e) {
               frame.src = './img/create/frame1.png';
               frame.className = 'frame';
               $('.jsUploadPhoto').append(frame);
+              tmp.frameImage = frame;
           };
 
 
@@ -230,6 +232,8 @@ $('.jsFrameSelect img').on('click', function () {
     frame.className = 'frame';
     $figure.find('.frame').remove();
     $figure.append(frame);
+
+    tmp.frameImage = frame;
 });
 
 
@@ -257,10 +261,12 @@ $('.jsGotoConfirmPage').on('click', function () {
     var
         canvas = document.createElement('canvas'),
         context = canvas.getContext('2d'),
-        frameW = frameImage.width,
-        frameH = frameImage.height,
-        userImageW = userImage.width,
-        userImageH = userImage.height;
+        frameImage = tmp.frameImage,
+        frameW = frameImage.naturalWidth  || frameImage.width,
+        frameH = frameImage.naturalHeight || frameImage.height,
+        userImage = tmp.userImage,
+        userImageW = userImage.naturalWidth  || userImage.width,
+        userImageH = userImage.naturalHeight || userImage.height;
 
     canvas.width = frameW;
     canvas.height = frameH;
@@ -270,7 +276,7 @@ $('.jsGotoConfirmPage').on('click', function () {
     // context.fillRect(0, 0, frameW, frameH);
 
     // ユーザー画像の描画
-    context.drawImage(userImage,0, 0, userImageW, userImageH, 64, 64, userImageW, userImageH);
+    context.drawImage(tmp.userImage,0, 0, userImageW, userImageH, 64, 64, userImageW, userImageH);
 
     // フレーム画像の描画（透過のところは処理しない感じ）
     var newDatas = [];
@@ -284,7 +290,7 @@ $('.jsGotoConfirmPage').on('click', function () {
         aCanvas.width = frameW;
         aCanvas.height = frameH;
 
-        context.drawImage(frameImage, 0, 0, frameW, frameH, 0, 0, frameW, frameH);
+        context.drawImage(tmp.frameImage, 0, 0, frameW, frameH, 0, 0, frameW, frameH);
 
         return context.getImageData(0, 0, frameW, frameH).data;
     })();
@@ -393,8 +399,8 @@ $('.jsUpload').on('click', function () {
 
 
         // 送信するためにbase64に変換する.
-        var base64 = image2base64(img);
-        console.debug('base64', base64);
+        // var base64 = image2base64(img);
+        // console.debug('base64', base64);
 
 
         // 送ります.

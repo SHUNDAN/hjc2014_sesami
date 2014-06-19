@@ -38,7 +38,7 @@ $dir = substr($key, 0, 2);
 $fileName = substr($key, 2);
 $tmpDir = '../tmpbox/' . $dir;
 $imgPath = $tmpDir . '/' . $fileName . '.png';
-if (file_exists($dir) && is_dir($dir)) {
+if (file_exists($tmpDir) && is_dir($tmpDir)) {
     // Directoryあり
 } else {
     mkdir($tmpDir);
