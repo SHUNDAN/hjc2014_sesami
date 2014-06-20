@@ -210,59 +210,59 @@ module.exports = function(grunt) {
   // Gruntタスク：SVGの圧縮
   // ** 対象ディレクトリは、「release/img」以下を対象とします.
   //
-  // grunt.registerTask('optim-svg', 'description for optim-svg', function () {
+  grunt.registerTask('optim-svg', 'description for optim-svg', function () {
 
-  //     var
-  //         done = this.async(),
-  //         execCount = 0,
-  //         svgo = new SVGO();
+      var
+          done = this.async(),
+          execCount = 0,
+          svgo = new SVGO();
 
-  //     var optim = function (dirOrFile, baseDir) {
-  //         var filePath = baseDir + dirOrFile;
-  //         console.log('[optim]', filePath);
-  //         execCount++;
+      var optim = function (dirOrFile, baseDir) {
+          var filePath = baseDir + dirOrFile;
+          console.log('[optim]', filePath);
+          execCount++;
 
-  //         // ディレクトリの場合には、回帰処理
-  //         console.log('[dir test]', filePath);
-  //         if (fs.lstatSync(baseDir + dirOrFile).isDirectory()) {
-  //             var dirsOrFiles = fs.readdirSync(filePath);
-  //             dirsOrFiles.forEach(function (f) {
-  //               optim(f, filePath + '/');
-  //             });
-  //             execCount--;
-  //             if (execCount === 0) {
-  //               done();
-  //             }
-  //             return;
-  //         }
+          // ディレクトリの場合には、回帰処理
+          console.log('[dir test]', filePath);
+          if (fs.lstatSync(baseDir + dirOrFile).isDirectory()) {
+              var dirsOrFiles = fs.readdirSync(filePath);
+              dirsOrFiles.forEach(function (f) {
+                optim(f, filePath + '/');
+              });
+              execCount--;
+              if (execCount === 0) {
+                done();
+              }
+              return;
+          }
 
-  //         // 拡張子チェック
-  //         if (filePath.toLowerCase().lastIndexOf('.svg') !== filePath.length - 4) {
-  //             execCount--;
-  //             if (execCount === 0) {
-  //               done();
-  //             }
-  //             return;
-  //         }
+          // 拡張子チェック
+          if (filePath.toLowerCase().lastIndexOf('.svg') !== filePath.length - 4) {
+              execCount--;
+              if (execCount === 0) {
+                done();
+              }
+              return;
+          }
 
-  //         // 最適化の処理
-  //         // svgo filepath
-  //         var data = fs.readFileSync(filePath, 'utf-8');
-  //         svgo.optimize(data, function (result) {
-  //             console.log('result!!', filePath);
+          // 最適化の処理
+          // svgo filepath
+          var data = fs.readFileSync(filePath, 'utf-8');
+          svgo.optimize(data, function (result) {
+              console.log('result!!', filePath);
 
-  //             var svg = result.data;
-  //             fs.writeFileSync(filePath, svg, 'utf-8');
+              var svg = result.data;
+              fs.writeFileSync(filePath, svg, 'utf-8');
 
-  //             execCount--;
-  //             if (execCount === 0) {
-  //                 done();
-  //             }
-  //         });
-  //     };
+              execCount--;
+              if (execCount === 0) {
+                  done();
+              }
+          });
+      };
 
-  //     optim('./release/img', './');
-  // });
+      optim('./release/img', './');
+  });
 
 
 
