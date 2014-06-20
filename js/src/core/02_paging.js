@@ -8,7 +8,7 @@
         MAX_PAGE = $('.pageTemplate').length - 1, // 0ページから始めるので -1 する
         $pageContainer = $('#page');
 
-    if (sesami.isIEold) {
+    if (sesami.isIEold || sesami.isAndroid2X) {
         MAX_PAGE -= 1; // createへの導線を外す.
     }
 
@@ -137,10 +137,13 @@
 
     // 初期ページの制御
     // onloadにするかは微妙.
-    window.addEventListener('load', function () {
+    // window.addEventListener('load', function () {
+    //     console.debug('onload paging fired');
+    //     showPageAt(sesami.currentPage);
+    // });
+    $(function () {
         console.debug('onload paging fired');
         showPageAt(sesami.currentPage);
-
     });
 
 

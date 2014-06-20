@@ -1,5 +1,5 @@
 /*global module:false*/
-var 
+var
   fs = require('fs'),
   exec = require('child_process').exec,
   util = require('util'),
@@ -57,7 +57,7 @@ module.exports = function(grunt) {
         dest: './release/js/notfound.js'
       },
       libs: {
-        src: ['./js/libs/*.js'],
+        src: ['./js/libs/jquery-1.11.1.min.js', './js/libs/jquery-timing.min.js'],
         dest: './release/js/libs/all-libs.js'
       },
 
@@ -100,7 +100,7 @@ module.exports = function(grunt) {
       api: {
         files: [
           {expand: true, cwd:'api/', src: ['*.php'], dest: 'release/api'}
-        ]        
+        ]
       },
       js: {
         files: [
@@ -208,11 +208,11 @@ module.exports = function(grunt) {
 
   //
   // Gruntタスク：SVGの圧縮
-  // ** 対象ディレクトリは、「release/img」以下を対象とします. 
+  // ** 対象ディレクトリは、「release/img」以下を対象とします.
   //
   // grunt.registerTask('optim-svg', 'description for optim-svg', function () {
 
-  //     var 
+  //     var
   //         done = this.async(),
   //         execCount = 0,
   //         svgo = new SVGO();
@@ -269,7 +269,7 @@ module.exports = function(grunt) {
   //
   // Gruntタスク：SVGからPNGを生成するタスク
   // IE8やAndroid用のPNGへのフォールバックを行うために使う画像を生成します
-  // ** 対象ディレクトリは、「release/img」以下を対象とします. 
+  // ** 対象ディレクトリは、「release/img」以下を対象とします.
   // ** 事前に、ImageMagic（http://www.imagemagick.org/script/binary-releases.php#macosx）をインストールする必要があります.
   //
   grunt.registerTask('create-png-from-svg', 'description for create-png-from-svg', function () {
@@ -312,7 +312,7 @@ module.exports = function(grunt) {
                       var target = queue.shift();
                       createPNGFromSVG(target[0], target[1]);
                   } else {
-                      done();                    
+                      done();
                   }
               }
               return;
@@ -325,7 +325,7 @@ module.exports = function(grunt) {
                   var target = queue.shift();
                   createPNGFromSVG(target[0], target[1]);
               } else {
-                  done();                    
+                  done();
               }
               return;
           }
@@ -345,7 +345,7 @@ module.exports = function(grunt) {
                       var target = queue.shift();
                       createPNGFromSVG(target[0], target[1]);
                   } else {
-                      done();                    
+                      done();
                   }
               }
           });

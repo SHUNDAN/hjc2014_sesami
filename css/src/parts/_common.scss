@@ -40,6 +40,10 @@ audio {
 
 .page {
 	position: relative;
+	.ieold & {
+		width: 800px;
+		height: 600px;
+	}
 }
 .book {
 	position: absolute;
