@@ -9,6 +9,10 @@
         font-weight: bold;
         line-height: 1.5;
         text-align: center;
+
+        .sp & {
+            padding-top: 5%;
+        }
     }
 
     .button {
@@ -28,6 +32,18 @@
         text-align: center;
         line-height: 80px;
         text-decoration: none;
+
+        .sp & {
+            height: 40px;
+            line-height: 40px;
+            font-size: 100%;
+        }
+    }
+
+    .sp & {
+        br {
+            display: none;
+        }
     }
 
 

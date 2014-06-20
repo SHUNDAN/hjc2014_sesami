@@ -9,7 +9,8 @@
 
     $key = $_GET['key'];
     $imgPath = './tmpbox/' . substr($key, 0, 2) . '/' . substr($key, 2);
-    $shareUrl = 'http://yoheim.net/app/sesami-book/share.php?key=' . $key;
+    $shareUrl = 'http://yoheim.net/app/sesami-book/share2.php?key=' . $key;
+    $shareImgUrl = 'http://yoheim.net/app/sesami-book/tmpbox/' . substr($key, 0, 2) . '/' . substr($key, 2);
 
     $agent = strtolower($_SERVER['HTTP_USER_AGENT']);
     $isSmartPhone = preg_match("/iphone/",$agent) || preg_match("/android/",$agent);
@@ -28,7 +29,7 @@
     <meta property="og:type" content="article" />
     <meta property="og:description" content="触って楽しい『笑って!クッキーモンスター』絵本を読めるよ!さらにオリジナル写真も作れるよ!" />
     <meta property="og:url" content="<?php echo $shareUrl ?>" />
-    <meta property="og:image" content="<?php echo $imgPath?>" />
+    <meta property="og:image" content="<?php echo $shareImgUrl?>" />
     <meta property="og:site_name" content="笑って!クッキーモンスター! | HTML5 Japan Cup 2014" />
     <meta property="og:locale" content="jp" />
     <meta property="fb:admins" content="yohei.munesada" />

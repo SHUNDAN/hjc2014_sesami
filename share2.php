@@ -10,6 +10,7 @@
     $key = $_GET['key'];
     $imgPath = './tmpbox/' . substr($key, 0, 2) . '/' . substr($key, 2);
     $shareUrl = 'http://yoheim.net/app/sesami-book/share?key=' . $key;
+    $shareImgUrl = 'http://yoheim.net/app/sesami-book/tmpbox/' . substr($key, 0, 2) . '/' . substr($key, 2);
 ?>
 
 
@@ -24,7 +25,7 @@
     <meta property="og:type" content="article" />
     <meta property="og:description" content="触って楽しい『笑って!クッキーモンスター!』絵本を読めるよ!さらにオリジナル写真も作れるよ!" />
     <meta property="og:url" content="<?php echo $shareUrl ?>" />
-    <meta property="og:image" content="<?php echo $imgPath?>" />
+    <meta property="og:image" content="<?php echo $shareImgUrl?>" />
     <meta property="og:site_name" content="笑って!クッキーモンスター! | HTML5 Japan Cup 2014" />
     <meta property="og:locale" content="jp" />
     <meta property="fb:admins" content="yohei.munesada" />
@@ -53,21 +54,11 @@
 
 <a href="./" class="linkToBook pb20">さっそく読む！</a>
 
+<div class="pb20 taCenter" style="font-size:80%; padding-top:30px; line-height:1.5;">
+    本作品はHTML5 Japan Cup 2014（<a href="http://5jcup.org" target="_blank">http://5jcup.org</a>）応募作品であり、<br>
+    本作品にはセサミワークショップが著作権を有する素材を使用しています。
+</div>
 
-
-
-
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
 
 <script type="text/javascript" src="./js/libs/all-libs.js?_=4"></script>
 <script type="text/javascript" src="./js/create.js?_=4"></script>
