@@ -5,6 +5,9 @@
 (function () {
 
 // ie対応
+if (!window.console) {
+    window.console = {};
+}
 if (!console.debug) {
     console.debug = console.log;
 }
@@ -47,7 +50,7 @@ if (window.disableBodyScroll) {
         document.body.addEventListener('touchmove', function (e) {
             e.preventDefault();
         })
-    }    
+    }
 }
 
 // iOS7.1用にminimal-uiを付けているので、iOS7.1の場合はそれのバグ回避のため、高さを140%くらいにする。
@@ -71,6 +74,9 @@ if (sesami.isIpad) {
 }
 if (sesami.isAndroid) {
     $(document.body).addClass('android sp');
+}
+if (sesami.isIEold) {
+    $(document.body).addClass('ieold');
 }
 
 

@@ -158,8 +158,13 @@
     var effectPlayer;
     if (sesami.isIphone || sesami.isIpad || sesami.isAndroid) {
         // あとでロード
+    } else if (sesami.isIEold) {
+        // dummy
+        effectPlayer = {
+            play: function () {}
+        };
     } else {
-        effectPlayer = new jukebox.Player(json);        
+        effectPlayer = new jukebox.Player(json);
     }
 
     sesami.effectPlayer = {
@@ -172,7 +177,7 @@
             }
         }
     }
-    
+
 
 
 

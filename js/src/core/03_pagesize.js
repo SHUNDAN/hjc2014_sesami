@@ -1,12 +1,12 @@
 //
 // ページサイズを設定するJavaScript.
 // 初期表示時のページサイズの指定の他、Window.resizeのタイミングで、サイズの変更を行います。
-// 
+//
 ;(function () {
 
     var adjustSize = function () {
 
-        var 
+        var
             wh = window.innerHeight,
             ww = window.innerWidth,
             isLandScape = (wh <= ww),
@@ -34,9 +34,8 @@
             console.debug('[adjustSize]', ch, cw);
 
             $('#page').css({
-                'width': cw, 
-                'height': ch,
-                // 'background-size': cw + 'px ' + ch + 'px'
+                'width': cw,
+                'height': ch
             });
 
             // 縦判定

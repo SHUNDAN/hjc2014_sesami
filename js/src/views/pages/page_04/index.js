@@ -57,7 +57,7 @@ sesami.page04.init = function () {
                 'transform' : 'rotateZ(' + (DIFF * count) + 'deg)',
                 '-webkit-transform' : 'rotateZ(' + (DIFF * count) + 'deg)',
                 '-moz-transform' : 'rotateZ(' + (DIFF * count) + 'deg)',
-                '-ms-transform' : 'rotateZ(' + (DIFF * count) + 'deg)',
+                '-ms-transform' : 'rotateZ(' + (DIFF * count) + 'deg)'
             });
     });
     var orgnPos;
@@ -75,7 +75,7 @@ sesami.page04.init = function () {
                 x: touch.pageX,
                 y: touch.pageY
             }
-        
+
         } else {
             orgnPos = {
                 x: e.pageX,
@@ -117,8 +117,8 @@ sesami.page04.init = function () {
                     'transform' : 'rotateZ(' + (DIFF * count) + 'deg)',
                     '-webkit-transform' : 'rotateZ(' + (DIFF * count) + 'deg)',
                     '-moz-transform' : 'rotateZ(' + (DIFF * count) + 'deg)',
-                    '-ms-transform' : 'rotateZ(' + (DIFF * count) + 'deg)',
-                });                
+                    '-ms-transform' : 'rotateZ(' + (DIFF * count) + 'deg)'
+                });
         }
 
     });

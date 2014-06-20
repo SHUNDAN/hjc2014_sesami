@@ -93,8 +93,10 @@ $('.jsFileSelect').on('change', function (e) {
 
     // ファイル形式チェック
     if(file.type !== 'image/jpeg' && file.type !== 'image/png') {
-        alert('画像をアップロードしてください.');
-        return false;
+        if (file.type !== undefined) { // Android2.3対応
+            alert('画像をアップロードしてください. ' + file.type);
+            return false;
+        }
     }
 
 
@@ -109,7 +111,6 @@ $('.jsFileSelect').on('change', function (e) {
         var image = new Image();
         image.src = tmp.uploadFileUrl;
         image.onload = function () {
-
 
 
           // 1MB以上は、MegaPixcel対応
@@ -130,7 +131,7 @@ $('.jsFileSelect').on('change', function (e) {
               }
               mgImg.render(newImg, { width: w, height: h });
               console.debug('megaPixImage finish');
-          
+
           } else {
               console.debug('use NaturalImage');
               goNext(image);
@@ -160,7 +161,7 @@ $('.jsFileSelect').on('change', function (e) {
 
 
               // 写真情報
-              var 
+              var
                   orgnW = image.width,
                   orgnH = image.height,
                   orgnRaito = orgnH / orgnW;
@@ -221,7 +222,7 @@ $('.jsFileSelect').on('change', function (e) {
                   frame.className = 'frame';
                   $('.jsUploadPhoto').append(frame);
                   tmp.frameImage = frame;
-              };              
+              };
           }
         }
 
@@ -283,7 +284,7 @@ $('.jsGotoConfirmPage').on('click', function () {
         if ($img.hasClass('frame')) {
             var img = $img[0].cloneNode();
             frameImage = img;
-        } else {          
+        } else {
             var img = $img[0].cloneNode();
             userImage = img;
         }
@@ -376,8 +377,8 @@ $('.jsGotoConfirmPage').on('click', function () {
 
                 setTimeout(function () {
                     Progress.hide();
-                }, 500);                
-            
+                }, 500);
+
             } else {
               // UIの更新タイミングを取る
               setTimeout(func, 1);
@@ -396,7 +397,7 @@ $('.jsGotoConfirmPage').on('click', function () {
     var rotate = tmp.userImageRotate % 360;
     if (rotate !== 0) {
 
-        var 
+        var
             userImage = tmp.userImage,
             w = userImage.naturalWidth  || userImage.width,
             h = userImage.naturalHeight || userImage.height;
@@ -456,7 +457,7 @@ $('.jsUpload').on('click', function () {
             if ($img.hasClass('frame')) {
                 var img = $img[0].cloneNode();
                 $frameImage = $(img);
-            } else {          
+            } else {
                 var img = $img[0].cloneNode();
                 $userImage = $(img);
             }
