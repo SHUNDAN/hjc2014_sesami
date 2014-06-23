@@ -89,11 +89,16 @@
     };
 
     var nextBtnDelayTime = function (pageNo) {
+        if (sesami.isIEold || sesami.isIE9) {
+            return 100;
+        }
         switch (pageNo) {
             case 0:
                 return 3000;
             case 3:
                 return 2000;
+            case 4:
+                return 30000; // animation内で表示する.
             case 6:
             case 7:
                 return 2500;
@@ -102,7 +107,7 @@
             default:
                 return 1500;
         }
-    }
+    };
 
 
 

@@ -10,70 +10,100 @@
 
 
 
+            // .pointer {
+            //     @include animation(page04_anim_pointer 1s infinite);
+            // }   
+            // .hand {
+            //     @include animation(page04_anim_hand 1s infinite);
+            // }   
+
+
+@include keyframes (page04_anim_pointer) {
+    0%   { opacity: 0; }
+    40%  { opacity: 0; }
+    50%  { opacity: 1; }
+    100% { opacity: 0; }
+}
+@include keyframes (page04_anim_hand) {
+    0%   { opacity: 0; }
+    35%  { opacity: 0; }
+    40%  { opacity: 1; }
+    85%  { opacity: 1; }
+    90%  { opacity: 0; }
+    100% { opacity: 0; }
+}
+
+
+
 // スタイルの指定
 [data-page="4"] {
     
-    // .dummy {
-    //     position: absolute;
-    //     top: 8.8%;
-    //     left: 14.4%;
-    //     width: 69.5%;
-    //     opacity: .5;
-    // }
+    .description {
+        @include abs(3%, 13%);
+        width: 75%;
+    }
 
     .text1 {
-        @include abs(34%, 7%);
+        @include abs(44%, 7%);
         width: 10%;
     }
     .text2 {
-        @include abs(29%, 25%);
+        @include abs(39%, 25%);
         width: 10%;
     }
     .text3 {
-        @include abs(27%, 45%);
+        @include abs(37%, 45%);
         width: 10%;
     }
     .text4 {
-        @include abs(30%, 62%);
+        @include abs(40%, 62%);
         width: 12%;
     }
     .text5 {
-        @include abs(37%, 81%);
+        @include abs(47%, 81%);
         width: 10%;
     }
 
 
 
     .bowl {
-        @include abs(40%, 10%);
-        width: 80%;
+        @include abs(50%, 15%);
+        width: 70%;
     }
     .material {
-        @include abs(50%, 30%);
-        width: 40%;
+        @include abs(53%, 24%);
+        width: 50%;
+        @include transform-origin(50%, 50%);
+        @include transform(scale(0, 0));
+        @include transition(all .5s ease-in-out);
+        &.size1 {@include transform(scale(.2, .2));}
+        &.size2 {@include transform(scale(.4, .4));}
+        &.size3 {@include transform(scale(.6, .6));}
+        &.size4 {@include transform(scale(.8, .8));}
+        &.size5 {@include transform(scale(1, 1));}
     }
 
 
 
 
     .butter {
-        @include abs(15%, -1%);
+        @include abs(25%, -1%);
         width: 24%;
     }
     .suger {
-        @include abs(7%, 18%);
+        @include abs(17%, 18%);
         width: 23%;
     }
     .egg {
-        @include abs(3%, 37%);
+        @include abs(13%, 37%);
         width: 25%;
     }
     .flour {
-        @include abs(6%, 54%);
+        @include abs(16%, 54%);
         width: 29%;
     }
     .choco {
-        @include abs(15%, 74%);
+        @include abs(25%, 74%);
         width: 23%;
     }
 
@@ -135,14 +165,58 @@
         @include abs(0, 0);
         width: 100%;
         height: 100%;
-        @include transform-origin(50%, 71%);
-        // @include debug-transform-origin(50%, 71%);
+        @include transform-origin(47%, 77%);
+        // @include debug-transform-origin(47%, 77%);
         @include transition(all .5s ease-in-out);
     }
 
 
 
 
+
+    // ナビゲーション
+    .handArea1, .handArea2, .handArea3, .handArea4, .handArea5 {
+        @include abs(0, 0);
+        width: 100%;
+        height: 100%;
+        .pointer, .hand {
+            opacity: 0;            
+        }
+        &.anim {
+            .pointer {
+                @include animation(page04_anim_pointer 1s);
+            }   
+            .hand {
+                @include animation(page04_anim_hand 1s);
+            }   
+        }
+    }
+    .pointer {
+        width: 10%;
+    }
+    .hand {
+        width: 10%;
+    }
+    .handArea1 {
+        .pointer {@include abs(28%, 6%);}
+        .hand {@include abs(33%, 7%);}
+    }
+    .handArea2 {
+        .pointer {@include abs(24%, 24%);}
+        .hand {@include abs(29%, 25%);}
+    }
+    .handArea3 {
+        .pointer {@include abs(19%, 44%);}
+        .hand {@include abs(24%, 45%);}
+    }
+    .handArea4 {
+        .pointer {@include abs(25%, 62%);}
+        .hand {@include abs(30%, 63%);}
+    }
+    .handArea5 {
+        .pointer {@include abs(30%, 79%);}
+        .hand {@include abs(35%, 80%);}
+    }
 
 
 
@@ -153,37 +227,37 @@
 
     // タップエリア
     .tapButter {
-        @include abs(15%, 1%);
+        @include abs(25%, 1%);
         width: 22%;
         height: 28%;
         background-color: rgba(255,255,255,.001);
     }
     .tapSuger {
-        @include abs(8%, 24%);
+        @include abs(18%, 24%);
         width: 13%;
         height: 30%;
         background-color: rgba(255,255,255,.001);
     }
     .tapEgg {
-        @include abs(4%, 40%);
+        @include abs(14%, 40%);
         width: 20%;
         height: 30%;
         background-color: rgba(255,255,255,.001);
     }
     .tapFlour {
-        @include abs(10%, 61%);
+        @include abs(20%, 61%);
         width: 15%;
         height: 29%;
         background-color: rgba(255,255,255,.001);
     }
     .tapChoco {
-        @include abs(16%, 78%);
+        @include abs(26%, 78%);
         width: 15%;
         height: 27%;
         background-color: rgba(255,255,255,.001);
     }
     .tapBowl {
-        @include abs(43%, 10%);
+        @include abs(52%, 10%);
         width: 80%;
         height: 57%;
         background-color: rgba(255,255,255,.001);        
