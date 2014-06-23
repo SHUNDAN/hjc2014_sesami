@@ -67,25 +67,41 @@ sesami.page06.init = function () {
 
         if (num > 0) {
             $page.find('.num' + num).removeClass('hidden');            
-        
-        } else {
-            nextTime = 2000;
-            num = 11;
-            charaNo++;
-            if (charaNo === 4) {
-                charaNo = 1;
-            }
-            $page.find('.chara' + charaNo).removeClass('hidden');
+            sesami.page06.timer = setTimeout(countDown, nextTime);
+            return;        
         }
 
-        sesami.page06.timer = setTimeout(countDown, nextTime);
+        $page
+            .find('.box')
+            .addClass('anim');
+        sesami.effectPlayer.play(16);
+
+        $page
+            .find('.chara1')
+            .removeClass('hidden')
+            .wait(1000)
+            .addClass('hidden')
+            .wait(0, function () {
+                
+                $('#nextPageBtn').css('opacity', 1);
+
+                $page
+                    .find('.chara2')
+                    .removeClass('hidden')
+                    .wait(100)
+                    .addClass('move')
+                    .wait(1200, function () {
+                        sesami.goNextPage();
+                    });
+            });
+
     }
 
 
 
     // カウントダウン部分（タップ）
     var addCountTapAction = function () {
-        $page.on(TOUCH_END, '.tapAreaCount', function () {
+        $page.on(TOUCH_END, '.tapAreaButton', function () {
 
             if (sesami.page06.timer) {
                 clearTimeout(sesami.page06.timer);
@@ -97,19 +113,19 @@ sesami.page06.init = function () {
 
 
     // レンジを揺らす（タップ）
-    $page.on(TOUCH_END, '.tapAreaButton', function () {
+    // $page.on(TOUCH_END, '.tapAreaButton', function () {
 
-        $(this)
-            .addClass('noAction')
-            .wait(1000)
-            .removeClass('noAction');
+    //     // $(this)
+    //     //     .addClass('noAction')
+    //     //     .wait(1000)
+    //     //     .removeClass('noAction');
 
-        $page
-            .find('.box')
-            .addClass('anim')
-            .wait(1000)
-            .removeClass('anim');
-    });
+    //     // $page
+    //     //     .find('.box')
+    //     //     .addClass('anim')
+    //     //     .wait(1000)
+    //     //     .removeClass('anim');
+    // });
 
 
 

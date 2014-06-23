@@ -79,6 +79,9 @@
         // BGM再生
         sesami.bgmPlayer.playBGMAt(nextPageNo);
 
+        // ボタンの効果音
+        sesami.effectPlayer.play(5);
+
     };
     var preloadPage = function (pageNo) {
         setTimeout(function () {
@@ -99,8 +102,8 @@
                 return 2000;
             case 4:
             case 5:
-                return 30000; // animation内で表示する.
             case 6:
+                return 30000; // animation内で表示する.
             case 7:
                 return 2500;
             case 9:
@@ -134,7 +137,7 @@
 
 
     // 次ページへ
-    $('#nextPageBtn').on(sesami.event.TOUCH_END, function () {
+    sesami.goNextPage = function () {
 
         var nextPage = sesami.currentPage + 1;
         if (nextPage > MAX_PAGE) {
@@ -144,7 +147,8 @@
         showPageAt(nextPage, sesami.currentPage);
         sesami.currentPage = nextPage;
 
-    });
+    };
+    $('#nextPageBtn').on(sesami.event.TOUCH_END, sesami.goNextPage);
 
 
 

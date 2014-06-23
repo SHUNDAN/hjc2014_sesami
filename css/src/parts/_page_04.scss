@@ -184,10 +184,10 @@
         }
         &.anim {
             .pointer {
-                @include animation(page04_anim_pointer 1s);
+                @include animation(page04_anim_pointer 1.5s);
             }   
             .hand {
-                @include animation(page04_anim_hand 1s);
+                @include animation(page04_anim_hand 1.5s);
             }   
         }
     }

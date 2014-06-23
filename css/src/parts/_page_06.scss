@@ -34,81 +34,84 @@
 // スタイルの指定
 [data-page="6"] {
 
-    // .dummy {
-    //     @include abs(0%, 0%);
-    //     width: 100%;
-    //     opacity: .5;
-    // }
+    .description {
+        @include abs(5%, 17%);
+        width: 65%;
+    }
 
     .box {
-        @include abs(-3%, 6%);
+        @include abs(2%, 6%);
         width: 91%;
     }
     .plate {
-        @include abs(47%, 18%);
+        @include abs(52%, 18%);
         width: 50%;
     }
     .cookie {
-        &.pos1 {@include abs(54%, 29%); width: 6.5%;}
-        &.pos2 {@include abs(54%, 39.6%); width: 6.5%;}
-        &.pos3 {@include abs(54%, 50%); width: 6.5%;}
-        &.pos4 {@include abs(64%, 26.4%); width: 7%;}
-        &.pos5 {@include abs(64%, 39%); width: 7%;}
-        &.pos6 {@include abs(64%, 51%); width: 7%;}
-        &.pos7 {@include abs(73.6%, 23.6%); width: 8%;}
-        &.pos8 {@include abs(73.6%, 38%); width: 8%;}
-        &.pos9 {@include abs(73.6%, 53%); width: 8%;}
+        &.pos1 {@include abs(59%, 29%); width: 6.5%;}
+        &.pos2 {@include abs(59%, 39.6%); width: 6.5%;}
+        &.pos3 {@include abs(59%, 50%); width: 6.5%;}
+        &.pos4 {@include abs(69%, 26.4%); width: 7%;}
+        &.pos5 {@include abs(69%, 39%); width: 7%;}
+        &.pos6 {@include abs(69%, 51%); width: 7%;}
+        &.pos7 {@include abs(78.6%, 23.6%); width: 8%;}
+        &.pos8 {@include abs(78.6%, 38%); width: 8%;}
+        &.pos9 {@include abs(78.6%, 53%); width: 8%;}
     }
     .num10 {
-        @include abs(29%, 17%);
+        @include abs(34%, 17%);
         width: 50%;
     }
     .num9 {
-        @include abs(29%, 17%);
+        @include abs(34%, 17%);
         width: 50%;
     }
     .num8 {
-        @include abs(29%, 17%);
+        @include abs(34%, 17%);
         width: 50%;
     }
     .num7 {
-        @include abs(29%, 17%);
+        @include abs(34%, 17%);
         width: 50%;
     }
     .num6 {
-        @include abs(29%, 17%);
+        @include abs(34%, 17%);
         width: 50%;
     }
     .num5 {
-        @include abs(29%, 17%);
+        @include abs(34%, 17%);
         width: 50%;
     }
     .num4 {
-        @include abs(29%, 17%);
+        @include abs(34%, 17%);
         width: 50%;
     }
     .num3 {
-        @include abs(29%, 17%);
+        @include abs(34%, 17%);
         width: 50%;
     }
     .num2 {
-        @include abs(29%, 17%);
+        @include abs(34%, 17%);
         width: 50%;
     }
     .num1 {
-        @include abs(29%, 17%);
+        @include abs(34%, 17%);
         width: 50%;
     }
     .chara1 {
-        @include abs(27%, 30%);
-        width: 20%;
-    }
-    .chara2 {
-        @include abs(27%, 30%);
+        @include abs(32%, 30%);
         width: 25%;
     }
+    .chara2 {
+        @include abs(32%, 30%);
+        width: 25%;
+        @include transition(all 1.2s ease-in-out);
+        &.move {
+            @include transform(translateX(160%));
+        }
+    }
     .chara3 {
-        @include abs(27%, 28%);
+        @include abs(32%, 28%);
         width: 28%;
     }
 
@@ -132,20 +135,20 @@
     .box {
         &.anim {
             @include transform-origin(50%, 50%);
-            @include animation(page06_box_anim 1s ease-in-out infinite);
+            @include animation(page06_box_anim .7s ease-in-out);
         }
     }
 
 
     // タップエリア
     .tapAreaCount {
-        @include abs(19%, 17%);
+        @include abs(24%, 17%);
         width: 52%;
         height: 62%;
         background-color: rgba(255,255,255,.001);
     }
     .tapAreaButton {
-        @include abs(23%, 70%);
+        @include abs(28%, 70%);
         width: 19%;
         height: 16%;
         background-color: rgba(255,255,255,.001);
