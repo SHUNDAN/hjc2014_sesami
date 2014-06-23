@@ -143,19 +143,19 @@ $('.jsFileSelect').on('change', function (e) {
 
               // **** frame ***
               // w: 1000
-              // h: 1133
+              // h: 1167
 
               // **** photo ***
               // x: 65
               // y: 65
-              // w: 881
-              // h: 811
+              // w: 900
+              // h: 881
 
               // リサイズ情報
               var
                   posX = 65,
                   posY = 65,
-                  resizedW = 881,
+                  resizedW = 900,
                   resizedH = 881,
                   resizedRaito = resizedH / resizedW;
 
@@ -316,7 +316,7 @@ $('.jsGotoConfirmPage').on('click', function () {
         // context.fillRect(0, 0, frameW, frameH);
 
         // ユーザー画像の描画
-        context.drawImage(tmp.userImage,0, 0, userImageW, userImageH, 64, 64, userImageW, userImageH);
+        context.drawImage(tmp.userImage,0, 0, userImageW, userImageH, 50, 64, userImageW, userImageH);
 
         // フレーム画像の描画（透過のところは処理しない感じ）
         var newDatas = [];
