@@ -12,7 +12,18 @@ sesami.page05.init = function () {
         CookieManager = sesami.CookieManager;
 
 
-    var selectType = 1;
+
+    // ナビゲーション
+    $page
+        .find('.handArea1')
+        .wait(1000)
+        .addClass('anim');
+
+
+
+    var 
+        selectType = 1,
+        numOfCookie = 0;
 
     // 型選択
     var changeKata = function (targetType) {
@@ -31,6 +42,8 @@ sesami.page05.init = function () {
         userSelect = true;
         selectType = $(this).data('type');
         changeKata(selectType);
+
+        sesami.effectPlayer.play(20);
     });
 
 
@@ -57,6 +70,17 @@ sesami.page05.init = function () {
                 'width': scale + '%',
                 'height': 'auto'
             });
+
+        sesami.effectPlayer.play(11);
+
+
+        setTimeout(function () {
+            numOfCookie++;
+            if (numOfCookie === 5) {
+                sesami.effectPlayer.play(25);
+                $('#nextPageBtn').css('opacity', 1);
+            }
+        }, 1200);
     };
     $page.on(TOUCH_END, '.tapAreaBase', function () {
         console.debug('[tapAreaBase]');

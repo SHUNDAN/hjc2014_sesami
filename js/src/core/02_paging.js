@@ -98,6 +98,7 @@
             case 3:
                 return 2000;
             case 4:
+            case 5:
                 return 30000; // animation内で表示する.
             case 6:
             case 7:
