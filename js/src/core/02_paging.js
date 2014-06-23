@@ -6,7 +6,8 @@
     var
         MIN_PAGE = 0,
         MAX_PAGE = $('.pageTemplate').length - 1, // 0ページから始めるので -1 する
-        $pageContainer = $('#page');
+        $pageContainer = $('#page'),
+        $nextBtn = $('#nextPageBtn');
 
     if (sesami.isIEold || sesami.isAndroid2X) {
         MAX_PAGE -= 1; // createへの導線を外す.
@@ -68,6 +69,16 @@
         }
         preloadPage(nextNext);
 
+        // 次へボタンは少しだけ遅れて表示
+        var delayTime = nextBtnDelayTime(nextPageNo);
+        $nextBtn.css('opacity', 0)
+        setTimeout(function () {
+            $nextBtn.animate({opacity: 1}, 500);
+        }, delayTime);
+
+        // BGM再生
+        sesami.bgmPlayer.playBGMAt(nextPageNo);
+
     };
     var preloadPage = function (pageNo) {
         setTimeout(function () {
@@ -76,6 +87,22 @@
             $(snipet);
         }, 1000);
     };
+
+    var nextBtnDelayTime = function (pageNo) {
+        switch (pageNo) {
+            case 0:
+                return 3000;
+            case 3:
+                return 2000;
+            case 6:
+            case 7:
+                return 2500;
+            case 9:
+                return 100;
+            default:
+                return 1500;
+        }
+    }
 
 
 

@@ -166,7 +166,7 @@ jukebox.Player.prototype = {
 
 				// This will add the stream to the manager's stream cache,
 				// there's a fallback timeout if the canplaythrough event wasn't fired
-				var addFunc = function(event){ that.__addToManager(event); };
+				var addFunc = function(event){ that.__addToManager(event); that.canPlay = true; };
 				this.context.addEventListener('canplaythrough', addFunc, true);
 
 				// Uh, Oh, What is it good for? Uh, Oh ...

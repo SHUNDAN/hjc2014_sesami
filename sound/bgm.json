@@ -1,0 +1,26 @@
+{
+  "resources": [
+    "bgm.ogg",
+    "bgm.m4a",
+    "bgm.mp3",
+    "bgm.ac3"
+  ],
+  "spritemap": {
+    "silence": {
+      "start": 0,
+      "end": 2,
+      "loop": true
+    },
+    "sesami_01": {
+      "start": 3,
+      "end": 25.58823129251701,
+      "loop": false
+    },
+    "sesami_02": {
+      "start": 27,
+      "end": 41.54546485260771,
+      "loop": false
+    }
+  },
+  "autoplay": "silence"
+}
