@@ -9,9 +9,9 @@
         $pageContainer = $('#page'),
         $nextBtn = $('#nextPageBtn');
 
-    if (sesami.isIEold || sesami.isAndroid2X) {
-        MAX_PAGE -= 1; // createへの導線を外す.
-    }
+    // if (sesami.isIEold || sesami.isAndroid2X) {
+    //     MAX_PAGE -= 1; // createへの導線を外す.
+    // }
 
 
     // Private Functions.
@@ -33,7 +33,7 @@
         }
         return snipet;
     };
-    var showPageAt = function (nextPageNo, currentPageNo) {
+    var showPageAt = function (nextPageNo, currentPageNo, useSound) {
 
         // 現在のページ
         var $currentPage = $('#container').find('[data-page="' + currentPageNo + '"]');
@@ -76,11 +76,13 @@
             $nextBtn.animate({opacity: 1}, 500);
         }, delayTime);
 
-        // BGM再生
-        sesami.bgmPlayer.playBGMAt(nextPageNo);
 
-        // ボタンの効果音
-        sesami.effectPlayer.play(5);
+        if (useSound !== false) {
+            // BGM再生
+            sesami.bgmPlayer.playBGMAt(nextPageNo);
+            // ボタンの効果音
+            sesami.effectPlayer.play(5);            
+        }
 
     };
     var preloadPage = function (pageNo) {
@@ -98,6 +100,8 @@
         switch (pageNo) {
             case 0:
                 return 3000;
+            case 2:
+                return 4000;
             case 3:
                 return 2000;
             case 4:
@@ -180,7 +184,8 @@
     // });
     $(function () {
         console.debug('onload paging fired');
-        showPageAt(sesami.currentPage);
+        var useSound = (!sesami.isIphone && !sesami.isAndroid && !sesami.isIpad);
+        showPageAt(sesami.currentPage, false, useSound);
     });
 
 

@@ -4,15 +4,20 @@
 
 
     .message {
-        padding-top: 20%;
+        padding-top: 10%;
         font-size: 200%;
         font-weight: bold;
         line-height: 1.5;
         text-align: center;
+    }
 
-        .sp & {
-            padding-top: 5%;
-        }
+    .message2 {
+        margin-top: 10%;
+        text-align: center;
+        font-size: 140%;
+    }
+    #num1 {
+        font-size: 300%;
     }
 
     .button {
@@ -40,10 +45,5 @@
         }
     }
 
-    .sp & {
-        br {
-            display: none;
-        }
-    }
 
 }

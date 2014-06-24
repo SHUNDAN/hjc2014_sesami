@@ -35,6 +35,8 @@ sesami.page05.init = function () {
         $page
             .find('.kataArea.type' + selectType)
             .addClass('select');        
+
+        sesami.actionMap.page5.action1 = true;
     }
 
     var userSelect = false;
@@ -71,7 +73,7 @@ sesami.page05.init = function () {
                 'height': 'auto'
             });
 
-        sesami.effectPlayer.play(11);
+        sesami.effectPlayer.play(15);
 
 
         setTimeout(function () {
@@ -81,6 +83,8 @@ sesami.page05.init = function () {
                 $('#nextPageBtn').css('opacity', 1);
             }
         }, 1200);
+
+        sesami.actionMap.page5.action2 = true;
     };
     $page.on(TOUCH_END, '.tapAreaBase', function () {
         console.debug('[tapAreaBase]');

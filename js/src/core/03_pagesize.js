@@ -47,6 +47,11 @@
                 $('body').removeClass('landscape');
             }
 
+            // フォントサイズ
+            var fontSize = Math.floor(15 * ww / 815);
+            console.debug('fontSize:', fontSize);
+            $(document.body).css('font-size', fontSize + 'px');
+
     };
     window.onresize = adjustSize;
     adjustSize();
