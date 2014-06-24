@@ -220,31 +220,7 @@
         play: function (type) {
             if (effectPlayer) {
                 effectPlayer.play(type, true);
-            } else {
-                effectPlayer = new jukebox.Player(json1);
-                var timer = setInterval(function () {
-                    if (effectPlayer.canPlay) {
-                        console.debug('effectPlayer.canPlay is true');
-                        clearInterval(timer);
-                        effectPlayer.play(type, true);
-                    }
-                }, 200);                
             }
-
-
-            // ついでに
-            if (!bgmPlayer) {
-                bgmPlayer = new jukebox.Player(json2);
-                var timer2 = setInterval(function () {
-                    if (bgmPlayer.canPlay) {
-                        console.debug('bgmPlayer.canPlay is true2');
-                        sesami.bgmPlayer.playBGMAt(sesami.currentPage);
-                        clearInterval(timer2);
-                    }
-                }, 500);
-            }
-
-
         },
         stop: function () {
             if (effectPlayer) {
@@ -265,32 +241,7 @@
               }
               currentBGMType = type;
               bgmPlayer.play(type, true);
-          } else {
-              bgmPlayer = new jukebox.Player(json2);
-              var timer = setInterval(function () {
-                  if (bgmPlayer.canPlay) {
-                      console.debug('bgmPlayer.canPlay is true');
-                      clearInterval(timer);
-                      bgmPlayer.play(type, true);
-                  }
-              }, 200);
           }
-
-
-          // ついでに
-          // ついでに
-          if (!effectPlayer) {
-              effectPlayer = new jukebox.Player(json1);
-              var timer2 = setInterval(function () {
-                  if (effectPlayer.canPlay) {
-                      console.debug('effectPlayer.canPlay is true2');
-                      clearInterval(timer2);
-                  }
-              }, 500);
-          }
-
-
-
 
         },
         stop: function () {
@@ -326,6 +277,22 @@
         }
     };
 
+
+
+    // Popupから起動.
+    sesami.audio = {};
+    sesami.audio.loadPlayers = function () {
+        effectPlayer = new jukebox.Player(json1);
+        bgmPlayer = new jukebox.Player(json2);
+
+        var timer2 = setInterval(function () {
+            if (bgmPlayer.canPlay) {
+                console.debug('bgmPlayer.canPlay is true3');
+                sesami.bgmPlayer.playBGMAt(sesami.currentPage);
+                clearInterval(timer2);
+            }
+        }, 500);
+    };
 
 })();
 

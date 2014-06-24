@@ -82,6 +82,24 @@ if (sesami.isIEold) {
 
 
 
+// サウンド確認
+if (sesami.isIphone || sesami.isIpad || sesami.isAndroid) {
+    var $popup = $('#soundPopup');
+
+    $popup.removeClass('hidden');
+
+    $popup.find('.btnOK').on(sesami.event.TOUCH_END, function () {
+        sesami.audio.loadPlayers();
+        $popup.remove();
+    });
+
+    $popup.find('.btnNG').on(sesami.event.TOUCH_END, function () {
+        $popup.remove();
+    });
+
+}
+
+
 
 
 
