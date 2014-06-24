@@ -181,6 +181,11 @@
               "start": 27,
               "end": 41.54546485260771,
               "loop": true
+            },
+            "sesami_03": {
+              "start": 43,
+              "end": 62.20002267573696,
+              "loop": true
             }
           },
           "autoplay": "silence"
@@ -300,13 +305,15 @@
         __getBGMTypeAt: function (pageNo) {
             var type;
             switch (pageNo) {
-              case 0:
-                  type = 'sesami_01';
-                  break;
               case 1:
               case 2:
               case 3:
                   type = 'sesami_02';
+                  break;
+              case 4:
+              case 5:
+              case 6:
+                  type = 'sesami_03';
                   break;
               default:
                   type = 'sesami_01';

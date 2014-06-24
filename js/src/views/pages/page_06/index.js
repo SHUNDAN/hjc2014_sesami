@@ -68,6 +68,10 @@ sesami.page06.init = function () {
         if (num > 0) {
             $page.find('.num' + num).removeClass('hidden');            
             sesami.page06.timer = setTimeout(countDown, nextTime);
+
+            var soundNum = Math.floor(Math.random() * 25) + 1;
+            sesami.effectPlayer.play(soundNum);
+
             return;        
         }
 
