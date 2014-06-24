@@ -234,6 +234,7 @@
                     if (bgmPlayer.canPlay) {
                         console.debug('bgmPlayer.canPlay is true2');
                         sesami.bgmPlayer.playBGMAt(sesami.currentPage);
+                        clearInterval(timer2);
                     }
                 }, 500);
             }
@@ -244,17 +245,20 @@
             if (effectPlayer) {
               effectPlayer.stop();
             }
+        },
+        _getPlayer: function () {
+            return effectPlayer;
         }
     };
 
     var currentBGMType;
     sesami.bgmPlayer = {
         play: function (type) {
-          if (currentBGMType === type) {
-              return false;
-          }
-          currentBGMType = type;
           if (bgmPlayer) {
+              if (currentBGMType === type) {
+                  return false;
+              }
+              currentBGMType = type;
               bgmPlayer.play(type, true);
           } else {
               bgmPlayer = new jukebox.Player(json2);
@@ -275,6 +279,7 @@
               var timer2 = setInterval(function () {
                   if (effectPlayer.canPlay) {
                       console.debug('effectPlayer.canPlay is true2');
+                      clearInterval(timer2);
                   }
               }, 500);
           }
@@ -308,6 +313,9 @@
                   break;
             }
             return type;
+        },
+        _getPlayer: function () {
+            return bgmPlayer;
         }
     };
 

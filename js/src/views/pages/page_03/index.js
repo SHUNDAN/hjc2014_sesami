@@ -30,6 +30,7 @@ sesami.page03.init = function() {
       if(isBallonAnime) return false;
       isBallonAnime = true;
       $ballonCharacterCookieMonster.addClass('animate');
+      sesami.actionMap.page3.action1 = true;
     });
 
     $ballonCharacter.one(ANIMATION_END_EVENT,function(){
@@ -69,6 +70,7 @@ sesami.page03.init = function() {
         isEyeAnime = false;
       }
       setTimeout(remove,2000);
+      sesami.actionMap.page3.action2 = true;
     });
 
     var
@@ -81,6 +83,7 @@ sesami.page03.init = function() {
       $oscarArea.find('.jsOscar1').hide().end()
                 .find('.jsOscar2').show();
       setTimeout(oscarSecoundFunc,1000);
+      sesami.actionMap.page3.action3 = true;
     });
 
     var oscarSecoundFunc = function(){

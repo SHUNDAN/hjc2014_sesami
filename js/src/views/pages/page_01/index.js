@@ -3,15 +3,16 @@ sesami.page01 = {};
 sesami.page01.init = function () {
     console.debug('page01 init is called.');
 
-// TODO マルチタップ対応！
-
 
     // コンテナ
-    var $content = $('[data-page="1"]');
+    var 
+        $content = $('[data-page="1"]'),
+        TOUCH_START = sesami.event.TOUCH_START,
+        TOUCH_MOVE = sesami.event.TOUCH_MOVE,
+        TOUCH_END = sesami.event.TOUCH_END;
 
     // Boxタップ
-    // 仮です（tapにします）
-    $content.on('click', '.jsBoxTap', function () {
+    $content.on(TOUCH_END, '.jsBoxTap', function () {
         console.debug('[jsBoxTap]');
 
         var 
@@ -25,6 +26,10 @@ sesami.page01.init = function () {
             $this.removeClass('noAction');
         }, 800);
 
+        sesami.effectPlayer.play(24);
+
+        sesami.actionMap.page1.action1 = true;
+
     });
 
 
@@ -35,6 +40,8 @@ sesami.page01.init = function () {
         $content.find('.jsEye').removeClass('hidden');
         $content.find('.jsDrop').addClass('hidden');
         $content.find('.jsArmAnim').addClass('stop');
+
+        sesami.actionMap.page1.action2 = true;
     
     }).on(sesami.event.TOUCH_END, '.jsBodyTap', function () {
         console.debug('[jsBodyTap] touchend');

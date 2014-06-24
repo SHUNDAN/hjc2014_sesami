@@ -20,6 +20,7 @@ sesami.page02.init = function () {
     $content.on(TOUCH_START, '.jsPoolAreaTap', function () {
         console.debug('[jsPoolAreaTap] touchstart');
         $content.find('.jsCaution').removeClass('hidden');
+        sesami.actionMap.page2.action1 = true;
     
     }).on(TOUCH_END, '.jsPoolAreaTap', function () {
         console.debug('[jsPoolAreaTap] touchend');

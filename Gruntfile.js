@@ -36,6 +36,7 @@ module.exports = function(grunt) {
           './js/src/views/pages/page_06/*.js',
           './js/src/views/pages/page_07/*.js',
           './js/src/views/pages/page_08/*.js',
+          './js/src/views/pages/page_09/*.js',
         ],
         dest: './release/js/all.js'
       },

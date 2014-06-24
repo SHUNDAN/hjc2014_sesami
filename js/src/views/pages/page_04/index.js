@@ -34,128 +34,7 @@ sesami.page04.init = function () {
 
 
 
-
-
-    // バター（タップ）
-    $page.on(TOUCH_END, '.tapButter', function () {
-        console.debug('[tapButter]');
-        $(this).addClass('hidden');
-        $('.butterArea').addClass('anim');
-        sesami.effectPlayer.play(13);
-
-        itemCount++;
-        setTimeout(function () {
-            $material.addClass('size' + itemCount);
-            if (itemCount === 5) {
-                count += 3;
-                $page
-                    .find('.materialArea')
-                    .css({
-                        'transform' : 'rotateZ(' + (DIFF * count) + 'deg)',
-                        '-webkit-transform' : 'rotateZ(' + (DIFF * count) + 'deg)',
-                        '-moz-transform' : 'rotateZ(' + (DIFF * count) + 'deg)',
-                        '-ms-transform' : 'rotateZ(' + (DIFF * count) + 'deg)'
-                    });                
-                sesami.effectPlayer.play(25);
-                setTimeout(function () {
-                    $('#nextPageBtn').css('opacity', 1);
-                }, 2000);
-            }
-        }, 800);
-    });
-
-    // 砂糖（タップ）
-    $page.on(TOUCH_END, '.tapSuger', function () {
-        console.debug('[tapSuger]');
-        $(this).addClass('hidden');
-        $('.sugerArea').addClass('anim');
-        sesami.effectPlayer.play(13);
-
-        itemCount++;
-        setTimeout(function () {
-            $material.addClass('size' + itemCount);
-            if (itemCount === 5) {
-                count += 3;
-                $page
-                    .find('.materialArea')
-                    .css({
-                        'transform' : 'rotateZ(' + (DIFF * count) + 'deg)',
-                        '-webkit-transform' : 'rotateZ(' + (DIFF * count) + 'deg)',
-                        '-moz-transform' : 'rotateZ(' + (DIFF * count) + 'deg)',
-                        '-ms-transform' : 'rotateZ(' + (DIFF * count) + 'deg)'
-                    });                
-                sesami.effectPlayer.play(25);
-                setTimeout(function () {
-                    $('#nextPageBtn').css('opacity', 1);
-                }, 2000);
-            }
-        }, 800);
-    });
-
-    // たまご（タップ）
-    $page.on(TOUCH_END, '.tapEgg', function () {
-        console.debug('[tapEgg]');
-        $(this).addClass('hidden');
-        $('.eggArea').addClass('anim');
-        sesami.effectPlayer.play(13);
-
-        itemCount++;
-        setTimeout(function () {
-            $material.addClass('size' + itemCount);
-            if (itemCount === 5) {
-                count += 3;
-                $page
-                    .find('.materialArea')
-                    .css({
-                        'transform' : 'rotateZ(' + (DIFF * count) + 'deg)',
-                        '-webkit-transform' : 'rotateZ(' + (DIFF * count) + 'deg)',
-                        '-moz-transform' : 'rotateZ(' + (DIFF * count) + 'deg)',
-                        '-ms-transform' : 'rotateZ(' + (DIFF * count) + 'deg)'
-                    });                
-                sesami.effectPlayer.play(25);
-                setTimeout(function () {
-                    $('#nextPageBtn').css('opacity', 1);
-                }, 2000);
-            }
-        }, 800);
-    });
-
-    // 小麦粉（タップ）
-    $page.on(TOUCH_END, '.tapFlour', function () {
-        console.debug('[tapFlour]');
-        $(this).addClass('hidden');
-        $('.flourArea').addClass('anim');
-        sesami.effectPlayer.play(13);
-
-        itemCount++;
-        setTimeout(function () {
-            $material.addClass('size' + itemCount);
-            if (itemCount === 5) {
-                count += 3;
-                $page
-                    .find('.materialArea')
-                    .css({
-                        'transform' : 'rotateZ(' + (DIFF * count) + 'deg)',
-                        '-webkit-transform' : 'rotateZ(' + (DIFF * count) + 'deg)',
-                        '-moz-transform' : 'rotateZ(' + (DIFF * count) + 'deg)',
-                        '-ms-transform' : 'rotateZ(' + (DIFF * count) + 'deg)'
-                    });                
-                sesami.effectPlayer.play(25);
-                setTimeout(function () {
-                    $('#nextPageBtn').css('opacity', 1);
-                }, 2000);
-            }
-        }, 800);
-    });
-
-    // チョコ（タップ）
-    $page.on(TOUCH_END, '.tapChoco', function () {
-        console.debug('[tapChoco]');
-        $(this).addClass('hidden');
-        $('.chocoArea').addClass('anim');
-        sesami.effectPlayer.play(13);
-
-        itemCount++;
+    var afterAnimation = function () {
         setTimeout(function () {
             $material.addClass('size' + itemCount);
             if (itemCount === 5) {
@@ -168,12 +47,74 @@ sesami.page04.init = function () {
                         '-moz-transform' : 'rotateZ(' + (DIFF * count) + 'deg)',
                         '-ms-transform' : 'rotateZ(' + (DIFF * count) + 'deg)'
                     });
-                sesami.effectPlayer.play(25);
                 setTimeout(function () {
+                    sesami.effectPlayer.play(25);
                     $('#nextPageBtn').css('opacity', 1);
-                }, 2000);
+                }, 1500);
             }
         }, 800);
+    };
+
+
+
+    // バター（タップ）
+    $page.on(TOUCH_END, '.tapButter', function () {
+        console.debug('[tapButter]');
+        $(this).addClass('hidden');
+        $('.butterArea').addClass('anim');
+        sesami.effectPlayer.play(13);
+
+        itemCount++;
+        afterAnimation();
+        sesami.actionMap.page4.action1 = true;
+    });
+
+    // 砂糖（タップ）
+    $page.on(TOUCH_END, '.tapSuger', function () {
+        console.debug('[tapSuger]');
+        $(this).addClass('hidden');
+        $('.sugerArea').addClass('anim');
+        sesami.effectPlayer.play(13);
+
+        itemCount++;
+        afterAnimation();
+        sesami.actionMap.page4.action2 = true;
+    });
+
+    // たまご（タップ）
+    $page.on(TOUCH_END, '.tapEgg', function () {
+        console.debug('[tapEgg]');
+        $(this).addClass('hidden');
+        $('.eggArea').addClass('anim');
+        sesami.effectPlayer.play(13);
+
+        itemCount++;
+        afterAnimation();
+        sesami.actionMap.page4.action3 = true;
+    });
+
+    // 小麦粉（タップ）
+    $page.on(TOUCH_END, '.tapFlour', function () {
+        console.debug('[tapFlour]');
+        $(this).addClass('hidden');
+        $('.flourArea').addClass('anim');
+        sesami.effectPlayer.play(13);
+
+        itemCount++;
+        afterAnimation();
+        sesami.actionMap.page4.action4 = true;
+    });
+
+    // チョコ（タップ）
+    $page.on(TOUCH_END, '.tapChoco', function () {
+        console.debug('[tapChoco]');
+        $(this).addClass('hidden');
+        $('.chocoArea').addClass('anim');
+        sesami.effectPlayer.play(13);
+
+        itemCount++;
+        afterAnimation();
+        sesami.actionMap.page4.action5 = true;
     });
 
     // ボール（タップ）
@@ -190,6 +131,8 @@ sesami.page04.init = function () {
                 '-ms-transform' : 'rotateZ(' + (DIFF * count) + 'deg)'
             });
         sesami.effectPlayer.play(18);
+
+        sesami.actionMap.page4.action6 = true;
     });
     var orgnPos;
     var times = 0;
@@ -251,6 +194,8 @@ sesami.page04.init = function () {
                     '-ms-transform' : 'rotateZ(' + (DIFF * count) + 'deg)'
                 });
             sesami.effectPlayer.play(18);
+
+            sesami.actionMap.page4.action6 = true;
         }
 
     });

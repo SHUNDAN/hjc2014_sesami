@@ -107,6 +107,8 @@ sesami.page06.init = function () {
                 clearTimeout(sesami.page06.timer);
                 countDown();
             }
+
+            sesami.actionMap.page6.action1 = true;
         });
     };
 

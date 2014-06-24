@@ -24,6 +24,8 @@ sesami.page00.init = function () {
             .removeClass('anim');
 
         effectPlayer.play(8);
+
+        sesami.actionMap.page0.action1 = true;
     });
 
 
@@ -44,6 +46,8 @@ sesami.page00.init = function () {
             .removeClass('noAction');
 
         effectPlayer.play(22);
+
+        sesami.actionMap.page0.action2 = true;
     });
 
     // オスカー
@@ -58,6 +62,8 @@ sesami.page00.init = function () {
         setTimeout(function () {
             effectPlayer.play(23);
         }, 1000);
+
+        sesami.actionMap.page0.action3 = true;
     });
 
 
@@ -70,6 +76,8 @@ sesami.page00.init = function () {
             .toggleClass('hidden');
 
         effectPlayer.play(19);
+
+        sesami.actionMap.page0.action4 = true;
     });
 
 
@@ -104,6 +112,8 @@ sesami.page00.init = function () {
                 effectPlayer.play(9);
             }, 1000);
         }, 2000);
+
+        sesami.actionMap.page0.action5 = true;
     });
 
 
@@ -114,6 +124,7 @@ sesami.page00.init = function () {
             .toggleClass('hidden');
 
         effectPlayer.play(15);
+        sesami.actionMap.page0.action6 = true;
     });
 
 
@@ -124,6 +135,7 @@ sesami.page00.init = function () {
             .toggleClass('hidden');
 
         effectPlayer.play(10);
+        sesami.actionMap.page0.action7 = true;
     });
 
 

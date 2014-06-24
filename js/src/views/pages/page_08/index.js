@@ -60,6 +60,8 @@ sesami.page08.init = function () {
                 isBigBirdAnime = false;
                 $bigBirdArea.removeClass('anime');
             });
+
+        sesami.actionMap.page8.action1 = true;
     });
 
     var
@@ -82,6 +84,8 @@ sesami.page08.init = function () {
         event.preventDefault();
         var color = '#' + ("00000"+Math.floor(Math.random() * 0x1000000).toString(16)).substr(-6);
         $bertArea.find('.bert-hair').find('path').css('fill', color);
+
+        sesami.actionMap.page8.action2 = true;
     });
 
     var
@@ -98,6 +102,8 @@ sesami.page08.init = function () {
                 isElmoAnime = false;
                 $elmoArea.removeClass('anime');
             });
+
+        sesami.actionMap.page8.action3 = true;
     });
 
     var
@@ -142,6 +148,8 @@ sesami.page08.init = function () {
                     'top': oscarProperty.start[0] + oscarProperty.move[0],
                     'left': oscarProperty.start[1] + oscarProperty.move[1]
                 });
+
+            sesami.actionMap.page8.action4 = true;
         });
 
         $oscar.on(TOUCH_END, function(event) {
@@ -154,6 +162,7 @@ sesami.page08.init = function () {
 
             $oscar.toggleClass('hidden');
 
+            sesami.actionMap.page8.action5 = true;
         });
     }, function() {
         $oscar.off();
