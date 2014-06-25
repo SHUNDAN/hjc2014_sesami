@@ -120,7 +120,7 @@ sesami.page04.init = function () {
     // ボール（タップ）
     var DIFF = 120;
     var count = 0;
-    $page.on(TOUCH_END, '.tapBowl', function () {
+    $page.on(TOUCH_START, '.tapBowl', function () {
         count++;
         $page
             .find('.materialArea')

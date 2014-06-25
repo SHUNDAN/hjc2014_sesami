@@ -12,18 +12,18 @@ sesami.page01.init = function () {
         TOUCH_END = sesami.event.TOUCH_END;
 
     // Boxタップ
-    $content.on(TOUCH_END, '.jsBoxTap', function () {
+    $content.on(TOUCH_START, '.jsBoxTap', function () {
         console.debug('[jsBoxTap]');
 
         var 
             $box = $content.find('.jsBox'),
             $this = $(this);
 
-        $box.addClass('rotateAnim');
-        $this.addClass('noAction');
+        $box.removeClass('rotateAnim').wait(10).addClass('rotateAnim');
+        // $this.addClass('noAction');
         setTimeout(function () {
             $box.removeClass('rotateAnim');
-            $this.removeClass('noAction');
+            // $this.removeClass('noAction');
         }, 800);
 
         sesami.effectPlayer.play(24);
@@ -34,7 +34,7 @@ sesami.page01.init = function () {
 
 
     // Bodyタップ
-    $content.on(sesami.event.TOUCH_START, '.jsBodyTap', function () {
+    $content.on(TOUCH_START, '.jsBodyTap', function () {
         console.debug('[jsBodyTap] touchstart');
         $content.find('.jsEye').removeClass('hidden');
         $content.find('.jsDrop').addClass('hidden');
@@ -42,7 +42,7 @@ sesami.page01.init = function () {
 
         sesami.actionMap.page1.action2 = true;
     
-    }).on(sesami.event.TOUCH_END, '.jsBodyTap', function () {
+    }).on(TOUCH_END, '.jsBodyTap', function () {
         console.debug('[jsBodyTap] touchend');
         $content.find('.jsEye').addClass('hidden');
         $content.find('.jsDrop').removeClass('hidden');

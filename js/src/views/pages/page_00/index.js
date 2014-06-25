@@ -14,7 +14,7 @@ sesami.page00.init = function () {
 
 
     // ロゴ.
-    $page.on(TOUCH_END, '.tapLogo', function () {
+    $page.on(TOUCH_START, '.tapLogo', function () {
 
         $page
             .find('.jsLogo')
@@ -51,7 +51,7 @@ sesami.page00.init = function () {
     });
 
     // オスカー
-    $page.on(TOUCH_END, '.tapOscar', function () {
+    $page.on(TOUCH_START, '.tapOscar', function () {
 
         $page
             .find('.jsOscarAnim')
@@ -69,7 +69,7 @@ sesami.page00.init = function () {
 
 
     // バート
-    $page.on(TOUCH_END, '.tapBert', function () {
+    $page.on(TOUCH_START, '.tapBert', function () {
 
         $page
             .find('.jsBert')
@@ -99,7 +99,7 @@ sesami.page00.init = function () {
     cmAnim();
 
     // クッキーモンスター（タップ）
-    $page.on(TOUCH_END, '.tapCookieMonster', function () {
+    $page.on(TOUCH_START, '.tapCookieMonster', function () {
         $page
             .find('.jsCmArea')
             .addClass('anim noAction')
@@ -118,7 +118,7 @@ sesami.page00.init = function () {
 
 
     // エルモ（タップ）
-    $page.on(TOUCH_END, '.tapElmo', function () {
+    $page.on(TOUCH_START, '.tapElmo', function () {
         $page
             .find('.jsElBody')
             .toggleClass('hidden');
@@ -129,7 +129,7 @@ sesami.page00.init = function () {
 
 
     // ビッグバード（タップ）
-    $page.on(TOUCH_END, '.tapBigBird', function () {
+    $page.on(TOUCH_START, '.tapBigBird', function () {
         $page
             .find('.jsBigBird')
             .toggleClass('hidden');

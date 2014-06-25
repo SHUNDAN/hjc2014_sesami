@@ -113,9 +113,9 @@
         &.type3 {@include abs(67%, 10%);}
     }
     .tapAreaBase {
-        @include abs(20%, 41%);
-        width: 43%;
-        height: 62%;
+        @include abs(10%, 31%);
+        width: 65%;
+        height: 85%;
         background-color: rgba(255,255,255,.001);
     }
 

@@ -40,7 +40,7 @@ sesami.page05.init = function () {
     }
 
     var userSelect = false;
-    $page.on(TOUCH_END, '.tapAreaKata', function () {
+    $page.on(TOUCH_START, '.tapAreaKata', function () {
         userSelect = true;
         selectType = $(this).data('type');
         changeKata(selectType);
@@ -88,7 +88,7 @@ sesami.page05.init = function () {
 
         sesami.actionMap.page5.action2 = true;
     };
-    $page.on(TOUCH_END, '.tapAreaBase', function () {
+    $page.on(TOUCH_START, '.tapAreaBase', function () {
         console.debug('[tapAreaBase]');
 
         var image = new Image();
