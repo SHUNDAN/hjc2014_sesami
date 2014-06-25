@@ -103,15 +103,15 @@ sesami.page00.init = function () {
         $page
             .find('.jsCmArea')
             .addClass('anim noAction')
-            .wait(5000)
+            .wait(2500)
             .removeClass('anim noAction');
 
         setTimeout(function () {
             effectPlayer.play(9);
             setTimeout(function () {
                 effectPlayer.play(9);
-            }, 1000);
-        }, 2000);
+            }, 500);
+        }, 1125);
 
         sesami.actionMap.page0.action5 = true;
     });
