@@ -178,6 +178,20 @@ sesami.page08.init = function () {
         oscarProperty.anime = 0;
     });
 
+
+    // CookieMonster
+    var nowAnim = false;
+    $page.find('.jsCookieMonsterAreaTap').on(TOUCH_START, function () {
+        nowAnim = true;
+        $page.find('.jsCookiemonsterArea').addClass('anim');
+        sesami.effectPlayer.play(21);
+    }).on(TOUCH_END, function () {
+        nowAnim = false;
+        $page.find('.jsCookiemonsterArea').removeClass('anim');
+        // clearInterval(sesami.page08.timer2);
+        sesami.effectPlayer.play(21);
+    });
+
 };
 
 
@@ -185,5 +199,12 @@ sesami.page08.dealloc = function () {
     // ページを離れる場合に呼び出されます.
     // イベントのアンバインドやタイマーの削除を、ここで行ってください.
     console.debug('page08 dealloc is called.');
-    clearInterval(sesami.page08.timer1);
+    if (sesami.page08.timer1) {
+        clearInterval(sesami.page08.timer1);        
+        sesami.page08.timer1 = null;
+    }
+    // if (sesami.page08.timer2) {
+    //     clearInterval(sesami.page08.timer2);
+    //     sesami.page08.timer2 = null;
+    // }
 };

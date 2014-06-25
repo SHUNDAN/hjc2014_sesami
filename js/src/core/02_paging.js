@@ -133,7 +133,7 @@
             case 6:
                 return 30000; // animation内で表示する.
             case 7:
-                return 2500;
+                return 5000;
             case 9:
                 return 100;
             default:
