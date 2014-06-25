@@ -75,6 +75,9 @@ sesami.page06.init = function () {
             return;        
         }
 
+        // アクション禁止にする
+        $page.addClass('noAction');
+
         $page
             .find('.box')
             .addClass('anim');

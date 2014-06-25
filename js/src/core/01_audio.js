@@ -187,7 +187,7 @@
 
 
     // 効果音の再生機能
-    // Web Audio API　が使えるならそれを使う.
+    // Web Audio API　が使えるならそれを使う.効果音はタイミングが命なので！
     var createEffectPlayer = function () {
 
         if (window.webkitAudioContext || window.AudioContext) {
