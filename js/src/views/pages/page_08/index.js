@@ -185,6 +185,7 @@ sesami.page08.init = function () {
         nowAnim = true;
         $page.find('.jsCookiemonsterArea').addClass('anim');
         sesami.effectPlayer.play(21);
+        sesami.actionMap.page8.action5 = true;
     }).on(TOUCH_END, function () {
         nowAnim = false;
         $page.find('.jsCookiemonsterArea').removeClass('anim');

@@ -89,6 +89,9 @@
         // 連続タップしやすいので、2秒だけ使えない苦する
         $nextBtn.addClass('noAction').wait(2000).removeClass('noAction');
 
+        // iPadでは時々図が抜けるので、再描画を促す
+        $('#pageRefresher').wait(200).removeClass('hidden').wait(50).addClass('hidden');
+
     };
     var preloadPage = function (pageNo) {
         setTimeout(function () {

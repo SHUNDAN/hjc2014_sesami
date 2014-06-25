@@ -52,6 +52,9 @@
             console.debug('fontSize:', fontSize);
             $(document.body).css('font-size', fontSize + 'px');
 
+            // iPadで時々画像が抜けるので、再描画を促す.
+            $('#pageRefresher').wait(200).removeClass('hidden').wait(50).addClass('hidden');
+
     };
     window.onresize = adjustSize;
     adjustSize();
