@@ -212,10 +212,15 @@
 
     // SVGからPNGへのフォールバック
     if (sesami.isAndroid2X || sesami.isIEold) {
+        // 本
         var src = $('.book').attr('src').replace('.svg', '.png');
         $('.book').attr('src', src);
+        // 次へボタン
         var src = $('#nextPageBtn').attr('src').replace('.svg', '.png');
         $('#nextPageBtn').attr('src', src);
+        // 確認ダイアログ
+        var src = $('#confirmImage').attr('src').replace('.svg', '.png');
+        $('#confirmImage').attr('src', src);        
     }
 
 
