@@ -58,14 +58,13 @@ if (sesami.isIphone7_1) {
     $('#container').addClass('iphone7_1');
 }
 
-// Androidの場合には、ヘッダスキップ
+// ヘッダスキップ（有効なものだけ）
+window.scrollTo(0,1);
+
+// Androidをマーク
 if (sesami.isAndroid) {
     $('#container').addClass('android');
-    window.scrollTo = 1;
 }
-
-
-// デバイス情報をクラスで表現する
 if (sesami.isIphone) {
     $(document.body).addClass('iPhone sp');
 }

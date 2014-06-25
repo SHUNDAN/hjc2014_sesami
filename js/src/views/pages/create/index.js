@@ -44,6 +44,7 @@ var getCurrentPageNo = function (element) {
 var goPage = function (pageNo) {
     $('[data-page]').addClass('hidden');
     $('[data-page="' + pageNo + '"]').removeClass('hidden');
+    window.scrollTo(0,1);
 };
 var image2base64 = function (img) {
     var canvas = document.createElement('canvas');
@@ -69,7 +70,6 @@ var image2base64 = function (img) {
 $('.jsNextPage').on('click', function () {
     var currentPage = getCurrentPageNo(this);
     goPage(currentPage + 1);
-    $(window).scrollTop(0);
 });
 
 
@@ -79,7 +79,6 @@ $('.jsNextPage').on('click', function () {
 $('.jsPrevPage').on('click', function () {
     var currentPage = getCurrentPageNo(this);
     goPage(currentPage - 1);
-    $(window).scrollTop(0);
 });
 
 
@@ -155,8 +154,8 @@ $('.jsFileSelect').on('change', function (e) {
               var
                   posX = 65,
                   posY = 65,
-                  resizedW = 900,
-                  resizedH = 881,
+                  resizedW = 1000,
+                  resizedH = 1000,
                   resizedRaito = resizedH / resizedW;
 
 
@@ -316,7 +315,8 @@ $('.jsGotoConfirmPage').on('click', function () {
         // context.fillRect(0, 0, frameW, frameH);
 
         // ユーザー画像の描画
-        context.drawImage(tmp.userImage,0, 0, userImageW, userImageH, 50, 64, userImageW, userImageH);
+        // context.drawImage(tmp.userImage,0, 0, userImageW, userImageH, 54, 63, userImageW, userImageH);
+        context.drawImage(tmp.userImage,0, 0, userImageW, userImageH, 0, 0, userImageW, userImageH);
 
         // フレーム画像の描画（透過のところは処理しない感じ）
         var newDatas = [];
@@ -350,7 +350,7 @@ $('.jsGotoConfirmPage').on('click', function () {
                 datas[i + 2] = floor(frameDatas[i + 2] * frameAlpha + datas[i + 2] * (1 - frameAlpha) * orgnAlpha);
                 datas[i + 3] = 255;
 
-                if (i % 5000 === 0 && i > 0) {
+                if (i % 10000 === 0 && i > 0) {
                     var raito = (i / len) * 100;
                     Progress.updateProgress(raito);
                     // console.debug('raito', raito);
@@ -519,8 +519,9 @@ $('.jsDownload').on('click', function () {
 
 
 
-
-
+$(function () {
+    window.scrollTo(0,1);
+});
 
 
 
