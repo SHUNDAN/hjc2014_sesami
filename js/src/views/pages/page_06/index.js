@@ -34,7 +34,7 @@ sesami.page06.init = function () {
             idx++;
             idx = idx % 3;
         }
-        $cookie.attr('src', './img/page06/cookie2-'+type+'.png');
+        $cookie.attr('src', './img/cookie/cookie2-'+type+'.png');
     }
 
 
