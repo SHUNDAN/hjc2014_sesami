@@ -75,7 +75,7 @@
         $nextBtn.css('opacity', 0)
         nextBtnDelayTimer = setTimeout(function () {
             nextBtnDelayTimer = null;
-            $nextBtn.animate({opacity: 1}, 500);
+            $nextBtn.animate({opacity: 1}, 500).removeClass('noAction');
         }, delayTime);
 
 
@@ -85,6 +85,9 @@
             // ボタンの効果音
             sesami.effectPlayer.play(5);            
         }
+
+        // 連続タップしやすいので、2秒だけ使えない苦する
+        $nextBtn.addClass('noAction').wait(2000).removeClass('noAction');
 
     };
     var preloadPage = function (pageNo) {
