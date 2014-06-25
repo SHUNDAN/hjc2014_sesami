@@ -61,7 +61,7 @@ sesami.page08.init = function () {
                 $bigBirdArea.removeClass('anime');
             });
 
-
+        sesami.effectPlayer.play(6);
         sesami.actionMap.page8.action1 = true;
     });
 
@@ -86,6 +86,7 @@ sesami.page08.init = function () {
         var color = '#' + ("00000"+Math.floor(Math.random() * 0x1000000).toString(16)).substr(-6);
         $bertArea.find('.bert-hair').find('path').css('fill', color);
 
+        sesami.effectPlayer.play(12);
         sesami.actionMap.page8.action2 = true;
     });
 
@@ -104,6 +105,7 @@ sesami.page08.init = function () {
                 $elmoArea.removeClass('anime');
             });
 
+        sesami.effectPlayer.play(14);
         sesami.actionMap.page8.action3 = true;
     });
 
@@ -164,6 +166,7 @@ sesami.page08.init = function () {
                 .removeAttr('style')
                 .toggleClass('type2');
             $oscar.toggleClass('hidden');
+            sesami.effectPlayer.play(16);
             sesami.actionMap.page8.action4 = true;
         }
 
