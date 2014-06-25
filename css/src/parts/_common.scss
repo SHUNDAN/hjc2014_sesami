@@ -134,6 +134,10 @@ audio {
 		background-color: rgba(162,221,185, .7);
 		-webkit-box-shadow: 0 0 10px #6a8976;
 
+		.portrait & {
+			width: 75%;
+		}
+
 		img {
 			width: 100%;
 		}

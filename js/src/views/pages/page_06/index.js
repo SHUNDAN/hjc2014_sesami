@@ -1,7 +1,9 @@
 // page06
 sesami.page06 = {};
+sesami.page06.animationEnable;
 sesami.page06.init = function () {
     console.debug('page06 init is called.');
+    sesami.page06.animationEnable = true;
 
 
     var
@@ -55,6 +57,10 @@ sesami.page06.init = function () {
     var num = 11;
     var charaNo = 0;
     var countDown = function () {
+
+        if (!sesami.page06.animationEnable) {
+            return;
+        }
 
         num--;
 
@@ -154,6 +160,8 @@ sesami.page06.dealloc = function () {
     // ページを離れる場合に呼び出されます.
     // イベントのアンバインドやタイマーの削除を、ここで行ってください.
     console.debug('page06 dealloc is called.');
+
+    sesami.page06.animationEnable = false;
 
 
     if (sesami.page06.timer) {
