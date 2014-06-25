@@ -84,9 +84,14 @@
         height: 100%;
     }
     .cookie {
-        @include abs(44%, 57%);
-        width: 10%;
+        @include abs(38%, 53%);
+        width: 20%;
+        // @include transform(translate(0,0) scale(0,0));
+        @include transform(translate(0,0));
         @include transition(all .5s ease-in-out);
+        @include transform-origin(50%, 50%);
+        // @include debug-transform-origin(50%, 50%);
+        opacity: 0;
     }
 
 

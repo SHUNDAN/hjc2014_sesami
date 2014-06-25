@@ -54,14 +54,15 @@ sesami.page05.init = function () {
     var addRandomStyle = function (element) {
 
         radian += 1.2;
-        // var signX = (Math.random() < .4 ? 1 : -1);
-        // var signY = (Math.random() < .4 ? 1 : -1);
-        // var deltaX = Math.random() * 150 - 100;
-        // var deltaY = Math.random() * 200 - 150;
-        var deltaX = Math.random() * Math.cos(radian) * 100;
-        var deltaY = Math.random() * Math.sin(radian) * 100;
-        var scale  = Math.max(10, Math.random() * 4 * 10);
-        var transform = 'translate('+deltaX+'%, '+deltaY+'%)';
+        var deltaX = Math.floor(Math.random() * Math.cos(radian) * 100);
+        var deltaY = Math.floor(Math.random() * Math.sin(radian) * 100);
+        // var scale  = Math.max(1, Math.random() * 3);
+        // if (sesami.isIphone) {
+        //     scale = 1;
+        // }
+        // var transform = 'translate('+deltaX+'%, '+deltaY+'%) scale(' + scale + ', ' + scale + ')';
+        var transform = 'translate3d('+deltaX+'%, '+deltaY+'%, 0)';
+        console.debug('transform:', transform);
 
         $(element)
             .css({
@@ -69,8 +70,9 @@ sesami.page05.init = function () {
                 '-moz-transform': transform,
                 '-ms-transform': transform,
                 'transform': transform,
-                'width': scale + '%',
-                'height': 'auto'
+                opacity: 1
+                // 'width': scale + '%',
+                // 'height': 'auto'
             });
 
         sesami.effectPlayer.play(15);
