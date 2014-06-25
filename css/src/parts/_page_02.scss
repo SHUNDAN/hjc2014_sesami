@@ -311,6 +311,7 @@
     .pool__caution{
       width: 80%;
       @include abs(-30%, 25%);
+      z-index: 2;
       // @include animation(page02_pool__cookie 2s infinite ease-in 500ms);
     }
 
@@ -457,4 +458,21 @@
       left: 42%;
       @include animation(page02_Fukidashi__delay_1 2s ease-in-out 1);
     }
+
+
+
+
+    // タップエリア（iPhoneでのSave Imageが出ない対策）
+    // ------------------------------------------------------
+    .tapWater {
+      @include abs(45%, 37%);
+      z-index: 2;
+      width: 37%;
+      height: 37%;
+      background-color: rgba(0,0,0,.001);
+    }
+
+
+
+
 }
