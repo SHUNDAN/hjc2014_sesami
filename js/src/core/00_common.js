@@ -91,10 +91,12 @@ if (sesami.isIphone || sesami.isIpad || sesami.isAndroid) {
     $popup.find('.btnOK').on(sesami.event.TOUCH_END, function () {
         sesami.audio.loadPlayers();
         $popup.remove();
+        return false;
     });
 
     $popup.find('.btnNG').on(sesami.event.TOUCH_END, function () {
         $popup.remove();
+        return false;
     });
 
 }

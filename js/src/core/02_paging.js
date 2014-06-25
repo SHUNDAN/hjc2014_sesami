@@ -122,7 +122,7 @@
             case 0:
                 return 3000;
             case 2:
-                return 4000;
+                return 4500;
             case 3:
                 return 2000;
             case 4:
