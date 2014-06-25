@@ -9,10 +9,6 @@
         $pageContainer = $('#page'),
         $nextBtn = $('#nextPageBtn');
 
-    // if (sesami.isIEold || sesami.isAndroid2X) {
-    //     MAX_PAGE -= 1; // createへの導線を外す.
-    // }
-
 
     // Private Functions.
     //-------------------------------------
@@ -88,8 +84,27 @@
     var preloadPage = function (pageNo) {
         setTimeout(function () {
             console.debug('[preloadPage]', pageNo);
-            var snipet = $('#template_page_' + get2DigitPageNo(pageNo)).html();
-            $(snipet);
+            var snipet = getPageSnipet(pageNo);
+            var srcs = snipet.match(/src="(.*?[.svg|.png].*?)"/g) || [];
+
+            sesami.preloaded = false;
+            var total = srcs.length;
+            if (total === 0) {
+                sesami.preloaded = true;
+            }
+            var done = 0;
+            for (var i = 0; i < srcs.length; i++) {
+                var src = srcs[i].replace('src="', '').replace('"', '');
+                var img = new Image();
+                img.src = src;
+                img.onload = function () {
+                    done++;
+                    console.debug('[preload]', this.src, done, total);
+                    if (done === total) {
+                        sesami.preloaded = true;
+                    }
+                };
+            }
         }, 1000);
     };
 
