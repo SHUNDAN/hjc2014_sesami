@@ -34,7 +34,6 @@ sesami.page01.init = function () {
 
 
     // Bodyタップ
-    // 仮です（tapにします）
     $content.on(sesami.event.TOUCH_START, '.jsBodyTap', function () {
         console.debug('[jsBodyTap] touchstart');
         $content.find('.jsEye').removeClass('hidden');
@@ -48,6 +47,8 @@ sesami.page01.init = function () {
         $content.find('.jsEye').addClass('hidden');
         $content.find('.jsDrop').removeClass('hidden');
         $content.find('.jsArmAnim').removeClass('stop');
+
+        sesami.effectPlayer.play(23);
     });
 
 

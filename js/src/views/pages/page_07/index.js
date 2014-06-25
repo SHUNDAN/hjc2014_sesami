@@ -86,6 +86,7 @@ sesami.page07.init = function () {
             }
         }
 
+        sesami.effectPlayer.play(19);
         sesami.actionMap.page7.action1 = true;
     });
 

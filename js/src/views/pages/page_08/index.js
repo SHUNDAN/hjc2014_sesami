@@ -61,6 +61,7 @@ sesami.page08.init = function () {
                 $bigBirdArea.removeClass('anime');
             });
 
+        
         sesami.actionMap.page8.action1 = true;
     });
 

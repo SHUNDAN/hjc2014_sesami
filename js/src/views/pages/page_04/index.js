@@ -58,7 +58,7 @@ sesami.page04.init = function () {
 
 
     // バター（タップ）
-    $page.on(TOUCH_END, '.tapButter', function () {
+    $page.on(TOUCH_START, '.tapButter', function () {
         console.debug('[tapButter]');
         $(this).addClass('hidden');
         $('.butterArea').addClass('anim');
@@ -70,7 +70,7 @@ sesami.page04.init = function () {
     });
 
     // 砂糖（タップ）
-    $page.on(TOUCH_END, '.tapSuger', function () {
+    $page.on(TOUCH_START, '.tapSuger', function () {
         console.debug('[tapSuger]');
         $(this).addClass('hidden');
         $('.sugerArea').addClass('anim');
@@ -82,7 +82,7 @@ sesami.page04.init = function () {
     });
 
     // たまご（タップ）
-    $page.on(TOUCH_END, '.tapEgg', function () {
+    $page.on(TOUCH_START, '.tapEgg', function () {
         console.debug('[tapEgg]');
         $(this).addClass('hidden');
         $('.eggArea').addClass('anim');
@@ -94,7 +94,7 @@ sesami.page04.init = function () {
     });
 
     // 小麦粉（タップ）
-    $page.on(TOUCH_END, '.tapFlour', function () {
+    $page.on(TOUCH_START, '.tapFlour', function () {
         console.debug('[tapFlour]');
         $(this).addClass('hidden');
         $('.flourArea').addClass('anim');
@@ -106,7 +106,7 @@ sesami.page04.init = function () {
     });
 
     // チョコ（タップ）
-    $page.on(TOUCH_END, '.tapChoco', function () {
+    $page.on(TOUCH_START, '.tapChoco', function () {
         console.debug('[tapChoco]');
         $(this).addClass('hidden');
         $('.chocoArea').addClass('anim');

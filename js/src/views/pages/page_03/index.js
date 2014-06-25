@@ -31,6 +31,7 @@ sesami.page03.init = function() {
       isBallonAnime = true;
       $ballonCharacterCookieMonster.addClass('animate');
       sesami.actionMap.page3.action1 = true;
+      sesami.effectPlayer.play(23);
     });
 
     $ballonCharacter.one(ANIMATION_END_EVENT,function(){
@@ -68,6 +69,7 @@ sesami.page03.init = function() {
         $eye.removeClass('kottiminna');
         $page.removeClass('noAnimate');
         isEyeAnime = false;
+        sesami.effectPlayer.play(10);
       }
       setTimeout(remove,2000);
       sesami.actionMap.page3.action2 = true;
@@ -87,13 +89,16 @@ sesami.page03.init = function() {
     });
 
     var oscarSecoundFunc = function(){
-      $oscarArea.find('.jsOscar2').addClass('secound');
+      $oscarArea.find('.jsOscar2').addClass('secound').wait(400, function() {
+        sesami.effectPlayer.play(8);  
+      });
       $oscarArea.find('.jsOscar2').one(TOUCH_START, function(event) {
         $(this).removeClass('secound');
         setTimeout(function(){
           $oscarArea.find('.jsOscar1').show().end()
                     .find('.jsOscar2').hide();
           isOscarAnime = false;
+          sesami.effectPlayer.play(9);
         },1000);
       });
     }

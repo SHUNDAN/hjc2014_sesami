@@ -54,8 +54,8 @@ sesami.page05.init = function () {
     var addRandomStyle = function (element) {
 
         radian += 1.2;
-        var deltaX = Math.floor(Math.random() * Math.cos(radian) * 100);
-        var deltaY = Math.floor(Math.random() * Math.sin(radian) * 100);
+        var deltaX = Math.floor(Math.random() * Math.cos(radian) * 160);
+        var deltaY = Math.floor(Math.random() * Math.sin(radian) * 160);
         // var scale  = Math.max(1, Math.random() * 3);
         // if (sesami.isIphone) {
         //     scale = 1;

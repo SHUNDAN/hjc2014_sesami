@@ -92,6 +92,10 @@
         @include transform-origin(50%, 50%);
         // @include debug-transform-origin(50%, 50%);
         opacity: 0;
+
+        .iPhone & {
+            @include transition(none); // 各つくからアニメーションなし
+        }
     }
 
 

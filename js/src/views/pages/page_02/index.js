@@ -21,6 +21,7 @@ sesami.page02.init = function () {
         console.debug('[jsPoolAreaTap] touchstart');
         $content.find('.jsCaution').removeClass('hidden');
         sesami.actionMap.page2.action1 = true;
+        sesami.effectPlayer.play(20);
     
     }).on(TOUCH_END, '.jsPoolAreaTap', function () {
         console.debug('[jsPoolAreaTap] touchend');
