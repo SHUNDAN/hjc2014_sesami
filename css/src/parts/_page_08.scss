@@ -142,7 +142,17 @@
     }
 
     //elmo
-
+    .elmoAreaTap {
+        @include abs(19%, 5%);
+        width: 19%;
+        height: 30%;
+        background-color: rgba(255,255,255,.001);
+    }
+    .elmoArea {
+        @include abs(0, 0);
+        width: 100%;
+        height: 100%;
+    }
     .elmoArea.anime{
         position: static;
         @include animation(page08_skew 5s ease-in-out 1);
@@ -160,7 +170,18 @@
     }
 
     //bigBird
-    .bigBirdArea.anime{
+    .bigBirdAreaTap {
+        @include abs(10%, 77%);
+        width: 18%;
+        height: 37%;
+        background-color: rgba(255,255,255,.001);
+    }
+    .bigBirdArea {
+        @include abs(0, 0);
+        width: 100%;
+        height: 100%;
+    }
+    .bigBirdArea.anime {
         position: static;
         @include animation(page08_rotateZ 1s ease-in-out 1);
     }

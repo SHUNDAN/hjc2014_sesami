@@ -45,8 +45,7 @@
             action1: false,
             action2: false,
             action3: false,
-            action4: false,
-            action5: false
+            action4: false
         }
 
     }

@@ -45,23 +45,23 @@ sesami.page08.init = function () {
     $bigBirdMouth = $bigBirdArea.find('.bigBird-mouth_2'),
     isBigBirdAnime = false;
 
-    setInterval(function(){
+    sesami.page08.timer1 = setInterval(function() {
         if(isBigBirdAnime) return false;
         $bigBirdMouth.toggleClass('hidden');
     },1000);
 
-    $bigBirdArea.on(TOUCH_START, function(event) {
+    $('.jsBigBirdAreaTap').on(TOUCH_START, function(event) {
         event.preventDefault();
         if(isBigBirdAnime) return false;
         isBigBirdAnime = true;
-        $(this)
+        $bigBirdArea
             .addClass('anime')
             .one(ANIMATION_END_EVENT, function(event) {
                 isBigBirdAnime = false;
                 $bigBirdArea.removeClass('anime');
             });
 
-        
+
         sesami.actionMap.page8.action1 = true;
     });
 
@@ -93,11 +93,11 @@ sesami.page08.init = function () {
     $elmoArea = $('.jsElmoArea'),
     isElmoAnime = false;
 
-    $elmoArea.on(TOUCH_START, function(event) {
+    $('.jsElmoAreaTap').on(TOUCH_START, function(event) {
         event.preventDefault();
         if(isElmoAnime) return false;
         isElmoAnime = true;
-        $(this)
+        $elmoArea
             .addClass('anime')
             .one(ANIMATION_END_EVENT, function(event) {
                 isElmoAnime = false;
@@ -125,7 +125,7 @@ sesami.page08.init = function () {
             oscarProperty.anime++;
             $(this).addClass('active');
             var offset = $('.jsOscarArea').offset();
-            oscarProperty.start = [offset.top,offset.left];
+            oscarProperty.start = [offset.top - $('.jsOscarArea').height()/3, offset.left - $('.jsOscarArea').width()/3];
             oscarProperty.page =
             (isTouch)?
             [event.originalEvent.touches[0].pageY,
@@ -150,21 +150,24 @@ sesami.page08.init = function () {
                     'left': oscarProperty.start[1] + oscarProperty.move[1]
                 });
 
-            sesami.actionMap.page8.action4 = true;
+        }).on('mouseleave', function () {
+            console.debug('mouseleave');
+            oscarTouchEndFunc();
+            $('.jsOscarArea').addClass('noAction').wait(100).removeClass('noAction');
         });
 
-        $oscar.on(TOUCH_END, function(event) {
-            event.preventDefault();
+        var oscarTouchEndFunc = function (event) {
+            // event.preventDefault();
             oscarProperty.anime = 0;
-            $(this).removeClass('active');
+            $oscar.removeClass('active');
             $oscarArea
                 .removeAttr('style')
                 .toggleClass('type2');
-
             $oscar.toggleClass('hidden');
+            sesami.actionMap.page8.action4 = true;
+        }
 
-            sesami.actionMap.page8.action5 = true;
-        });
+        $oscar.on(TOUCH_END, oscarTouchEndFunc);
     }, function() {
         $oscar.off();
         oscarProperty.anime = 0;
@@ -177,4 +180,5 @@ sesami.page08.dealloc = function () {
     // ページを離れる場合に呼び出されます.
     // イベントのアンバインドやタイマーの削除を、ここで行ってください.
     console.debug('page08 dealloc is called.');
+    clearInterval(sesami.page08.timer1);
 };
