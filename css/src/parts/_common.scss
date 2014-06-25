@@ -140,6 +140,8 @@ audio {
 
 		.btnArea {
 			margin-top: 20px;
+			font-size: 250%;
+			font-weight: bold;
 			&:after {
 				display: block;
 				width: 0;
@@ -168,7 +170,9 @@ audio {
 		}
 	}
 }
-
+.landscape .iphone7_1 .soundPopup { // minimal-uiのバグ対応
+	height: 140%;
+}
 
 
 
