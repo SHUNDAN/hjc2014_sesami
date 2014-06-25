@@ -96,7 +96,7 @@ jukebox.Player.prototype = {
 		autoplay: false,
 		spritemap: {},
 		flashMediaElement: './js/libs/zynga-jukebox/swf/FlashMediaElement.swf',
-		timeout: 1000
+		timeout: 5000
 	},
 
 
@@ -146,6 +146,7 @@ jukebox.Player.prototype = {
 
 
 	__init: function() {
+		console.debug('[Player] __init');
 
 		var that = this,
 			settings = this.settings,
@@ -396,14 +397,18 @@ jukebox.Player.prototype = {
 	 */
 	play: function(pointer, enforce) {
 
-		if (this.isPlaying !== null && enforce !== true) {
+		// if (this.isPlaying !== null && enforce !== true) {
 
-			if (jukebox.Manager !== undefined) {
-				jukebox.Manager.addToQueue(pointer, this.id);
-			}
+		// 	if (jukebox.Manager !== undefined) {
+		// 		jukebox.Manager.addToQueue(pointer, this.id);
+		// 	}
 
-			return;
+		// 	return;
 
+		// }
+
+		if (this.isPlaying !== null) {
+			this.stop();
 		}
 
 		var spritemap = this.settings.spritemap,

@@ -69,9 +69,11 @@ sesami.page03.init = function() {
         $eye.removeClass('kottiminna');
         $page.removeClass('noAnimate');
         isEyeAnime = false;
-        sesami.effectPlayer.play(10);
       }
       setTimeout(remove,2000);
+      setTimeout(function () {
+          sesami.effectPlayer.play(10);
+      }, 1500);
       sesami.actionMap.page3.action2 = true;
     });
 

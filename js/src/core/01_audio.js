@@ -1,14 +1,6 @@
 // Audio
 (function () {
 
-    // return false;
-
-    // Namespace.
-    //================================================
-    // var sesami = window.sesami;
-
-
-
     //
     // 音源定義
     //
@@ -194,6 +186,59 @@
 
 
 
+    // 効果音の再生機能
+    // Web Audio API　が使えるならそれを使う.
+    var createEffectPlayer = function () {
+
+        if (window.webkitAudioContext || window.AudioContext) {
+            // supported.
+        } else {
+            return new jukebox.Player(json1);
+        }
+
+        var AudioContext = window.AudioContext || window.webkitAudioContext;
+        var context = new AudioContext();
+        var audioUrl = (new jukebox.Manager()).getPlayableResource(json1.resources);
+        console.debug('[aaaa]', audioUrl);
+
+        var effectBuffer;
+
+        var request = new XMLHttpRequest();
+        request.open('GET', audioUrl);
+        request.responseType = 'arraybuffer';
+        request.onload = function () {
+            context.decodeAudioData(request.response, function (buffer) {
+                console.debug('[aaa] decoded');
+                effectBuffer = buffer;
+            }, function () {
+                console.debug('decode error');
+            });
+        };
+        request.send();
+
+        var playAt = function (pos) {
+            if (!effectBuffer) {
+                console.debug('[aaa] effectBuffer not avaiable yet.');
+                return;
+            }
+
+            var source = context.createBufferSource();
+            source.buffer = effectBuffer;
+            source.connect(context.destination);
+
+            var target = json1.spritemap[pos];
+            var startAt = target['start'];
+            var duration = target['end'] - startAt;
+            var delay = 0;
+            source.start(delay, startAt, duration);
+        };
+
+        return {
+            play: playAt
+        };
+    };
+
+
 
 
 
@@ -212,7 +257,7 @@
             play: function () {}          
         };
     } else {
-        effectPlayer = new jukebox.Player(json1);
+        effectPlayer = createEffectPlayer();
         bgmPlayer = new jukebox.Player(json2);
     }
 
@@ -235,6 +280,7 @@
     var currentBGMType;
     sesami.bgmPlayer = {
         play: function (type) {
+          console.debug('[bgmPlayer.play]', type, currentBGMType, bgmPlayer);
           if (bgmPlayer) {
               if (currentBGMType === type) {
                   return false;
@@ -250,6 +296,7 @@
             }
         },
         playBGMAt: function (pageNo) {
+            console.debug('[playBGMAt]', pageNo);
             var type = this.__getBGMTypeAt(pageNo);
             this.play(type, true);
         },
@@ -282,7 +329,7 @@
     // Popupから起動.
     sesami.audio = {};
     sesami.audio.loadPlayers = function () {
-        effectPlayer = new jukebox.Player(json1);
+        effectPlayer = createEffectPlayer();
         bgmPlayer = new jukebox.Player(json2);
 
         var timer2 = setInterval(function () {
