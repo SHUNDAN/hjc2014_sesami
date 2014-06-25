@@ -29,7 +29,12 @@
         }
         return snipet;
     };
+    var nextBtnDelayTimer = null;
     var showPageAt = function (nextPageNo, currentPageNo, useSound) {
+
+        if (nextBtnDelayTimer) {
+            clearTimeout(nextBtnDelayTimer);
+        }
 
         // 現在のページ
         var $currentPage = $('#container').find('[data-page="' + currentPageNo + '"]');
@@ -68,7 +73,8 @@
         // 次へボタンは少しだけ遅れて表示
         var delayTime = nextBtnDelayTime(nextPageNo);
         $nextBtn.css('opacity', 0)
-        setTimeout(function () {
+        nextBtnDelayTimer = setTimeout(function () {
+            nextBtnDelayTimer = null;
             $nextBtn.animate({opacity: 1}, 500);
         }, delayTime);
 
