@@ -56,8 +56,6 @@ sesami.page06.init = function () {
     var charaNo = 0;
     var countDown = function () {
 
-        // return;
-
         num--;
 
         $page.find('.num').addClass('hidden');

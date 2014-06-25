@@ -72,14 +72,16 @@ sesami.page08.init = function () {
     bertHairUrl = $bertHair.attr('src'),
     isBertAnime = false;
 
-    $.get(bertHairUrl, function(data) {
-        var $svg = jQuery(data).find('svg');
-        if(typeof bertHairClass !== 'undefined') {
-            $svg = $svg.attr('class', bertHairClass);
-        }
-        $svg = $svg.removeAttr('xmlns:a');
-        $bertHair.replaceWith($svg);
-    });
+    if (bertHairUrl.indexOf('.svg') !== -1) { // pngフォールバックしている場合があるため、チェックを追加.
+        $.get(bertHairUrl, function(data) {
+            var $svg = jQuery(data).find('svg');
+            if(typeof bertHairClass !== 'undefined') {
+                $svg = $svg.attr('class', bertHairClass);
+            }
+            $svg = $svg.removeAttr('xmlns:a');
+            $bertHair.replaceWith($svg);
+        });
+    }
 
     $bertArea.on(TOUCH_START, function(event) {
         event.preventDefault();
@@ -88,7 +90,7 @@ sesami.page08.init = function () {
 
         sesami.effectPlayer.play(12);
         sesami.actionMap.page8.action2 = true;
-    });
+    });        
 
     var
     $elmoArea = $('.jsElmoArea'),
