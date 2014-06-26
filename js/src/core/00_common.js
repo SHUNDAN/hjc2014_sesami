@@ -25,9 +25,6 @@ sesami.event = {};
 sesami.event.TOUCH_START = (hasTapEvent ? 'touchstart' : 'mousedown');
 sesami.event.TOUCH_MOVE = (hasTapEvent ? 'touchmove' : 'mousemove');
 sesami.event.TOUCH_END = (hasTapEvent ? 'touchend' : 'mouseup');
-// sesami.event.TOUCH_START = 'touchstart mousedown';
-// sesami.event.TOUCH_MOVE = 'touchmove mousemove';
-// sesami.event.TOUCH_END = 'touchend mouseup';
 
 
 // UserAgent

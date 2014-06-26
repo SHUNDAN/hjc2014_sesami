@@ -4,6 +4,7 @@
 //
 ;(function () {
 
+    var isFirstTime = true;
     var adjustSize = function () {
 
         var
@@ -55,6 +56,14 @@
             // iPadで時々画像が抜けるので、再描画を促す.
             $('#pageRefresher').wait(200).removeClass('hidden').wait(50).addClass('hidden');
 
+
+            // iOS7.1で横向きで画面をロードした場合に、minimal-ui対策があだになるので、さらに対策w
+            if (isFirstTime && isLandScape) {
+                $('body').addClass('first');
+            } else {
+                $('body').removeClass('first');
+            }
+            isFirstTime = false;
     };
     window.onresize = adjustSize;
     adjustSize();

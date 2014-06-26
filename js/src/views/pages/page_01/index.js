@@ -5,7 +5,7 @@ sesami.page01.init = function () {
 
 
     // コンテナ
-    var 
+    var
         $content = $('[data-page="1"]'),
         TOUCH_START = sesami.event.TOUCH_START,
         TOUCH_MOVE = sesami.event.TOUCH_MOVE,
@@ -15,7 +15,7 @@ sesami.page01.init = function () {
     $content.on(TOUCH_START, '.jsBoxTap', function () {
         console.debug('[jsBoxTap]');
 
-        var 
+        var
             $box = $content.find('.jsBox'),
             $this = $(this);
 
@@ -39,9 +39,9 @@ sesami.page01.init = function () {
         $content.find('.jsEye').removeClass('hidden');
         $content.find('.jsDrop').addClass('hidden');
         $content.find('.jsArmAnim').addClass('stop');
-
+        sesami.effectPlayer.play(23);
         sesami.actionMap.page1.action2 = true;
-    
+
     }).on(TOUCH_END, '.jsBodyTap', function () {
         console.debug('[jsBodyTap] touchend');
         $content.find('.jsEye').addClass('hidden');
