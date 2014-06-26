@@ -35,13 +35,13 @@ var userAgent = navigator.userAgent.toLowerCase();
 console.debug('[userAgent]', userAgent);
 sesami.isIphone = userAgent.indexOf('iphone') + 1;
 sesami.isIphone7_1 = sesami.isIphone && userAgent.indexOf('os 7_1') !== -1;
+sesami.isIphoneChrome = sesami.isIphone && userAgent.indexOf('crios') !== -1;
 sesami.isIpad = userAgent.indexOf('ipad') + 1;
 sesami.isAndroid = userAgent.indexOf('android') + 1;
 sesami.isAndroid2X = userAgent.indexOf('android 2.') + 1;
 sesami.isIE7 = userAgent.indexOf('msie 7.0') + 1;
 sesami.isIE8 = userAgent.indexOf('msie 8.0') + 1;
 sesami.isIEold = sesami.isIE7 || sesami.isIE8;
-
 
 
 // iPhoneとAndroidではスクロールを禁止する.
@@ -54,7 +54,7 @@ if (window.disableBodyScroll) {
 }
 
 // iOS7.1用にminimal-uiを付けているので、iOS7.1の場合はそれのバグ回避のため、高さを140%くらいにする。
-if (sesami.isIphone7_1) {
+if (sesami.isIphone7_1 && !sesami.isIphoneChrome) {
     $('#container').addClass('iphone7_1');
 }
 
