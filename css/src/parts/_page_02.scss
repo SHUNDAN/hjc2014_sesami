@@ -130,6 +130,38 @@
   100% { @include scale(1); }
 }
 
+
+// ------------------------------------------------------
+// バート
+// @see .bert
+// ------------------------------------------------------
+
+
+// ------------------------------------------------------
+// エルモ
+// @see .elmo
+// ------------------------------------------------------
+@include keyframes (page02_elmo__move) {
+    0%   { @include translate(0%, 0%);}
+    20%  { @include translate(1000%, 0%);}
+    80%  { @include translate(1000%, 0%);}
+    100% { @include translate(0%, 0%);}
+}
+
+
+// ------------------------------------------------------
+// バート
+// @see .bert
+// ------------------------------------------------------
+// 拡大
+@include keyframes (page02_bert__scale) {
+  0%   { @include scale(1); }
+  20% { @include scale(1.5); }
+  80% { @include scale(1.5); }
+  100% { @include scale(1); }
+}
+
+
 // ------------------------------------------------------
 // オスカー
 // @see .oscar
@@ -147,7 +179,7 @@
     0%   { @include translate(0%, 0%);}
     20%  { @include translate(0%, -400%);}
     80%  { @include translate(0%, -400%);}
-    100% { @include translate(0%, -200%%);}
+    100% { @include translate(0%, -200%);}
 }
 // オスカーの手が出現
 @include keyframes (page02_oscar__delay_1) {
@@ -162,14 +194,15 @@
   50%  { opacity: 1; }
   100% { opacity: 1;}
 }
-// 吹っ飛びに付ける回転
-// @include keyframes (page02_oscar__futa_jump_rotate) {
-//   0%   { @include rotateZ(0deg); }
-//   25%  { @include rotateZ(-5deg); }
-//   50%  { @include rotateZ(5deg); }
-//   75%  { @include rotateZ(-5deg); }
-//   100% { @include rotateZ(5deg); }
-// }
+// オスカージャンプ
+@include keyframes (page02_oscar__jump) {
+    0%   { @include translate(0%, 0%);}
+    20%  { @include translate(0%, -40%);}
+    40%  { @include translate(0%, 0%);}
+    60%  { @include translate(0%, -80%);}
+    80%  { @include translate(0%, 0%);}
+    100% { @include translate(0%, -40%);}
+}
 
 
 
@@ -211,6 +244,14 @@
       @include animation(page02_CookieMonster_hand .5s 3);
       @include transform-origin( 0, 100% );
     }
+    .cookie-monster__hand--02{
+      width: 90%;
+      @include abs(28%, 43%);
+      &.is-tap--anim{
+        @include animation(page02_CookieMonster_hand .1s 10);
+        @include transform-origin( 0, 100% );
+      }
+    }
     // 手＋クッキーの動線
     // .cookie-monster__move{
     //   width: 23%;
@@ -223,11 +264,13 @@
       width: 10%;
       @include abs(56%, 95%);
       @include animation(page02_CookieMonster_tips_1 .5s 3);
+      z-index: 2;
     }
     .cookie-monster__tips-2{
       width: 12%;
       @include abs(53%, 103%);
       @include animation(page02_CookieMonster_tips_2 .5s 3);
+      z-index: 2;
     }
     // 涙　左
     .cookie-monster__tear-l-1{
@@ -311,6 +354,7 @@
     .pool__caution{
       width: 80%;
       @include abs(-30%, 25%);
+      z-index: 1;
       // @include animation(page02_pool__cookie 2s infinite ease-in 500ms);
     }
 
@@ -329,6 +373,9 @@
     .bigbird__body{
       width: 100%;
       @include abs(0, 0);
+      &.bigbird__body--02 {
+        width: 122%;
+      }
     }
 
 
@@ -341,6 +388,9 @@
       height: 30%;
       top: 26%;
       left: 61%;
+      &.is-tap--anim {
+        @include animation(page02_elmo__move 1.5s ease-in);
+      }
     }
     // 身体
     .elmo__body{
@@ -358,6 +408,10 @@
       height: 30%;
       top: 24%;
       left: 68%;
+      &.is-tap--anim {
+        z-index: 1;
+        @include animation(page02_bert__scale 2s ease-in);
+      }
     }
     // 身体
     .bert__body{
@@ -375,6 +429,9 @@
       height: 30%;
       top: 18%;
       left: 76%;
+      &.is-tap--anim {
+        @include animation(page02_oscar__jump 1s);
+      }
     }
     // 顔
     .oscar__face{
