@@ -21,7 +21,7 @@ sesami.page05.init = function () {
 
 
 
-    var 
+    var
         selectType = 1,
         numOfCookie = 0;
 
@@ -34,7 +34,7 @@ sesami.page05.init = function () {
 
         $page
             .find('.kataArea.type' + selectType)
-            .addClass('select');        
+            .addClass('select');
 
         sesami.actionMap.page5.action1 = true;
     }
@@ -80,7 +80,7 @@ sesami.page05.init = function () {
 
         setTimeout(function () {
             numOfCookie++;
-            if (numOfCookie === 5) {
+            if (numOfCookie === 3) {
                 sesami.effectPlayer.play(25);
                 $('#nextPageBtn').css('opacity', 1);
             }
@@ -108,7 +108,7 @@ sesami.page05.init = function () {
                 if (selectType > 3) {
                     selectType = 1;
                 }
-                changeKata(selectType);                
+                changeKata(selectType);
             }
         };
 

@@ -16,16 +16,20 @@ body {
 	height: 100%;
 	min-height: 100%;
 }
-body > #container {
+#container {
 	height: auto;
 	&.iphone7_1 { // minimal-uiのバグ対応
 		height: 140%;
 		padding-top: 11%;
+		.landscape.first & {
+			padding-top: 0;
+		}
 	}
 	&.android {
 		height: 110%; // header skip用の高さ
 	}
 }
+
 
 * {
 	-webkit-user-select: none;
@@ -176,6 +180,9 @@ audio {
 }
 .landscape .iphone7_1 .soundPopup { // minimal-uiのバグ対応
 	height: 140%;
+}
+.landscape.first .iphone7_1 .soundPopup { // minimal-uiのバグ対応2
+	height: 100%;
 }
 
 
