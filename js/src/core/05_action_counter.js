@@ -16,7 +16,9 @@
             action2: false
         },
         page2: {
-            action1: false
+            action1: false,
+            action2: false,
+            action3: false
         },
         page3: {
             action1: false,

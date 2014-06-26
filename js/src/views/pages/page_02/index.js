@@ -8,6 +8,9 @@ sesami.page02.init = function () {
     var TOUCH_MOVE = sesami.event.TOUCH_MOVE;
     var TOUCH_END = sesami.event.TOUCH_END;
 
+    // クッキーモンスターのアニメーション開始
+    $content.find('.jsCM').addClass('anim');
+
     // クッキーかけらのディレイ
     var $jsCMTips = $('.jsCMTips');
     $jsCMTips.wait(1500).addClass('hidden');
@@ -46,6 +49,29 @@ sesami.page02.init = function () {
     $jsFkidashiArea.wait(2000).removeClass('hidden');
 
 
+    // メンバー達
+    $content.find('.jsTapMemberArea').on(TOUCH_START, function () {
+        $content.find('.memberArea').addClass('anim');
+        sesami.effectPlayer.play(16);
+        sesami.actionMap.page2.action2 = true;
+    }).on(TOUCH_END, function () {
+        $content.find('.memberArea').removeClass('anim');
+        sesami.effectPlayer.play(16);
+    });
+
+    // クッキーモンスター
+    $content.find('.jsTapCookieMonster').on(TOUCH_START, function () {
+        $content.find('.jsCM').removeClass('anim');
+        $content.find('.jsCMTips, .jsCMTears').addClass('hidden');
+        $content.find('.jsEye2').removeClass('hidden');
+        sesami.effectPlayer.play(24);
+        sesami.actionMap.page2.action3 = true;
+    }).on(TOUCH_END, function () {
+        $content.find('.jsCM').addClass('anim');
+        $content.find('.jsCMTips, .jsCMTears').wait(1500).removeClass('hidden');        
+        $content.find('.jsEye2').addClass('hidden');
+        sesami.effectPlayer.play(19);
+    });
 };
 
 //
