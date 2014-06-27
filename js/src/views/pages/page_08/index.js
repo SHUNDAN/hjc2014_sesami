@@ -103,7 +103,7 @@ sesami.page08.init = function () {
         if(isElmoAnime) return false;
         isElmoAnime = true;
         sesami.effectPlayer.play(15);
-        $elmoArea
+        $('.jsElmoArea')
             .addClass('anime')
             .one(ANIMATION_END_EVENT, function(event) {
                 isElmoAnime = false;

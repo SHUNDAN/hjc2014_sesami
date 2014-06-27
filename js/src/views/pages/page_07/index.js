@@ -21,8 +21,9 @@ sesami.page07.init = function () {
         var pageHeight = $page.height();
 
         if (eventObject.type === 'mousedown') {
-            var offsetX = eventObject.offsetX;
-            var offsetY = eventObject.offsetY;
+            console.debug('[eventObject]', eventObject);
+            var offsetX = eventObject.offsetX || eventObject.pageX;
+            var offsetY = eventObject.offsetY || eventObject.pageY;
             return [{
                 x: (offsetX / pageWidth) * 100,
                 y: (offsetY / pageHeight) * 100
