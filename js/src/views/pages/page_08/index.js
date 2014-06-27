@@ -209,6 +209,20 @@ sesami.page08.init = function () {
         sesami.actionMap.page8.action6 = true;
     });
 
+
+    // CookieMonster
+    var nowAnim = false;
+    $page.find('.jsCookieMonsterAreaTap').on(TOUCH_START, function () {
+        nowAnim = true;
+        $page.find('.jsCookiemonsterArea').addClass('anim');
+        sesami.effectPlayer.play(21);
+        sesami.actionMap.page8.action5 = true;
+    }).on(TOUCH_END, function () {
+        nowAnim = false;
+        $page.find('.jsCookiemonsterArea').removeClass('anim');
+        // clearInterval(sesami.page08.timer2);
+        sesami.effectPlayer.play(21);
+    });
 };
 
 
