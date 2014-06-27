@@ -30,6 +30,7 @@ sesami.page03.init = function() {
       if(isBallonAnime) return false;
       isBallonAnime = true;
       $ballonCharacterCookieMonster.addClass('animate');
+      sesami.effectPlayer.play(6);
       sesami.actionMap.page3.action1 = true;
       sesami.effectPlayer.play(23);
     });
@@ -65,6 +66,7 @@ sesami.page03.init = function() {
       isEyeAnime = true;
       $eye.addClass('kottiminna');
       $page.addClass('noAnimate');
+      sesami.effectPlayer.play(14);
       var remove = function(){
         $eye.removeClass('kottiminna');
         $page.removeClass('noAnimate');
@@ -86,16 +88,17 @@ sesami.page03.init = function() {
       isOscarAnime = true;
       $oscarArea.find('.jsOscar1').hide().end()
                 .find('.jsOscar2').show();
+      sesami.effectPlayer.play(8);
       setTimeout(oscarSecoundFunc,1000);
       sesami.actionMap.page3.action3 = true;
     });
 
     var oscarSecoundFunc = function(){
-      $oscarArea.find('.jsOscar2').addClass('secound').wait(400, function() {
-        sesami.effectPlayer.play(8);  
-      });
+      $oscarArea.find('.jsOscar2').addClass('secound');
+      sesami.effectPlayer.play(23);
       $oscarArea.find('.jsOscar2').one(TOUCH_START, function(event) {
         $(this).removeClass('secound');
+        sesami.effectPlayer.play(21);
         setTimeout(function(){
           $oscarArea.find('.jsOscar1').show().end()
                     .find('.jsOscar2').hide();
