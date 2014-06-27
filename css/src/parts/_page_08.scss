@@ -88,32 +88,41 @@
   100% { @include rotateZ(0deg); }
 }
 
+@include keyframes (page08_CookieMonster_hand2) {
+  0%   { @include rotateZ(20deg); }
+  35%  { @include rotateZ(-30deg);width: 23.6%; }
+  40%  { @include rotateZ(-40deg);width: 23.6%; }
+  45%  { @include rotateZ(-30deg);width: 23.6%; }
+  50%  { @include rotateZ(-40deg);width: 23.6%; }
+  55%  { @include rotateZ(-30deg);width: 23.6%; }
+  60%  { @include rotateZ(-40deg);width: 23.6%; }
+  65%  { @include rotateZ(-30deg);width: 23.6%; }
+  100% { @include rotateZ(0deg); }
+}
+
+@include keyframes (page08_CookieAnimation) {
+  0%   { @include translate(0, 0); opacity: 0;}
+  70%  { @include translate(0, 0);  opacity: 1;}
+  100% { @include translate(-10px, 10px); opacity: 0; }
+}
+
+@include keyframes (page08_CookieAnimation2) {
+  0%   { @include translate(0, 0); opacity: 0;}
+  35%  { opacity: 1; }
+  40%  { opacity: 0; }
+  45%  { opacity: 1; }
+  50%  { opacity: 0; }
+  55%  { opacity: 1; }
+  60%  { opacity: 0; }
+  65%  { opacity: 1; }
+  100% { @include translate(-10px, 10px); opacity: 0; }
+}
+
+
 // スタイルの指定
 [data-page="8"] {
 
-    .cookiemonster-body {
-        @include abs(9.8%, 24%);
-        width: 51%;
-    }
 
-    .cookiemonster-hand {
-        @include abs(38%, 34.5%);
-        width: 26.5%;
-        @include transform-origin( 0, 100% );
-        @include animation(page08_CookieMonster_hand 1.2s ease-in-out infinite);
-    }
-
-    .cookiemonster-eye {
-        width: 4%;
-        &.left{
-            @include abs(21%, 34.5%);
-            @include animation(page08_eye_left 1s ease-in infinite);
-        }
-        &.right{
-            @include abs(15%, 38.7%);
-            @include animation(page08_eye_right 1s ease-in infinite);
-        }
-    }
 
 
 
@@ -282,8 +291,41 @@
         width: 4%;
     }
 
+    .cookieAnimation{
+        @include animation(page08_CookieAnimation 1.2s ease-in-out infinite);
+    }
+    .cookieAnimation.anime{
+        @include animation(page08_CookieAnimation2 3s ease-in-out 1);
+    }
 
+    .cookiemonster-body {
+        @include abs(9.8%, 24%);
+        width: 51%;
+    }
 
+    .cookiemonster-hand {
+        @include abs(38%, 34.5%);
+        width: 26.5%;
+        @include transform-origin( 0, 100% );
+        @include animation(page08_CookieMonster_hand 1.2s ease-in-out infinite);
+    }
+
+    .cookiemonster-hand.anime{
+        @include transform-origin(0, 80%);
+        @include animation(page08_CookieMonster_hand2 3s ease-in-out 1);
+    }
+
+    .cookiemonster-eye {
+        width: 4%;
+        &.left{
+            @include abs(21%, 34.5%);
+            @include animation(page08_eye_left 1s ease-in infinite);
+        }
+        &.right{
+            @include abs(15%, 38.7%);
+            @include animation(page08_eye_right 1s ease-in infinite);
+        }
+    }
 
 
 

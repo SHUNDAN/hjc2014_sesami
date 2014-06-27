@@ -175,6 +175,32 @@ sesami.page08.init = function () {
         oscarProperty.anime = 0;
     });
 
+    var
+    $cookiemonsterArea = $('.jsCookiemonsterArea'),
+    $cookiemonsterHand = $cookiemonsterArea.find('.jsCookiemonsterHand'),
+    isCookiemonsterAnime = false;
+
+    $cookiemonsterArea.on(TOUCH_START, function(event) {
+        event.preventDefault();
+        if(isCookiemonsterAnime) return false;
+        isCookiemonsterAnime = true;
+        $cookies.addClass('anime');
+
+        $.each($cookies, function(i, val) {
+           $cookies.eq(i).attr('src', './img/cookie/cookie2-' + (1 + Math.floor( Math.random() * 3 )) + '.png');
+        });
+
+        $cookiemonsterHand
+            .addClass('anime')
+            .one(ANIMATION_END_EVENT, function(event) {
+                isCookiemonsterAnime = false;
+                $(this).removeClass('anime');
+                $cookies.removeClass('anime');
+            });
+
+        sesami.actionMap.page8.action6 = true;
+    });
+
 };
 
 
