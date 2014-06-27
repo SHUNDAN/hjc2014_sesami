@@ -42,6 +42,7 @@ sesami.page08.init = function () {
 
     var
     $bigBirdArea = $('.jsBigBirdArea'),
+    $bigBirdBody = $bigBirdArea.find('.jsBigBirdBody'),
     $bigBirdMouth = $bigBirdArea.find('.bigBird-mouth_2'),
     isBigBirdAnime = false;
 
@@ -50,15 +51,15 @@ sesami.page08.init = function () {
         $bigBirdMouth.toggleClass('hidden');
     },1000);
 
-    $bigBirdArea.on(TOUCH_START, function(event) {
+    $bigBirdBody.on(TOUCH_START, function(event) {
         event.preventDefault();
         if(isBigBirdAnime) return false;
         isBigBirdAnime = true;
-        $(this)
+        $bigBirdArea
             .addClass('anime')
             .one(ANIMATION_END_EVENT, function(event) {
                 isBigBirdAnime = false;
-                $bigBirdArea.removeClass('anime');
+                $(this).removeClass('anime');
             });
 
         sesami.actionMap.page8.action1 = true;
@@ -90,17 +91,18 @@ sesami.page08.init = function () {
 
     var
     $elmoArea = $('.jsElmoArea'),
+    $elmoBody = $elmoArea.find('.jsElmoBody'),
     isElmoAnime = false;
 
-    $elmoArea.on(TOUCH_START, function(event) {
+    $elmoBody.on(TOUCH_START, function(event) {
         event.preventDefault();
         if(isElmoAnime) return false;
         isElmoAnime = true;
-        $(this)
+        $elmoArea
             .addClass('anime')
             .one(ANIMATION_END_EVENT, function(event) {
                 isElmoAnime = false;
-                $elmoArea.removeClass('anime');
+                $(this).removeClass('anime');
             });
 
         sesami.actionMap.page8.action3 = true;
@@ -123,8 +125,11 @@ sesami.page08.init = function () {
             if(oscarProperty.anime != 0) return false;
             oscarProperty.anime++;
             $(this).addClass('active');
-            var offset = $('.jsOscarArea').offset();
-            oscarProperty.start = [offset.top,offset.left];
+
+            var offsetY = document.getElementById('jsOscarAreaId').offsetTop;
+            var offsetX = document.getElementById('jsOscarAreaId').offsetLeft;
+
+            oscarProperty.start = [offsetY,offsetX];
             oscarProperty.page =
             (isTouch)?
             [event.originalEvent.touches[0].pageY,
@@ -143,6 +148,7 @@ sesami.page08.init = function () {
             event.originalEvent.touches[0].pageX - oscarProperty.page[1]]:
             [event.pageY - oscarProperty.page[0],
             event.pageX - oscarProperty.page[1]];
+
             $oscarArea
                 .css({
                     'top': oscarProperty.start[0] + oscarProperty.move[0],
