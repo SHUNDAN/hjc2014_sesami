@@ -41,9 +41,9 @@ sesami.page08.init = function () {
     }
 
     var
-    $bigBirdArea = $('.jsBigBirdArea'),
-    $bigBirdBody = $bigBirdArea.find('.jsBigBirdBody'),
-    $bigBirdMouth = $bigBirdArea.find('.bigBird-mouth_2'),
+    $bigBirdAreaTap = $('.jsBigBirdAreaTap'),
+    $bigBirdArea = $('.bigBirdArea'),
+    $bigBirdMouth = $('.bigBird-mouth_2'),
     isBigBirdAnime = false;
 
     sesami.page08.timer1 = setInterval(function() {
@@ -51,11 +51,7 @@ sesami.page08.init = function () {
         $bigBirdMouth.toggleClass('hidden');
     },1000);
 
-// <<<<<<< HEAD
-//     $('.jsBigBirdAreaTap').on(TOUCH_START, function(event) {
-// =======
-    $bigBirdBody.on(TOUCH_START, function(event) {
-// >>>>>>> origin/master
+    $bigBirdAreaTap.on(TOUCH_START, function(event) {
         event.preventDefault();
         if(isBigBirdAnime) return false;
         isBigBirdAnime = true;
@@ -98,19 +94,15 @@ sesami.page08.init = function () {
     });        
 
     var
-    $elmoArea = $('.jsElmoArea'),
-    $elmoBody = $elmoArea.find('.jsElmoBody'),
+    $elmoArea = $('.jsElmoAreaTap'),
+    $elmoBody = $('.jsElmoArea'),
     isElmoAnime = false;
 
-// <<<<<<< HEAD
-//     $('.jsElmoAreaTap').on(TOUCH_START, function(event) {
-// =======
-    $elmoBody.on(TOUCH_START, function(event) {
-// >>>>>>> origin/master
+    $elmoArea.on(TOUCH_START, function(event) {
         event.preventDefault();
         if(isElmoAnime) return false;
         isElmoAnime = true;
-        $elmoArea
+        $elmoBody
             .addClass('anime')
             .one(ANIMATION_END_EVENT, function(event) {
                 isElmoAnime = false;
@@ -138,16 +130,11 @@ sesami.page08.init = function () {
             if(oscarProperty.anime != 0) return false;
             oscarProperty.anime++;
             $(this).addClass('active');
-// <<<<<<< HEAD
-//             var offset = $('.jsOscarArea').offset();
-//             oscarProperty.start = [offset.top - $('.jsOscarArea').height()/3, offset.left - $('.jsOscarArea').width()/3];
-// =======
 
             var offsetY = document.getElementById('jsOscarAreaId').offsetTop;
             var offsetX = document.getElementById('jsOscarAreaId').offsetLeft;
 
             oscarProperty.start = [offsetY,offsetX];
-// >>>>>>> origin/master
             oscarProperty.page =
             (isTouch)?
             [event.originalEvent.touches[0].pageY,
@@ -197,21 +184,6 @@ sesami.page08.init = function () {
         oscarProperty.anime = 0;
     });
 
-// <<<<<<< HEAD
-
-//     // CookieMonster
-//     var nowAnim = false;
-//     $page.find('.jsCookieMonsterAreaTap').on(TOUCH_START, function () {
-//         nowAnim = true;
-//         $page.find('.jsCookiemonsterArea').addClass('anim');
-//         sesami.effectPlayer.play(21);
-//         sesami.actionMap.page8.action5 = true;
-//     }).on(TOUCH_END, function () {
-//         nowAnim = false;
-//         $page.find('.jsCookiemonsterArea').removeClass('anim');
-//         // clearInterval(sesami.page08.timer2);
-//         sesami.effectPlayer.play(21);
-// =======
     var
     $cookiemonsterArea = $('.jsCookiemonsterArea'),
     $cookiemonsterHand = $cookiemonsterArea.find('.jsCookiemonsterHand'),
