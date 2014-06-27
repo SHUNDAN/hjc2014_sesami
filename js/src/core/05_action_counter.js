@@ -18,7 +18,10 @@
         page2: {
             action1: false,
             action2: false,
-            action3: false
+            action3: false,
+            action4: false,
+            action5: false,
+            action6: false
         },
         page3: {
             action1: false,
