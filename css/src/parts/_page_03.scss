@@ -138,9 +138,10 @@
         width: 45.25%;
         @include abs(4.7%, 26%);
     }
-    .character{
+    .character {
         @include animation(page03_ballon_delay01 1s ease-in-out 1);
         width: 20.66%;
+        height: 33%;
         @include abs(11.4%, 30%);
     }
     .tapAreaBallonCharacter{

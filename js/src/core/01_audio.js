@@ -190,7 +190,11 @@
     // Web Audio API　が使えるならそれを使う.効果音はタイミングが命なので！
     var createEffectPlayer = function () {
 
-        if (window.webkitAudioContext || window.AudioContext) {
+        if (sesami.isAndroid) {
+          // return new jukebox.Player(json1);
+          return null;
+
+        } else if (window.webkitAudioContext || window.AudioContext) {
             // supported.
         } else {
             return new jukebox.Player(json1);
@@ -246,9 +250,9 @@
 
     var effectPlayer;
     var bgmPlayer;
-    if (sesami.isIphone || sesami.isIpad || sesami.isAndroid) {
+    if (sesami.isIphone || sesami.isIpad) {
         // あとでロード
-    } else if (sesami.isIEold) {
+    } else if (sesami.isIEold || sesami.isAndroid) {
         // dummy
         effectPlayer = {
             play: function () {}

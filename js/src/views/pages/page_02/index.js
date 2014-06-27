@@ -54,11 +54,11 @@ sesami.page02.init = function () {
 
     // プールタップで看板出現
     $content.on(TOUCH_START, '.jsPoolAreaTap', function () {
-        event.preventDefault();
+        // event.preventDefault();
         $content.find('.jsCaution').removeClass('hidden');
         sesami.actionMap.page2.action2 = true;
         effectPlayer.play(15);
-    }).on(TOUCH_END, '.jsPoolAreaTap', function () {
+    }).on(TOUCH_END + ' touchcancel', '.jsPoolAreaTap', function () {
         $content.find('.jsCaution').addClass('hidden');
     });
 

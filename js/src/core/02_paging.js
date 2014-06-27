@@ -50,7 +50,7 @@
         $pageContainer.append($nextPage);
 
         // ハッシュを変えておいて・・・
-        location.hash = "page=" + nextPageNo;
+        location.hash = "page=" + nextPageNo;            
 
         // 仮.
         // var bgmType = Math.abs(nextPageNo % 4) + 1;
@@ -175,6 +175,8 @@
             nextPage = 0;
         }
 
+        console.debug('[goNextPage]', sesami.currentPage, nextPage, MAX_PAGE);
+
         showPageAt(nextPage, sesami.currentPage);
         sesami.currentPage = nextPage;
 
@@ -217,7 +219,7 @@
 
 
     // SVGからPNGへのフォールバック
-    if (sesami.isAndroid2X || sesami.isIEold) {
+    if (sesami.isAndroid2X || sesami.isIEold || sesami.isAndroid) {
         // 本
         var src = $('.book').attr('src').replace('.svg', '.png');
         $('.book').attr('src', src);
