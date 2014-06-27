@@ -88,38 +88,50 @@
   100% { @include rotateZ(0deg); }
 }
 
+// <<<<<<< HEAD
 @include keyframes (page08_cookieMonster) {
   0%   { @include translate3d(0, 0%, 0); }
   50%  { @include translate3d(0, 30%, 0); }
   100% { @include translate3d(0, 0%, 0); }
 }
 
+// =======
+@include keyframes (page08_CookieMonster_hand2) {
+  0%   { @include rotateZ(20deg); }
+  35%  { @include rotateZ(-30deg);width: 23.6%; }
+  40%  { @include rotateZ(-40deg);width: 23.6%; }
+  45%  { @include rotateZ(-30deg);width: 23.6%; }
+  50%  { @include rotateZ(-40deg);width: 23.6%; }
+  55%  { @include rotateZ(-30deg);width: 23.6%; }
+  60%  { @include rotateZ(-40deg);width: 23.6%; }
+  65%  { @include rotateZ(-30deg);width: 23.6%; }
+  100% { @include rotateZ(0deg); }
+}
+
+@include keyframes (page08_CookieAnimation) {
+  0%   { @include translate(0, 0); opacity: 0;}
+  70%  { @include translate(0, 0);  opacity: 1;}
+  100% { @include translate(-10px, 10px); opacity: 0; }
+}
+
+@include keyframes (page08_CookieAnimation2) {
+  0%   { @include translate(0, 0); opacity: 0;}
+  35%  { opacity: 1; }
+  40%  { opacity: 0; }
+  45%  { opacity: 1; }
+  50%  { opacity: 0; }
+  55%  { opacity: 1; }
+  60%  { opacity: 0; }
+  65%  { opacity: 1; }
+  100% { @include translate(-10px, 10px); opacity: 0; }
+}
+
+
+// >>>>>>> origin/master
 // スタイルの指定
 [data-page="8"] {
 
-    .cookiemonster-body {
-        @include abs(9.8%, 24%);
-        width: 51%;
-    }
 
-    .cookiemonster-hand {
-        @include abs(38%, 34.5%);
-        width: 26.5%;
-        @include transform-origin( 0, 100% );
-        @include animation(page08_CookieMonster_hand 1.2s ease-in-out infinite);
-    }
-
-    .cookiemonster-eye {
-        width: 4%;
-        &.left{
-            @include abs(21%, 34.5%);
-            @include animation(page08_eye_left 1s ease-in infinite);
-        }
-        &.right{
-            @include abs(15%, 38.7%);
-            @include animation(page08_eye_right 1s ease-in infinite);
-        }
-    }
 
 
 
@@ -148,66 +160,83 @@
     }
 
     //elmo
+// <<<<<<< HEAD
     .elmoAreaTap {
         @include abs(19%, 5%);
         width: 19%;
         height: 30%;
         background-color: rgba(255,255,255,.001);
     }
-    .elmoArea {
-        @include abs(0, 0);
-        width: 100%;
-        height: 100%;
+    // .elmoArea {
+    //     @include abs(0, 0);
+    //     width: 100%;
+    //     height: 100%;
+// =======
+
+    .elmoArea{
+        @include abs(11.5%, 5.4%);
+        width: 20%;
+        height: 40%;
+// >>>>>>> origin/master
     }
     .elmoArea.anime{
-        position: static;
         @include animation(page08_skew 5s ease-in-out 1);
     }
 
     .elmo-body{
-      width: 13%;
       @include abs(20.5%, 7.5%);
+      width: 66%;
     }
     .elmo-hand{
-      width: 7%;
-      @include abs(32%, 16%);
+      @include abs(49%, 48%);
       @include transform-origin(0, 100%);
+      width: 38%;
       @include animation(page08_elmo_hand 1.3s ease-in infinite);
     }
 
     //bigBird
-    .bigBirdAreaTap {
-        @include abs(10%, 77%);
-        width: 18%;
-        height: 37%;
-        background-color: rgba(255,255,255,.001);
+// <<<<<<< HEAD
+//     .bigBirdAreaTap {
+//         @include abs(10%, 77%);
+//         width: 18%;
+//         height: 37%;
+//         background-color: rgba(255,255,255,.001);
+//     }
+//     .bigBirdArea {
+//         @include abs(0, 0);
+//         width: 100%;
+//         height: 100%;
+//     }
+//     .bigBirdArea.anime {
+//         position: static;
+// =======
+//     }
+    .bigBirdArea{
+        @include abs(9%, 78%);
+        width: 20%;
+        height: 40%;
     }
-    .bigBirdArea {
-        @include abs(0, 0);
-        width: 100%;
-        height: 100%;
-    }
-    .bigBirdArea.anime {
-        position: static;
+    .bigBirdArea.anime{
+// >>>>>>> origin/master
         @include animation(page08_rotateZ 1s ease-in-out 1);
     }
     .bigBird-body{
-      width: 16.3%;
-      @include abs(10%, 78%);
+        width: 80%;
+        @include abs(1.5%, 1%);
     }
     .bigBird-hand{
-      width: 7.7%;
-      @include abs(26%, 77%);
+      @include abs(40%, -8%);
+      width: 40%;
       @include transform-origin(100%, 20%);
       @include animation(page08_bigBird_hand 1s ease-in infinite);
     }
     .bigBird-mouth{
-      width: 4.6%;
-      @include abs(21.4%, 83%);
+      @include abs(28.4%, 25%);
+      width: 24%;
     }
     .bigBird-mouth_2{
-      width: 4.5%;
-      @include abs(22.6%, 83%);
+      @include abs(32%, 25%);
+      width: 23%;
       &.open{
       }
       &.close{
@@ -236,7 +265,7 @@
         }
         &:active,
         &.active{
-            @include animation(page08_shake 100ms ease-in-out infinite running);
+            @include animation(page08_shake 100ms ease-in-out infinite);
         }
         &.hidden{
             visibility: hidden;
@@ -300,7 +329,14 @@
         width: 4%;
     }
 
+    .cookieAnimation{
+        @include animation(page08_CookieAnimation 1.2s ease-in-out infinite);
+    }
+    .cookieAnimation.anime{
+        @include animation(page08_CookieAnimation2 3s ease-in-out 1);
+    }
 
+// <<<<<<< HEAD
     .cookiemonsterArea {
         @include abs(0, 0);
         width: 100%;
@@ -315,31 +351,35 @@
         height: 93%;
         background-color: rgba(255,255,255,.001);
     }
+// =======
+    .cookiemonster-body {
+        @include abs(9.8%, 24%);
+        width: 51%;
+    }
 
+    .cookiemonster-hand {
+        @include abs(38%, 34.5%);
+        width: 26.5%;
+        @include transform-origin( 0, 100% );
+        @include animation(page08_CookieMonster_hand 1.2s ease-in-out infinite);
+    }
 
+    .cookiemonster-hand.anime{
+        @include transform-origin(0, 80%);
+        @include animation(page08_CookieMonster_hand2 3s ease-in-out 1);
+    }
 
-
-
+    .cookiemonster-eye {
+        width: 4%;
+        &.left{
+            @include abs(21%, 34.5%);
+            @include animation(page08_eye_left 1s ease-in infinite);
+        }
+        &.right{
+            @include abs(15%, 38.7%);
+            @include animation(page08_eye_right 1s ease-in infinite);
+        }
+// >>>>>>> origin/master
+    }
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
