@@ -352,8 +352,8 @@
     }
     // クッキータップした時に出てくる注意文
     .pool__caution{
-      width: 80%;
-      @include abs(-30%, 25%);
+      width: 150%;
+      @include abs(-80%, -25%);
       z-index: 1;
       // @include animation(page02_pool__cookie 2s infinite ease-in 500ms);
     }

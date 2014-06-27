@@ -4,6 +4,7 @@ sesami.page02.init = function () {
     console.debug('page02 init is called.');
 
     var $content = $('[data-page="2"]');
+    var effectPlayer = sesami.effectPlayer;
     var TOUCH_START = sesami.event.TOUCH_START;
     var TOUCH_MOVE = sesami.event.TOUCH_MOVE;
     var TOUCH_END = sesami.event.TOUCH_END;
@@ -39,6 +40,7 @@ sesami.page02.init = function () {
               that.isCMAnime = false;
               $cm_target_02.removeClass('is-tap--anim');
           });
+        sesami.effectPlayer.play(20);
         sesami.actionMap.page2.action1 = true;
     });
 
@@ -55,6 +57,7 @@ sesami.page02.init = function () {
         event.preventDefault();
         $content.find('.jsCaution').removeClass('hidden');
         sesami.actionMap.page2.action2 = true;
+        effectPlayer.play(15);
     }).on(TOUCH_END, '.jsPoolAreaTap', function () {
         $content.find('.jsCaution').addClass('hidden');
     });
@@ -69,6 +72,7 @@ sesami.page02.init = function () {
         $jsBB_01.addClass('hidden');
         $jsBB_02.removeClass('hidden');
         sesami.actionMap.page2.action3 = true;
+        sesami.effectPlayer.play(18);
     }).on(TOUCH_END, $(this), function () {
         $jsBB_01.removeClass('hidden');
         $jsBB_02.addClass('hidden');
@@ -93,6 +97,7 @@ sesami.page02.init = function () {
               $jsElmoArea.removeClass('is-tap--anim');
           });
         sesami.actionMap.page2.action4 = true;
+        sesami.effectPlayer.play(13);
     });
 
     // バートタップ
@@ -114,6 +119,7 @@ sesami.page02.init = function () {
               $jsBertArea.removeClass('is-tap--anim');
           });
         sesami.actionMap.page2.action5 = true;
+        sesami.effectPlayer.play(14);
     });
 
     // オスカー
@@ -151,6 +157,7 @@ sesami.page02.init = function () {
               that.isOscarAnime = false;
               $jsOscarArea.removeClass('is-tap--anim');
           });
+        effectPlayer.play(23);
         sesami.actionMap.page2.action6 = true;
     });
 
