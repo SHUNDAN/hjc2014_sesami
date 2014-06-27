@@ -55,6 +55,7 @@ sesami.page08.init = function () {
         event.preventDefault();
         if(isBigBirdAnime) return false;
         isBigBirdAnime = true;
+        sesami.effectPlayer.play(17);
         $bigBirdArea
             .addClass('anime')
             .one(ANIMATION_END_EVENT, function(event) {
@@ -85,7 +86,7 @@ sesami.page08.init = function () {
         event.preventDefault();
         var color = '#' + ("00000"+Math.floor(Math.random() * 0x1000000).toString(16)).substr(-6);
         $bertArea.find('.bert-hair').find('path').css('fill', color);
-
+        sesami.effectPlayer.play(1 + Math.floor( Math.random() * 25 ));
         sesami.actionMap.page8.action2 = true;
     });
 
@@ -98,6 +99,7 @@ sesami.page08.init = function () {
         event.preventDefault();
         if(isElmoAnime) return false;
         isElmoAnime = true;
+        sesami.effectPlayer.play(15);
         $elmoArea
             .addClass('anime')
             .one(ANIMATION_END_EVENT, function(event) {
@@ -125,7 +127,7 @@ sesami.page08.init = function () {
             if(oscarProperty.anime != 0) return false;
             oscarProperty.anime++;
             $(this).addClass('active');
-
+            sesami.effectPlayer.play(16);
             var offsetY = document.getElementById('jsOscarAreaId').offsetTop;
             var offsetX = document.getElementById('jsOscarAreaId').offsetLeft;
 
@@ -167,6 +169,7 @@ sesami.page08.init = function () {
                 .toggleClass('type2');
 
             $oscar.toggleClass('hidden');
+            sesami.effectPlayer.play(8);
 
             sesami.actionMap.page8.action5 = true;
         });
@@ -197,7 +200,7 @@ sesami.page08.init = function () {
                 $(this).removeClass('anime');
                 $cookies.removeClass('anime');
             });
-
+        sesami.effectPlayer.play(21);
         sesami.actionMap.page8.action6 = true;
     });
 
