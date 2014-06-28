@@ -13,7 +13,6 @@ if (!console.debug) {
 }
 
 
-
 // namespace.
 var sesami = window.sesami = window.sesami || {};
 
@@ -38,7 +37,11 @@ sesami.isAndroid = userAgent.indexOf('android') + 1;
 sesami.isAndroid2X = userAgent.indexOf('android 2.') + 1;
 sesami.isIE7 = userAgent.indexOf('msie 7.0') + 1;
 sesami.isIE8 = userAgent.indexOf('msie 8.0') + 1;
-sesami.isIEold = sesami.isIE7 || sesami.isIE8;
+sesami.isIE9 = userAgent.indexOf('msie 9.0') + 1;
+sesami.isIE10 = userAgent.indexOf('msie 10.0') + 1;
+sesami.isIE11 = userAgent.indexOf('trident/7.0') + 1;
+sesami.isIEold = sesami.isIE7 || sesami.isIE8 || sesami.isIE9;
+sesami.isIE = sesami.isIEold || sesami.isIE9 || sesami.isIE10 || sesami.isIE11;
 
 
 // iPhoneとAndroidではスクロールを禁止する.

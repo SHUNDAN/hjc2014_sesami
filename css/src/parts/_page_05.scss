@@ -86,6 +86,7 @@
     .cookie {
         @include abs(38%, 53%);
         width: 20%;
+        height: 29%;
         // @include transform(translate(0,0) scale(0,0));
         @include transform(translate(0,0));
         @include transition(all .5s ease-in-out);
@@ -142,9 +143,11 @@
     }
     .pointer {
         width: 10%;
+        .ieold & {display: none;}
     }
     .hand {
         width: 10%;
+        .ieold & {display: none;}
     }
     .handArea1 {
         .pointer {@include abs(45%, 57%);}

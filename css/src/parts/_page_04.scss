@@ -193,9 +193,11 @@
     }
     .pointer {
         width: 10%;
+        .ieold & {display: none;}
     }
     .hand {
         width: 10%;
+        .ieold & {display: none;}
     }
     .handArea1 {
         .pointer {@include abs(28%, 6%);}

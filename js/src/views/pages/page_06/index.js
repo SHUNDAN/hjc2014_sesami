@@ -46,6 +46,7 @@ sesami.page06.init = function () {
         $page
             .addClass('anim')
             .wait(3000, function () {
+                $page.find('.plateArea').addClass('hidden');
                 countDown();
                 addCountTapAction();
             });

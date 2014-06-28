@@ -36,7 +36,7 @@ sesami.page09.init = function () {
 
 
 
-    if (sesami.isIEold || sesami.isAndroid2X) {
+    if (sesami.isIEold || sesami.isAndroid2X || sesami.isIE) {
         $page.find('.button')
             .text('ひょうしにもどる')
             .on(TOUCH_END, function () {
