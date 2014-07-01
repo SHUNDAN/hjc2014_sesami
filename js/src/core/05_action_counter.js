@@ -21,7 +21,8 @@
             action3: false,
             action4: false,
             action5: false,
-            action6: false
+            action6: false,
+            action7: false
         },
         page3: {
             action1: false,

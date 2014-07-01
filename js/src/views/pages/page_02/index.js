@@ -165,6 +165,18 @@ sesami.page02.init = function () {
         sesami.actionMap.page2.action6 = true;
     });
 
+    // 吹き出し
+    $content.find('.fukidashiTap').on(TOUCH_START, function () {
+        $content
+          .find('.fukidashi__balloonArea')
+          .removeClass('anim')
+          .addClass('anim')
+          .wait(600)
+          .removeClass('anim');
+        effectPlayer.play(18);
+        sesami.actionMap.page2.action7 = true;
+    });
+
 };
 
 //
