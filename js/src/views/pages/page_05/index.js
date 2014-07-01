@@ -92,7 +92,7 @@ sesami.page05.init = function () {
         console.debug('[tapAreaBase]');
 
         var image = new Image();
-        image.src = './img/cookie/cookie1-' + selectType + '.png';
+        image.src = './img/cookie/cookie1-' + selectType + '.png?_=' + window.appVersion;
         image.className = 'cookie';
         image.onload = function () {
             $page.find('.cookieArea').append(this);

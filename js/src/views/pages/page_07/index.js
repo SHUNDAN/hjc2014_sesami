@@ -68,7 +68,7 @@ sesami.page07.init = function () {
             var size = sizeArray[i];
 
             var img = new Image();
-            img.src = './img/cookie/cookie2-'+type+'.png';
+            img.src = './img/cookie/cookie2-'+type+'.png?_=' + window.appVersion;
             img.pos = pos;
             img.className = 'jsDummy';
             img.style.width = size + '%';
@@ -124,7 +124,7 @@ sesami.page07.init = function () {
             idx++;
             idx = idx % 3;
         }
-        $cookie.attr('src', './img/cookie/cookie2-'+type+'.png');
+        $cookie.attr('src', './img/cookie/cookie2-'+type+'.png?_=' + window.appVersion);
     }
 
 

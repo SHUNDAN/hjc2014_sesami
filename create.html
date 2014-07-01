@@ -58,7 +58,7 @@
         <h1>フレームを選ぼう</h1>
         <div class="frameArea">
             <div class="uploadPhoto jsUploadPhoto"><!--アップロードされたファイルがここに挿入されます--></div>
-            <div class="description taCenter" style="font-size:small; margin-bottom: 10px;">※写真を<span id="actionName">クリック</span>すると回転できます.</div>
+            <div class="description taCenter" style="font-size:small; margin-bottom: 10px; color:red; font-weight:bold;">※写真を<span id="actionName">クリック</span>すると回転できます.</div>
             <h2>どのフレームにする？</h2>
             <div class="frameSelector jsFrameSelect">
                 <img src="./img/create/frame1.png?_=15"/>
@@ -70,6 +70,7 @@
             <input type="button" class="button jsPrevPage" value="写真を選び直す"/>
             <input type="button" class="button jsGotoConfirmPage red" value="OK"/>
         </div>
+        <div style="width:100%; height: 50px;"></div>
     </div>
 
     <!--確認画面-->
@@ -78,7 +79,7 @@
         <figure class="uploadPhoto2 jsUploadPhoto2"><!--アップロードされたファイルがここに挿入されます--></figure>
         <div class="btn2Col">
             <input type="button" class="button jsRest" value="やり直す"/>
-            <input type="button" class="button jsUpload red" value="OK"/>
+            <input type="button" class="button jsUpload red" value="これで決まり!"/>
         </div>
     </div>
 
