@@ -514,4 +514,27 @@
       left: 42%;
       @include animation(page02_Fukidashi__delay_1 2s ease-in-out 1);
     }
+
+
+
+    // タップエリア
+    // ------------------------------------------------------
+    .poolAreaTap {
+      @include abs(46%, 37%);
+      z-index: 2;
+      width: 39%;
+      height: 38%;
+      background-color: rgba(255,255,255,.001);
+    }
+    .cmAreaTap {
+      @include abs(10%, 6%);
+      width: 32%;
+      height: 71%;
+      background-color: rgba(255,255,255,.001);
+    }
+
+
+
+
+
 }

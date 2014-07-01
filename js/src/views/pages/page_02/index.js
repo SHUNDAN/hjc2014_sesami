@@ -26,10 +26,12 @@ sesami.page02.init = function () {
     // 差し替えたタップアニメ用の手に
     // アニメーション用classを付与する。アニメが終わったらremoveする。
     $content.on(TOUCH_START, '.jsCMArea', function () {
+        var $target = $content.find('.jsCMArea');
         var that = this;
-        event.preventDefault();
+        // event.preventDefault();
         if(this.isCMAnime) {
-          return false;
+          $cm_target_02.removeClass('is-tap--anim');
+          // return false;
         }
         else {
           this.isCMAnime = true;
@@ -54,12 +56,14 @@ sesami.page02.init = function () {
 
     // プールタップで看板出現
     $content.on(TOUCH_START, '.jsPoolAreaTap', function () {
-        // event.preventDefault();
         $content.find('.jsCaution').removeClass('hidden');
         sesami.actionMap.page2.action2 = true;
         effectPlayer.play(15);
+    // }).on(TOUCH_MOVE, '.jsPoolAreaTap', function () {
+    //     $content.find('.jsCaution').addClass('hidden');
     }).on(TOUCH_END + ' touchcancel', '.jsPoolAreaTap', function () {
         $content.find('.jsCaution').addClass('hidden');
+        effectPlayer.play(15);
     });
 
     // ビッグバードタップ
