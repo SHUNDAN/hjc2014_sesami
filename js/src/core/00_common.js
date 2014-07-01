@@ -59,7 +59,9 @@ if (sesami.isIphone7_1 && !sesami.isIphoneChrome) {
 }
 
 // ヘッダスキップ（有効なものだけ）
-window.scrollTo(0,1);
+$(function () {
+    window.scrollTo(0,1);
+});
 
 // Androidをマーク
 if (sesami.isAndroid) {
