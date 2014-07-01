@@ -72,7 +72,7 @@ sesami.page02.init = function () {
     var $jsBB_02 = $content.find('.jsBB--02');
     var isBBAnime = false;
     $jsBBArea.on(TOUCH_START, $(this), function () {
-        event.preventDefault();
+        // event.preventDefault();
         $jsBB_01.addClass('hidden');
         $jsBB_02.removeClass('hidden');
         sesami.actionMap.page2.action3 = true;
@@ -87,7 +87,7 @@ sesami.page02.init = function () {
     var isElmoAnime = false;
     $jsElmoArea.on(TOUCH_START, $(this), function () {
         var that = this;
-        event.preventDefault();
+        // event.preventDefault();
         if(this.isElmoAnime) {
           return false;
         }
@@ -109,7 +109,7 @@ sesami.page02.init = function () {
     var isBertAnime = false;
     $jsBertArea.on(TOUCH_START, $(this), function () {
         var that = this;
-        event.preventDefault();
+        // event.preventDefault();
         if(this.isBertAnime) {
           return false;
         }
@@ -148,7 +148,7 @@ sesami.page02.init = function () {
     var isOscarAnime = false;
     $jsOscarArea.on(TOUCH_START, $(this), function () {
         var that = this;
-        event.preventDefault();
+        // event.preventDefault();
         if(this.isOscarAnime) {
           return false;
         }

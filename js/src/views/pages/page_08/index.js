@@ -206,7 +206,7 @@ sesami.page08.init = function () {
                 $cookies.removeClass('anime');
             });
         sesami.effectPlayer.play(21);
-        sesami.actionMap.page8.action6 = true;
+        sesami.actionMap.page8.action5 = true;
     });
 
 
