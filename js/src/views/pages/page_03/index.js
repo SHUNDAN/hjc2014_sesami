@@ -26,8 +26,8 @@ sesami.page03.init = function() {
     });
 
     $ballonTap.on(TOUCH_START, function(event) {
-      event.preventDefault();
-      if(isBallonAnime) return false;
+      // event.preventDefault();
+      // if(isBallonAnime) return false;
       isBallonAnime = true;
       $ballonCharacterCookieMonster.addClass('animate');
       sesami.effectPlayer.play(6);
@@ -36,11 +36,12 @@ sesami.page03.init = function() {
     });
 
     $ballonCharacter.one(ANIMATION_END_EVENT,function(){
-      if(isBallonAnime) return false;
+      // if(isBallonAnime) return false;
       if(isFirst) $ballonArea.addClass('start');
       isFirst = false;
       isBallonAnime = true;
-      $ballonCharacterCookieMonster.addClass('animate');
+      // $ballonCharacterCookieMonster.addClass('animate');
+      $ballonCharacterCookieMonster.removeClass('animate');
     });
 
     //

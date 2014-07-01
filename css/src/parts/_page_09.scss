@@ -3,22 +3,49 @@
 [data-page="9"] {
 
 
+    // Thank you
     .message {
-        padding-top: 10%;
+        padding-top: 5%;
         font-size: 200%;
         font-weight: bold;
         line-height: 1.5;
         text-align: center;
     }
 
+    // 見つけたアクション
     .message2 {
-        margin-top: 10%;
+        margin-top: 8%;
         text-align: center;
         font-size: 140%;
     }
     #num1 {
         font-size: 300%;
     }
+    // 見つけたアクション（詳細）
+    .actionTable {
+        margin: 4% auto 0;
+        width: 80%;
+        visibility: hidden;
+        &.show {
+            visibility: visible;
+        }
+        th {
+            width: 11.1%; // 100 / 9
+            text-align: center;
+        }
+        td {
+            padding: 1% 2%;
+            text-align: center;
+        }
+    }
+    .help {
+        display: inline-block;
+        width: 2em;
+        height: auto;
+        padding-left: 2px;
+        vertical-align: baseline;
+    }
+
 
     .button {
         @include appearance(none);
