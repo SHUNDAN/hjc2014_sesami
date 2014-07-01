@@ -1,11 +1,9 @@
 // アニメーションのKeyframes
-@include keyframes (page07_dummy) {
-    0%   { @include rotateZ(0deg); }
-    30%  { @include rotateZ(5deg); }
-    50%  { @include rotateZ(-15deg); }
-    65%  { @include rotateZ(-10deg); }
-    80%  { @include rotateZ(-12deg); }
-    100% { @include rotateZ(0deg); }
+@include keyframes (page07_CookieMonster) {
+  0%   { @include translateX(0); }
+  10%   { @include translateX(-40%);}
+  50%   { @include translateX(-40%);}
+  100% { @include translateX(0); }
 }
 
 
@@ -141,6 +139,9 @@
         .cookieMonster {
             @include transition(all 1s ease-out 3.5s);
             @include transform(translateX(0%));
+            &.anim {
+                @include animation(page07_CookieMonster 1s ease-in-out);
+            }
         }
 
     }
@@ -152,6 +153,13 @@
         height: 100%;
         background-color: rgba(255,255,255,.01);
     }
+    .tapCMArea {
+        @include abs(5%, 0);
+        width: 7%;
+        height: 33%;
+        background-color: rgba(0, 0, 0, .001);
+    }
+
 
 
 

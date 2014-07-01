@@ -131,6 +131,19 @@ sesami.page07.init = function () {
 
 
 
+    // タップ：クッキーモンスター
+    $page.find('.tapCMArea').on(TOUCH_START, function () {
+        $page
+            .find('.cookieMonster')
+            .removeClass('anim')
+            .addClass('anim')
+            .wait(1000)
+            .removeClass('anim');
+
+        sesami.effectPlayer.play(13);
+        sesami.actionMap.page7.action2 = true;
+    });
+
 
 
 

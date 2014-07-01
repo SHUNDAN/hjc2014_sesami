@@ -45,7 +45,8 @@
             action1: false
         },
         page7: {
-            action1: false            
+            action1: false,
+            action2: false
         },
         page8: {
             action1: false,
