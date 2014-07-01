@@ -52,9 +52,8 @@
         // ハッシュを変えておいて・・・
         location.hash = "page=" + nextPageNo;            
 
-        // 仮.
-        // var bgmType = Math.abs(nextPageNo % 4) + 1;
-        // sesami.bgmSound.play(bgmType);
+        // ページ番号の修正
+        $('#pageNum').text(nextPageNo);
 
         // 初期化と廃棄.
         var pageObject = sesami['page0' + currentPageNo];

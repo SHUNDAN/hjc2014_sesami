@@ -4,6 +4,7 @@ sesami.page06.animationEnable;
 sesami.page06.init = function () {
     console.debug('page06 init is called.');
     sesami.page06.animationEnable = true;
+    sesami.page06.alreadyPageMove = false; // 自動遷移とユーザーアクションに依る遷移を混同しない対策
 
 
     var
@@ -95,7 +96,12 @@ sesami.page06.init = function () {
             .addClass('hidden')
             .wait(0, function () {
                 
-                $('#nextPageBtn').css('opacity', 1).removeClass('noAction');
+                $('#nextPageBtn')
+                    .css('opacity', 1)
+                    .removeClass('noAction')
+                    .on(TOUCH_END, function () {
+                        sesami.page06.alreadyPageMove = true;
+                    });
 
                 $page
                     .find('.chara2')
@@ -103,7 +109,9 @@ sesami.page06.init = function () {
                     .wait(100)
                     .addClass('move')
                     .wait(1200, function () {
-                        sesami.goNextPage();
+                        if (!sesami.page06.alreadyPageMove) {
+                            sesami.goNextPage();                            
+                        }
                     });
             });
 

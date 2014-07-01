@@ -99,6 +99,12 @@ audio {
 	background-color: rgba(255,255,255,.001);
 	z-index: 100;
 }
+#pageNum {
+	position: absolute;
+	bottom: 8%;
+	right: 4%;
+	font-size: 100%;
+}
 
 // クレジット表記
 .credit {
