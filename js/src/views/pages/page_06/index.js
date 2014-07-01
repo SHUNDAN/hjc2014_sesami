@@ -95,7 +95,7 @@ sesami.page06.init = function () {
             .addClass('hidden')
             .wait(0, function () {
                 
-                $('#nextPageBtn').css('opacity', 1);
+                $('#nextPageBtn').css('opacity', 1).removeClass('noAction');
 
                 $page
                     .find('.chara2')

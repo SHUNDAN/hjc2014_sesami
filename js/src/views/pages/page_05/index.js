@@ -82,7 +82,7 @@ sesami.page05.init = function () {
             numOfCookie++;
             if (numOfCookie === 3) {
                 sesami.effectPlayer.play(25);
-                $('#nextPageBtn').css('opacity', 1);
+                $('#nextPageBtn').css('opacity', 1).removeClass('noAction');
             }
         }, 1200);
 

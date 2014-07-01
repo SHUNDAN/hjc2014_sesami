@@ -72,7 +72,7 @@
 
         // 次へボタンは少しだけ遅れて表示
         var delayTime = nextBtnDelayTime(nextPageNo);
-        $nextBtn.css('opacity', 0)
+        $nextBtn.css('opacity', 0).addClass('noAction');
         nextBtnDelayTimer = setTimeout(function () {
             nextBtnDelayTimer = null;
             $nextBtn.animate({opacity: 1}, 500).removeClass('noAction');
@@ -87,7 +87,7 @@
         }
 
         // 連続タップしやすいので、2秒だけ使えない苦する
-        $nextBtn.addClass('noAction').wait(2000).removeClass('noAction');
+        $nextBtn.addClass('noAction');//.wait(2000).removeClass('noAction');
 
         // iPadでは時々図が抜けるので、再描画を促す
         $('#pageRefresher').wait(200).removeClass('hidden').wait(50).addClass('hidden');
@@ -187,16 +187,16 @@
 
 
     // 前ページへ
-    $('#prevPageBtn').on(sesami.event.TOUCH_END, function () {
+    // $('#prevPageBtn').on(sesami.event.TOUCH_END, function () {
 
-        var prevPage = sesami.currentPage - 1;
-        if (prevPage < MIN_PAGE) {
-            prevPage = MAX_PAGE;
-        }
+    //     var prevPage = sesami.currentPage - 1;
+    //     if (prevPage < MIN_PAGE) {
+    //         prevPage = MAX_PAGE;
+    //     }
 
-        showPageAt(prevPage, sesami.currentPage);
-        sesami.currentPage = prevPage;
-    });
+    //     showPageAt(prevPage, sesami.currentPage);
+    //     sesami.currentPage = prevPage;
+    // });
 
 
 

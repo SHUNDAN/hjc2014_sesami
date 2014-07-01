@@ -49,7 +49,7 @@ sesami.page04.init = function () {
                     });
                 setTimeout(function () {
                     sesami.effectPlayer.play(25);
-                    $('#nextPageBtn').css('opacity', 1);
+                    $('#nextPageBtn').css('opacity', 1).removeClass('noAction');
                 }, 1500);
             }
         }, 800);
